@@ -50,22 +50,22 @@ Accordion without scroller or unified behaviour
 ```markdown
 import {AccordionItem} from '@servesAll/molecules';
 
-      <AccordionItem>
-        <AccordionItem.Head>
-          # Accordion Head Content
-        </AccordionItem.Head>
-        <AccordionItem.Body>
-          # Accordion Body Content
-        </AccordionItem.Body>
-      </AccordionItem>
-      <AccordionItem>
-        <AccordionItem.Head>
-          # Accordion Head Content
-        </AccordionItem.Head>
-        <AccordionItem.Body>
-          # Accordion Body Content
-        </AccordionItem.Body>
-      </AccordionItem>
+ <AccordionItem>
+  <AccordionItem.Head>
+    # Accordion Head Content
+  </AccordionItem.Head>
+  <AccordionItem.Body>
+    # Accordion Body Content
+  </AccordionItem.Body>
+ </AccordionItem>
+ <AccordionItem>
+  <AccordionItem.Head>
+   # Accordion Head Content
+  </AccordionItem.Head>
+  <AccordionItem.Body>
+   # Accordion Body Content
+  </AccordionItem.Body>
+ </AccordionItem>
 ```
 
 Accordion with scroller and unified behaviour
@@ -73,22 +73,22 @@ Accordion with scroller and unified behaviour
 ```markdown
 import {AccordionItem, AccordionScroller} from '@servesAll/molecules';
 
-    <AccordionScroller>
-      <AccordionItem>
-        <AccordionItem.Head>
-          # Accordion Head Content
-        </AccordionItem.Head>
-        <AccordionItem.Body>
-          # Accordion Body Content
-        </AccordionItem.Body>
-      </AccordionItem>
-      <AccordionItem>
-        <AccordionItem.Head>
-          # Accordion Head Content
-        </AccordionItem.Head>
-        <AccordionItem.Body>
-          # Accordion Body Content
-        </AccordionItem.Body>
-      </AccordionItem>
-  </AccordionScroller>
+<AccordionScroller>
+ <AccordionItem>
+  <AccordionItem.Head>
+    # Accordion Head Content
+  </AccordionItem.Head>
+  <AccordionItem.Body>
+    # Accordion Body Content
+  </AccordionItem.Body>
+ </AccordionItem>
+ <AccordionItem>
+  <AccordionItem.Head>
+   # Accordion Head Content
+  </AccordionItem.Head>
+  <AccordionItem.Body>
+   # Accordion Body Content
+  </AccordionItem.Body>
+ </AccordionItem>
+</AccordionScroller>
 ```
