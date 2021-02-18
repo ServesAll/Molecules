@@ -52,18 +52,18 @@ import {AccordionItem} from '@servesAll/molecules';
 
       <AccordionItem>
         <AccordionItem.Head>
-          // Accordion Head Content
+          # Accordion Head Content
         </AccordionItem.Head>
         <AccordionItem.Body>
-          // Accordion Body Content
+          # Accordion Body Content
         </AccordionItem.Body>
       </AccordionItem>
       <AccordionItem>
         <AccordionItem.Head>
-          // Accordion Head Content
+          # Accordion Head Content
         </AccordionItem.Head>
         <AccordionItem.Body>
-          // Accordion Body Content
+          # Accordion Body Content
         </AccordionItem.Body>
       </AccordionItem>
 ```
@@ -76,18 +76,18 @@ import {AccordionItem, AccordionScroller} from '@servesAll/molecules';
     <AccordionScroller>
       <AccordionItem>
         <AccordionItem.Head>
-          // Accordion Head Content
+          # Accordion Head Content
         </AccordionItem.Head>
         <AccordionItem.Body>
-          // Accordion Body Content
+          # Accordion Body Content
         </AccordionItem.Body>
       </AccordionItem>
       <AccordionItem>
         <AccordionItem.Head>
-          // Accordion Head Content
+          # Accordion Head Content
         </AccordionItem.Head>
         <AccordionItem.Body>
-          // Accordion Body Content
+          # Accordion Body Content
         </AccordionItem.Body>
       </AccordionItem>
   </AccordionScroller>
