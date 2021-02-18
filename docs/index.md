@@ -3,9 +3,9 @@
 
 Install the following dependencies
 
-1. Reanimated 2 -> https://docs.swmansion.com/react-native-reanimated/docs/installation
-2. Gesture handler -> https://docs.swmansion.com/react-native-gesture-handler/docs/#installation
-3. Emotion styling -> https://emotion.sh/docs/@emotion/native
+1. [Reanimated 2](https://docs.swmansion.com/react-native-reanimated/docs/installation).
+2. [Gesture handler](https://docs.swmansion.com/react-native-gesture-handler/docs/#installation).
+3. [Emotion styling](https://emotion.sh/docs/@emotion/native).
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
