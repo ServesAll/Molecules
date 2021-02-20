@@ -9,6 +9,10 @@ Install the following dependencies for your native app
 (create-react-app)
 To Run this on web (create-react-app)
 
+install this
+
+npm i --save-dev metro-react-native-babel-preset
+
 you will need to eject the app and add the following to webpack.config.js
 
  plugins: ['react-native-reanimated/plugin'],
