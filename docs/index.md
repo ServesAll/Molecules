@@ -1,11 +1,24 @@
 ## Dependency Installation
 
-
-Install the following dependencies
+(React-native)
+Install the following dependencies for your native app
 
 1. [Reanimated 2](https://docs.swmansion.com/react-native-reanimated/docs/installation).
 2. [Gesture handler](https://docs.swmansion.com/react-native-gesture-handler/docs/#installation).
-3. [Emotion styling](https://emotion.sh/docs/@emotion/native).
+
+(create-react-app)
+To Run this on web (create-react-app)
+
+you will need to eject the app and add the following to webpack.config.js
+
+ plugins: ['react-native-reanimated/plugin'],
+ presets: ['module:metro-react-native-babel-preset'],
+ 
+ & if you get _DEV_ error add the following
+ 
+ new webpack.DefinePlugin({
+        __DEV__: process.env,
+      }),
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
