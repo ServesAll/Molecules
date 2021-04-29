@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import Animated, {
   withTiming,
   useSharedValue,
@@ -6,10 +6,10 @@ import Animated, {
   withSpring,
   useDerivedValue,
   Easing,
-} from 'react-native-reanimated';
-import {Body} from './Body.style';
+} from "react-native-reanimated";
+import { Body } from "./Body.style";
 
-export default function BodyElement({children, isOpen}) {
+export default function BodyElement({ children, isOpen }) {
   const height = useSharedValue(1);
 
   const transition = useDerivedValue(() => {
@@ -36,11 +36,15 @@ export default function BodyElement({children, isOpen}) {
       style={[
         {
           height: 1,
-          overflow: 'hidden',
+          overflow: "hidden",
         },
         animatedStyle,
-      ]}>
-      <Body onLayout={(e) => (height.value = e.nativeEvent.layout.height)}>
+      ]}
+    >
+      <Body
+        isOpen={isOpen}
+        onLayout={(e) => (height.value = e.nativeEvent.layout.height)}
+      >
         {children}
       </Body>
     </Animated.View>

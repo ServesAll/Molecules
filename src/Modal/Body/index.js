@@ -6,11 +6,12 @@ import Animated, {
   useAnimatedGestureHandler,
   runOnJS,
 } from 'react-native-reanimated';
+import {SafeAreaView, Dimensions} from 'react-native';
 import {GestureHandlerRootView, PanGestureHandler} from 'react-native-gesture-handler';
 import {getStatusBarHeight} from 'react-native-status-bar-height';
-import {PanBarWrap, PanBar} from './Body.style';
+import {PanBarWrap, PanBar, BodyWrap} from './Body.style';
 
-export default function Body({children, offsetTop = 200, onClose}) {
+export default function Body({children, offsetTop = 200, onClose, background = '#FFFFFF', variableHeight = true}) {
   const statusBarHeight = getStatusBarHeight();
   const offset = useSharedValue(2000);
   const x = useSharedValue(0);
@@ -45,13 +46,17 @@ export default function Body({children, offsetTop = 200, onClose}) {
       x.value = ctx.startY + event.translationY;
     },
     onEnd: (_) => {
-      if (x.value < statusBarHeight) {
+      if (x.value < statusBarHeight && variableHeight) {
         x.value = withSpring(statusBarHeight);
-      } else {
+      }
+      if(!variableHeight) {
+        x.value = withSpring(offsetTop);
+      } 
+
         if (_.translationY > 300 || x.value > 550) {
           runOnJS(close)();
         }
-      }
+
     },
   });
 
@@ -66,16 +71,25 @@ export default function Body({children, offsetTop = 200, onClose}) {
   });
 
   return (
+    <SafeAreaView>
       <GestureHandlerRootView>
     <PanGestureHandler onGestureEvent={gestureHandler}>
+      
       <Animated.View
-        style={[{height: '100%', zIndex: 11}, animatedStyle, animatedStylePan]}>
+        style={[{height: (Dimensions.get('window').height - offsetTop) - statusBarHeight, zIndex: 11, backgroundColor: background}, animatedStyle, animatedStylePan]}>
+        <BodyWrap pb={statusBarHeight} height={(Dimensions.get('window').height - offsetTop) - statusBarHeight - 30}>
         <PanBarWrap>
           <PanBar />
         </PanBarWrap>
+        
         {children}
+        
+        </BodyWrap>
+       
       </Animated.View>
+      
     </PanGestureHandler>
       </GestureHandlerRootView>
+      </SafeAreaView>
   );
 }

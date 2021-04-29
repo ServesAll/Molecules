@@ -1,0 +1,76 @@
+import {
+    H3,
+    Center,
+    CenterLeft,
+    CenterRight,
+    Margin,
+    MarginHorizontal,
+    MarginVertical,
+    MarginBottom,
+    Padding,
+    PaddingHorizontal,
+    PaddingVertical,
+    Row,
+    Loader,
+} from '@servesall/atoms';
+
+# Loader
+
+Loading indicators
+
+<MarginBottom>
+    <Row>
+        <Padding>
+            <Loader color='#2d3436' />
+        </Padding>
+        <Padding>
+            <Loader color='#0984e3' />
+        </Padding>
+        <Padding>
+            <Loader color='#e17055' />
+        </Padding>
+    </Row>
+</MarginBottom><br />
+
+```code
+import {
+    Loader
+    useThemeContext,
+} from '@servesall/atoms';
+
+function RootElement() {
+  const {themeContext} = useThemeContext();
+  const primaryColor = themeContext.color1;
+  return (
+    <Loader color={primaryColor} />
+  );
+}
+```
+
+## Props
+
+<table>
+    <thead>
+    <tr>
+        <th>Prop</th>
+        <th>type</th>
+        <th>default</th>
+        <th>required</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>style</td>
+        <td>object</td>
+        <td>No</td>
+        <td>No</td>
+    </tr>
+    <tr>
+        <td>color</td>
+        <td>string</td>
+        <td>black</td>
+        <td>No</td>
+    </tr>
+    </tbody>
+</table>
+

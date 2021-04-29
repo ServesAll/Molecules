@@ -1,6 +1,6 @@
-import React from 'react';
-import {Wrapper} from './Container.style';
+import React from "react";
+import { Wrapper } from "./Container.style";
 
-export default function Container({children}) {
-  return <Wrapper>{children}</Wrapper>;
+export default function Container({ children, styles }) {
+  return <Wrapper styles={styles}>{children}</Wrapper>;
 }

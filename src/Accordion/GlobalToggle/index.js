@@ -1,23 +1,27 @@
-import React, {useReducer} from 'react';
+import React, { useReducer } from "react";
 const AccordionContext = React.createContext();
 
 function reducer(state, action) {
   switch (action.type) {
-    case 'isActive':
+    case "isActive":
       return {
         isActive: action.data,
       };
-    case 'isActiveHeight':
+    case "isActiveHeight":
       return {
         isActiveHeight: action.data,
+      };
+      case "setScroller":
+      return {
+        scrollRef: action.data,
       };
     default:
       return state;
   }
 }
 
-const AccordionProvider = ({children, value}) => {
-  const [{isActive, isActiveHeight}, dispatch] = useReducer(reducer, {
+const AccordionProvider = ({ children, value }) => {
+  const [{ isActive, isActiveHeight }, dispatch] = useReducer(reducer, {
     isActive: false,
     isActiveHeight: false,
   });
@@ -29,7 +33,8 @@ const AccordionProvider = ({children, value}) => {
         isActive,
         isActiveHeight,
         dispatch,
-      }}>
+      }}
+    >
       {children}
     </AccordionContext.Provider>
   );
@@ -39,4 +44,4 @@ const useAccordionContext = () => {
   return React.useContext(AccordionContext);
 };
 
-export {AccordionContext, AccordionProvider, useAccordionContext};
+export { AccordionContext, AccordionProvider, useAccordionContext };

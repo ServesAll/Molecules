@@ -7,11 +7,18 @@ var reactNative$1 = require('react-native');
 var Animated = require('react-native-reanimated');
 var reactNativeGestureHandler = require('react-native-gesture-handler');
 var reactNativeStatusBarHeight = require('react-native-status-bar-height');
+var MapView = require('react-native-maps');
+var LottieView = require('lottie-react-native');
+var ImagePicker = require('react-native-image-crop-picker');
+var atoms = require('@servesall/atoms');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var Animated__default = /*#__PURE__*/_interopDefaultLegacy(Animated);
+var MapView__default = /*#__PURE__*/_interopDefaultLegacy(MapView);
+var LottieView__default = /*#__PURE__*/_interopDefaultLegacy(LottieView);
+var ImagePicker__default = /*#__PURE__*/_interopDefaultLegacy(ImagePicker);
 
 function Background(_ref) {
   var children = _ref.children,
@@ -9615,16 +9622,25 @@ aliases.split(/\s+/m).forEach(function (alias) {
   });
 });
 
-var _templateObject, _templateObject2, _templateObject3;
+var _templateObject, _templateObject2, _templateObject3, _templateObject4;
 var Body = styled.View(_templateObject || (_templateObject = _taggedTemplateLiteral([""])));
-var PanBarWrap = styled.View(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  height: 30px;\n  align-items: center;\n  justify-content: center;\n  transform: translateY(30px);\n  z-index: 12;\n"])));
+var PanBarWrap = styled.View(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  height: 30px;\n  align-items: center;\n  justify-content: center;\n  z-index: 12;\n"])));
 var PanBar = styled.View(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  width: 180px;\n  background-color: rgba(0, 0, 0, 0.5);\n  height: 6px;\n  border-radius: 3px;\n"])));
+var BodyWrap = styled.View(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n  height: ", "px;\n  padding-bottom: ", "px;\n"])), function (props) {
+  return props.height;
+}, function (props) {
+  return props.pb;
+});
 
 function Body$1(_ref) {
   var children = _ref.children,
       _ref$offsetTop = _ref.offsetTop,
       offsetTop = _ref$offsetTop === void 0 ? 200 : _ref$offsetTop,
-      onClose = _ref.onClose;
+      onClose = _ref.onClose,
+      _ref$background = _ref.background,
+      background = _ref$background === void 0 ? '#FFFFFF' : _ref$background,
+      _ref$variableHeight = _ref.variableHeight,
+      variableHeight = _ref$variableHeight === void 0 ? true : _ref$variableHeight;
   var statusBarHeight = reactNativeStatusBarHeight.getStatusBarHeight();
   var offset = Animated.useSharedValue(2000);
   var x = Animated.useSharedValue(0);
@@ -9647,7 +9663,7 @@ function Body$1(_ref) {
     };
     _f.asString = "function _f(){const{withSpring,offset}=jsThis._closure;{return{transform:[{translateY:withSpring(offset.value,{damping:10,stiffness:90,mass:0.5})}]};}}";
     _f.__workletHash = 14161509466377;
-    _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Modal/Body/index.js (18:41)";
+    _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Modal/Body/index.js (19:41)";
 
     global.__reanimatedWorkletInit(_f);
 
@@ -9673,7 +9689,7 @@ function Body$1(_ref) {
       };
       _f.asString = "function onStart(event,ctx){const{x,offset}=jsThis._closure;{ctx.startY=x.value===0?offset.value:x.value;}}";
       _f.__workletHash = 10748898788119;
-      _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Modal/Body/index.js (41:13)";
+      _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Modal/Body/index.js (42:13)";
 
       global.__reanimatedWorkletInit(_f);
 
@@ -9689,7 +9705,7 @@ function Body$1(_ref) {
       };
       _f.asString = "function onActive(event,ctx){const{x}=jsThis._closure;{x.value=ctx.startY+event.translationY;}}";
       _f.__workletHash = 3182690952060;
-      _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Modal/Body/index.js (44:14)";
+      _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Modal/Body/index.js (45:14)";
 
       global.__reanimatedWorkletInit(_f);
 
@@ -9697,25 +9713,31 @@ function Body$1(_ref) {
     }(),
     onEnd: function () {
       const _f = function (_) {
-        if (x.value < statusBarHeight) {
+        if (x.value < statusBarHeight && variableHeight) {
           x.value = Animated.withSpring(statusBarHeight);
-        } else {
-          if (_.translationY > 300 || x.value > 550) {
-            Animated.runOnJS(close)();
-          }
+        }
+
+        if (!variableHeight) {
+          x.value = Animated.withSpring(offsetTop);
+        }
+
+        if (_.translationY > 300 || x.value > 550) {
+          Animated.runOnJS(close)();
         }
       };
 
       _f._closure = {
         x,
         statusBarHeight,
+        variableHeight,
         withSpring: Animated.withSpring,
+        offsetTop,
         runOnJS: Animated.runOnJS,
         close
       };
-      _f.asString = "function onEnd(_){const{x,statusBarHeight,withSpring,runOnJS,close}=jsThis._closure;{if(x.value<statusBarHeight){x.value=withSpring(statusBarHeight);}else{if(_.translationY>300||x.value>550){runOnJS(close)();}}}}";
-      _f.__workletHash = 877107367561;
-      _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Modal/Body/index.js (47:11)";
+      _f.asString = "function onEnd(_){const{x,statusBarHeight,variableHeight,withSpring,offsetTop,runOnJS,close}=jsThis._closure;{if(x.value<statusBarHeight&&variableHeight){x.value=withSpring(statusBarHeight);}if(!variableHeight){x.value=withSpring(offsetTop);}if(_.translationY>300||x.value>550){runOnJS(close)();}}}";
+      _f.__workletHash = 9421720351401;
+      _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Modal/Body/index.js (48:11)";
 
       global.__reanimatedWorkletInit(_f);
 
@@ -9736,56 +9758,69 @@ function Body$1(_ref) {
     };
     _f.asString = "function _f(){const{x}=jsThis._closure;{return{transform:[{translateY:x.value}]};}}";
     _f.__workletHash = 15133577060486;
-    _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Modal/Body/index.js (58:44)";
+    _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Modal/Body/index.js (63:44)";
 
     global.__reanimatedWorkletInit(_f);
 
     return _f;
   }());
-  return /*#__PURE__*/React__default['default'].createElement(reactNativeGestureHandler.GestureHandlerRootView, null, /*#__PURE__*/React__default['default'].createElement(reactNativeGestureHandler.PanGestureHandler, {
+  return /*#__PURE__*/React__default['default'].createElement(reactNative$1.SafeAreaView, null, /*#__PURE__*/React__default['default'].createElement(reactNativeGestureHandler.GestureHandlerRootView, null, /*#__PURE__*/React__default['default'].createElement(reactNativeGestureHandler.PanGestureHandler, {
     onGestureEvent: gestureHandler
   }, /*#__PURE__*/React__default['default'].createElement(Animated__default['default'].View, {
     style: [{
-      height: '100%',
-      zIndex: 11
+      height: reactNative$1.Dimensions.get('window').height - offsetTop - statusBarHeight,
+      zIndex: 11,
+      backgroundColor: background
     }, animatedStyle, animatedStylePan]
-  }, /*#__PURE__*/React__default['default'].createElement(PanBarWrap, null, /*#__PURE__*/React__default['default'].createElement(PanBar, null)), children)));
+  }, /*#__PURE__*/React__default['default'].createElement(BodyWrap, {
+    pb: statusBarHeight,
+    height: reactNative$1.Dimensions.get('window').height - offsetTop - statusBarHeight - 30
+  }, /*#__PURE__*/React__default['default'].createElement(PanBarWrap, null, /*#__PURE__*/React__default['default'].createElement(PanBar, null)), children)))));
 }
 
 var Modal = function Modal(_ref) {
   var children = _ref.children,
       offsetTop = _ref.offsetTop,
+      variableHeight = _ref.variableHeight,
       _ref$onClose = _ref.onClose,
       onClose = _ref$onClose === void 0 ? function () {} : _ref$onClose;
   return /*#__PURE__*/React__default['default'].createElement(Background, {
     onClose: onClose
   }, /*#__PURE__*/React__default['default'].createElement(Body$1, {
     offsetTop: offsetTop,
-    onClose: onClose
+    onClose: onClose,
+    variableHeight: variableHeight
   }, children));
 };
 
 var _templateObject$1;
-var Wrapper = styled.View(_templateObject$1 || (_templateObject$1 = _taggedTemplateLiteral([""])));
+var Wrapper = styled.View(_templateObject$1 || (_templateObject$1 = _taggedTemplateLiteral(["\n", ";\n"])), function (props) {
+  return props.styles;
+});
 
 function Container$1(_ref) {
-  var children = _ref.children;
-  return /*#__PURE__*/React__default['default'].createElement(Wrapper, null, children);
+  var children = _ref.children,
+      styles = _ref.styles;
+  return /*#__PURE__*/React__default['default'].createElement(Wrapper, {
+    styles: styles
+  }, children);
 }
 
 var _templateObject$2;
-var Head = styled.View(_templateObject$2 || (_templateObject$2 = _taggedTemplateLiteral([""])));
+var Head = styled.View(_templateObject$2 || (_templateObject$2 = _taggedTemplateLiteral(["\n  ", ";\n"])), function (props) {
+  return props.styles;
+});
 
 var AccordionContext = React__default['default'].createContext();
 
 function reducer(state, action) {
   switch (action.type) {
-    case 'isActive':
+    case "isActive":
       return {
         isActive: action.data
       };
 
-    case 'isActiveHeight':
+    case "isActiveHeight":
       return {
         isActiveHeight: action.data
       };
@@ -9826,9 +9861,11 @@ function HeadElement(_ref) {
   var children = _ref.children,
       toggleAccordionItem = _ref.toggleAccordionItem,
       eventKey = _ref.eventKey,
-      isOpen = _ref.isOpen;
+      isOpen = _ref.isOpen,
+      style = _ref.style;
 
   var _ref2 = useAccordionContext() || {},
+      isActive = _ref2.isActive,
       scrollRef = _ref2.scrollRef;
 
   var BodyRef = React.useRef();
@@ -9859,15 +9896,24 @@ function HeadElement(_ref) {
     }
   }, [isOpen]);
   return /*#__PURE__*/React__default['default'].createElement(reactNative$1.Pressable, {
+    style: {
+      opacity: isActive != eventKey ? isActive ? 0.6 : 1 : 1
+    },
     ref: BodyRef,
     onPress: function onPress() {
       return toggleAccordionItem(eventKey);
     }
-  }, /*#__PURE__*/React__default['default'].createElement(Head, null, children));
+  }, /*#__PURE__*/React__default['default'].createElement(Head, {
+    styles: style
+  }, children));
 }
 
 var _templateObject$3;
-var Body$2 = styled.View(_templateObject$3 || (_templateObject$3 = _taggedTemplateLiteral([""])));
+var Body$2 = styled.View(_templateObject$3 || (_templateObject$3 = _taggedTemplateLiteral(["\n  width: 100%;\n  ", ";\n  z-index: ", ";\n"])), function (props) {
+  return !props.isOpen && "position: absolute";
+}, function (props) {
+  return props.isOpen ? 1 : -1;
+});
 
 function BodyElement(_ref) {
   var children = _ref.children,
@@ -9923,9 +9969,10 @@ function BodyElement(_ref) {
   return /*#__PURE__*/React__default['default'].createElement(Animated__default['default'].View, {
     style: [{
       height: 1,
-      overflow: 'hidden'
+      overflow: "hidden"
     }, animatedStyle]
   }, /*#__PURE__*/React__default['default'].createElement(Body$2, {
+    isOpen: isOpen,
     onLayout: function onLayout(e) {
       return height.value = e.nativeEvent.layout.height;
     }
@@ -9948,6 +9995,10 @@ function useAccordionHook() {
       setEventKeyState = _useState4[1];
 
   var toggleAccordionItem = function toggleAccordionItem(eventKey) {
+    dispatch && dispatch({
+      type: "isActive",
+      data: false
+    });
     setIsOpen(function (previousState) {
       return !previousState;
     });
@@ -9957,7 +10008,7 @@ function useAccordionHook() {
   React.useEffect(function () {
     if (isOpen) {
       dispatch && dispatch({
-        type: 'isActive',
+        type: "isActive",
         data: eventKeyState
       });
     }
@@ -9968,6 +10019,7 @@ function useAccordionHook() {
     }
   }, [isActive]);
   return {
+    eventKeyState: eventKeyState,
     isOpen: isOpen,
     toggleAccordionItem: toggleAccordionItem
   };
@@ -9980,7 +10032,8 @@ var AccordionItem = function AccordionItem(_ref) {
       _ref$onChange = _ref.onChange,
       onChange = _ref$onChange === void 0 ? function () {} : _ref$onChange,
       _ref$eventKey = _ref.eventKey,
-      eventKey = _ref$eventKey === void 0 ? false : _ref$eventKey;
+      eventKey = _ref$eventKey === void 0 ? false : _ref$eventKey,
+      style = _ref.style;
 
   var _useAccordionHook = useAccordionHook(),
       isOpen = _useAccordionHook.isOpen,
@@ -9997,8 +10050,13 @@ var AccordionItem = function AccordionItem(_ref) {
   React.useEffect(function () {
     defaultState && toggleAccordionItem(defaultState);
   }, [defaultState]);
+  React.useEffect(function () {
+    if (isOpen !== hasChanged) {
+      onChange(isOpen);
+    }
+  }, [isOpen, hasChanged]);
   return /*#__PURE__*/React__default['default'].createElement(Container$1, {
-    onChange: isOpen !== hasChanged && onChange(isOpen)
+    styles: style
   }, React__default['default'].Children.map(children, function (child) {
     return React__default['default'].cloneElement(child, {
       isOpen: isOpen,
@@ -10035,7 +10093,2867 @@ function AccordionScroller(_ref) {
   }, children));
 }
 
+function AccordionScroll(_ref) {
+  var children = _ref.children,
+      style = _ref.style;
+  var scrollRef = React.useRef();
+
+  var _useAccordionContext = useAccordionContext(),
+      dispatch = _useAccordionContext.dispatch;
+
+  React.useEffect(function () {
+    dispatch({
+      typr: 'setScroller',
+      data: scrollRef
+    });
+  }, []);
+  return /*#__PURE__*/React__default['default'].createElement(ScrollView, {
+    ref: scrollRef,
+    styles: style
+  }, children);
+}
+
+var _templateObject$5, _templateObject2$1;
+var MapWrapper = styled.View(_templateObject$5 || (_templateObject$5 = _taggedTemplateLiteral(["\n  align-items: center;\n  justify-content: center;\n  height: 400px;\n  overflow: hidden;\n  border-radius: ", ";\n  margin: ", " 0;\n"])), function (props) {
+  return props.theme.borderRadius;
+}, function (props) {
+  return props.theme.padding;
+});
+var MarkerWrapper = styled.View(_templateObject2$1 || (_templateObject2$1 = _taggedTemplateLiteral(["\n  position: absolute;\n  z-index: 9;\n  width: 80px;\n  height: 120px;\n  align-items: center;\n    justify-content: center;\n"])));
+
+/**
+* MIT License
+* 
+* Copyright (c) 2019 Douglas Nassif Roma Junior
+* 
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this software and associated documentation files (the "Software"), to deal
+* in the Software without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the Software is
+* furnished to do so, subject to the following conditions:
+* 
+* The above copyright notice and this permission notice shall be included in all
+* copies or substantial portions of the Software.
+* 
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+* SOFTWARE. 
+*/
+
+class LocationError extends Error {
+
+    constructor(code, message) {
+        super(message);
+        this.name = 'LocationError';
+        this.code = code;
+        this.message = message;
+    }
+
+}
+
+/**
+* MIT License
+* 
+* Copyright (c) 2019 Douglas Nassif Roma Junior
+* 
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this software and associated documentation files (the "Software"), to deal
+* in the Software without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the Software is
+* furnished to do so, subject to the following conditions:
+* 
+* The above copyright notice and this permission notice shall be included in all
+* copies or substantial portions of the Software.
+* 
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+* SOFTWARE. 
+*/
+
+const { OS } = reactNative$1.Platform;
+const Version = parseInt(reactNative$1.Platform.Version);
+const { ReactNativeGetLocation } = reactNative$1.NativeModules;
+
+async function openUrlIfCan(url) {
+    if (await reactNative$1.Linking.canOpenURL(url)) {
+        await reactNative$1.Linking.openURL(url);
+        return true;
+    }
+    return false;
+}
+
+async function openIOSSettings(root, path = '') {
+    if (await openUrlIfCan(`App-Prefs:root=${root}${path ? `&path=${path}` : ''}`)) {
+        return true;
+    }
+    if (await openUrlIfCan('App-Prefs:')) {
+        return true;
+    }
+    return false;
+}
+async function requestAndroidPermission(enableHighAccuracy = false) {
+    const { PERMISSIONS, RESULTS } = reactNative$1.PermissionsAndroid;
+    const granted = await reactNative$1.PermissionsAndroid.request(enableHighAccuracy
+        ? PERMISSIONS.ACCESS_FINE_LOCATION
+        : PERMISSIONS.ACCESS_COARSE_LOCATION);
+    if (granted !== RESULTS.GRANTED) {
+        throw new LocationError('UNAUTHORIZED', 'Authorization denied');
+    }
+    return true;
+}
+
+var GetLocation = {
+    async getCurrentPosition(options = {
+        enableHighAccuracy: false,
+        timeout: 0,
+    }) {
+        if (OS === 'android') {
+            await requestAndroidPermission(options.enableHighAccuracy);
+        }
+        try {
+            const location = await ReactNativeGetLocation.getCurrentPosition(options);
+            return location;
+        } catch (error) {
+            const { code, message } = error;
+            const locationError = new LocationError(code, message);
+            locationError.stack = error.stack;
+            throw locationError;
+        }
+    },
+
+    // Extra functions
+
+    openAppSettings() {
+        return ReactNativeGetLocation.openAppSettings();
+    },
+
+    /**
+     * Only for Android
+     */
+    async openWifiSettings() {
+        if (OS === 'android') {
+            return ReactNativeGetLocation.openWifiSettings();
+        }
+
+        if (await openIOSSettings('WIFI')) {
+            return true;
+        }
+
+        return ReactNativeGetLocation.openAppSettings();
+    },
+
+    /**
+     * Only for Android
+     */
+    async openCelularSettings() {
+        if (OS === 'android') {
+            return ReactNativeGetLocation.openCelularSettings();
+        }
+
+        if (await openIOSSettings('MOBILE_DATA_SETTINGS_ID')) {
+            return true;
+        }
+
+        return ReactNativeGetLocation.openAppSettings();
+    },
+
+    /**
+     * Only for Android
+     */
+    async openGpsSettings() {
+        if (OS === 'android') {
+            return ReactNativeGetLocation.openGpsSettings();
+        }
+
+        if (Version >= 10) {
+            if (await openIOSSettings('Privacy', 'LOCATION')) {
+                return true;
+            }
+        } else {
+            if (await openIOSSettings('LOCATION_SERVICES')) {
+                return true;
+            }
+        }
+
+        return ReactNativeGetLocation.openAppSettings();
+    },
+};
+
+var ip = 0;
+var fr = 60;
+var v = "5.1.20";
+var assets = [
+];
+var layers = [
+	{
+		ty: 4,
+		nm: "newMarkerShadow",
+		ip: 0,
+		st: 0,
+		ind: 2,
+		hix: 1,
+		ks: {
+			o: {
+				a: 0,
+				k: 100
+			},
+			or: {
+				a: 0,
+				k: [
+					0,
+					0,
+					0
+				]
+			},
+			a: {
+				a: 0,
+				k: [
+					59,
+					20,
+					0
+				]
+			},
+			p: {
+				s: true,
+				x: {
+					a: 0,
+					k: 136.37100000000004
+				},
+				y: {
+					a: 1,
+					k: [
+						{
+							t: 0,
+							s: [
+								133.493
+							],
+							e: [
+								168.493
+							],
+							i: {
+								x: [
+									0.515
+								],
+								y: [
+									0.955
+								]
+							},
+							o: {
+								x: [
+									0.455
+								],
+								y: [
+									0.03
+								]
+							}
+						},
+						{
+							t: 21,
+							s: [
+								168.493
+							],
+							e: [
+								133.493
+							],
+							i: {
+								x: [
+									0.515
+								],
+								y: [
+									0.955
+								]
+							},
+							o: {
+								x: [
+									0.455
+								],
+								y: [
+									0.03
+								]
+							}
+						},
+						{
+							t: 32,
+							s: [
+								133.493
+							],
+							e: [
+								150.493
+							],
+							i: {
+								x: [
+									0.515
+								],
+								y: [
+									0.955
+								]
+							},
+							o: {
+								x: [
+									0.455
+								],
+								y: [
+									0.03
+								]
+							}
+						},
+						{
+							t: 38,
+							s: [
+								150.493
+							],
+							e: [
+								133.493
+							],
+							i: {
+								x: [
+									0.515
+								],
+								y: [
+									0.955
+								]
+							},
+							o: {
+								x: [
+									0.455
+								],
+								y: [
+									0.03
+								]
+							}
+						},
+						{
+							t: 42
+						}
+					]
+				}
+			},
+			rx: {
+				a: 0,
+				k: 0
+			},
+			ry: {
+				a: 0,
+				k: 0
+			},
+			rz: {
+				a: 0,
+				k: 0
+			},
+			s: {
+				a: 0,
+				k: [
+					72.5,
+					100
+				]
+			}
+		},
+		shapes: [
+			{
+				ty: "gr",
+				nm: "newMarkerShadow shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										98.526043,
+										0.561727398
+									],
+									[
+										106.684029,
+										13.7078183
+									],
+									[
+										37.9309756,
+										26.8174752
+									],
+									[
+										6,
+										40
+									],
+									[
+										0,
+										40
+									],
+									[
+										31.9304929,
+										26.8174996
+									],
+									[
+										26.6840287,
+										13.7078183
+									]
+								],
+								i: [
+									[
+										-22.091389899999996,
+										0
+									],
+									[
+										17.585859,
+										-7.26038554
+									],
+									[
+										21.911355800000003,
+										-0.5042989999999996
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										-16.782591009999997,
+										6.9287534000000015
+									]
+								],
+								o: [
+									[
+										22.091390000000004,
+										0
+									],
+									[
+										-16.782320799999994,
+										6.9286417
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										-19.4692231,
+										-0.5041404000000007
+									],
+									[
+										17.585858899999998,
+										-7.26038554
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										82.6050359,
+										7.13477283
+									],
+									[
+										46.6840287,
+										13.7078183
+									],
+									[
+										50.7630215,
+										20.2808637
+									],
+									[
+										86.6840287,
+										13.7078183
+									]
+								],
+								i: [
+									[
+										11.045694999999995,
+										0
+									],
+									[
+										8.7929295,
+										-3.6301927999999997
+									],
+									[
+										-11.045695000000002,
+										0
+									],
+									[
+										-8.7929295,
+										3.630192700000002
+									]
+								],
+								o: [
+									[
+										-11.04569500000001,
+										0
+									],
+									[
+										-8.7929295,
+										3.630192700000002
+									],
+									[
+										11.045695000000002,
+										0
+									],
+									[
+										8.7929295,
+										-3.6301927999999997
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 10
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.17647058823529413,
+								0.20392156862745098,
+								0.21176470588235294,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			}
+		],
+		op: 46
+	},
+	{
+		ty: 4,
+		nm: "newMarker",
+		ip: 0,
+		st: 0,
+		ind: 1,
+		hix: 2,
+		ks: {
+			o: {
+				a: 0,
+				k: 100
+			},
+			or: {
+				a: 0,
+				k: [
+					0,
+					0,
+					0
+				]
+			},
+			a: {
+				a: 0,
+				k: [
+					40,
+					60,
+					0
+				]
+			},
+			p: {
+				s: true,
+				x: {
+					a: 0,
+					k: 96.16399999999997
+				},
+				y: {
+					a: 1,
+					k: [
+						{
+							t: 0,
+							s: [
+								94
+							],
+							e: [
+								62
+							],
+							i: {
+								x: [
+									0.515
+								],
+								y: [
+									0.955
+								]
+							},
+							o: {
+								x: [
+									0.455
+								],
+								y: [
+									0.03
+								]
+							}
+						},
+						{
+							t: 21,
+							s: [
+								62
+							],
+							e: [
+								99.82899824516296
+							],
+							i: {
+								x: [
+									0.515
+								],
+								y: [
+									0.955
+								]
+							},
+							o: {
+								x: [
+									0.455
+								],
+								y: [
+									0.03
+								]
+							}
+						},
+						{
+							t: 32,
+							s: [
+								99.82899824516296
+							],
+							e: [
+								81
+							],
+							i: {
+								x: [
+									0.515
+								],
+								y: [
+									0.955
+								]
+							},
+							o: {
+								x: [
+									0.455
+								],
+								y: [
+									0.03
+								]
+							}
+						},
+						{
+							t: 38,
+							s: [
+								81
+							],
+							e: [
+								93.956
+							],
+							i: {
+								x: [
+									0.515
+								],
+								y: [
+									0.955
+								]
+							},
+							o: {
+								x: [
+									0.455
+								],
+								y: [
+									0.03
+								]
+							}
+						},
+						{
+							t: 42,
+							s: [
+								93.956
+							],
+							e: [
+								97.956
+							],
+							i: {
+								x: [
+									0.515
+								],
+								y: [
+									0.955
+								]
+							},
+							o: {
+								x: [
+									0.455
+								],
+								y: [
+									0.03
+								]
+							}
+						},
+						{
+							t: 44,
+							s: [
+								97.956
+							],
+							e: [
+								94.208
+							],
+							i: {
+								x: [
+									0.515
+								],
+								y: [
+									0.955
+								]
+							},
+							o: {
+								x: [
+									0.455
+								],
+								y: [
+									0.03
+								]
+							}
+						},
+						{
+							t: 46
+						}
+					]
+				}
+			},
+			rx: {
+				a: 0,
+				k: 0
+			},
+			ry: {
+				a: 0,
+				k: 0
+			},
+			rz: {
+				a: 0,
+				k: 0
+			},
+			s: {
+				a: 1,
+				k: [
+					{
+						t: 0,
+						s: [
+							100,
+							100
+						],
+						e: [
+							100,
+							100
+						],
+						i: {
+							x: [
+								1,
+								1
+							],
+							y: [
+								1,
+								1
+							]
+						},
+						o: {
+							x: [
+								0,
+								0
+							],
+							y: [
+								0,
+								0
+							]
+						}
+					},
+					{
+						t: 27,
+						s: [
+							100,
+							100
+						],
+						e: [
+							100,
+							90.2
+						],
+						i: {
+							x: [
+								1,
+								0.515
+							],
+							y: [
+								1,
+								0.955
+							]
+						},
+						o: {
+							x: [
+								0,
+								0.455
+							],
+							y: [
+								0,
+								0.03
+							]
+						}
+					},
+					{
+						t: 32,
+						s: [
+							100,
+							90.2
+						],
+						e: [
+							100,
+							100
+						],
+						i: {
+							x: [
+								1,
+								0.515
+							],
+							y: [
+								1,
+								0.955
+							]
+						},
+						o: {
+							x: [
+								0,
+								0.455
+							],
+							y: [
+								0,
+								0.03
+							]
+						}
+					},
+					{
+						t: 38,
+						s: [
+							100,
+							100
+						],
+						e: [
+							100,
+							100
+						],
+						i: {
+							x: [
+								1,
+								0.515
+							],
+							y: [
+								1,
+								0.955
+							]
+						},
+						o: {
+							x: [
+								0,
+								0.455
+							],
+							y: [
+								0,
+								0.03
+							]
+						}
+					},
+					{
+						t: 42,
+						s: [
+							100,
+							100
+						],
+						e: [
+							100,
+							93.4
+						],
+						i: {
+							x: [
+								1,
+								0.515
+							],
+							y: [
+								1,
+								0.955
+							]
+						},
+						o: {
+							x: [
+								0,
+								0.455
+							],
+							y: [
+								0,
+								0.03
+							]
+						}
+					},
+					{
+						t: 44,
+						s: [
+							100,
+							93.4
+						],
+						e: [
+							100,
+							100
+						],
+						i: {
+							x: [
+								1,
+								0.515
+							],
+							y: [
+								1,
+								0.955
+							]
+						},
+						o: {
+							x: [
+								0,
+								0.455
+							],
+							y: [
+								0,
+								0.03
+							]
+						}
+					},
+					{
+						t: 46
+					}
+				]
+			}
+		},
+		shapes: [
+			{
+				ty: "gr",
+				nm: "newMarker shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										40,
+										0
+									],
+									[
+										80,
+										40
+									],
+									[
+										43.0007121,
+										79.8891413
+									],
+									[
+										43,
+										120
+									],
+									[
+										37,
+										120
+									],
+									[
+										37.0002885,
+										79.8892155
+									],
+									[
+										0,
+										40
+									]
+								],
+								i: [
+									[
+										-22.09139,
+										0
+									],
+									[
+										0,
+										-22.09139
+									],
+									[
+										20.689859999999996,
+										-1.534445500000004
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										21.0823233
+									]
+								],
+								o: [
+									[
+										22.091389999999997,
+										0
+									],
+									[
+										0,
+										21.0819834
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										-20.690334700000005,
+										-1.5339628000000118
+									],
+									[
+										0,
+										-22.09139
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										40,
+										20
+									],
+									[
+										20,
+										40
+									],
+									[
+										40,
+										60
+									],
+									[
+										60,
+										40
+									]
+								],
+								i: [
+									[
+										11.045695000000002,
+										0
+									],
+									[
+										0,
+										-11.045694999999998
+									],
+									[
+										-11.045694999999998,
+										0
+									],
+									[
+										0,
+										11.045695000000002
+									]
+								],
+								o: [
+									[
+										-11.045694999999998,
+										0
+									],
+									[
+										0,
+										11.045695000000002
+									],
+									[
+										11.045695000000002,
+										0
+									],
+									[
+										0,
+										-11.045694999999998
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.17647058823529413,
+								0.20392156862745098,
+								0.21176470588235294,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			}
+		],
+		op: 46
+	}
+];
+var op = 46;
+var w = 193;
+var h = 190;
+var marker = {
+	ip: ip,
+	fr: fr,
+	v: v,
+	assets: assets,
+	layers: layers,
+	op: op,
+	w: w,
+	h: h
+};
+
+var MarkerAnimation = function MarkerAnimation(_ref) {
+  var isMoving = _ref.isMoving;
+  var markerRef = React.useRef();
+  React.useEffect(function () {
+    if (isMoving) {
+      markerRef.current.play(0, 21);
+    } else {
+      markerRef.current.play(21, 46);
+    }
+  }, [isMoving]);
+  return /*#__PURE__*/React__default['default'].createElement(LottieView__default['default'], {
+    ref: markerRef,
+    style: {
+      height: 80,
+      width: 80,
+      zIndex: 23
+    },
+    loop: false,
+    source: marker
+  });
+};
+
+var DEFAULT_LOCATION = {
+  longitude: -122.406417,
+  latitude: 37.785834,
+  latitudeDelta: 0.005,
+  longitudeDelta: 0.01
+};
+function Map$1(_ref) {
+  var longitude = _ref.longitude,
+      latitude = _ref.latitude,
+      theme = _ref.theme,
+      _ref$onChange = _ref.onChange,
+      onChange = _ref$onChange === void 0 ? function () {} : _ref$onChange;
+
+  var _useState = React.useState(DEFAULT_LOCATION),
+      _useState2 = _slicedToArray(_useState, 2),
+      location = _useState2[0],
+      setLocation = _useState2[1];
+
+  var _useState3 = React.useState(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      isMoving = _useState4[0],
+      setIsMoving = _useState4[1];
+
+  React.useEffect(function () {
+    if (longitude && latitude) {
+      setLocation(Object.assign({
+        longitude: longitude,
+        latitude: latitude
+      }, {
+        latitudeDelta: 0.005,
+        longitudeDelta: 0.01
+      }));
+    }
+  }, [longitude, latitude]);
+  React.useEffect(function () {
+    if (!longitude) {
+      GetLocation.getCurrentPosition({
+        enableHighAccuracy: true,
+        timeout: 15000
+      }).then(function (location) {
+        setLocation(Object.assign(location, {
+          latitudeDelta: 0.005,
+          longitudeDelta: 0.01
+        }));
+      }).catch(function (error) {});
+    }
+  }, []);
+  React.useEffect(function () {
+    onChange(location);
+  }, [location]);
+  return /*#__PURE__*/React__default['default'].createElement(MapWrapper, {
+    theme: theme
+  }, /*#__PURE__*/React__default['default'].createElement(MapView__default['default'], {
+    loadingEnabled: true,
+    region: location,
+    style: {
+      width: "100%",
+      height: "100%"
+    },
+    onRegionChangeComplete: function onRegionChangeComplete(region) {
+      if (isMoving) {
+        setLocation(region);
+        setIsMoving(false);
+      }
+    },
+    onPanDrag: function onPanDrag(e) {
+      setIsMoving(true);
+    }
+  }), /*#__PURE__*/React__default['default'].createElement(MarkerWrapper, {
+    theme: theme,
+    pointerEvents: "none"
+  }, /*#__PURE__*/React__default['default'].createElement(MarkerAnimation, {
+    isMoving: isMoving
+  })));
+}
+
+var _templateObject$6, _templateObject2$2;
+var UploadWrapper = styled.View(_templateObject$6 || (_templateObject$6 = _taggedTemplateLiteral(["\n  aspect-ratio: 1.5;\n  overflow: hidden;\n  background-color: ", ";\n  border-radius: ", ";\n"])), function (props) {
+  return props.theme.color7;
+}, function (props) {
+  return props.theme.borderRadius;
+});
+var UploadIconWrapper = styled.View(_templateObject2$2 || (_templateObject2$2 = _taggedTemplateLiteral(["\n  position: absolute;\n  z-index: 9;\n  width: 100%;\n  height: 100%;\n  align-items: center;\n  justify-content: center;\n"])));
+
+var ip$1 = 0;
+var fr$1 = 60;
+var v$1 = "5.1.20";
+var assets$1 = [
+];
+var layers$1 = [
+	{
+		ty: 4,
+		nm: "cloud",
+		ip: 0,
+		st: 0,
+		ind: 2,
+		hix: 1,
+		ks: {
+			o: {
+				a: 0,
+				k: 100
+			},
+			or: {
+				a: 0,
+				k: [
+					0,
+					0,
+					0
+				]
+			},
+			a: {
+				a: 0,
+				k: [
+					83.5,
+					50,
+					0
+				]
+			},
+			p: {
+				s: true,
+				x: {
+					a: 0,
+					k: 99
+				},
+				y: {
+					a: 0,
+					k: 67
+				}
+			},
+			rx: {
+				a: 0,
+				k: 0
+			},
+			ry: {
+				a: 0,
+				k: 0
+			},
+			rz: {
+				a: 0,
+				k: 0
+			},
+			s: {
+				a: 0,
+				k: [
+					100,
+					100,
+					100
+				]
+			}
+		},
+		shapes: [
+			{
+				ty: "gr",
+				nm: "cloud shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								33,
+								66
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								67,
+								67
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								1,
+								1,
+								1,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "cloud shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								133,
+								66
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								67,
+								67
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								1,
+								1,
+								1,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "cloud shape group",
+				it: [
+					{
+						ty: "rc",
+						s: {
+							a: 0,
+							k: [
+								103,
+								12
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						},
+						p: {
+							a: 0,
+							k: [
+								84.5,
+								94
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								1,
+								1,
+								1,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "cloud shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										83,
+										0
+									],
+									[
+										133,
+										50
+									],
+									[
+										83,
+										100
+									],
+									[
+										33,
+										50
+									]
+								],
+								i: [
+									[
+										-27.6142375,
+										0
+									],
+									[
+										0,
+										-27.6142375
+									],
+									[
+										27.614237000000003,
+										0
+									],
+									[
+										0,
+										27.6142375
+									]
+								],
+								o: [
+									[
+										27.614237000000003,
+										0
+									],
+									[
+										0,
+										27.6142375
+									],
+									[
+										-27.6142375,
+										0
+									],
+									[
+										0,
+										-27.6142375
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										85.0715815,
+										24.647587
+									],
+									[
+										81.9284185,
+										24.647587
+									],
+									[
+										81.9284185,
+										24.647587
+									],
+									[
+										68.6474473,
+										37.897449
+									],
+									[
+										68.6474473,
+										41.0199998
+									],
+									[
+										71.7906105,
+										41.0199998
+									],
+									[
+										71.7906105,
+										41.0199998
+									],
+									[
+										81.2865048,
+										31.5397235
+									],
+									[
+										81.2865048,
+										74.7916898
+									],
+									[
+										83.5,
+										77
+									],
+									[
+										85.7134952,
+										74.7916898
+									],
+									[
+										85.7134952,
+										74.7916898
+									],
+									[
+										85.7134952,
+										31.5397235
+									],
+									[
+										95.2093895,
+										41.0199998
+									],
+									[
+										98.3525527,
+										41.0199998
+									],
+									[
+										98.3525527,
+										37.897449
+									],
+									[
+										98.3525527,
+										37.897449
+									]
+								],
+								i: [
+									[
+										0,
+										0
+									],
+									[
+										0.8632630999999975,
+										-0.8634493000000028
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										-0.8632630999999975,
+										-0.8634494000000004
+									],
+									[
+										-0.8632630999999975,
+										0.8634494000000004
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										-1.2174222999999955,
+										0
+									],
+									[
+										0,
+										1.2189872000000008
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										-0.8632632000000058,
+										0.8634494000000004
+									],
+									[
+										0.8632630999999975,
+										0.8634492999999992
+									],
+									[
+										0,
+										0
+									]
+								],
+								o: [
+									[
+										-0.8632630999999975,
+										-0.8634493000000028
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										-0.8632630999999975,
+										0.8634492999999992
+									],
+									[
+										0.8632632000000058,
+										0.8634494000000004
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										1.2189872000000008
+									],
+									[
+										1.2174222999999955,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0.8632630999999975,
+										0.8634494000000004
+									],
+									[
+										0.8632630999999975,
+										-0.8634494000000004
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										85.0715815,
+										24.647587
+									]
+								],
+								i: [
+									[
+										0,
+										0
+									]
+								],
+								o: [
+									[
+										0,
+										0
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								1,
+								1,
+								1,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			}
+		],
+		op: 1
+	}
+];
+var op$1 = 1;
+var w$1 = 195;
+var h$1 = 134;
+var upload = {
+	ip: ip$1,
+	fr: fr$1,
+	v: v$1,
+	assets: assets$1,
+	layers: layers$1,
+	op: op$1,
+	w: w$1,
+	h: h$1
+};
+
+var UploadIcon = function UploadIcon() {
+  var uploadRef = React.useRef();
+  return /*#__PURE__*/React__default['default'].createElement(LottieView__default['default'], {
+    ref: uploadRef,
+    style: {
+      height: 120,
+      width: 120,
+      zIndex: 23
+    },
+    loop: false,
+    source: upload
+  });
+};
+
+var _templateObject$7, _templateObject2$3, _templateObject3$1;
+var ImageLoaderWrapper = styled.View(_templateObject$7 || (_templateObject$7 = _taggedTemplateLiteral(["\n  flex: 1;\n  align-items: stretch;\n  justify-content: center;\n  background-color: ", ";\n"])), function (props) {
+  return props.background;
+});
+var ImagePreload = styled(LottieView__default['default'])(_templateObject2$3 || (_templateObject2$3 = _taggedTemplateLiteral(["\n  align-items: stretch;\n  justify-content: center;\n"])));
+var ImageComponent = styled.Image(_templateObject3$1 || (_templateObject3$1 = _taggedTemplateLiteral(["\n  flex: 1;\n  justify-content: center;\n  opacity: ", ";\n"])), function (props) {
+  return props.showImage ? 1 : 0;
+});
+
+var ip$2 = 0;
+var fr$2 = 60;
+var v$2 = "5.1.20";
+var assets$2 = [
+];
+var layers$2 = [
+	{
+		ty: 4,
+		nm: "whiteCircle",
+		ip: 0,
+		st: 0,
+		ind: 3,
+		hix: 1,
+		ks: {
+			o: {
+				a: 1,
+				k: [
+					{
+						t: 0,
+						s: [
+							0
+						],
+						e: [
+							100
+						],
+						i: {
+							x: [
+								0.515
+							],
+							y: [
+								0.955
+							]
+						},
+						o: {
+							x: [
+								0.455
+							],
+							y: [
+								0.03
+							]
+						}
+					},
+					{
+						t: 42
+					}
+				]
+			},
+			or: {
+				a: 0,
+				k: [
+					0,
+					0,
+					0
+				]
+			},
+			a: {
+				a: 0,
+				k: [
+					180,
+					180,
+					0
+				]
+			},
+			p: {
+				s: true,
+				x: {
+					a: 1,
+					k: [
+						{
+							t: 0,
+							s: [
+								274.5
+							],
+							e: [
+								274.4999998180389
+							],
+							i: {
+								x: [
+									0.515
+								],
+								y: [
+									0.955
+								]
+							},
+							o: {
+								x: [
+									0.455
+								],
+								y: [
+									0.03
+								]
+							}
+						},
+						{
+							t: 42
+						}
+					]
+				},
+				y: {
+					a: 1,
+					k: [
+						{
+							t: 0,
+							s: [
+								200.00000000000003
+							],
+							e: [
+								199.92
+							],
+							i: {
+								x: [
+									0.515
+								],
+								y: [
+									0.955
+								]
+							},
+							o: {
+								x: [
+									0.455
+								],
+								y: [
+									0.03
+								]
+							}
+						},
+						{
+							t: 42
+						}
+					]
+				}
+			},
+			rx: {
+				a: 0,
+				k: 0
+			},
+			ry: {
+				a: 0,
+				k: 0
+			},
+			rz: {
+				a: 0,
+				k: 0
+			},
+			s: {
+				a: 1,
+				k: [
+					{
+						t: 0,
+						s: [
+							100,
+							100
+						],
+						e: [
+							10.6,
+							10.6
+						],
+						i: {
+							x: [
+								0.515,
+								0.515
+							],
+							y: [
+								0.955,
+								0.955
+							]
+						},
+						o: {
+							x: [
+								0.455,
+								0.455
+							],
+							y: [
+								0.03,
+								0.03
+							]
+						}
+					},
+					{
+						t: 42
+					}
+				]
+			}
+		},
+		shapes: [
+			{
+				ty: "gr",
+				nm: "whiteCircle shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								180,
+								180
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								360,
+								360
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								1,
+								1,
+								1,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			}
+		],
+		op: 42
+	},
+	{
+		ty: 4,
+		nm: "whiteCircle",
+		ip: 0,
+		st: 0,
+		ind: 1,
+		hix: 2,
+		ks: {
+			o: {
+				a: 1,
+				k: [
+					{
+						t: 0,
+						s: [
+							100
+						],
+						e: [
+							0
+						],
+						i: {
+							x: [
+								0.515
+							],
+							y: [
+								0.955
+							]
+						},
+						o: {
+							x: [
+								0.455
+							],
+							y: [
+								0.03
+							]
+						}
+					},
+					{
+						t: 42
+					}
+				]
+			},
+			or: {
+				a: 0,
+				k: [
+					0,
+					0,
+					0
+				]
+			},
+			a: {
+				a: 0,
+				k: [
+					180,
+					180,
+					0
+				]
+			},
+			p: {
+				s: true,
+				x: {
+					a: 1,
+					k: [
+						{
+							t: 0,
+							s: [
+								275
+							],
+							e: [
+								274.49999384422307
+							],
+							i: {
+								x: [
+									0.515
+								],
+								y: [
+									0.955
+								]
+							},
+							o: {
+								x: [
+									0.455
+								],
+								y: [
+									0.03
+								]
+							}
+						},
+						{
+							t: 42
+						}
+					]
+				},
+				y: {
+					a: 1,
+					k: [
+						{
+							t: 0,
+							s: [
+								199.99999992515563
+							],
+							e: [
+								199.99999384422307
+							],
+							i: {
+								x: [
+									0.515
+								],
+								y: [
+									0.955
+								]
+							},
+							o: {
+								x: [
+									0.455
+								],
+								y: [
+									0.03
+								]
+							}
+						},
+						{
+							t: 42
+						}
+					]
+				}
+			},
+			rx: {
+				a: 0,
+				k: 0
+			},
+			ry: {
+				a: 0,
+				k: 0
+			},
+			rz: {
+				a: 0,
+				k: 0
+			},
+			s: {
+				a: 1,
+				k: [
+					{
+						t: 0,
+						s: [
+							10.9,
+							10.9
+						],
+						e: [
+							81.5,
+							81.5
+						],
+						i: {
+							x: [
+								0.515,
+								0.515
+							],
+							y: [
+								0.955,
+								0.955
+							]
+						},
+						o: {
+							x: [
+								0.455,
+								0.455
+							],
+							y: [
+								0.03,
+								0.03
+							]
+						}
+					},
+					{
+						t: 42
+					}
+				]
+			}
+		},
+		shapes: [
+			{
+				ty: "gr",
+				nm: "whiteCircle shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								180,
+								180
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								360,
+								360
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								1,
+								1,
+								1,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			}
+		],
+		op: 42
+	}
+];
+var op$2 = 42;
+var w$2 = 550;
+var h$2 = 400;
+var loader = {
+	ip: ip$2,
+	fr: fr$2,
+	v: v$2,
+	assets: assets$2,
+	layers: layers$2,
+	op: op$2,
+	w: w$2,
+	h: h$2
+};
+
+var ImageLoader = function ImageLoader(_ref) {
+  var background = _ref.background,
+      imageUrl = _ref.imageUrl;
+
+  var _useState = React.useState(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      showImage = _useState2[0],
+      setShowImage = _useState2[1];
+
+  return /*#__PURE__*/React__default['default'].createElement(ImageLoaderWrapper, {
+    background: background
+  }, !showImage && /*#__PURE__*/React__default['default'].createElement(LottieView__default['default'], {
+    source: loader,
+    autoPlay: true,
+    loop: true
+  }), /*#__PURE__*/React__default['default'].createElement(ImageComponent, {
+    source: {
+      uri: imageUrl
+    },
+    showImage: showImage,
+    onLoad: function onLoad() {
+      return setShowImage(true);
+    },
+    resizeMode: "cover"
+  }));
+};
+
+function ImageUpload(_ref) {
+  var theme = _ref.theme,
+      imageUri = _ref.imageUri,
+      _ref$onChange = _ref.onChange,
+      onChange = _ref$onChange === void 0 ? function () {} : _ref$onChange;
+
+  var _useState = React.useState(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      image = _useState2[0],
+      setImage = _useState2[1];
+
+  React.useEffect(function () {
+    if (imageUri) {
+      setImage(imageUri);
+    }
+  }, [imageUri]);
+  React.useEffect(function () {
+    if (image) {
+      onChange(image);
+    }
+  }, [image]);
+
+  var pickImage = function pickImage() {
+    ImagePicker__default['default'].openPicker({
+      width: 400,
+      height: 300,
+      cropping: true
+    }).then(function (image) {
+      setImage(image.sourceURL);
+    });
+  };
+
+  return /*#__PURE__*/React__default['default'].createElement(reactNative$1.Pressable, {
+    onPress: function onPress() {
+      return pickImage();
+    }
+  }, /*#__PURE__*/React__default['default'].createElement(UploadWrapper, {
+    theme: theme
+  }, image && /*#__PURE__*/React__default['default'].createElement(ImageLoader, {
+    background: theme.color1,
+    imageUrl: image
+  }), !image && /*#__PURE__*/React__default['default'].createElement(UploadIconWrapper, null, /*#__PURE__*/React__default['default'].createElement(UploadIcon, null))));
+}
+
+var _templateObject$8;
+var Wrapper$1 = styled.View(_templateObject$8 || (_templateObject$8 = _taggedTemplateLiteral(["\nflex: 1;\n  min-height: 100px;\n  background-color: ", ";\n  borderTopWidth: 1px;\n  borderColor: ", ";\n"])), function (props) {
+  return props.theme.color1;
+}, function (props) {
+  return props.theme.color7;
+});
+
+var FooterActions = React__default['default'].memo(function (_ref) {
+  var _ref$leftElement = _ref.leftElement,
+      leftElement = _ref$leftElement === void 0 ? false : _ref$leftElement,
+      active = _ref.active,
+      loading = _ref.loading,
+      success = _ref.success,
+      theme = _ref.theme,
+      _ref$onClick = _ref.onClick,
+      _onClick = _ref$onClick === void 0 ? function () {} : _ref$onClick;
+
+  return /*#__PURE__*/React__default['default'].createElement(Wrapper$1, {
+    theme: theme
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.Margin, {
+    style: {
+      flex: 1
+    }
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
+    style: {
+      flex: 1,
+      justifyContent: "space-between"
+    }
+  }, leftElement, /*#__PURE__*/React__default['default'].createElement(atoms.AnimatedButton, {
+    active: active,
+    color: loading ? "transparent" : theme.color2,
+    loading: loading,
+    onClick: function onClick() {
+      return _onClick();
+    },
+    success: success,
+    successElement: /*#__PURE__*/React__default['default'].createElement(atoms.Center, null, /*#__PURE__*/React__default['default'].createElement(atoms.Success, null)),
+    LoaderElement: /*#__PURE__*/React__default['default'].createElement(atoms.Center, null, /*#__PURE__*/React__default['default'].createElement(atoms.Loader, {
+      color: theme.color2
+    }))
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.Center, null, /*#__PURE__*/React__default['default'].createElement(atoms.Row, null, /*#__PURE__*/React__default['default'].createElement(atoms.MarginHorizontal, null, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
+    color: theme.color1
+  }, "Submit")), /*#__PURE__*/React__default['default'].createElement(atoms.Icon, {
+    icon: "next",
+    autoplay: false,
+    loop: false,
+    color: theme.color1
+  })))))));
+});
+
 exports.AccordionItem = AccordionItem;
 exports.AccordionProvider = AccordionProvider;
+exports.AccordionScroll = AccordionScroll;
 exports.AccordionScroller = AccordionScroller;
+exports.FooterActions = FooterActions;
+exports.ImageLoader = ImageLoader;
+exports.ImageUpload = ImageUpload;
+exports.Map = Map$1;
 exports.Modal = Modal;
+exports.useAccordionContext = useAccordionContext;

@@ -6,7 +6,6 @@ export const PanBarWrap = styled.View`
   height: 30px;
   align-items: center;
   justify-content: center;
-  transform: translateY(30px);
   z-index: 12;
 `;
 
@@ -15,4 +14,9 @@ export const PanBar = styled.View`
   background-color: rgba(0, 0, 0, 0.5);
   height: 6px;
   border-radius: 3px;
+`;
+
+export const BodyWrap = styled.View`
+  height: ${props => props.height}px;
+  padding-bottom: ${props => props.pb}px;
 `;

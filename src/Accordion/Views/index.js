@@ -1,16 +1,17 @@
-import React, {useState, useEffect} from 'react';
-import Container from './Container';
-import Head from './Head';
-import Body from './Body';
-import useAccordionHook from '../Hooks';
+import React, { useState, useEffect } from "react";
+import Container from "./Container";
+import Head from "./Head";
+import Body from "./Body";
+import useAccordionHook from "../Hooks";
 
 const AccordionItem = ({
   children,
   defaultState = false,
   onChange = () => {},
   eventKey = false,
+  style,
 }) => {
-  const {isOpen, toggleAccordionItem} = useAccordionHook();
+  const { isOpen, toggleAccordionItem } = useAccordionHook();
   const [hasChanged, setHasChanged] = useState(false);
 
   useEffect(() => {
@@ -21,14 +22,20 @@ const AccordionItem = ({
     defaultState && toggleAccordionItem(defaultState);
   }, [defaultState]);
 
+  useEffect(() => {
+    if (isOpen !== hasChanged) {
+      onChange(isOpen);
+    }
+  }, [isOpen, hasChanged]);
+
   return (
-    <Container onChange={isOpen !== hasChanged && onChange(isOpen)}>
+    <Container styles={style}>
       {React.Children.map(children, (child) =>
         React.cloneElement(child, {
           isOpen,
           toggleAccordionItem,
           eventKey,
-        }),
+        })
       )}
     </Container>
   );

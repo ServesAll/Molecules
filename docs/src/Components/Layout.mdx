@@ -1,0 +1,226 @@
+import {
+    H3,
+    Center,
+    CenterLeft,
+    CenterRight,
+    Margin,
+    MarginHorizontal,
+    MarginVertical,
+    MarginBottom,
+    Padding,
+    PaddingHorizontal,
+    PaddingVertical,
+    Row,
+    Stretch,
+    FullScreen,
+} from '@servesall/atoms';
+
+# Layout
+
+Layout helpers to use in your app
+
+<MarginBottom style={{minHeight:'80px', background: '#ececec'}}>
+    <Center direction="row">
+    <H3>Center</H3>
+    </Center>
+</MarginBottom><br />
+<MarginBottom style={{minHeight:'80px', background: '#ececec'}}>
+    <CenterLeft direction="row">
+        <H3>CenterLeft</H3>
+    </CenterLeft>
+</MarginBottom><br />
+<MarginBottom style={{minHeight:'80px', background: '#ececec'}}>
+    <CenterRight direction="row">
+        <H3>CenterRight</H3>
+    </CenterRight>
+</MarginBottom><br />
+<MarginBottom style={{background: '#ececec'}}>
+    <Margin>
+        <H3>Margin</H3>
+    </Margin>
+</MarginBottom><br />
+<MarginBottom style={{background: '#ececec'}}>
+    <MarginHorizontal>
+        <H3>MarginHorizontal</H3>
+    </MarginHorizontal>
+</MarginBottom><br />
+<MarginBottom style={{background: '#ececec'}}>
+    <MarginVertical>
+        <H3>MarginVertical</H3>
+    </MarginVertical>
+</MarginBottom><br />
+<MarginBottom style={{background: '#ececec'}}>
+    <MarginBottom>
+        <H3>MarginBottom</H3>
+    </MarginBottom>
+</MarginBottom><br />
+<MarginBottom style={{background: '#ececec'}}>
+    <Padding>
+        <H3>Padding</H3>
+    </Padding>
+</MarginBottom><br />
+<MarginBottom style={{ background: '#ececec'}}>
+    <PaddingHorizontal>
+        <H3>PaddingHorizontal</H3>
+    </PaddingHorizontal>
+</MarginBottom><br />
+<MarginBottom style={{background: '#ececec'}}>
+    <PaddingVertical>
+        <H3>PaddingVertical</H3>
+    </PaddingVertical>
+</MarginBottom><br />
+<MarginBottom style={{background: '#ececec'}}>
+    <Row>
+        <Padding>
+        <H3>Row</H3>
+        </Padding>
+        <Padding>
+            <H3>Row</H3>
+        </Padding>
+        <Padding>
+            <H3>Row</H3>
+        </Padding>
+    </Row>
+</MarginBottom><br />
+<MarginBottom style={{background: '#ececec'}}>
+    <Stretch>
+    <Row>
+        <Padding>
+            <H3>Row</H3>
+        </Padding>
+        <Padding>
+            <H3>Row</H3>
+        </Padding>
+        <Padding>
+            <H3>Row</H3>
+        </Padding>
+    </Row>
+    </Stretch>
+</MarginBottom><br />
+<MarginBottom style={{background: '#ececec'}}>
+    <FullScreen>
+    <H3>FullScreen</H3>
+    </FullScreen>
+</MarginBottom><br />
+
+```code
+import {
+    H3,
+    Center,
+    CenterLeft,
+    CenterRight,
+    Margin,
+    MarginHorizontal,
+    MarginVertical,
+    MarginBottom,
+    Padding,
+    PaddingHorizontal,
+    PaddingVertical,
+    Row,
+    Stretch,
+    FullScreen,
+} from '@servesall/atoms';
+
+function RootElement() {
+
+  return (
+    <>
+        <Center direction="row">
+            <H3>Center</H3>
+        </Center>
+
+        <CenterLeft direction="row">
+            <H3>CenterLeft</H3>
+        </CenterLeft>
+
+        <CenterRight direction="row">
+            <H3>CenterRight</H3>
+        </CenterRight>
+
+        <Margin>
+            <H3>Margin</H3>
+        </Margin>
+
+        <MarginHorizontal>
+            <H3>MarginHorizontal</H3>
+        </MarginHorizontal>
+
+        <MarginVertical>
+            <H3>MarginVertical</H3>
+        </MarginVertical>
+
+        <MarginBottom>
+            <H3>MarginBottom</H3>
+        </MarginBottom>
+
+        <Padding>
+            <H3>Padding</H3>
+        </Padding>
+
+        <PaddingHorizontal>
+            <H3>PaddingHorizontal</H3>
+        </PaddingHorizontal>
+
+        <PaddingVertical>
+            <H3>PaddingVertical</H3>
+        </PaddingVertical>
+
+        <Row>
+            <Padding>
+                <H3>Row</H3>
+            </Padding>
+            <Padding>
+                <H3>Row</H3>
+            </Padding>
+            <Padding>
+                <H3>Row</H3>
+            </Padding>
+        </Row>
+
+        <Stretch>
+            <Row>
+                <Padding>
+                    <H3>Row</H3>
+                </Padding>
+                <Padding>
+                    <H3>Row</H3>
+                </Padding>
+                <Padding>
+                    <H3>Row</H3>
+                </Padding>
+            </Row>
+        </Stretch>
+
+        <FullScreen />
+    </>
+  );
+}
+```
+
+## Props
+
+<table>
+    <thead>
+    <tr>
+        <th>Prop</th>
+        <th>type</th>
+        <th>default</th>
+        <th>required</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>style</td>
+        <td>object</td>
+        <td>No</td>
+        <td>No</td>
+    </tr>
+    <tr>
+        <td>direction</td>
+        <td>string -> row | column</td>
+        <td>web -> row | native -> column</td>
+        <td>No</td>
+    </tr>
+    </tbody>
+</table>
+
