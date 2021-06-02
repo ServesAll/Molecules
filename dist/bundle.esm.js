@@ -6,7 +6,7 @@ import { getStatusBarHeight } from 'react-native-status-bar-height';
 import MapView from 'react-native-maps';
 import LottieView from 'lottie-react-native';
 import ImagePicker from 'react-native-image-crop-picker';
-import { Margin, Row, AnimatedButton, Center, Success, Loader, MarginHorizontal, H3, Icon } from '@servesall/atoms';
+import { Margin, Row, AnimatedButton, Center, Success, Error as Error$1, Loader, MarginHorizontal, H3, Icon, PaddingVertical, H2 } from '@servesall/atoms';
 
 function Background(_ref) {
   var children = _ref.children,
@@ -9804,14 +9804,19 @@ var AccordionContext = React.createContext();
 function reducer(state, action) {
   switch (action.type) {
     case "isActive":
-      return {
+      return _objectSpread2(_objectSpread2({}, state), {}, {
         isActive: action.data
-      };
+      });
 
     case "isActiveHeight":
-      return {
+      return _objectSpread2(_objectSpread2({}, state), {}, {
         isActiveHeight: action.data
-      };
+      });
+
+    case "setScroller":
+      return _objectSpread2(_objectSpread2({}, state), {}, {
+        scrollRef: action.data
+      });
 
     default:
       return state;
@@ -9824,18 +9829,21 @@ var AccordionProvider = function AccordionProvider(_ref) {
 
   var _useReducer = useReducer(reducer, {
     isActive: false,
-    isActiveHeight: false
+    isActiveHeight: false,
+    scrollRef: false
   }),
       _useReducer2 = _slicedToArray(_useReducer, 2),
       _useReducer2$ = _useReducer2[0],
       isActive = _useReducer2$.isActive,
       isActiveHeight = _useReducer2$.isActiveHeight,
+      scrollRef = _useReducer2$.scrollRef,
       dispatch = _useReducer2[1];
 
   return /*#__PURE__*/React.createElement(AccordionContext.Provider, {
     value: _objectSpread2(_objectSpread2({}, value), {}, {
       isActive: isActive,
       isActiveHeight: isActiveHeight,
+      scrollRef: scrollRef,
       dispatch: dispatch
     })
   }, children);
@@ -10091,7 +10099,7 @@ function AccordionScroll(_ref) {
 
   useEffect(function () {
     dispatch({
-      typr: 'setScroller',
+      type: "setScroller",
       data: scrollRef
     });
   }, []);
@@ -12869,7 +12877,7 @@ function ImageUpload(_ref) {
       height: 300,
       cropping: true
     }).then(function (image) {
-      setImage(image.sourceURL);
+      setImage(image.sourceURL || image.path);
     });
   };
 
@@ -12898,6 +12906,7 @@ var FooterActions = React.memo(function (_ref) {
       active = _ref.active,
       loading = _ref.loading,
       success = _ref.success,
+      error = _ref.error,
       theme = _ref.theme,
       _ref$onClick = _ref.onClick,
       _onClick = _ref$onClick === void 0 ? function () {} : _ref$onClick;
@@ -12905,9 +12914,11 @@ var FooterActions = React.memo(function (_ref) {
   return /*#__PURE__*/React.createElement(Wrapper$1, {
     theme: theme
   }, /*#__PURE__*/React.createElement(Margin, {
-    style: {
+    style: _objectSpread2({
       flex: 1
-    }
+    }, (loading || success || error) && {
+      margin: 0
+    })
   }, /*#__PURE__*/React.createElement(Row, {
     style: {
       flex: 1,
@@ -12921,7 +12932,9 @@ var FooterActions = React.memo(function (_ref) {
       return _onClick();
     },
     success: success,
+    error: error,
     successElement: /*#__PURE__*/React.createElement(Center, null, /*#__PURE__*/React.createElement(Success, null)),
+    errorElement: /*#__PURE__*/React.createElement(Center, null, /*#__PURE__*/React.createElement(Error$1, null)),
     LoaderElement: /*#__PURE__*/React.createElement(Center, null, /*#__PURE__*/React.createElement(Loader, {
       color: theme.color2
     }))
@@ -12935,4 +12948,25 @@ var FooterActions = React.memo(function (_ref) {
   })))))));
 });
 
-export { AccordionItem, AccordionProvider, AccordionScroll, AccordionScroller, FooterActions, ImageLoader, ImageUpload, Map$1 as Map, Modal, useAccordionContext };
+var _templateObject$9, _templateObject2$4;
+var MerchantCardWrapper = styled.View(_templateObject$9 || (_templateObject$9 = _taggedTemplateLiteral(["\n  margin: ", ";\n"])), function (props) {
+  return props.theme.margin;
+});
+var ImageWrapper = styled.View(_templateObject2$4 || (_templateObject2$4 = _taggedTemplateLiteral(["\n  aspect-ratio: 1.7;\n  border-radius: ", ";\n  overflow: hidden;\n"])), function (props) {
+  return props.theme.borderRadius;
+});
+
+function MerchantCard(_ref) {
+  var merchant = _ref.merchant,
+      theme = _ref.theme;
+  return /*#__PURE__*/React.createElement(MerchantCardWrapper, {
+    theme: theme
+  }, /*#__PURE__*/React.createElement(ImageWrapper, {
+    theme: theme
+  }, /*#__PURE__*/React.createElement(ImageLoader, {
+    background: theme.color7,
+    imageUrl: merchant.image_uri
+  })), /*#__PURE__*/React.createElement(PaddingVertical, null, /*#__PURE__*/React.createElement(H2, null, merchant.name)));
+}
+
+export { AccordionItem, AccordionProvider, AccordionScroll, AccordionScroller, FooterActions, ImageLoader, ImageUpload, Map$1 as Map, MerchantCard, Modal, useAccordionContext };

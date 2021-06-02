@@ -26,7 +26,7 @@ export default function ImageUpload({ theme, imageUri, onChange = () => {} }) {
       height: 300,
       cropping: true,
     }).then((image) => {
-      setImage(image.sourceURL);
+      setImage(image.sourceURL || image.path);
     });
   };
 
@@ -35,9 +35,9 @@ export default function ImageUpload({ theme, imageUri, onChange = () => {} }) {
       <UploadWrapper theme={theme}>
         {image && <ImageLoader background={theme.color1} imageUrl={image} />}
         {!image && (
-        <UploadIconWrapper>
-          <UploadIcon />
-        </UploadIconWrapper>
+          <UploadIconWrapper>
+            <UploadIcon />
+          </UploadIconWrapper>
         )}
       </UploadWrapper>
     </Pressable>

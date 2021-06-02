@@ -6,6 +6,7 @@ import {
   Margin,
   Row,
   Success,
+  Error,
   Loader,
   MarginHorizontal,
   Icon,
@@ -18,12 +19,18 @@ const FooterActions = React.memo(
     active,
     loading,
     success,
+    error,
     theme,
     onClick = () => {},
   }) => {
     return (
       <Wrapper theme={theme}>
-        <Margin style={{flex: 1}}>
+        <Margin
+          style={{
+            flex: 1,
+            ...((loading || success || error) && { margin: 0 }),
+          }}
+        >
           <Row style={{ flex: 1, justifyContent: "space-between" }}>
             {leftElement}
             <AnimatedButton
@@ -32,9 +39,15 @@ const FooterActions = React.memo(
               loading={loading}
               onClick={() => onClick()}
               success={success}
+              error={error}
               successElement={
                 <Center>
                   <Success />
+                </Center>
+              }
+              errorElement={
+                <Center>
+                  <Error />
                 </Center>
               }
               LoaderElement={

@@ -10,6 +10,7 @@ import Map from "./Map";
 import ImageUpload from "./ImageUpload";
 import ImageLoader from "./ImageLoader";
 import FooterActions from "./FooterActions";
+import MerchantCard from "./MerchantCard";
 
 export {
   Modal,
@@ -22,4 +23,5 @@ export {
   ImageUpload,
   ImageLoader,
   FooterActions,
+  MerchantCard,
 };

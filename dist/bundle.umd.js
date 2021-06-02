@@ -9808,14 +9808,19 @@
   function reducer(state, action) {
     switch (action.type) {
       case "isActive":
-        return {
+        return _objectSpread2(_objectSpread2({}, state), {}, {
           isActive: action.data
-        };
+        });
 
       case "isActiveHeight":
-        return {
+        return _objectSpread2(_objectSpread2({}, state), {}, {
           isActiveHeight: action.data
-        };
+        });
+
+      case "setScroller":
+        return _objectSpread2(_objectSpread2({}, state), {}, {
+          scrollRef: action.data
+        });
 
       default:
         return state;
@@ -9828,18 +9833,21 @@
 
     var _useReducer = React.useReducer(reducer, {
       isActive: false,
-      isActiveHeight: false
+      isActiveHeight: false,
+      scrollRef: false
     }),
         _useReducer2 = _slicedToArray(_useReducer, 2),
         _useReducer2$ = _useReducer2[0],
         isActive = _useReducer2$.isActive,
         isActiveHeight = _useReducer2$.isActiveHeight,
+        scrollRef = _useReducer2$.scrollRef,
         dispatch = _useReducer2[1];
 
     return /*#__PURE__*/React__default['default'].createElement(AccordionContext.Provider, {
       value: _objectSpread2(_objectSpread2({}, value), {}, {
         isActive: isActive,
         isActiveHeight: isActiveHeight,
+        scrollRef: scrollRef,
         dispatch: dispatch
       })
     }, children);
@@ -10095,7 +10103,7 @@
 
     React.useEffect(function () {
       dispatch({
-        typr: 'setScroller',
+        type: "setScroller",
         data: scrollRef
       });
     }, []);
@@ -12873,7 +12881,7 @@
         height: 300,
         cropping: true
       }).then(function (image) {
-        setImage(image.sourceURL);
+        setImage(image.sourceURL || image.path);
       });
     };
 
@@ -12902,6 +12910,7 @@
         active = _ref.active,
         loading = _ref.loading,
         success = _ref.success,
+        error = _ref.error,
         theme = _ref.theme,
         _ref$onClick = _ref.onClick,
         _onClick = _ref$onClick === void 0 ? function () {} : _ref$onClick;
@@ -12909,9 +12918,11 @@
     return /*#__PURE__*/React__default['default'].createElement(Wrapper$1, {
       theme: theme
     }, /*#__PURE__*/React__default['default'].createElement(atoms.Margin, {
-      style: {
+      style: _objectSpread2({
         flex: 1
-      }
+      }, (loading || success || error) && {
+        margin: 0
+      })
     }, /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
       style: {
         flex: 1,
@@ -12925,7 +12936,9 @@
         return _onClick();
       },
       success: success,
+      error: error,
       successElement: /*#__PURE__*/React__default['default'].createElement(atoms.Center, null, /*#__PURE__*/React__default['default'].createElement(atoms.Success, null)),
+      errorElement: /*#__PURE__*/React__default['default'].createElement(atoms.Center, null, /*#__PURE__*/React__default['default'].createElement(atoms.Error, null)),
       LoaderElement: /*#__PURE__*/React__default['default'].createElement(atoms.Center, null, /*#__PURE__*/React__default['default'].createElement(atoms.Loader, {
         color: theme.color2
       }))
@@ -12939,6 +12952,27 @@
     })))))));
   });
 
+  var _templateObject$9, _templateObject2$4;
+  var MerchantCardWrapper = styled.View(_templateObject$9 || (_templateObject$9 = _taggedTemplateLiteral(["\n  margin: ", ";\n"])), function (props) {
+    return props.theme.margin;
+  });
+  var ImageWrapper = styled.View(_templateObject2$4 || (_templateObject2$4 = _taggedTemplateLiteral(["\n  aspect-ratio: 1.7;\n  border-radius: ", ";\n  overflow: hidden;\n"])), function (props) {
+    return props.theme.borderRadius;
+  });
+
+  function MerchantCard(_ref) {
+    var merchant = _ref.merchant,
+        theme = _ref.theme;
+    return /*#__PURE__*/React__default['default'].createElement(MerchantCardWrapper, {
+      theme: theme
+    }, /*#__PURE__*/React__default['default'].createElement(ImageWrapper, {
+      theme: theme
+    }, /*#__PURE__*/React__default['default'].createElement(ImageLoader, {
+      background: theme.color7,
+      imageUrl: merchant.image_uri
+    })), /*#__PURE__*/React__default['default'].createElement(atoms.PaddingVertical, null, /*#__PURE__*/React__default['default'].createElement(atoms.H2, null, merchant.name)));
+  }
+
   exports.AccordionItem = AccordionItem;
   exports.AccordionProvider = AccordionProvider;
   exports.AccordionScroll = AccordionScroll;
@@ -12947,6 +12981,7 @@
   exports.ImageLoader = ImageLoader;
   exports.ImageUpload = ImageUpload;
   exports.Map = Map$1;
+  exports.MerchantCard = MerchantCard;
   exports.Modal = Modal;
   exports.useAccordionContext = useAccordionContext;
 
