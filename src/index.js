@@ -11,6 +11,7 @@ import ImageUpload from "./ImageUpload";
 import ImageLoader from "./ImageLoader";
 import FooterActions from "./FooterActions";
 import MerchantCard from "./MerchantCard";
+import BookingMerchant from "./BookingMerchant";
 
 export {
   Modal,
@@ -24,4 +25,5 @@ export {
   ImageLoader,
   FooterActions,
   MerchantCard,
+  BookingMerchant,
 };

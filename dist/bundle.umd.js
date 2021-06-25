@@ -12973,10 +12973,2090 @@
     })), /*#__PURE__*/React__default['default'].createElement(atoms.PaddingVertical, null, /*#__PURE__*/React__default['default'].createElement(atoms.H2, null, merchant.name)));
   }
 
+  var _templateObject$a, _templateObject2$5, _templateObject3$2;
+  var Wrapper$2 = styled.View(_templateObject$a || (_templateObject$a = _taggedTemplateLiteral(["\n  border-width: 1px;\n  border-color: ", ";\n  border-radius: ", ";\n  background-color: ", ";\n"])), function (props) {
+    return props.theme.color7;
+  }, function (props) {
+    return props.theme.borderRadius;
+  }, function (props) {
+    return props.color;
+  });
+  var AniWrapper = styled.View(_templateObject2$5 || (_templateObject2$5 = _taggedTemplateLiteral([""])));
+  var PaxWrapper = styled.View(_templateObject3$2 || (_templateObject3$2 = _taggedTemplateLiteral(["\n  width: 30px;\n  height: 30px;\n  position: absolute;\n  top: -7px;\n  right: -7px;\n  border-radius: 15px;\n  background-color: red;\n"])));
+
+  var v$3 = "5.6.10";
+  var fr$3 = 60;
+  var ip$3 = 0;
+  var op$3 = 128;
+  var w$3 = 1080;
+  var h$3 = 1080;
+  var nm = "Happy_MAIN";
+  var ddd = 0;
+  var assets$3 = [
+  	{
+  		id: "comp_0",
+  		layers: [
+  			{
+  				ddd: 0,
+  				ind: 1,
+  				ty: 4,
+  				nm: "Head_V1",
+  				sr: 1,
+  				ks: {
+  					o: {
+  						a: 0,
+  						k: 100,
+  						ix: 11
+  					},
+  					r: {
+  						a: 0,
+  						k: 0,
+  						ix: 10
+  					},
+  					p: {
+  						a: 0,
+  						k: [
+  							540,
+  							540,
+  							0
+  						],
+  						ix: 2
+  					},
+  					a: {
+  						a: 0,
+  						k: [
+  							0,
+  							0,
+  							0
+  						],
+  						ix: 1
+  					},
+  					s: {
+  						a: 0,
+  						k: [
+  							100,
+  							100,
+  							100
+  						],
+  						ix: 6
+  					}
+  				},
+  				ao: 0,
+  				shapes: [
+  					{
+  						ty: "gr",
+  						it: [
+  							{
+  								d: 1,
+  								ty: "el",
+  								s: {
+  									a: 0,
+  									k: [
+  										770,
+  										770
+  									],
+  									ix: 2
+  								},
+  								p: {
+  									a: 0,
+  									k: [
+  										0,
+  										0
+  									],
+  									ix: 3
+  								},
+  								nm: "Ellipse Path 1",
+  								mn: "ADBE Vector Shape - Ellipse",
+  								hd: false
+  							},
+  							{
+  								ty: "gf",
+  								o: {
+  									a: 0,
+  									k: 100,
+  									ix: 10
+  								},
+  								r: 1,
+  								bm: 0,
+  								g: {
+  									p: 5,
+  									k: {
+  										a: 0,
+  										k: [
+  											0,
+  											0.992,
+  											0.844,
+  											0.216,
+  											0.65,
+  											0.955,
+  											0.724,
+  											0.27,
+  											0.884,
+  											0.918,
+  											0.604,
+  											0.323,
+  											0.952,
+  											0.951,
+  											0.717,
+  											0.318,
+  											1,
+  											0.984,
+  											0.831,
+  											0.314
+  										],
+  										ix: 9
+  									}
+  								},
+  								s: {
+  									a: 0,
+  									k: [
+  										67.75,
+  										-74.477
+  									],
+  									ix: 5
+  								},
+  								e: {
+  									a: 0,
+  									k: [
+  										-291.227,
+  										250.305
+  									],
+  									ix: 6
+  								},
+  								t: 2,
+  								h: {
+  									a: 0,
+  									k: 0,
+  									ix: 7
+  								},
+  								a: {
+  									a: 0,
+  									k: 0,
+  									ix: 8
+  								},
+  								nm: "Gradient Fill 1",
+  								mn: "ADBE Vector Graphic - G-Fill",
+  								hd: false
+  							},
+  							{
+  								ty: "tr",
+  								p: {
+  									a: 0,
+  									k: [
+  										0,
+  										0
+  									],
+  									ix: 2
+  								},
+  								a: {
+  									a: 0,
+  									k: [
+  										0,
+  										0
+  									],
+  									ix: 1
+  								},
+  								s: {
+  									a: 0,
+  									k: [
+  										100,
+  										100
+  									],
+  									ix: 3
+  								},
+  								r: {
+  									a: 0,
+  									k: 0,
+  									ix: 6
+  								},
+  								o: {
+  									a: 0,
+  									k: 100,
+  									ix: 7
+  								},
+  								sk: {
+  									a: 0,
+  									k: 0,
+  									ix: 4
+  								},
+  								sa: {
+  									a: 0,
+  									k: 0,
+  									ix: 5
+  								},
+  								nm: "Transform"
+  							}
+  						],
+  						nm: "Ellipse 1",
+  						np: 2,
+  						cix: 2,
+  						bm: 0,
+  						ix: 1,
+  						mn: "ADBE Vector Group",
+  						hd: false
+  					}
+  				],
+  				ip: 0,
+  				op: 3604,
+  				st: 0,
+  				bm: 0
+  			}
+  		]
+  	}
+  ];
+  var layers$3 = [
+  	{
+  		ddd: 0,
+  		ind: 1,
+  		ty: 3,
+  		nm: "Face Null",
+  		parent: 7,
+  		sr: 1,
+  		ks: {
+  			o: {
+  				a: 0,
+  				k: 0,
+  				ix: 11
+  			},
+  			r: {
+  				a: 0,
+  				k: 0,
+  				ix: 10
+  			},
+  			p: {
+  				s: true,
+  				x: {
+  					a: 0,
+  					k: 540,
+  					ix: 3
+  				},
+  				y: {
+  					a: 1,
+  					k: [
+  						{
+  							i: {
+  								x: [
+  									0.667
+  								],
+  								y: [
+  									1
+  								]
+  							},
+  							o: {
+  								x: [
+  									0.333
+  								],
+  								y: [
+  									0
+  								]
+  							},
+  							t: 2,
+  							s: [
+  								540
+  							]
+  						},
+  						{
+  							i: {
+  								x: [
+  									0.025
+  								],
+  								y: [
+  									1
+  								]
+  							},
+  							o: {
+  								x: [
+  									0.333
+  								],
+  								y: [
+  									0
+  								]
+  							},
+  							t: 14,
+  							s: [
+  								638.4
+  							]
+  						},
+  						{
+  							i: {
+  								x: [
+  									0.552
+  								],
+  								y: [
+  									0.924
+  								]
+  							},
+  							o: {
+  								x: [
+  									0.846
+  								],
+  								y: [
+  									0
+  								]
+  							},
+  							t: 44,
+  							s: [
+  								505.6
+  							]
+  						},
+  						{
+  							i: {
+  								x: [
+  									0.667
+  								],
+  								y: [
+  									1
+  								]
+  							},
+  							o: {
+  								x: [
+  									0.359
+  								],
+  								y: [
+  									-0.123
+  								]
+  							},
+  							t: 68,
+  							s: [
+  								561.8
+  							]
+  						},
+  						{
+  							i: {
+  								x: [
+  									0.667
+  								],
+  								y: [
+  									1
+  								]
+  							},
+  							o: {
+  								x: [
+  									0.167
+  								],
+  								y: [
+  									0
+  								]
+  							},
+  							t: 89,
+  							s: [
+  								537.4
+  							]
+  						},
+  						{
+  							t: 111,
+  							s: [
+  								540
+  							]
+  						}
+  					],
+  					ix: 4
+  				}
+  			},
+  			a: {
+  				a: 0,
+  				k: [
+  					0,
+  					0,
+  					0
+  				],
+  				ix: 1
+  			},
+  			s: {
+  				a: 0,
+  				k: [
+  					100,
+  					100,
+  					100
+  				],
+  				ix: 6
+  			}
+  		},
+  		ao: 0,
+  		ip: 0,
+  		op: 3604,
+  		st: 0,
+  		bm: 0
+  	},
+  	{
+  		ddd: 0,
+  		ind: 2,
+  		ty: 4,
+  		nm: "R_Eye_Closed",
+  		parent: 1,
+  		sr: 1,
+  		ks: {
+  			o: {
+  				a: 0,
+  				k: 100,
+  				ix: 11
+  			},
+  			r: {
+  				a: 0,
+  				k: 0,
+  				ix: 10
+  			},
+  			p: {
+  				a: 0,
+  				k: [
+  					120.375,
+  					-107.75,
+  					0
+  				],
+  				ix: 2
+  			},
+  			a: {
+  				a: 0,
+  				k: [
+  					-107.875,
+  					88.25,
+  					0
+  				],
+  				ix: 1
+  			},
+  			s: {
+  				a: 0,
+  				k: [
+  					-100,
+  					100,
+  					100
+  				],
+  				ix: 6
+  			}
+  		},
+  		ao: 0,
+  		shapes: [
+  			{
+  				ty: "gr",
+  				it: [
+  					{
+  						ind: 0,
+  						ty: "sh",
+  						ix: 1,
+  						ks: {
+  							a: 0,
+  							k: {
+  								i: [
+  									[
+  										0,
+  										0
+  									],
+  									[
+  										0,
+  										0
+  									]
+  								],
+  								o: [
+  									[
+  										0,
+  										0
+  									],
+  									[
+  										0,
+  										0
+  									]
+  								],
+  								v: [
+  									[
+  										-145,
+  										88.476
+  									],
+  									[
+  										-70.75,
+  										88.024
+  									]
+  								],
+  								c: false
+  							},
+  							ix: 2
+  						},
+  						nm: "Path 1",
+  						mn: "ADBE Vector Shape - Group",
+  						hd: false
+  					},
+  					{
+  						ty: "st",
+  						c: {
+  							a: 0,
+  							k: [
+  								0,
+  								0,
+  								0,
+  								1
+  							],
+  							ix: 3
+  						},
+  						o: {
+  							a: 0,
+  							k: 100,
+  							ix: 4
+  						},
+  						w: {
+  							a: 0,
+  							k: 17,
+  							ix: 5
+  						},
+  						lc: 2,
+  						lj: 1,
+  						ml: 4,
+  						bm: 0,
+  						nm: "Stroke 1",
+  						mn: "ADBE Vector Graphic - Stroke",
+  						hd: false
+  					},
+  					{
+  						ty: "tr",
+  						p: {
+  							a: 0,
+  							k: [
+  								0,
+  								0
+  							],
+  							ix: 2
+  						},
+  						a: {
+  							a: 0,
+  							k: [
+  								0,
+  								0
+  							],
+  							ix: 1
+  						},
+  						s: {
+  							a: 0,
+  							k: [
+  								100,
+  								100
+  							],
+  							ix: 3
+  						},
+  						r: {
+  							a: 0,
+  							k: 0,
+  							ix: 6
+  						},
+  						o: {
+  							a: 0,
+  							k: 100,
+  							ix: 7
+  						},
+  						sk: {
+  							a: 0,
+  							k: 0,
+  							ix: 4
+  						},
+  						sa: {
+  							a: 0,
+  							k: 0,
+  							ix: 5
+  						},
+  						nm: "Transform"
+  					}
+  				],
+  				nm: "Shape 1",
+  				np: 2,
+  				cix: 2,
+  				bm: 0,
+  				ix: 1,
+  				mn: "ADBE Vector Group",
+  				hd: false
+  			}
+  		],
+  		ip: 7,
+  		op: 14,
+  		st: 3,
+  		bm: 0
+  	},
+  	{
+  		ddd: 0,
+  		ind: 3,
+  		ty: 4,
+  		nm: "R_Eye",
+  		parent: 1,
+  		sr: 1,
+  		ks: {
+  			o: {
+  				a: 0,
+  				k: 100,
+  				ix: 11
+  			},
+  			r: {
+  				a: 0,
+  				k: 0,
+  				ix: 10
+  			},
+  			p: {
+  				a: 0,
+  				k: [
+  					121,
+  					-108,
+  					0
+  				],
+  				ix: 2
+  			},
+  			a: {
+  				a: 0,
+  				k: [
+  					0,
+  					0,
+  					0
+  				],
+  				ix: 1
+  			},
+  			s: {
+  				a: 1,
+  				k: [
+  					{
+  						i: {
+  							x: [
+  								0.19,
+  								0.19,
+  								0.19
+  							],
+  							y: [
+  								1,
+  								1,
+  								1
+  							]
+  						},
+  						o: {
+  							x: [
+  								0.333,
+  								0.333,
+  								0.333
+  							],
+  							y: [
+  								0,
+  								0,
+  								0
+  							]
+  						},
+  						t: 4,
+  						s: [
+  							-122,
+  							190,
+  							100
+  						]
+  					},
+  					{
+  						i: {
+  							x: [
+  								0.19,
+  								0.19,
+  								0.19
+  							],
+  							y: [
+  								1,
+  								1,
+  								1
+  							]
+  						},
+  						o: {
+  							x: [
+  								0.333,
+  								0.333,
+  								0.333
+  							],
+  							y: [
+  								0,
+  								0,
+  								0
+  							]
+  						},
+  						t: 9,
+  						s: [
+  							-154.5,
+  							25.2,
+  							100
+  						]
+  					},
+  					{
+  						i: {
+  							x: [
+  								0.19,
+  								0.19,
+  								0.19
+  							],
+  							y: [
+  								1,
+  								1,
+  								1
+  							]
+  						},
+  						o: {
+  							x: [
+  								0.333,
+  								0.333,
+  								0.333
+  							],
+  							y: [
+  								0,
+  								0,
+  								0
+  							]
+  						},
+  						t: 14,
+  						s: [
+  							-154.5,
+  							25.2,
+  							100
+  						]
+  					},
+  					{
+  						i: {
+  							x: [
+  								0.833,
+  								0.833,
+  								0.833
+  							],
+  							y: [
+  								1,
+  								1,
+  								1
+  							]
+  						},
+  						o: {
+  							x: [
+  								0.167,
+  								0.167,
+  								0.167
+  							],
+  							y: [
+  								0,
+  								0,
+  								0
+  							]
+  						},
+  						t: 19,
+  						s: [
+  							-117.2,
+  							206.9,
+  							100
+  						]
+  					},
+  					{
+  						t: 24,
+  						s: [
+  							-122,
+  							190,
+  							100
+  						]
+  					}
+  				],
+  				ix: 6
+  			}
+  		},
+  		ao: 0,
+  		shapes: [
+  			{
+  				ty: "gr",
+  				it: [
+  					{
+  						d: 1,
+  						ty: "el",
+  						s: {
+  							a: 0,
+  							k: [
+  								51,
+  								51
+  							],
+  							ix: 2
+  						},
+  						p: {
+  							a: 0,
+  							k: [
+  								0,
+  								0
+  							],
+  							ix: 3
+  						},
+  						nm: "Ellipse Path 1",
+  						mn: "ADBE Vector Shape - Ellipse",
+  						hd: false
+  					},
+  					{
+  						ty: "fl",
+  						c: {
+  							a: 0,
+  							k: [
+  								0,
+  								0,
+  								0,
+  								1
+  							],
+  							ix: 4
+  						},
+  						o: {
+  							a: 0,
+  							k: 100,
+  							ix: 5
+  						},
+  						r: 1,
+  						bm: 0,
+  						nm: "Fill 1",
+  						mn: "ADBE Vector Graphic - Fill",
+  						hd: false
+  					},
+  					{
+  						ty: "tr",
+  						p: {
+  							a: 0,
+  							k: [
+  								0,
+  								0
+  							],
+  							ix: 2
+  						},
+  						a: {
+  							a: 0,
+  							k: [
+  								0,
+  								0
+  							],
+  							ix: 1
+  						},
+  						s: {
+  							a: 0,
+  							k: [
+  								100,
+  								100
+  							],
+  							ix: 3
+  						},
+  						r: {
+  							a: 0,
+  							k: 0,
+  							ix: 6
+  						},
+  						o: {
+  							a: 0,
+  							k: 100,
+  							ix: 7
+  						},
+  						sk: {
+  							a: 0,
+  							k: 0,
+  							ix: 4
+  						},
+  						sa: {
+  							a: 0,
+  							k: 0,
+  							ix: 5
+  						},
+  						nm: "Transform"
+  					}
+  				],
+  				nm: "Ellipse 1",
+  				np: 2,
+  				cix: 2,
+  				bm: 0,
+  				ix: 1,
+  				mn: "ADBE Vector Group",
+  				hd: false
+  			}
+  		],
+  		ip: 0,
+  		op: 168,
+  		st: 3,
+  		bm: 0
+  	},
+  	{
+  		ddd: 0,
+  		ind: 4,
+  		ty: 4,
+  		nm: "L_Eye_Closed",
+  		parent: 1,
+  		sr: 1,
+  		ks: {
+  			o: {
+  				a: 0,
+  				k: 100,
+  				ix: 11
+  			},
+  			r: {
+  				a: 0,
+  				k: 0,
+  				ix: 10
+  			},
+  			p: {
+  				a: 0,
+  				k: [
+  					-120.375,
+  					-107.75,
+  					0
+  				],
+  				ix: 2
+  			},
+  			a: {
+  				a: 0,
+  				k: [
+  					-107.875,
+  					88.25,
+  					0
+  				],
+  				ix: 1
+  			},
+  			s: {
+  				a: 0,
+  				k: [
+  					100,
+  					100,
+  					100
+  				],
+  				ix: 6
+  			}
+  		},
+  		ao: 0,
+  		shapes: [
+  			{
+  				ty: "gr",
+  				it: [
+  					{
+  						ind: 0,
+  						ty: "sh",
+  						ix: 1,
+  						ks: {
+  							a: 0,
+  							k: {
+  								i: [
+  									[
+  										0,
+  										0
+  									],
+  									[
+  										0,
+  										0
+  									]
+  								],
+  								o: [
+  									[
+  										0,
+  										0
+  									],
+  									[
+  										0,
+  										0
+  									]
+  								],
+  								v: [
+  									[
+  										-145,
+  										88.476
+  									],
+  									[
+  										-70.75,
+  										88.024
+  									]
+  								],
+  								c: false
+  							},
+  							ix: 2
+  						},
+  						nm: "Path 1",
+  						mn: "ADBE Vector Shape - Group",
+  						hd: false
+  					},
+  					{
+  						ty: "st",
+  						c: {
+  							a: 0,
+  							k: [
+  								0,
+  								0,
+  								0,
+  								1
+  							],
+  							ix: 3
+  						},
+  						o: {
+  							a: 0,
+  							k: 100,
+  							ix: 4
+  						},
+  						w: {
+  							a: 0,
+  							k: 17,
+  							ix: 5
+  						},
+  						lc: 2,
+  						lj: 1,
+  						ml: 4,
+  						bm: 0,
+  						nm: "Stroke 1",
+  						mn: "ADBE Vector Graphic - Stroke",
+  						hd: false
+  					},
+  					{
+  						ty: "tr",
+  						p: {
+  							a: 0,
+  							k: [
+  								0,
+  								0
+  							],
+  							ix: 2
+  						},
+  						a: {
+  							a: 0,
+  							k: [
+  								0,
+  								0
+  							],
+  							ix: 1
+  						},
+  						s: {
+  							a: 0,
+  							k: [
+  								100,
+  								100
+  							],
+  							ix: 3
+  						},
+  						r: {
+  							a: 0,
+  							k: 0,
+  							ix: 6
+  						},
+  						o: {
+  							a: 0,
+  							k: 100,
+  							ix: 7
+  						},
+  						sk: {
+  							a: 0,
+  							k: 0,
+  							ix: 4
+  						},
+  						sa: {
+  							a: 0,
+  							k: 0,
+  							ix: 5
+  						},
+  						nm: "Transform"
+  					}
+  				],
+  				nm: "Shape 1",
+  				np: 2,
+  				cix: 2,
+  				bm: 0,
+  				ix: 1,
+  				mn: "ADBE Vector Group",
+  				hd: false
+  			}
+  		],
+  		ip: 7,
+  		op: 14,
+  		st: 3,
+  		bm: 0
+  	},
+  	{
+  		ddd: 0,
+  		ind: 5,
+  		ty: 4,
+  		nm: "L_Eye",
+  		parent: 1,
+  		sr: 1,
+  		ks: {
+  			o: {
+  				a: 0,
+  				k: 100,
+  				ix: 11
+  			},
+  			r: {
+  				a: 0,
+  				k: 0,
+  				ix: 10
+  			},
+  			p: {
+  				a: 0,
+  				k: [
+  					-121,
+  					-108,
+  					0
+  				],
+  				ix: 2
+  			},
+  			a: {
+  				a: 0,
+  				k: [
+  					0,
+  					0,
+  					0
+  				],
+  				ix: 1
+  			},
+  			s: {
+  				a: 1,
+  				k: [
+  					{
+  						i: {
+  							x: [
+  								0.19,
+  								0.19,
+  								0.19
+  							],
+  							y: [
+  								1,
+  								1,
+  								1
+  							]
+  						},
+  						o: {
+  							x: [
+  								0.333,
+  								0.333,
+  								0.333
+  							],
+  							y: [
+  								0,
+  								0,
+  								0
+  							]
+  						},
+  						t: 4,
+  						s: [
+  							122,
+  							190,
+  							100
+  						]
+  					},
+  					{
+  						i: {
+  							x: [
+  								0.19,
+  								0.19,
+  								0.19
+  							],
+  							y: [
+  								1,
+  								1,
+  								1
+  							]
+  						},
+  						o: {
+  							x: [
+  								0.333,
+  								0.333,
+  								0.333
+  							],
+  							y: [
+  								0,
+  								0,
+  								0
+  							]
+  						},
+  						t: 9,
+  						s: [
+  							154.5,
+  							25.2,
+  							100
+  						]
+  					},
+  					{
+  						i: {
+  							x: [
+  								0.19,
+  								0.19,
+  								0.19
+  							],
+  							y: [
+  								1,
+  								1,
+  								1
+  							]
+  						},
+  						o: {
+  							x: [
+  								0.333,
+  								0.333,
+  								0.333
+  							],
+  							y: [
+  								0,
+  								0,
+  								0
+  							]
+  						},
+  						t: 14,
+  						s: [
+  							154.5,
+  							25.2,
+  							100
+  						]
+  					},
+  					{
+  						i: {
+  							x: [
+  								0.833,
+  								0.833,
+  								0.833
+  							],
+  							y: [
+  								1,
+  								1,
+  								1
+  							]
+  						},
+  						o: {
+  							x: [
+  								0.167,
+  								0.167,
+  								0.167
+  							],
+  							y: [
+  								0,
+  								0,
+  								0
+  							]
+  						},
+  						t: 19,
+  						s: [
+  							117.2,
+  							206.9,
+  							100
+  						]
+  					},
+  					{
+  						t: 24,
+  						s: [
+  							122,
+  							190,
+  							100
+  						]
+  					}
+  				],
+  				ix: 6
+  			}
+  		},
+  		ao: 0,
+  		shapes: [
+  			{
+  				ty: "gr",
+  				it: [
+  					{
+  						d: 1,
+  						ty: "el",
+  						s: {
+  							a: 0,
+  							k: [
+  								51,
+  								51
+  							],
+  							ix: 2
+  						},
+  						p: {
+  							a: 0,
+  							k: [
+  								0,
+  								0
+  							],
+  							ix: 3
+  						},
+  						nm: "Ellipse Path 1",
+  						mn: "ADBE Vector Shape - Ellipse",
+  						hd: false
+  					},
+  					{
+  						ty: "fl",
+  						c: {
+  							a: 0,
+  							k: [
+  								0,
+  								0,
+  								0,
+  								1
+  							],
+  							ix: 4
+  						},
+  						o: {
+  							a: 0,
+  							k: 100,
+  							ix: 5
+  						},
+  						r: 1,
+  						bm: 0,
+  						nm: "Fill 1",
+  						mn: "ADBE Vector Graphic - Fill",
+  						hd: false
+  					},
+  					{
+  						ty: "tr",
+  						p: {
+  							a: 0,
+  							k: [
+  								0,
+  								0
+  							],
+  							ix: 2
+  						},
+  						a: {
+  							a: 0,
+  							k: [
+  								0,
+  								0
+  							],
+  							ix: 1
+  						},
+  						s: {
+  							a: 0,
+  							k: [
+  								100,
+  								100
+  							],
+  							ix: 3
+  						},
+  						r: {
+  							a: 0,
+  							k: 0,
+  							ix: 6
+  						},
+  						o: {
+  							a: 0,
+  							k: 100,
+  							ix: 7
+  						},
+  						sk: {
+  							a: 0,
+  							k: 0,
+  							ix: 4
+  						},
+  						sa: {
+  							a: 0,
+  							k: 0,
+  							ix: 5
+  						},
+  						nm: "Transform"
+  					}
+  				],
+  				nm: "Ellipse 1",
+  				np: 2,
+  				cix: 2,
+  				bm: 0,
+  				ix: 1,
+  				mn: "ADBE Vector Group",
+  				hd: false
+  			}
+  		],
+  		ip: 0,
+  		op: 168,
+  		st: 3,
+  		bm: 0
+  	},
+  	{
+  		ddd: 0,
+  		ind: 6,
+  		ty: 4,
+  		nm: "Smile",
+  		parent: 7,
+  		sr: 1,
+  		ks: {
+  			o: {
+  				a: 0,
+  				k: 100,
+  				ix: 11
+  			},
+  			r: {
+  				a: 0,
+  				k: 0,
+  				ix: 10
+  			},
+  			p: {
+  				s: true,
+  				x: {
+  					a: 0,
+  					k: 540,
+  					ix: 3
+  				},
+  				y: {
+  					a: 1,
+  					k: [
+  						{
+  							i: {
+  								x: [
+  									0.667
+  								],
+  								y: [
+  									1
+  								]
+  							},
+  							o: {
+  								x: [
+  									0.333
+  								],
+  								y: [
+  									0
+  								]
+  							},
+  							t: 3,
+  							s: [
+  								553.989
+  							]
+  						},
+  						{
+  							i: {
+  								x: [
+  									0.025
+  								],
+  								y: [
+  									1
+  								]
+  							},
+  							o: {
+  								x: [
+  									0.333
+  								],
+  								y: [
+  									0
+  								]
+  							},
+  							t: 15,
+  							s: [
+  								615.689
+  							]
+  						},
+  						{
+  							i: {
+  								x: [
+  									0.552
+  								],
+  								y: [
+  									0.924
+  								]
+  							},
+  							o: {
+  								x: [
+  									0.846
+  								],
+  								y: [
+  									0
+  								]
+  							},
+  							t: 45,
+  							s: [
+  								509.489
+  							]
+  						},
+  						{
+  							i: {
+  								x: [
+  									0.667
+  								],
+  								y: [
+  									1
+  								]
+  							},
+  							o: {
+  								x: [
+  									0.359
+  								],
+  								y: [
+  									-0.145
+  								]
+  							},
+  							t: 69,
+  							s: [
+  								575.789
+  							]
+  						},
+  						{
+  							i: {
+  								x: [
+  									0.667
+  								],
+  								y: [
+  									1
+  								]
+  							},
+  							o: {
+  								x: [
+  									0.167
+  								],
+  								y: [
+  									0
+  								]
+  							},
+  							t: 90,
+  							s: [
+  								551.389
+  							]
+  						},
+  						{
+  							t: 112,
+  							s: [
+  								554
+  							]
+  						}
+  					],
+  					ix: 4
+  				}
+  			},
+  			a: {
+  				a: 0,
+  				k: [
+  					0,
+  					0,
+  					0
+  				],
+  				ix: 1
+  			},
+  			s: {
+  				a: 0,
+  				k: [
+  					100,
+  					100,
+  					100
+  				],
+  				ix: 6
+  			}
+  		},
+  		ao: 0,
+  		shapes: [
+  			{
+  				ty: "gr",
+  				it: [
+  					{
+  						ind: 0,
+  						ty: "sh",
+  						ix: 1,
+  						ks: {
+  							a: 0,
+  							k: {
+  								i: [
+  									[
+  										13.439,
+  										-69.684
+  									],
+  									[
+  										87.5,
+  										0
+  									],
+  									[
+  										19.5,
+  										71
+  									]
+  								],
+  								o: [
+  									[
+  										-13.5,
+  										70
+  									],
+  									[
+  										-89,
+  										0
+  									],
+  									[
+  										-18.795,
+  										-68.434
+  									]
+  								],
+  								v: [
+  									[
+  										191.5,
+  										0
+  									],
+  									[
+  										0,
+  										128.5
+  									],
+  									[
+  										-191.5,
+  										0
+  									]
+  								],
+  								c: false
+  							},
+  							ix: 2
+  						},
+  						nm: "Path 1",
+  						mn: "ADBE Vector Shape - Group",
+  						hd: false
+  					},
+  					{
+  						ty: "tm",
+  						s: {
+  							a: 1,
+  							k: [
+  								{
+  									i: {
+  										x: [
+  											0.667
+  										],
+  										y: [
+  											1
+  										]
+  									},
+  									o: {
+  										x: [
+  											0.167
+  										],
+  										y: [
+  											0
+  										]
+  									},
+  									t: 3,
+  									s: [
+  										9
+  									]
+  								},
+  								{
+  									i: {
+  										x: [
+  											0.209
+  										],
+  										y: [
+  											1
+  										]
+  									},
+  									o: {
+  										x: [
+  											0.333
+  										],
+  										y: [
+  											0
+  										]
+  									},
+  									t: 15,
+  									s: [
+  										11
+  									]
+  								},
+  								{
+  									i: {
+  										x: [
+  											0.742
+  										],
+  										y: [
+  											1
+  										]
+  									},
+  									o: {
+  										x: [
+  											0.846
+  										],
+  										y: [
+  											0
+  										]
+  									},
+  									t: 45,
+  									s: [
+  										0
+  									]
+  								},
+  								{
+  									t: 69,
+  									s: [
+  										9
+  									]
+  								}
+  							],
+  							ix: 1
+  						},
+  						e: {
+  							a: 1,
+  							k: [
+  								{
+  									i: {
+  										x: [
+  											0.667
+  										],
+  										y: [
+  											1
+  										]
+  									},
+  									o: {
+  										x: [
+  											0.167
+  										],
+  										y: [
+  											0
+  										]
+  									},
+  									t: 3,
+  									s: [
+  										91
+  									]
+  								},
+  								{
+  									i: {
+  										x: [
+  											0.209
+  										],
+  										y: [
+  											1
+  										]
+  									},
+  									o: {
+  										x: [
+  											0.333
+  										],
+  										y: [
+  											0
+  										]
+  									},
+  									t: 15,
+  									s: [
+  										89
+  									]
+  								},
+  								{
+  									i: {
+  										x: [
+  											0.742
+  										],
+  										y: [
+  											1
+  										]
+  									},
+  									o: {
+  										x: [
+  											0.846
+  										],
+  										y: [
+  											0
+  										]
+  									},
+  									t: 45,
+  									s: [
+  										100
+  									]
+  								},
+  								{
+  									t: 69,
+  									s: [
+  										91
+  									]
+  								}
+  							],
+  							ix: 2
+  						},
+  						o: {
+  							a: 0,
+  							k: 0,
+  							ix: 3
+  						},
+  						m: 1,
+  						ix: 2,
+  						nm: "Trim Paths 1",
+  						mn: "ADBE Vector Filter - Trim",
+  						hd: false
+  					},
+  					{
+  						ty: "st",
+  						c: {
+  							a: 0,
+  							k: [
+  								0,
+  								0,
+  								0,
+  								1
+  							],
+  							ix: 3
+  						},
+  						o: {
+  							a: 0,
+  							k: 100,
+  							ix: 4
+  						},
+  						w: {
+  							a: 0,
+  							k: 30,
+  							ix: 5
+  						},
+  						lc: 2,
+  						lj: 1,
+  						ml: 4,
+  						bm: 0,
+  						nm: "Stroke 1",
+  						mn: "ADBE Vector Graphic - Stroke",
+  						hd: false
+  					},
+  					{
+  						ty: "tr",
+  						p: {
+  							a: 0,
+  							k: [
+  								0,
+  								0
+  							],
+  							ix: 2
+  						},
+  						a: {
+  							a: 0,
+  							k: [
+  								0,
+  								0
+  							],
+  							ix: 1
+  						},
+  						s: {
+  							a: 0,
+  							k: [
+  								100,
+  								100
+  							],
+  							ix: 3
+  						},
+  						r: {
+  							a: 0,
+  							k: 0,
+  							ix: 6
+  						},
+  						o: {
+  							a: 0,
+  							k: 100,
+  							ix: 7
+  						},
+  						sk: {
+  							a: 0,
+  							k: 0,
+  							ix: 4
+  						},
+  						sa: {
+  							a: 0,
+  							k: 0,
+  							ix: 5
+  						},
+  						nm: "Transform"
+  					}
+  				],
+  				nm: "Ellipse 1",
+  				np: 3,
+  				cix: 2,
+  				bm: 0,
+  				ix: 1,
+  				mn: "ADBE Vector Group",
+  				hd: false
+  			}
+  		],
+  		ip: 0,
+  		op: 3604,
+  		st: 0,
+  		bm: 0
+  	},
+  	{
+  		ddd: 0,
+  		ind: 7,
+  		ty: 0,
+  		nm: "HEAD",
+  		refId: "comp_0",
+  		sr: 1,
+  		ks: {
+  			o: {
+  				a: 0,
+  				k: 100,
+  				ix: 11
+  			},
+  			r: {
+  				a: 0,
+  				k: 0,
+  				ix: 10
+  			},
+  			p: {
+  				s: true,
+  				x: {
+  					a: 0,
+  					k: 540,
+  					ix: 3
+  				},
+  				y: {
+  					a: 1,
+  					k: [
+  						{
+  							i: {
+  								x: [
+  									0.667
+  								],
+  								y: [
+  									1
+  								]
+  							},
+  							o: {
+  								x: [
+  									0.333
+  								],
+  								y: [
+  									0
+  								]
+  							},
+  							t: 3,
+  							s: [
+  								540
+  							]
+  						},
+  						{
+  							i: {
+  								x: [
+  									0.025
+  								],
+  								y: [
+  									1
+  								]
+  							},
+  							o: {
+  								x: [
+  									0.333
+  								],
+  								y: [
+  									0
+  								]
+  							},
+  							t: 15,
+  							s: [
+  								603.3
+  							]
+  						},
+  						{
+  							i: {
+  								x: [
+  									0.552
+  								],
+  								y: [
+  									0.924
+  								]
+  							},
+  							o: {
+  								x: [
+  									0.846
+  								],
+  								y: [
+  									0
+  								]
+  							},
+  							t: 45,
+  							s: [
+  								505.6
+  							]
+  						},
+  						{
+  							i: {
+  								x: [
+  									0.667
+  								],
+  								y: [
+  									1
+  								]
+  							},
+  							o: {
+  								x: [
+  									0.359
+  								],
+  								y: [
+  									-0.132
+  								]
+  							},
+  							t: 69,
+  							s: [
+  								561.8
+  							]
+  						},
+  						{
+  							i: {
+  								x: [
+  									0.667
+  								],
+  								y: [
+  									1
+  								]
+  							},
+  							o: {
+  								x: [
+  									0.167
+  								],
+  								y: [
+  									0
+  								]
+  							},
+  							t: 90,
+  							s: [
+  								539.1
+  							]
+  						},
+  						{
+  							t: 112,
+  							s: [
+  								546.1
+  							]
+  						}
+  					],
+  					ix: 4
+  				}
+  			},
+  			a: {
+  				a: 0,
+  				k: [
+  					540,
+  					540,
+  					0
+  				],
+  				ix: 1
+  			},
+  			s: {
+  				a: 0,
+  				k: [
+  					100,
+  					100,
+  					100
+  				],
+  				ix: 6
+  			}
+  		},
+  		ao: 0,
+  		w: 1080,
+  		h: 1080,
+  		ip: 0,
+  		op: 3604,
+  		st: 0,
+  		bm: 0
+  	}
+  ];
+  var markers = [
+  	{
+  		tm: 128,
+  		cm: "LOOP",
+  		dr: 0
+  	}
+  ];
+  var Happy_Shaded = {
+  	v: v$3,
+  	fr: fr$3,
+  	ip: ip$3,
+  	op: op$3,
+  	w: w$3,
+  	h: h$3,
+  	nm: nm,
+  	ddd: ddd,
+  	assets: assets$3,
+  	layers: layers$3,
+  	markers: markers
+  };
+
+  var BookingMerchant = React__default['default'].memo(function (_ref) {
+    var name = _ref.name,
+        status = _ref.status,
+        pax = _ref.pax,
+        theme = _ref.theme,
+        _ref$onClick = _ref.onClick;
+    var statusColors = {
+      Pending: theme.color12
+    };
+    return /*#__PURE__*/React__default['default'].createElement(Wrapper$2, {
+      theme: theme,
+      color: statusColors[status]
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.Padding, null, /*#__PURE__*/React__default['default'].createElement(atoms.Row, null, /*#__PURE__*/React__default['default'].createElement(AniWrapper, null, /*#__PURE__*/React__default['default'].createElement(LottieView__default['default'], {
+      style: {
+        height: 50
+      },
+      autoPlay: true,
+      loop: true,
+      source: Happy_Shaded
+    }), /*#__PURE__*/React__default['default'].createElement(PaxWrapper, null, /*#__PURE__*/React__default['default'].createElement(atoms.Center, null, /*#__PURE__*/React__default['default'].createElement(atoms.H3, null, pax)))), /*#__PURE__*/React__default['default'].createElement(atoms.Padding, null, /*#__PURE__*/React__default['default'].createElement(atoms.H3, null, name), /*#__PURE__*/React__default['default'].createElement(atoms.H4, null, status)))));
+  });
+
   exports.AccordionItem = AccordionItem;
   exports.AccordionProvider = AccordionProvider;
   exports.AccordionScroll = AccordionScroll;
   exports.AccordionScroller = AccordionScroller;
+  exports.BookingMerchant = BookingMerchant;
   exports.FooterActions = FooterActions;
   exports.ImageLoader = ImageLoader;
   exports.ImageUpload = ImageUpload;
