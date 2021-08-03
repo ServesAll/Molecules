@@ -3,7 +3,7 @@ import {
   H3,
   Center,
   AnimatedButton,
-  Margin,
+  Padding,
   Row,
   Success,
   Error,
@@ -25,13 +25,18 @@ const FooterActions = React.memo(
   }) => {
     return (
       <Wrapper theme={theme}>
-        <Margin
+        <Padding
           style={{
             flex: 1,
             ...((loading || success || error) && { margin: 0 }),
           }}
         >
-          <Row style={{ flex: 1, justifyContent: "space-between" }}>
+          <Row
+            style={{
+              flex: 1,
+              justifyContent: "space-between",
+            }}
+          >
             {leftElement}
             <AnimatedButton
               active={active}
@@ -72,7 +77,7 @@ const FooterActions = React.memo(
               </Center>
             </AnimatedButton>
           </Row>
-        </Margin>
+        </Padding>
       </Wrapper>
     );
   }

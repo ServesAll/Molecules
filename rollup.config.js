@@ -4,6 +4,7 @@ import babel from "@rollup/plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
 import json from "@rollup/plugin-json";
 import nodePolyfills from "rollup-plugin-node-polyfills";
+import image from "@rollup/plugin-image";
 
 const dist = "dist";
 
@@ -37,6 +38,7 @@ export default {
   ],
   plugins: [
     json(),
+    image(),
     resolve({
       extensions: [".js", ".jsx", ".json"],
     }),

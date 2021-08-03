@@ -1,4 +1,4 @@
-import styled from 'styled-components/native';
+import styled from "styled-components/native";
 
 export const Body = styled.View``;
 
@@ -17,6 +17,5 @@ export const PanBar = styled.View`
 `;
 
 export const BodyWrap = styled.View`
-  height: ${props => props.height}px;
-  padding-bottom: ${props => props.pb}px;
+  height: ${(props) => props.height}px;
 `;

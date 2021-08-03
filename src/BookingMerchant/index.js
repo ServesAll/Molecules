@@ -12,39 +12,72 @@ import {
   Loader,
   MarginHorizontal,
   Icon,
+  PaddingVertical,
+  PaddingTop,
+  MarginTop,
 } from "@servesall/atoms";
-import { Wrapper, AniWrapper, PaxWrapper } from "./BookingMerchant.style";
+import { Wrapper, AniWrapper, StatusWrapper } from "./BookingMerchant.style";
 import LottieView from "lottie-react-native";
 import Happy_Shaded from "./Assets/Happy_Shaded.json";
+import Meh_Shaded from "./Assets/Meh_Shaded.json";
+import Blushing_Shaded from "./Assets/Blushing_Shaded.json";
 
 const BookingMerchant = React.memo(
   ({ name, status, pax, theme, onClick = () => {} }) => {
     const statusColors = {
-      Pending: theme.color12,
+      Pending: {
+        color: theme.color12,
+        border: theme.color12border,
+        background: theme.color12light,
+        image: Happy_Shaded,
+        autoPlay: true,
+        progress: null,
+      },
+      Confirmed: {
+        color: theme.color11,
+        border: theme.color11border,
+        background: theme.color11light,
+        image: Blushing_Shaded,
+        autoPlay: false,
+        progress: 0.5,
+      },
     };
 
     return (
       <Wrapper theme={theme} color={statusColors[status]}>
         <Padding>
-          <Row>
+          <Row style={{ alignItems: "center" }}>
             <AniWrapper>
               <LottieView
                 style={{
                   height: 50,
                 }}
-                autoPlay={true}
+                autoPlay={statusColors[status].autoPlay}
+                progress={statusColors[status].progress}
                 loop={true}
-                source={Happy_Shaded}
+                source={statusColors[status].image}
               />
-              <PaxWrapper>
-                <Center>
-                  <H3>{pax}</H3>
-                </Center>
-              </PaxWrapper>
             </AniWrapper>
-            <Padding>
-              <H3>{name}</H3>
-              <H4>{status}</H4>
+
+            <Padding style={{ flex: 1 }}>
+              <Row style={{ justifyContent: "space-between" }}>
+                <H3 fontFamily={theme.fontFamily3}>{name}</H3>
+                <H3 fontFamily={theme.fontFamily3}>x {pax}</H3>
+              </Row>
+              <PaddingTop>
+                <Row>
+                  <StatusWrapper theme={theme} color={statusColors[status]}>
+                    <Padding>
+                      <H4
+                        style={{ lineHeight: 18 }}
+                        color={statusColors[status].color}
+                      >
+                        {status}
+                      </H4>
+                    </Padding>
+                  </StatusWrapper>
+                </Row>
+              </PaddingTop>
             </Padding>
           </Row>
         </Padding>

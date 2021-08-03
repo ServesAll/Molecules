@@ -1,7 +1,16 @@
 import React, { useEffect, useRef } from "react";
 import { Head } from "./Head.style";
 import { findNodeHandle, Pressable } from "react-native";
+import { Row, Padding } from "@servesall/atoms";
+import LottieView from "lottie-react-native";
+import plusClose from "./Assets/plusClose.json";
 import { useAccordionContext } from "../../GlobalToggle";
+import Animated, {
+  withTiming,
+  useSharedValue,
+  useAnimatedStyle,
+  Easing,
+} from "react-native-reanimated";
 
 export default function HeadElement({
   children,
@@ -12,6 +21,7 @@ export default function HeadElement({
 }) {
   const { isActive, scrollRef } = useAccordionContext() || {};
   const BodyRef = useRef();
+  const openRef = useRef();
 
   const scrollToItem = () => {
     requestAnimationFrame(() => {
@@ -28,21 +38,62 @@ export default function HeadElement({
 
   useEffect(() => {
     if (isOpen && BodyRef.current) {
-      setTimeout(() => {
-        scrollToItem();
-      }, 350);
+      scrollToItem();
     }
   }, [isOpen]);
 
+  useEffect(() => {
+    if (isOpen) {
+      openRef.current?.play(0, 20);
+    } else {
+      openRef.current?.play(20, 33);
+    }
+  }, [isOpen]);
+
+  const opacity = useSharedValue(1);
+
+  const animatedStyle = useAnimatedStyle(() => {
+    return {
+      opacity: withTiming(opacity.value, {
+        duration: 750,
+        easing: Easing.bezier(0.19, 1.0, 0.22, 1.0),
+      }),
+    };
+  });
+
+  useEffect(() => {
+    isActive != eventKey
+      ? isActive
+        ? (opacity.value = 0)
+        : (opacity.value = 1)
+      : (opacity.value = 0);
+  }, [isActive]);
+
   return (
-    <Pressable
-      style={{
-        opacity: isActive != eventKey ? (isActive ? 0.6 : 1) : 1,
-      }}
-      ref={BodyRef}
-      onPress={() => toggleAccordionItem(eventKey)}
-    >
-      <Head styles={style}>{children}</Head>
+    <Pressable ref={BodyRef} onPress={() => toggleAccordionItem(eventKey)}>
+      <Head styles={style}>
+        <Padding>
+          <Row
+            style={{
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <Animated.View style={[animatedStyle]}>{children}</Animated.View>
+            <Padding>
+              <LottieView
+                style={{
+                  height: 15,
+                }}
+                ref={openRef}
+                autoPlay={false}
+                loop={false}
+                source={plusClose}
+              />
+            </Padding>
+          </Row>
+        </Padding>
+      </Head>
     </Pressable>
   );
 }

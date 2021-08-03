@@ -29,7 +29,7 @@ const AccordionItem = ({
   }, [isOpen, hasChanged]);
 
   return (
-    <Container styles={style}>
+    <Container styles={style} eventKey={eventKey}>
       {React.Children.map(children, (child) =>
         React.cloneElement(child, {
           isOpen,

@@ -12,6 +12,9 @@ import ImageLoader from "./ImageLoader";
 import FooterActions from "./FooterActions";
 import MerchantCard from "./MerchantCard";
 import BookingMerchant from "./BookingMerchant";
+import Actions from "./Actions";
+import SlideScreen from "./SlideScreen";
+import Screen from "./SlideScreen/Screen";
 
 export {
   Modal,
@@ -26,4 +29,7 @@ export {
   FooterActions,
   MerchantCard,
   BookingMerchant,
+  Actions,
+  SlideScreen,
+  Screen,
 };

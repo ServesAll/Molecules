@@ -6,12 +6,5 @@ export const Wrapper = styled.View`
   border-color: ${(props) => props.theme.color7};
   border-radius: ${(props) => props.theme.borderRadius};
   background-color: ${(props) => props.theme.color1};
-`;
-
-export const AniWrapper = styled.View``;
-
-export const StatusWrapper = styled.View`
-  border-radius: 4px;
-  background-color: ${(props) => props.color.background};
-  justify-content: center;
+  overflow: hidden;
 `;

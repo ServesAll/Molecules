@@ -1,9 +1,9 @@
 import styled from "styled-components/native";
 
 export const Wrapper = styled.View`
-flex: 1;
-  min-height: 100px;
+  width: 100%;
+  min-height: 90px;
   background-color: ${(props) => props.theme.color1};
-  borderTopWidth: 1px;
-  borderColor: ${(props) => props.theme.color7};
+  border-top-width: 1px;
+  border-color: ${(props) => props.theme.color7};
 `;
