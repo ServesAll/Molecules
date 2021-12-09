@@ -26,7 +26,7 @@ export default function Container({ children, styles, eventKey }) {
   useEffect(() => {
     isActive != eventKey
       ? isActive
-        ? (opacity.value = 0)
+        ? (opacity.value = 0.5)
         : (opacity.value = 1)
       : (opacity.value = 1);
   }, [isActive]);

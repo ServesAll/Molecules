@@ -42,9 +42,15 @@ const Screen = ({ children, index, activeScreenId = 0, setActiveScreenId }) => {
 
   return (
     <Animated.View style={[animatedWidth]}>
-      <View style={{ flex: 1, overflow: "hidden" }}>
-        {React.cloneElement(children, { setActiveScreenId, index })}
-      </View>
+      {index === activeScreenId && (
+        <View style={{ flex: 1, overflow: "hidden" }}>
+          {React.cloneElement(children, {
+            setActiveScreenId,
+            index,
+            activeScreenId,
+          })}
+        </View>
+      )}
     </Animated.View>
   );
 };

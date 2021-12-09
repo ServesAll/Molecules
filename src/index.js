@@ -15,6 +15,11 @@ import BookingMerchant from "./BookingMerchant";
 import Actions from "./Actions";
 import SlideScreen from "./SlideScreen";
 import Screen from "./SlideScreen/Screen";
+import DateRange from "./Calendar";
+import WeekdaySelector from "./WeekdaySelector";
+import TimeSelector from "./TimeSelector";
+import ResourceDragAndDrop from "./ResourceDragAndDrop";
+import Duration from "./DurationSelector";
 
 export {
   Modal,
@@ -32,4 +37,9 @@ export {
   Actions,
   SlideScreen,
   Screen,
+  DateRange,
+  WeekdaySelector,
+  TimeSelector,
+  ResourceDragAndDrop,
+  Duration,
 };

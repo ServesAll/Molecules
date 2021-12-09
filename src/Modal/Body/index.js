@@ -6,7 +6,7 @@ import Animated, {
   useAnimatedGestureHandler,
   runOnJS,
 } from "react-native-reanimated";
-import { SafeAreaView, Dimensions, Platform } from "react-native";
+import { SafeAreaView, Dimensions, Platform, StatusBar } from "react-native";
 import {
   GestureHandlerRootView,
   PanGestureHandler,
@@ -82,15 +82,25 @@ export default function Body({
 
   return (
     <SafeAreaView>
+      <StatusBar
+        animated={true}
+        backgroundColor="rgba(0,0,0,0.6)"
+        barStyle="light-content"
+      />
       <GestureHandlerRootView>
-        <PanGestureHandler onGestureEvent={gestureHandler}>
+        <PanGestureHandler
+          activeOffsetY={[-10, 10]}
+          onGestureEvent={gestureHandler}
+        >
           <Animated.View
             style={[
               {
-                height:
-                  Dimensions.get("window").height - offsetTop - statusBarHeight,
+                height: Dimensions.get("window").height - offsetTop,
                 zIndex: 11,
                 backgroundColor: background,
+                borderTopLeftRadius: 8,
+                borderTopRightRadius: 8,
+                overflow: "hidden",
               },
               animatedStyle,
               animatedStylePan,

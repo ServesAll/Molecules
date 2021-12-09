@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Head } from "./Head.style";
-import { findNodeHandle, Pressable } from "react-native";
+import { findNodeHandle, Pressable, View } from "react-native";
 import { Row, Padding } from "@servesall/atoms";
 import LottieView from "lottie-react-native";
 import plusClose from "./Assets/plusClose.json";
@@ -64,22 +64,24 @@ export default function HeadElement({
   useEffect(() => {
     isActive != eventKey
       ? isActive
-        ? (opacity.value = 0)
+        ? (opacity.value = 1)
         : (opacity.value = 1)
-      : (opacity.value = 0);
+      : (opacity.value = 1);
   }, [isActive]);
 
   return (
     <Pressable ref={BodyRef} onPress={() => toggleAccordionItem(eventKey)}>
       <Head styles={style}>
-        <Padding>
-          <Row
-            style={{
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
+        <Row
+          style={{
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <View style={{ flex: 9 }}>
             <Animated.View style={[animatedStyle]}>{children}</Animated.View>
+          </View>
+          <View style={{ flex: 1 }}>
             <Padding>
               <LottieView
                 style={{
@@ -91,8 +93,8 @@ export default function HeadElement({
                 source={plusClose}
               />
             </Padding>
-          </Row>
-        </Padding>
+          </View>
+        </Row>
       </Head>
     </Pressable>
   );

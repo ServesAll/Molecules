@@ -1,13 +1,15 @@
-import React, { useEffect, createElement, Component, useReducer, useRef, useState } from 'react';
-import { Pressable, Platform, SafeAreaView, Dimensions, findNodeHandle, NativeModules, PermissionsAndroid, Linking, Image, View } from 'react-native';
+import React, { useEffect, createElement, Component, useReducer, useRef, useState, useCallback } from 'react';
+import { Pressable, Platform, SafeAreaView, StatusBar, Dimensions, View, findNodeHandle, NativeModules, PermissionsAndroid, Linking, Image, Switch } from 'react-native';
 import Animated, { useSharedValue, useAnimatedStyle, withTiming, Easing, useAnimatedGestureHandler, withSpring, runOnJS, useDerivedValue } from 'react-native-reanimated';
-import { GestureHandlerRootView, PanGestureHandler } from 'react-native-gesture-handler';
+import { GestureHandlerRootView, PanGestureHandler, FlatList, ScrollView as ScrollView$1 } from 'react-native-gesture-handler';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
-import { useThemeContext, Padding, Row, AnimatedButton, Center, Success, Error as Error$1, Loader, MarginHorizontal, H3, Icon, PaddingVertical, H2, PaddingTop, H4, PaddingHorizontal, Margin } from '@servesall/atoms';
+import { useThemeContext, Row, Padding, AnimatedButton, Center, Success, Error as Error$1, Loader, MarginHorizontal, H3, Icon, PaddingVertical, H2, PaddingTop, H4, PaddingHorizontal, Margin, Stretch, CenterLeft } from '@servesall/atoms';
 import LottieView from 'lottie-react-native';
 import MapView from 'react-native-maps';
 import ImagePicker from 'react-native-image-crop-picker';
 import format$1 from 'date-fns/format';
+import startOfMonth from 'date-fns/startOfMonth';
+import { format as format$2, add } from 'date-fns';
 
 function Background(_ref) {
   var children = _ref.children,
@@ -134,8 +136,20 @@ function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
 }
 
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
+}
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
+}
+
 function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
+}
+
+function _iterableToArray(iter) {
+  if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
 }
 
 function _iterableToArrayLimit(arr, i) {
@@ -180,6 +194,10 @@ function _arrayLikeToArray(arr, len) {
   for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
 
   return arr2;
+}
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 
 function _nonIterableRest() {
@@ -9613,8 +9631,8 @@ aliases.split(/\s+/m).forEach(function (alias) {
 
 var _templateObject, _templateObject2, _templateObject3, _templateObject4;
 var Body = styled.View(_templateObject || (_templateObject = _taggedTemplateLiteral([""])));
-var PanBarWrap = styled.View(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  height: 30px;\n  align-items: center;\n  justify-content: center;\n  z-index: 12;\n"])));
-var PanBar = styled.View(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  width: 180px;\n  background-color: rgba(0, 0, 0, 0.5);\n  height: 6px;\n  border-radius: 3px;\n"])));
+var PanBarWrap = styled.View(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  height: 50px;\n  align-items: center;\n  justify-content: center;\n  z-index: 12;\n"])));
+var PanBar = styled.View(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  width: 100px;\n  background-color: rgba(0, 0, 0, 0.3);\n  height: 6px;\n  border-radius: 3px;\n"])));
 var BodyWrap = styled.View(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n  height: ", "px;\n"])), function (props) {
   return props.height;
 });
@@ -9752,13 +9770,21 @@ function Body$1(_ref) {
     return _f;
   }());
   var PlatformGracePadding = Platform.OS === "ios" ? 30 : 0;
-  return /*#__PURE__*/React.createElement(SafeAreaView, null, /*#__PURE__*/React.createElement(GestureHandlerRootView, null, /*#__PURE__*/React.createElement(PanGestureHandler, {
+  return /*#__PURE__*/React.createElement(SafeAreaView, null, /*#__PURE__*/React.createElement(StatusBar, {
+    animated: true,
+    backgroundColor: "rgba(0,0,0,0.6)",
+    barStyle: "light-content"
+  }), /*#__PURE__*/React.createElement(GestureHandlerRootView, null, /*#__PURE__*/React.createElement(PanGestureHandler, {
+    activeOffsetY: [-10, 10],
     onGestureEvent: gestureHandler
   }, /*#__PURE__*/React.createElement(Animated.View, {
     style: [{
-      height: Dimensions.get("window").height - offsetTop - statusBarHeight,
+      height: Dimensions.get("window").height - offsetTop,
       zIndex: 11,
-      backgroundColor: background
+      backgroundColor: background,
+      borderTopLeftRadius: 8,
+      borderTopRightRadius: 8,
+      overflow: "hidden"
     }, animatedStyle, animatedStylePan]
   }, /*#__PURE__*/React.createElement(BodyWrap, {
     height: Dimensions.get("window").height - offsetTop - statusBarHeight - PlatformGracePadding
@@ -9781,10 +9807,8 @@ var Modal = function Modal(_ref) {
 };
 
 var _templateObject$1;
-var Wrapper = styled.View(_templateObject$1 || (_templateObject$1 = _taggedTemplateLiteral(["\n  border-width: 1px;\n  background-color: ", ";\n  border-color: ", ";\n  border-radius: ", ";\n  ", ";\n"])), function (props) {
-  return props.theme.color1;
-}, function (props) {
-  return props.border ? props.theme.color7 : props.theme.color1;
+var Wrapper = styled.View(_templateObject$1 || (_templateObject$1 = _taggedTemplateLiteral(["\n  background-color: ", ";\n  border-radius: ", ";\n  ", ";\n"])), function (props) {
+  return props.background ? props.theme.color1 : "transparent";
 }, function (props) {
   return props.theme.borderRadius;
 }, function (props) {
@@ -9880,7 +9904,7 @@ function Container$1(_ref) {
     return _f;
   }());
   useEffect(function () {
-    isActive != eventKey ? isActive ? opacity.value = 0 : opacity.value = 1 : opacity.value = 1;
+    isActive != eventKey ? isActive ? opacity.value = 0.5 : opacity.value = 1 : opacity.value = 1;
   }, [isActive]);
   var theme = useThemeContext();
   return /*#__PURE__*/React.createElement(Animated.View, {
@@ -9892,9 +9916,12 @@ function Container$1(_ref) {
   }, children));
 }
 
-var _templateObject$2;
+var _templateObject$2, _templateObject2$1;
 var Head = styled.View(_templateObject$2 || (_templateObject$2 = _taggedTemplateLiteral(["\n  ", ";\n"])), function (props) {
   return props.styles;
+});
+var Wrap = styled.View(_templateObject2$1 || (_templateObject2$1 = _taggedTemplateLiteral(["\n  background-color: ", ";\n  border-radius: 30px;\n"])), function (props) {
+  return props.theme.color1;
 });
 
 var ip = 0;
@@ -10618,7 +10645,7 @@ function HeadElement(_ref) {
     return _f;
   }());
   useEffect(function () {
-    isActive != eventKey ? isActive ? opacity.value = 0 : opacity.value = 1 : opacity.value = 0;
+    isActive != eventKey ? isActive ? opacity.value = 1 : opacity.value = 1 : opacity.value = 1;
   }, [isActive]);
   return /*#__PURE__*/React.createElement(Pressable, {
     ref: BodyRef,
@@ -10627,14 +10654,22 @@ function HeadElement(_ref) {
     }
   }, /*#__PURE__*/React.createElement(Head, {
     styles: style
-  }, /*#__PURE__*/React.createElement(Padding, null, /*#__PURE__*/React.createElement(Row, {
+  }, /*#__PURE__*/React.createElement(Row, {
     style: {
       alignItems: "center",
       justifyContent: "space-between"
     }
+  }, /*#__PURE__*/React.createElement(View, {
+    style: {
+      flex: 9
+    }
   }, /*#__PURE__*/React.createElement(Animated.View, {
     style: [animatedStyle]
-  }, children), /*#__PURE__*/React.createElement(Padding, null, /*#__PURE__*/React.createElement(LottieView, {
+  }, children)), /*#__PURE__*/React.createElement(View, {
+    style: {
+      flex: 1
+    }
+  }, /*#__PURE__*/React.createElement(Padding, null, /*#__PURE__*/React.createElement(LottieView, {
     style: {
       height: 15
     },
@@ -10655,10 +10690,10 @@ var Body$2 = styled.View(_templateObject$3 || (_templateObject$3 = _taggedTempla
 function BodyElement(_ref) {
   var children = _ref.children,
       isOpen = _ref.isOpen;
-  var height = useSharedValue(1);
+  var minHeight = useSharedValue(Dimensions.get("screen").height - 180);
   var transition = useDerivedValue(function () {
     const _f = function () {
-      return isOpen ? withSpring(height.value, {
+      return isOpen ? withSpring(minHeight.value, {
         damping: 10,
         stiffness: 90,
         mass: 0.5
@@ -10671,15 +10706,15 @@ function BodyElement(_ref) {
     _f._closure = {
       isOpen,
       withSpring,
-      height,
+      minHeight,
       withTiming,
       Easing: {
         bezier: Easing.bezier
       }
     };
-    _f.asString = "function _f(){const{isOpen,withSpring,height,withTiming,Easing}=jsThis._closure;{return isOpen?withSpring(height.value,{damping:10,stiffness:90,mass:0.5}):withTiming(1,{duration:250,easing:Easing.bezier(0.19,1.0,0.22,1.0)});}}";
-    _f.__workletHash = 3852969352693;
-    _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Accordion/Views/Body/index.js (15:37)";
+    _f.asString = "function _f(){const{isOpen,withSpring,minHeight,withTiming,Easing}=jsThis._closure;{return isOpen?withSpring(minHeight.value,{damping:10,stiffness:90,mass:0.5}):withTiming(1,{duration:250,easing:Easing.bezier(0.19,1.0,0.22,1.0)});}}";
+    _f.__workletHash = 11443503723989;
+    _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Accordion/Views/Body/index.js (16:37)";
 
     global.__reanimatedWorkletInit(_f);
 
@@ -10688,16 +10723,16 @@ function BodyElement(_ref) {
   var animatedStyle = useAnimatedStyle(function () {
     const _f = function () {
       return {
-        height: transition.value
+        minHeight: transition.value
       };
     };
 
     _f._closure = {
       transition
     };
-    _f.asString = "function _f(){const{transition}=jsThis._closure;{return{height:transition.value};}}";
-    _f.__workletHash = 13081534320656;
-    _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Accordion/Views/Body/index.js (28:41)";
+    _f.asString = "function _f(){const{transition}=jsThis._closure;{return{minHeight:transition.value};}}";
+    _f.__workletHash = 9675814893242;
+    _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Accordion/Views/Body/index.js (29:41)";
 
     global.__reanimatedWorkletInit(_f);
 
@@ -10705,14 +10740,11 @@ function BodyElement(_ref) {
   }());
   return /*#__PURE__*/React.createElement(Animated.View, {
     style: [{
-      height: 1,
+      minHeight: 1,
       overflow: "hidden"
     }, animatedStyle]
   }, /*#__PURE__*/React.createElement(Body$2, {
-    isOpen: isOpen,
-    onLayout: function onLayout(e) {
-      return height.value = e.nativeEvent.layout.height;
-    }
+    isOpen: isOpen
   }, children));
 }
 
@@ -10851,13 +10883,13 @@ function AccordionScroll(_ref) {
   }, children);
 }
 
-var _templateObject$5, _templateObject2$1;
+var _templateObject$5, _templateObject2$2;
 var MapWrapper = styled.View(_templateObject$5 || (_templateObject$5 = _taggedTemplateLiteral(["\n  align-items: center;\n  justify-content: center;\n  height: 400px;\n  overflow: hidden;\n  border-radius: ", ";\n  margin: ", " 0;\n"])), function (props) {
   return props.theme.borderRadius;
 }, function (props) {
   return props.theme.padding;
 });
-var MarkerWrapper = styled.View(_templateObject2$1 || (_templateObject2$1 = _taggedTemplateLiteral(["\n  position: absolute;\n  z-index: 9;\n  width: 80px;\n  height: 120px;\n  align-items: center;\n    justify-content: center;\n"])));
+var MarkerWrapper = styled.View(_templateObject2$2 || (_templateObject2$2 = _taggedTemplateLiteral(["\n  position: absolute;\n  z-index: 9;\n  width: 80px;\n  height: 120px;\n  align-items: center;\n    justify-content: center;\n"])));
 
 /**
 * MIT License
@@ -12197,13 +12229,13 @@ function Map$1(_ref) {
   })));
 }
 
-var _templateObject$6, _templateObject2$2;
+var _templateObject$6, _templateObject2$3;
 var UploadWrapper = styled.View(_templateObject$6 || (_templateObject$6 = _taggedTemplateLiteral(["\n  aspect-ratio: 1.5;\n  overflow: hidden;\n  background-color: ", ";\n  border-radius: ", ";\n"])), function (props) {
   return props.theme.color7;
 }, function (props) {
   return props.theme.borderRadius;
 });
-var UploadIconWrapper = styled.View(_templateObject2$2 || (_templateObject2$2 = _taggedTemplateLiteral(["\n  position: absolute;\n  z-index: 9;\n  width: 100%;\n  height: 100%;\n  align-items: center;\n  justify-content: center;\n"])));
+var UploadIconWrapper = styled.View(_templateObject2$3 || (_templateObject2$3 = _taggedTemplateLiteral(["\n  position: absolute;\n  z-index: 9;\n  width: 100%;\n  height: 100%;\n  align-items: center;\n  justify-content: center;\n"])));
 
 var ip$2 = 0;
 var fr$2 = 60;
@@ -12980,11 +13012,11 @@ var UploadIcon = function UploadIcon() {
   });
 };
 
-var _templateObject$7, _templateObject2$3, _templateObject3$1;
+var _templateObject$7, _templateObject2$4, _templateObject3$1;
 var ImageLoaderWrapper = styled.View(_templateObject$7 || (_templateObject$7 = _taggedTemplateLiteral(["\n  flex: 1;\n  align-items: stretch;\n  justify-content: center;\n  background-color: ", ";\n"])), function (props) {
   return props.background;
 });
-var ImagePreload = styled(LottieView)(_templateObject2$3 || (_templateObject2$3 = _taggedTemplateLiteral(["\n  align-items: stretch;\n  justify-content: center;\n"])));
+var ImagePreload = styled(LottieView)(_templateObject2$4 || (_templateObject2$4 = _taggedTemplateLiteral(["\n  align-items: stretch;\n  justify-content: center;\n"])));
 var ImageComponent = styled.Image(_templateObject3$1 || (_templateObject3$1 = _taggedTemplateLiteral(["\n  flex: 1;\n  justify-content: center;\n  opacity: ", ";\n"])), function (props) {
   return props.showImage ? 1 : 0;
 });
@@ -13630,20 +13662,19 @@ function ImageUpload(_ref) {
   }, /*#__PURE__*/React.createElement(UploadWrapper, {
     theme: theme
   }, image && /*#__PURE__*/React.createElement(ImageLoader, {
-    background: theme.color1,
+    background: theme.color7,
     imageUrl: image
   }), !image && /*#__PURE__*/React.createElement(UploadIconWrapper, null, /*#__PURE__*/React.createElement(UploadIcon, null))));
 }
 
 var _templateObject$8;
-var Wrapper$1 = styled.View(_templateObject$8 || (_templateObject$8 = _taggedTemplateLiteral(["\n  width: 100%;\n  min-height: 90px;\n  background-color: ", ";\n  border-top-width: 1px;\n  border-color: ", ";\n"])), function (props) {
+var Wrapper$1 = styled.View(_templateObject$8 || (_templateObject$8 = _taggedTemplateLiteral(["\n  width: 100%;\n  min-height: 90px;\n  background-color: ", ";\n"])), function (props) {
   return props.theme.color1;
-}, function (props) {
-  return props.theme.color7;
 });
 
 var FooterActions = React.memo(function (_ref) {
-  var _ref$leftElement = _ref.leftElement,
+  var children = _ref.children,
+      _ref$leftElement = _ref.leftElement,
       leftElement = _ref$leftElement === void 0 ? false : _ref$leftElement,
       active = _ref.active,
       loading = _ref.loading,
@@ -13655,18 +13686,23 @@ var FooterActions = React.memo(function (_ref) {
 
   return /*#__PURE__*/React.createElement(Wrapper$1, {
     theme: theme
-  }, /*#__PURE__*/React.createElement(Padding, {
-    style: _objectSpread2({
-      flex: 1
-    }, (loading || success || error) && {
-      margin: 0
-    })
   }, /*#__PURE__*/React.createElement(Row, {
     style: {
       flex: 1,
-      justifyContent: "space-between"
+      justifyContent: "center",
+      alignItems: "center"
     }
-  }, leftElement, /*#__PURE__*/React.createElement(AnimatedButton, {
+  }, leftElement, /*#__PURE__*/React.createElement(View, {
+    style: _objectSpread2({
+      justifyContent: "center",
+      alignItems: "center",
+      flex: 1.6,
+      height: "100%"
+    }, (loading || success || error) && {
+      margin: 0
+    })
+  }, /*#__PURE__*/React.createElement(AnimatedButton, {
+    leftElement: leftElement,
     active: active,
     color: loading ? "transparent" : theme.color2,
     loading: loading,
@@ -13680,7 +13716,7 @@ var FooterActions = React.memo(function (_ref) {
     LoaderElement: /*#__PURE__*/React.createElement(Center, null, /*#__PURE__*/React.createElement(Loader, {
       color: theme.color2
     }))
-  }, /*#__PURE__*/React.createElement(Center, null, /*#__PURE__*/React.createElement(Row, null, /*#__PURE__*/React.createElement(MarginHorizontal, null, /*#__PURE__*/React.createElement(H3, {
+  }, /*#__PURE__*/React.createElement(Center, null, children || /*#__PURE__*/React.createElement(Row, null, /*#__PURE__*/React.createElement(MarginHorizontal, null, /*#__PURE__*/React.createElement(H3, {
     color: theme.color1
   }, "Submit")), /*#__PURE__*/React.createElement(Icon, {
     icon: "next",
@@ -13690,11 +13726,11 @@ var FooterActions = React.memo(function (_ref) {
   })))))));
 });
 
-var _templateObject$9, _templateObject2$4;
+var _templateObject$9, _templateObject2$5;
 var MerchantCardWrapper = styled.View(_templateObject$9 || (_templateObject$9 = _taggedTemplateLiteral(["\n  margin: ", ";\n"])), function (props) {
   return props.theme.margin;
 });
-var ImageWrapper = styled.View(_templateObject2$4 || (_templateObject2$4 = _taggedTemplateLiteral(["\n  aspect-ratio: 1.7;\n  border-radius: ", ";\n  overflow: hidden;\n"])), function (props) {
+var ImageWrapper = styled.View(_templateObject2$5 || (_templateObject2$5 = _taggedTemplateLiteral(["\n  aspect-ratio: 1.7;\n  border-radius: ", ";\n  overflow: hidden;\n"])), function (props) {
   return props.theme.borderRadius;
 });
 
@@ -13711,7 +13747,7 @@ function MerchantCard(_ref) {
   })), /*#__PURE__*/React.createElement(PaddingVertical, null, /*#__PURE__*/React.createElement(H2, null, merchant.name)));
 }
 
-var _templateObject$a, _templateObject2$5, _templateObject3$2;
+var _templateObject$a, _templateObject2$6, _templateObject3$2;
 var Wrapper$2 = styled.View(_templateObject$a || (_templateObject$a = _taggedTemplateLiteral(["\n  flex: 1;\n  border-width: 1px;\n  border-color: ", ";\n  border-radius: ", ";\n  background-color: ", ";\n"])), function (props) {
   return props.theme.color7;
 }, function (props) {
@@ -13719,7 +13755,7 @@ var Wrapper$2 = styled.View(_templateObject$a || (_templateObject$a = _taggedTem
 }, function (props) {
   return props.theme.color1;
 });
-var AniWrapper = styled.View(_templateObject2$5 || (_templateObject2$5 = _taggedTemplateLiteral([""])));
+var AniWrapper = styled.View(_templateObject2$6 || (_templateObject2$6 = _taggedTemplateLiteral([""])));
 var StatusWrapper = styled.View(_templateObject3$2 || (_templateObject3$2 = _taggedTemplateLiteral(["\n  border-radius: 4px;\n  background-color: ", ";\n  justify-content: center;\n"])), function (props) {
   return props.color.background;
 });
@@ -20532,60 +20568,1161 @@ var Screen = function Screen(_ref) {
   }, [activeScreenId]);
   return /*#__PURE__*/React.createElement(Animated.View, {
     style: [animatedWidth]
-  }, /*#__PURE__*/React.createElement(View, {
+  }, index === activeScreenId && /*#__PURE__*/React.createElement(View, {
     style: {
       flex: 1,
       overflow: "hidden"
     }
   }, React.cloneElement(children, {
     setActiveScreenId: setActiveScreenId,
-    index: index
+    index: index,
+    activeScreenId: activeScreenId
   })));
 };
 
-var BackButton = function BackButton(_ref) {
-  var activeScreenId = _ref.activeScreenId,
-      setActiveScreenId = _ref.setActiveScreenId;
-
-  var _useThemeContext = useThemeContext(),
-      color2 = _useThemeContext.color2;
-
-  if (!activeScreenId) return null;
-  return /*#__PURE__*/React.createElement(Pressable, {
-    onPress: function onPress() {
-      return setActiveScreenId(activeScreenId - 1);
-    }
-  }, /*#__PURE__*/React.createElement(Margin, null, /*#__PURE__*/React.createElement(Icon, {
-    icon: "back",
-    size: "medium",
-    autoplay: false,
-    loop: false,
-    color: color2
-  })));
-};
-
-var SlideScreen = function SlideScreen(_ref2) {
-  var children = _ref2.children;
+var SlideScreen = function SlideScreen(_ref) {
+  var children = _ref.children;
 
   var _useState = useState(0),
       _useState2 = _slicedToArray(_useState, 2),
       activeScreenId = _useState2[0],
       setActiveScreenId = _useState2[1];
 
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(BackButton, {
-    activeScreenId: activeScreenId,
-    setActiveScreenId: setActiveScreenId
-  }), /*#__PURE__*/React.createElement(Row, {
+  return /*#__PURE__*/React.createElement(Row, {
     style: {
       flex: 1
     }
-  }, children.map(function (component, index) {
+  }, React.Children.toArray(children).map(function (component, index) {
     return /*#__PURE__*/React.createElement(Screen, {
+      key: index,
       index: index,
       activeScreenId: activeScreenId,
       setActiveScreenId: setActiveScreenId
     }, component);
-  })));
+  }));
 };
 
-export { AccordionItem, AccordionProvider, AccordionScroll, AccordionScroller, Actions, BookingMerchant, FooterActions, ImageLoader, ImageUpload, Map$1 as Map, MerchantCard, Modal, Screen, SlideScreen, useAccordionContext };
+var FlatDay = React.memo(function (_ref) {
+  var day = _ref.day,
+      theme = _ref.theme,
+      onClick = _ref.onClick,
+      index = _ref.index,
+      isSelected = _ref.isSelected,
+      inRange = _ref.inRange,
+      isCompleteStart = _ref.isCompleteStart,
+      isCompleteEnd = _ref.isCompleteEnd;
+  return /*#__PURE__*/React.createElement(Pressable, {
+    onPress: function onPress() {
+      return onClick(index);
+    },
+    style: {
+      width: "14%",
+      height: 50,
+      justifyContent: "center",
+      zIndex: 1
+    }
+  }, inRange && /*#__PURE__*/React.createElement(View, {
+    style: {
+      backgroundColor: theme.color10,
+      position: "absolute",
+      width: "101%",
+      height: 40,
+      top: 5,
+      zIndex: -1
+    }
+  }), isSelected && /*#__PURE__*/React.createElement(View, {
+    style: {
+      backgroundColor: theme.color2,
+      position: "absolute",
+      width: 50,
+      height: 50,
+      borderRadius: 25,
+      zIndex: 2
+    }
+  }), isCompleteStart && /*#__PURE__*/React.createElement(View, {
+    style: {
+      backgroundColor: theme.color10,
+      position: "absolute",
+      width: "51%",
+      height: 40,
+      top: 5,
+      right: 0,
+      zIndex: -1
+    }
+  }), isCompleteEnd && /*#__PURE__*/React.createElement(View, {
+    style: {
+      backgroundColor: theme.color10,
+      position: "absolute",
+      width: "51%",
+      height: 40,
+      top: 5,
+      left: 0,
+      zIndex: -1
+    }
+  }), /*#__PURE__*/React.createElement(H3, {
+    align: "center",
+    style: {
+      zIndex: 3
+    },
+    color: isSelected ? theme.color1 : theme.color2,
+    fontFamily: theme.fontFamily2
+  }, day));
+});
+
+var FlatMonth = function FlatMonth(_ref) {
+  var month = _ref.month,
+      setRange = _ref.setRange,
+      startDate = _ref.startDate,
+      endDate = _ref.endDate;
+  var theme = useThemeContext();
+  return /*#__PURE__*/React.createElement(View, {
+    style: {
+      height: 370
+    }
+  }, /*#__PURE__*/React.createElement(Padding, null, /*#__PURE__*/React.createElement(Margin, null, /*#__PURE__*/React.createElement(H3, null, month.title))), /*#__PURE__*/React.createElement(MarginHorizontal, null, /*#__PURE__*/React.createElement(View, {
+    style: {
+      flexDirection: "row",
+      flex: 1,
+      flexWrap: "wrap"
+    }
+  }, month.datesArr.map(function (item, index) {
+    var setIndex = month.monthNum + item;
+    var selected = startDate === setIndex || endDate === setIndex;
+    var inRange = startDate < setIndex && endDate > setIndex;
+    var isCompleteStart = startDate && endDate && startDate === setIndex;
+    var isCompleteEnd = startDate && endDate && endDate === setIndex;
+    return /*#__PURE__*/React.createElement(FlatDay, {
+      onClick: setRange,
+      theme: theme,
+      day: item,
+      index: setIndex,
+      isSelected: selected,
+      inRange: inRange,
+      isCompleteStart: isCompleteStart,
+      isCompleteEnd: isCompleteEnd,
+      key: item ? setIndex : "".concat(index).concat(month.title)
+    });
+  }))));
+};
+
+var year = new Date().getFullYear();
+var calendar = [{
+  month: "January",
+  days: 31,
+  monthNum: 100,
+  firstDay: startOfMonth(new Date(year, 0))
+}, {
+  month: "Febuary",
+  days: 28,
+  monthNum: 200,
+  firstDay: startOfMonth(new Date(year, 1))
+}, {
+  month: "March",
+  days: 31,
+  monthNum: 300,
+  firstDay: startOfMonth(new Date(year, 2))
+}, {
+  month: "April",
+  days: 30,
+  monthNum: 400,
+  firstDay: startOfMonth(new Date(year, 3))
+}, {
+  month: "May",
+  days: 31,
+  monthNum: 500,
+  firstDay: startOfMonth(new Date(year, 4))
+}, {
+  month: "June",
+  days: 30,
+  monthNum: 600,
+  firstDay: startOfMonth(new Date(year, 5))
+}, {
+  month: "July",
+  days: 31,
+  monthNum: 700,
+  firstDay: startOfMonth(new Date(year, 6))
+}, {
+  month: "August",
+  days: 31,
+  monthNum: 800,
+  firstDay: startOfMonth(new Date(year, 7))
+}, {
+  month: "September",
+  days: 30,
+  monthNum: 900,
+  firstDay: startOfMonth(new Date(year, 8))
+}, {
+  month: "October",
+  days: 31,
+  monthNum: 1000,
+  firstDay: startOfMonth(new Date(year, 9))
+}, {
+  month: "November",
+  days: 30,
+  monthNum: 1100,
+  firstDay: startOfMonth(new Date(year, 10))
+}, {
+  month: "December",
+  days: 31,
+  monthNum: 1200,
+  firstDay: startOfMonth(new Date(year, 11))
+}];
+
+var Weekdays = function Weekdays() {
+  var theme = useThemeContext();
+  return /*#__PURE__*/React.createElement(View, {
+    style: {
+      backgroundColor: theme.color1
+    }
+  }, /*#__PURE__*/React.createElement(MarginHorizontal, null, /*#__PURE__*/React.createElement(Padding, null, /*#__PURE__*/React.createElement(Row, {
+    style: {
+      justifyContent: "space-between"
+    }
+  }, /*#__PURE__*/React.createElement(Center, {
+    style: {
+      minWidth: "14%"
+    }
+  }, /*#__PURE__*/React.createElement(H3, {
+    fontFamily: theme.fontFamily2
+  }, "Mo")), /*#__PURE__*/React.createElement(Center, {
+    style: {
+      minWidth: "14%"
+    }
+  }, /*#__PURE__*/React.createElement(H3, {
+    fontFamily: theme.fontFamily2
+  }, "Tu")), /*#__PURE__*/React.createElement(Center, {
+    style: {
+      minWidth: "14%"
+    }
+  }, /*#__PURE__*/React.createElement(H3, {
+    fontFamily: theme.fontFamily2
+  }, "We")), /*#__PURE__*/React.createElement(Center, {
+    style: {
+      minWidth: "14%"
+    }
+  }, /*#__PURE__*/React.createElement(H3, {
+    fontFamily: theme.fontFamily2
+  }, "Th")), /*#__PURE__*/React.createElement(Center, {
+    style: {
+      minWidth: "14%"
+    }
+  }, /*#__PURE__*/React.createElement(H3, {
+    fontFamily: theme.fontFamily2
+  }, "Fr")), /*#__PURE__*/React.createElement(Center, {
+    style: {
+      minWidth: "14%"
+    }
+  }, /*#__PURE__*/React.createElement(H3, {
+    fontFamily: theme.fontFamily2
+  }, "Sa")), /*#__PURE__*/React.createElement(Center, {
+    style: {
+      minWidth: "14%"
+    }
+  }, /*#__PURE__*/React.createElement(H3, {
+    fontFamily: theme.fontFamily2
+  }, "Su"))))));
+};
+
+var arrayOfDays = function arrayOfDays(_ref) {
+  var firstDay = _ref.firstDay,
+      days = _ref.days;
+  var daysArray = [];
+
+  for (var i = 1; i <= days; i++) {
+    daysArray.push(i);
+  }
+
+  var firstDayFix = firstDay.getDay();
+  if (firstDayFix === 0) firstDayFix = 7;
+
+  for (var _i = 2; _i <= firstDayFix; _i++) {
+    daysArray.unshift(false);
+  }
+
+  return daysArray;
+};
+
+var renderMonth = function renderMonth() {
+  var DATA = [{
+    title: "weekdays",
+    weekdays: true,
+    id: "weekdays"
+  }];
+  calendar.map(function (item) {
+    DATA.push({
+      title: item.month,
+      id: item.month,
+      monthNum: item.monthNum,
+      datesArr: arrayOfDays({
+        firstDay: item.firstDay,
+        days: item.days
+      })
+    });
+  });
+  return DATA;
+};
+
+var FlatCalendar = React.memo(function (_ref2) {
+  var start = _ref2.start,
+      end = _ref2.end,
+      onSelect = _ref2.onSelect,
+      isOnedayRange = _ref2.isOnedayRange,
+      ListHeaderComponent = _ref2.ListHeaderComponent;
+
+  var _useState = useState(start),
+      _useState2 = _slicedToArray(_useState, 2),
+      startDate = _useState2[0],
+      setStartDate = _useState2[1];
+
+  var _useState3 = useState(end),
+      _useState4 = _slicedToArray(_useState3, 2),
+      endDate = _useState4[0],
+      setEndDate = _useState4[1];
+
+  var scrollEl = useRef();
+
+  var setRange = function setRange(date) {
+    if (startDate && endDate) {
+      setStartDate(date);
+      setEndDate(false);
+    }
+
+    if (startDate && !endDate) {
+      if (date < startDate) {
+        setStartDate(date);
+        setEndDate(false);
+      } else {
+        setEndDate(date);
+      }
+    }
+
+    if (!startDate && !endDate) {
+      setStartDate(date);
+    }
+  };
+
+  useEffect(function () {
+    startDate && scrollEl.current.scrollToIndex({
+      animated: false,
+      index: Math.trunc(startDate / 100) - 1
+    });
+  }, []);
+  useEffect(function () {
+    startDate && onSelect({
+      key: "startDate",
+      value: startDate
+    });
+    endDate && onSelect({
+      key: "endDate",
+      value: endDate
+    });
+  }, [startDate, endDate]);
+  var renderItem = useCallback(function (_ref3) {
+    var item = _ref3.item;
+
+    if (item.weekdays) {
+      return /*#__PURE__*/React.createElement(Weekdays, null);
+    } else {
+      return /*#__PURE__*/React.createElement(FlatMonth, {
+        setRange: setRange,
+        startDate: startDate,
+        endDate: endDate,
+        month: item
+      });
+    }
+  }, [startDate, endDate]);
+  var keyExtractor = useCallback(function (item) {
+    return item.id;
+  }, []);
+  return /*#__PURE__*/React.createElement(View, {
+    style: {
+      flex: 1
+    }
+  }, /*#__PURE__*/React.createElement(FlatList, {
+    ref: scrollEl,
+    getItemLayout: function getItemLayout(data, index) {
+      return {
+        length: 370,
+        offset: 370 * index,
+        index: index
+      };
+    },
+    data: renderMonth(),
+    renderItem: renderItem,
+    keyExtractor: keyExtractor,
+    initialNumToRender: 1,
+    maxToRenderPerBatch: 1,
+    removeClippedSubviews: true,
+    extraData: {
+      startDate: startDate,
+      endDate: endDate
+    },
+    windowSize: 3,
+    ListHeaderComponent: ListHeaderComponent,
+    stickyHeaderIndices: [1]
+  }));
+});
+
+var DateRange = React.memo(function (_ref) {
+  var _ref$startDate = _ref.startDate,
+      startDate = _ref$startDate === void 0 ? false : _ref$startDate,
+      _ref$endDate = _ref.endDate,
+      endDate = _ref$endDate === void 0 ? false : _ref$endDate,
+      _ref$isOnedayRange = _ref.isOnedayRange,
+      isOnedayRange = _ref$isOnedayRange === void 0 ? false : _ref$isOnedayRange,
+      onSelect = _ref.onSelect,
+      _ref$ListHeaderCompon = _ref.ListHeaderComponent,
+      ListHeaderComponent = _ref$ListHeaderCompon === void 0 ? null : _ref$ListHeaderCompon;
+  var theme = useThemeContext();
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(FlatCalendar, {
+    isOnedayRange: isOnedayRange,
+    theme: theme,
+    start: startDate,
+    end: endDate,
+    onSelect: onSelect,
+    ListHeaderComponent: /*#__PURE__*/React.createElement(ListHeaderComponent, null)
+  }));
+});
+
+var Weekday = React.memo(function (_ref) {
+  var dayName = _ref.dayName,
+      _ref$isActive = _ref.isActive,
+      isActive = _ref$isActive === void 0 ? false : _ref$isActive,
+      weekdayToggle = _ref.weekdayToggle;
+
+  var _useThemeContext = useThemeContext(),
+      color1 = _useThemeContext.color1,
+      color2 = _useThemeContext.color2,
+      color11 = _useThemeContext.color11,
+      color7 = _useThemeContext.color7,
+      fontFamily2 = _useThemeContext.fontFamily2;
+
+  var _useState = useState(isActive),
+      _useState2 = _slicedToArray(_useState, 2),
+      isEnabled = _useState2[0],
+      setIsEnabled = _useState2[1];
+
+  var toggleSwitch = function toggleSwitch() {
+    setIsEnabled(function (previousState) {
+      return !previousState;
+    });
+    var returnWeek = {};
+    returnWeek[dayName] = !isEnabled;
+    weekdayToggle({
+      day: returnWeek
+    });
+  };
+
+  useEffect(function () {
+    setIsEnabled(isActive);
+  }, [isActive]);
+  return /*#__PURE__*/React.createElement(PaddingHorizontal, null, /*#__PURE__*/React.createElement(MarginHorizontal, null, /*#__PURE__*/React.createElement(Padding, {
+    style: {
+      borderBottomWidth: 1,
+      borderColor: color7
+    }
+  }, /*#__PURE__*/React.createElement(PaddingVertical, null, /*#__PURE__*/React.createElement(Stretch, null, /*#__PURE__*/React.createElement(Row, {
+    style: {
+      justifyContent: "space-between"
+    }
+  }, /*#__PURE__*/React.createElement(CenterLeft, null, /*#__PURE__*/React.createElement(H3, {
+    fontFamily: fontFamily2,
+    style: {
+      textTransform: "capitalize"
+    }
+  }, dayName)), /*#__PURE__*/React.createElement(Switch, {
+    trackColor: {
+      false: color2,
+      true: color11
+    },
+    thumbColor: isActive ? color1 : color1,
+    ios_backgroundColor: color2,
+    onValueChange: toggleSwitch,
+    value: isEnabled
+  })))))));
+});
+
+var Weekdays$1 = React.memo(function (_ref) {
+  var days = _ref.days,
+      onSelect = _ref.onSelect,
+      _ref$ListHeaderCompon = _ref.ListHeaderComponent,
+      ListHeaderComponent = _ref$ListHeaderCompon === void 0 ? null : _ref$ListHeaderCompon;
+
+  var _useState = useState({
+    monday: false,
+    tuesday: false,
+    wednesday: false,
+    thursday: false,
+    friday: false,
+    saturday: false,
+    sunday: false
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      weekdays = _useState2[0],
+      setWeekdays = _useState2[1];
+
+  useEffect(function () {
+    if (days) {
+      setWeekdays(_objectSpread2(_objectSpread2({}, weekdays), days));
+    }
+  }, [days]);
+
+  var _weekdayToggle = function weekdayToggle(_ref2) {
+    var day = _ref2.day;
+
+    var newWeekdays = _objectSpread2(_objectSpread2({}, weekdays), day);
+
+    setWeekdays(newWeekdays);
+    onSelect({
+      value: newWeekdays
+    });
+  };
+
+  return /*#__PURE__*/React.createElement(View, {
+    style: {
+      flex: 1
+    }
+  }, /*#__PURE__*/React.createElement(ScrollView$1, null, /*#__PURE__*/React.createElement(ListHeaderComponent, null), /*#__PURE__*/React.createElement(Weekday, {
+    dayName: "monday",
+    isActive: weekdays.monday,
+    weekdayToggle: function weekdayToggle(_ref3) {
+      var day = _ref3.day;
+      return _weekdayToggle({
+        day: day
+      });
+    }
+  }), /*#__PURE__*/React.createElement(Weekday, {
+    dayName: "tuesday",
+    isActive: weekdays.tuesday,
+    weekdayToggle: function weekdayToggle(_ref4) {
+      var day = _ref4.day;
+      return _weekdayToggle({
+        day: day
+      });
+    }
+  }), /*#__PURE__*/React.createElement(Weekday, {
+    dayName: "wednesday",
+    isActive: weekdays.wednesday,
+    weekdayToggle: function weekdayToggle(_ref5) {
+      var day = _ref5.day;
+      return _weekdayToggle({
+        day: day
+      });
+    }
+  }), /*#__PURE__*/React.createElement(Weekday, {
+    dayName: "thursday",
+    isActive: weekdays.thursday,
+    weekdayToggle: function weekdayToggle(_ref6) {
+      var day = _ref6.day;
+      return _weekdayToggle({
+        day: day
+      });
+    }
+  }), /*#__PURE__*/React.createElement(Weekday, {
+    dayName: "friday",
+    isActive: weekdays.friday,
+    weekdayToggle: function weekdayToggle(_ref7) {
+      var day = _ref7.day;
+      return _weekdayToggle({
+        day: day
+      });
+    }
+  }), /*#__PURE__*/React.createElement(Weekday, {
+    dayName: "saturday",
+    isActive: weekdays.saturday,
+    weekdayToggle: function weekdayToggle(_ref8) {
+      var day = _ref8.day;
+      return _weekdayToggle({
+        day: day
+      });
+    }
+  }), /*#__PURE__*/React.createElement(Weekday, {
+    dayName: "sunday",
+    isActive: weekdays.sunday,
+    weekdayToggle: function weekdayToggle(_ref9) {
+      var day = _ref9.day;
+      return _weekdayToggle({
+        day: day
+      });
+    }
+  })));
+});
+
+var Time = React.memo(function (_ref) {
+  var time = _ref.time,
+      _ref$isActive = _ref.isActive,
+      isActive = _ref$isActive === void 0 ? false : _ref$isActive,
+      timeToggle = _ref.timeToggle;
+
+  var _useThemeContext = useThemeContext(),
+      color1 = _useThemeContext.color1,
+      color2 = _useThemeContext.color2,
+      color11 = _useThemeContext.color11,
+      color7 = _useThemeContext.color7,
+      fontFamily2 = _useThemeContext.fontFamily2;
+
+  var _useState = useState(isActive),
+      _useState2 = _slicedToArray(_useState, 2),
+      isEnabled = _useState2[0],
+      setIsEnabled = _useState2[1];
+
+  var toggleSwitch = function toggleSwitch() {
+    setIsEnabled(function (previousState) {
+      return !previousState;
+    });
+    timeToggle(!isEnabled);
+  };
+
+  return /*#__PURE__*/React.createElement(PaddingHorizontal, null, /*#__PURE__*/React.createElement(MarginHorizontal, null, /*#__PURE__*/React.createElement(Padding, {
+    style: {
+      borderBottomWidth: 1,
+      borderColor: color7
+    }
+  }, /*#__PURE__*/React.createElement(PaddingVertical, null, /*#__PURE__*/React.createElement(Stretch, null, /*#__PURE__*/React.createElement(Row, {
+    style: {
+      justifyContent: "space-between"
+    }
+  }, /*#__PURE__*/React.createElement(CenterLeft, null, /*#__PURE__*/React.createElement(H3, {
+    fontFamily: fontFamily2
+  }, time)), /*#__PURE__*/React.createElement(Switch, {
+    trackColor: {
+      false: color2,
+      true: color11
+    },
+    thumbColor: isActive ? color1 : color1,
+    ios_backgroundColor: color2,
+    onValueChange: toggleSwitch,
+    value: isEnabled
+  })))))));
+});
+
+var DividerElement = function DividerElement(_ref) {
+  var name = _ref.name,
+      color = _ref.color;
+  return /*#__PURE__*/React.createElement(MarginHorizontal, null, /*#__PURE__*/React.createElement(Margin, null, /*#__PURE__*/React.createElement(H2, {
+    color: color
+  }, name)));
+};
+
+var Times = React.memo(function (_ref2) {
+  var _ref2$timesSelected = _ref2.timesSelected,
+      timesSelected = _ref2$timesSelected === void 0 ? [] : _ref2$timesSelected,
+      onSelect = _ref2.onSelect,
+      _ref2$ListHeaderCompo = _ref2.ListHeaderComponent,
+      ListHeaderComponent = _ref2$ListHeaderCompo === void 0 ? null : _ref2$ListHeaderCompo;
+
+  var _useState = useState(30),
+      _useState2 = _slicedToArray(_useState, 2),
+      interval = _useState2[0],
+      setInterval = _useState2[1];
+
+  var _useState3 = useState([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      times = _useState4[0],
+      setTimes = _useState4[1];
+
+  var _useState5 = useState(timesSelected),
+      _useState6 = _slicedToArray(_useState5, 2),
+      toggledTimes = _useState6[0],
+      setToggledTimes = _useState6[1];
+
+  useEffect(function () {
+    var hoursArray = [];
+
+    if (interval === 30) {
+      hoursArray = [240, 270, 300, 330, 360, 390, 420, 450, 480, 510, 540, 570, 600, 630, 660, 690, 720, 750, 780, 810, 840, 870, 900, 930, 960, 990, 1020, 1050, 1080, 1110, 1140, 1170, 1200, 1230, 1260, 1290, 1320, 1350, 1380, 1410, 1440, 30, 60, 90, 120, 150, 180, 210];
+    } else {
+      hoursArray = [240, 300, 360, 420, 480, 540, 600, 660, 720, 780, 840, 900, 960, 1020, 1080, 1140, 1200, 1260, 1320, 1380, 1440, 60, 120, 180];
+    }
+
+    var hourArr = [];
+    hoursArray.map(function (item) {
+      hourArr.push({
+        time: format$2(add(new Date("2021-01-01T00:00:00.000+01:00"), {
+          minutes: item
+        }), "hh:mm bbbb"),
+        minuteValue: item
+      });
+    });
+    setTimes(hourArr);
+  }, [interval]);
+
+  var filterTimes = function filterTimes(_ref3) {
+    var minuteValue = _ref3.minuteValue,
+        value = _ref3.value;
+
+    if (!value) {
+      var newArrOfTimes = toggledTimes.filter(function (item) {
+        return item !== minuteValue;
+      });
+      setToggledTimes(newArrOfTimes);
+      onSelect({
+        key: "times",
+        value: newArrOfTimes
+      });
+    } else {
+      var _newArrOfTimes = toggledTimes.filter(function (item) {
+        return item !== minuteValue;
+      });
+
+      setToggledTimes([].concat(_toConsumableArray(_newArrOfTimes), [minuteValue]));
+      onSelect({
+        key: "times",
+        value: [].concat(_toConsumableArray(_newArrOfTimes), [minuteValue])
+      });
+    }
+  };
+
+  return /*#__PURE__*/React.createElement(View, {
+    style: {
+      flex: 1
+    }
+  }, /*#__PURE__*/React.createElement(ScrollView$1, null, /*#__PURE__*/React.createElement(ListHeaderComponent, null), times.map(function (_ref4) {
+    var time = _ref4.time,
+        minuteValue = _ref4.minuteValue;
+    return /*#__PURE__*/React.createElement(View, {
+      key: minuteValue
+    }, minuteValue >= 240 && minuteValue < 270 && /*#__PURE__*/React.createElement(DividerElement, {
+      name: "Morning"
+    }), minuteValue >= 720 && minuteValue < 750 && /*#__PURE__*/React.createElement(DividerElement, {
+      name: "Afternoon"
+    }), minuteValue >= 1020 && minuteValue < 1050 && /*#__PURE__*/React.createElement(DividerElement, {
+      name: "Evening"
+    }), minuteValue >= 1440 && /*#__PURE__*/React.createElement(DividerElement, {
+      name: "Night"
+    }), /*#__PURE__*/React.createElement(Time, {
+      isActive: toggledTimes.includes(minuteValue),
+      time: time,
+      timeToggle: function timeToggle(value) {
+        filterTimes({
+          minuteValue: minuteValue,
+          value: value
+        });
+      }
+    }));
+  })));
+});
+
+function ResourceDraggable() {
+  return /*#__PURE__*/React.createElement(Margin, null);
+}
+
+function DragArea(_ref) {
+  var _ref$resources = _ref.resources,
+      resources = _ref$resources === void 0 ? [] : _ref$resources;
+  return /*#__PURE__*/React.createElement(ScrollView$1, {
+    horizontal: true
+  }, resources.map(function () {
+    return /*#__PURE__*/React.createElement(ResourceDraggable, null);
+  }));
+}
+
+function DropArea(_ref) {
+  var width = _ref.width;
+
+  var _useThemeContext = useThemeContext(),
+      color11border = _useThemeContext.color11border;
+
+  return /*#__PURE__*/React.createElement(View, {
+    style: {
+      width: width,
+      height: width
+    }
+  }, /*#__PURE__*/React.createElement(Center, null, /*#__PURE__*/React.createElement(View, {
+    style: {
+      backgroundColor: color11border,
+      width: 24,
+      height: 24,
+      borderRadius: 12
+    }
+  })));
+}
+
+var windowWidth = Dimensions.get("window").width;
+var DEFAULT_SIZES = {
+  1: 16
+};
+function DropArea$1(_ref) {
+  var _ref$category_id = _ref.category_id,
+      category_id = _ref$category_id === void 0 ? 1 : _ref$category_id;
+
+  var _useThemeContext = useThemeContext(),
+      color11light = _useThemeContext.color11light,
+      color11border = _useThemeContext.color11border;
+
+  var Area = (windowWidth - 42) * (windowWidth - 42);
+  var ChildArea = Area / DEFAULT_SIZES[category_id];
+  var ChildWidth = Math.sqrt(ChildArea);
+  var items = [];
+
+  for (var i = 1; i <= DEFAULT_SIZES[category_id]; i++) {
+    items.push( /*#__PURE__*/React.createElement(DropArea, {
+      width: ChildWidth,
+      key: i
+    }));
+  }
+
+  return /*#__PURE__*/React.createElement(Margin, {
+    style: {
+      flex: 1
+    }
+  }, /*#__PURE__*/React.createElement(View, {
+    style: {
+      height: windowWidth - 40,
+      width: windowWidth - 40,
+      backgroundColor: color11light,
+      borderRadius: 20,
+      borderWidth: 1,
+      borderColor: color11border
+    }
+  }, /*#__PURE__*/React.createElement(Row, {
+    style: {
+      flex: 1,
+      flexWrap: "wrap"
+    }
+  }, items)));
+}
+
+function ResourceDragAndDrop() {
+  return /*#__PURE__*/React.createElement(View, {
+    style: {
+      flex: 1
+    }
+  }, /*#__PURE__*/React.createElement(View, {
+    style: {
+      flex: 8
+    }
+  }, /*#__PURE__*/React.createElement(DropArea$1, null)), /*#__PURE__*/React.createElement(View, {
+    style: {
+      flex: 1
+    }
+  }, /*#__PURE__*/React.createElement(DragArea, null)));
+}
+
+var Duration = React.memo(function (_ref) {
+  var name = _ref.name,
+      value = _ref.value,
+      _ref$isActive = _ref.isActive,
+      isActive = _ref$isActive === void 0 ? false : _ref$isActive,
+      durationToggle = _ref.durationToggle;
+
+  var _useThemeContext = useThemeContext(),
+      color1 = _useThemeContext.color1,
+      color2 = _useThemeContext.color2,
+      color11 = _useThemeContext.color11,
+      color7 = _useThemeContext.color7,
+      fontFamily2 = _useThemeContext.fontFamily2;
+
+  var _useState = useState(isActive),
+      _useState2 = _slicedToArray(_useState, 2),
+      isEnabled = _useState2[0],
+      setIsEnabled = _useState2[1];
+
+  var toggleSwitch = function toggleSwitch() {
+    setIsEnabled(function (previousState) {
+      return !previousState;
+    });
+  };
+
+  useEffect(function () {
+    setIsEnabled(isActive);
+  }, [isActive]);
+  useEffect(function () {
+    isEnabled !== isActive && durationToggle({
+      value: isEnabled ? value : 0
+    });
+  }, [isEnabled]);
+  return /*#__PURE__*/React.createElement(PaddingHorizontal, null, /*#__PURE__*/React.createElement(MarginHorizontal, null, /*#__PURE__*/React.createElement(Padding, {
+    style: {
+      borderBottomWidth: 1,
+      borderColor: color7
+    }
+  }, /*#__PURE__*/React.createElement(PaddingVertical, null, /*#__PURE__*/React.createElement(Stretch, null, /*#__PURE__*/React.createElement(Row, {
+    style: {
+      justifyContent: "space-between"
+    }
+  }, /*#__PURE__*/React.createElement(CenterLeft, null, /*#__PURE__*/React.createElement(H3, {
+    fontFamily: fontFamily2,
+    style: {
+      textTransform: "capitalize"
+    }
+  }, name)), /*#__PURE__*/React.createElement(Switch, {
+    trackColor: {
+      false: color2,
+      true: color11
+    },
+    thumbColor: isActive ? color1 : color1,
+    ios_backgroundColor: color2,
+    onValueChange: toggleSwitch,
+    value: isEnabled
+  })))))));
+});
+
+var DurationItem = React.memo(function (_ref) {
+  var _ref$duration = _ref.duration,
+      duration = _ref$duration === void 0 ? 0 : _ref$duration,
+      onSelect = _ref.onSelect,
+      _ref$ListHeaderCompon = _ref.ListHeaderComponent,
+      ListHeaderComponent = _ref$ListHeaderCompon === void 0 ? null : _ref$ListHeaderCompon;
+  var hour = duration < 60 ? 0 : Math.floor(duration / 60);
+  var minute = duration < 60 ? duration : duration % 60;
+
+  var _useState = useState(hour),
+      _useState2 = _slicedToArray(_useState, 2),
+      durationHour = _useState2[0],
+      setDurationHour = _useState2[1];
+
+  var _useState3 = useState(minute),
+      _useState4 = _slicedToArray(_useState3, 2),
+      durationMinute = _useState4[0],
+      setDurationMinute = _useState4[1];
+
+  var _durationToggle = function durationToggle(_ref2) {
+    var value = _ref2.value,
+        variant = _ref2.variant,
+        hour = _ref2.hour;
+
+    if (variant === "minute") {
+      setDurationMinute(value);
+
+      if (hour === 0) {
+        setDurationHour(0);
+      }
+    } else {
+      setDurationHour(value);
+      setDurationMinute(0);
+    }
+  };
+
+  useEffect(function () {
+    onSelect({
+      value: durationHour * 60 + durationMinute
+    });
+  }, [durationHour, durationMinute]);
+
+  var MinuteValues = function MinuteValues(_ref3) {
+    var selectedHour = _ref3.selectedHour;
+    return /*#__PURE__*/React.createElement(Margin, null, /*#__PURE__*/React.createElement(Duration, {
+      value: 15,
+      name: "15 minutes",
+      isActive: durationMinute === 15 && selectedHour === durationHour,
+      durationToggle: function durationToggle(_ref4) {
+        var value = _ref4.value;
+        return _durationToggle({
+          value: value,
+          variant: "minute"
+        });
+      }
+    }), /*#__PURE__*/React.createElement(Duration, {
+      value: 30,
+      name: "30 minutes",
+      isActive: durationMinute === 30 && selectedHour === durationHour,
+      durationToggle: function durationToggle(_ref5) {
+        var value = _ref5.value;
+        return _durationToggle({
+          value: value,
+          variant: "minute"
+        });
+      }
+    }), /*#__PURE__*/React.createElement(Duration, {
+      value: 45,
+      name: "45 munites",
+      isActive: durationMinute === 45 && selectedHour === durationHour,
+      durationToggle: function durationToggle(_ref6) {
+        var value = _ref6.value;
+        return _durationToggle({
+          value: value,
+          variant: "minute"
+        });
+      }
+    }));
+  };
+
+  return /*#__PURE__*/React.createElement(View, {
+    style: {
+      flex: 1
+    }
+  }, /*#__PURE__*/React.createElement(ScrollView$1, null, /*#__PURE__*/React.createElement(ListHeaderComponent, null), /*#__PURE__*/React.createElement(Duration, {
+    value: 15,
+    name: "15 minutes",
+    isActive: durationHour === 0.25 || durationHour === 0 && durationMinute === 15,
+    durationToggle: function durationToggle(_ref7) {
+      var value = _ref7.value;
+      return _durationToggle({
+        value: value,
+        variant: "minute",
+        hour: 0
+      });
+    }
+  }), /*#__PURE__*/React.createElement(Duration, {
+    value: 30,
+    name: "30 minutes",
+    isActive: durationHour === 0.5 || durationHour === 0 && durationMinute === 30,
+    durationToggle: function durationToggle(_ref8) {
+      var value = _ref8.value;
+      return _durationToggle({
+        value: value,
+        variant: "minute",
+        hour: 0
+      });
+    }
+  }), /*#__PURE__*/React.createElement(Duration, {
+    value: 45,
+    name: "45 minutes",
+    isActive: durationHour === 0.75 || durationHour === 0 && durationMinute === 45,
+    durationToggle: function durationToggle(_ref9) {
+      var value = _ref9.value;
+      return _durationToggle({
+        value: value,
+        variant: "minute",
+        hour: 0
+      });
+    }
+  }), /*#__PURE__*/React.createElement(Duration, {
+    value: 1,
+    name: "1 hour",
+    isActive: durationHour === 1,
+    durationToggle: function durationToggle(_ref10) {
+      var value = _ref10.value;
+      return _durationToggle({
+        value: value
+      });
+    }
+  }), durationHour === 1 && /*#__PURE__*/React.createElement(MinuteValues, {
+    selectedHour: 1
+  }), /*#__PURE__*/React.createElement(Duration, {
+    value: 2,
+    name: "2 hours",
+    isActive: durationHour === 2,
+    durationToggle: function durationToggle(_ref11) {
+      var value = _ref11.value;
+      return _durationToggle({
+        value: value
+      });
+    }
+  }), durationHour === 2 && /*#__PURE__*/React.createElement(MinuteValues, {
+    selectedHour: 2
+  }), /*#__PURE__*/React.createElement(Duration, {
+    value: 3,
+    name: "3 hours",
+    isActive: durationHour === 3,
+    durationToggle: function durationToggle(_ref12) {
+      var value = _ref12.value;
+      return _durationToggle({
+        value: value
+      });
+    }
+  }), durationHour === 3 && /*#__PURE__*/React.createElement(MinuteValues, {
+    selectedHour: 3
+  }), /*#__PURE__*/React.createElement(Duration, {
+    value: 4,
+    name: "4 hours",
+    isActive: durationHour === 4,
+    durationToggle: function durationToggle(_ref13) {
+      var value = _ref13.value;
+      return _durationToggle({
+        value: value
+      });
+    }
+  }), durationHour === 4 && /*#__PURE__*/React.createElement(MinuteValues, {
+    selectedHour: 4
+  }), /*#__PURE__*/React.createElement(Duration, {
+    value: 5,
+    name: "5 hours",
+    isActive: durationHour === 5,
+    durationToggle: function durationToggle(_ref14) {
+      var value = _ref14.value;
+      return _durationToggle({
+        value: value
+      });
+    }
+  }), durationHour === 5 && /*#__PURE__*/React.createElement(MinuteValues, {
+    selectedHour: 5
+  }), /*#__PURE__*/React.createElement(Duration, {
+    value: 6,
+    name: "6 hours",
+    isActive: durationHour === 6,
+    durationToggle: function durationToggle(_ref15) {
+      var value = _ref15.value;
+      return _durationToggle({
+        value: value
+      });
+    }
+  }), durationHour === 6 && /*#__PURE__*/React.createElement(MinuteValues, {
+    selectedHour: 6
+  }), /*#__PURE__*/React.createElement(Duration, {
+    value: 7,
+    name: "7 hours",
+    isActive: durationHour === 7,
+    durationToggle: function durationToggle(_ref16) {
+      var value = _ref16.value;
+      return _durationToggle({
+        value: value
+      });
+    }
+  }), durationHour === 7 && /*#__PURE__*/React.createElement(MinuteValues, {
+    selectedHour: 7
+  }), /*#__PURE__*/React.createElement(Duration, {
+    value: 8,
+    name: "8 hours",
+    isActive: durationHour === 8,
+    durationToggle: function durationToggle(_ref17) {
+      var value = _ref17.value;
+      return _durationToggle({
+        value: value
+      });
+    }
+  }), durationHour === 8 && /*#__PURE__*/React.createElement(MinuteValues, {
+    selectedHour: 8
+  }), /*#__PURE__*/React.createElement(Duration, {
+    value: 9,
+    name: "9 hours",
+    isActive: durationHour === 9,
+    durationToggle: function durationToggle(_ref18) {
+      var value = _ref18.value;
+      return _durationToggle({
+        value: value
+      });
+    }
+  }), durationHour === 9 && /*#__PURE__*/React.createElement(MinuteValues, {
+    selectedHour: 9
+  }), /*#__PURE__*/React.createElement(Duration, {
+    value: 10,
+    name: "10 hours",
+    isActive: durationHour === 10,
+    durationToggle: function durationToggle(_ref19) {
+      var value = _ref19.value;
+      return _durationToggle({
+        value: value
+      });
+    }
+  }), durationHour === 10 && /*#__PURE__*/React.createElement(MinuteValues, {
+    selectedHour: 10
+  }), /*#__PURE__*/React.createElement(Duration, {
+    value: 11,
+    name: "11 hours",
+    isActive: durationHour === 11,
+    durationToggle: function durationToggle(_ref20) {
+      var value = _ref20.value;
+      return _durationToggle({
+        value: value
+      });
+    }
+  }), durationHour === 11 && /*#__PURE__*/React.createElement(MinuteValues, {
+    selectedHour: 11
+  }), /*#__PURE__*/React.createElement(Duration, {
+    value: 12,
+    name: "12 hours",
+    isActive: durationHour === 12,
+    durationToggle: function durationToggle(_ref21) {
+      var value = _ref21.value;
+      return _durationToggle({
+        value: value
+      });
+    }
+  }), durationHour === 12 && /*#__PURE__*/React.createElement(MinuteValues, {
+    selectedHour: 12
+  })));
+});
+
+export { AccordionItem, AccordionProvider, AccordionScroll, AccordionScroller, Actions, BookingMerchant, DateRange, DurationItem as Duration, FooterActions, ImageLoader, ImageUpload, Map$1 as Map, MerchantCard, Modal, ResourceDragAndDrop, Screen, SlideScreen, Times as TimeSelector, Weekdays$1 as WeekdaySelector, useAccordionContext };

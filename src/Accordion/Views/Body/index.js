@@ -1,4 +1,5 @@
 import React from "react";
+import { Dimensions } from "react-native";
 import Animated, {
   withTiming,
   useSharedValue,
@@ -10,11 +11,11 @@ import Animated, {
 import { Body } from "./Body.style";
 
 export default function BodyElement({ children, isOpen }) {
-  const height = useSharedValue(1);
+  const minHeight = useSharedValue(Dimensions.get("screen").height - 180);
 
   const transition = useDerivedValue(() => {
     return isOpen
-      ? withSpring(height.value, {
+      ? withSpring(minHeight.value, {
           damping: 10,
           stiffness: 90,
           mass: 0.5,
@@ -27,7 +28,7 @@ export default function BodyElement({ children, isOpen }) {
 
   const animatedStyle = useAnimatedStyle(() => {
     return {
-      height: transition.value,
+      minHeight: transition.value,
     };
   });
 
@@ -35,18 +36,13 @@ export default function BodyElement({ children, isOpen }) {
     <Animated.View
       style={[
         {
-          height: 1,
+          minHeight: 1,
           overflow: "hidden",
         },
         animatedStyle,
       ]}
     >
-      <Body
-        isOpen={isOpen}
-        onLayout={(e) => (height.value = e.nativeEvent.layout.height)}
-      >
-        {children}
-      </Body>
+      <Body isOpen={isOpen}>{children}</Body>
     </Animated.View>
   );
 }

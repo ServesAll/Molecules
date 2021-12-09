@@ -33,7 +33,7 @@ export default function ImageUpload({ theme, imageUri, onChange = () => {} }) {
   return (
     <Pressable onPress={() => pickImage()}>
       <UploadWrapper theme={theme}>
-        {image && <ImageLoader background={theme.color1} imageUrl={image} />}
+        {image && <ImageLoader background={theme.color7} imageUrl={image} />}
         {!image && (
           <UploadIconWrapper>
             <UploadIcon />

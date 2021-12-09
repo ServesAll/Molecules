@@ -1,9 +1,9 @@
 import React from "react";
+import { View } from "react-native";
 import {
   H3,
   Center,
   AnimatedButton,
-  Padding,
   Row,
   Success,
   Error,
@@ -15,6 +15,7 @@ import { Wrapper } from "./FooterActions.style";
 
 const FooterActions = React.memo(
   ({
+    children,
     leftElement = false,
     active,
     loading,
@@ -25,20 +26,25 @@ const FooterActions = React.memo(
   }) => {
     return (
       <Wrapper theme={theme}>
-        <Padding
+        <Row
           style={{
             flex: 1,
-            ...((loading || success || error) && { margin: 0 }),
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          <Row
+          {leftElement}
+          <View
             style={{
-              flex: 1,
-              justifyContent: "space-between",
+              justifyContent: "center",
+              alignItems: "center",
+              flex: 1.6,
+              height: "100%",
+              ...((loading || success || error) && { margin: 0 }),
             }}
           >
-            {leftElement}
             <AnimatedButton
+              leftElement={leftElement}
               active={active}
               color={loading ? "transparent" : theme.color2}
               loading={loading}
@@ -62,22 +68,24 @@ const FooterActions = React.memo(
               }
             >
               <Center>
-                <Row>
-                  <MarginHorizontal>
-                    <H3 color={theme.color1}>Submit</H3>
-                  </MarginHorizontal>
+                {children || (
+                  <Row>
+                    <MarginHorizontal>
+                      <H3 color={theme.color1}>Submit</H3>
+                    </MarginHorizontal>
 
-                  <Icon
-                    icon="next"
-                    autoplay={false}
-                    loop={false}
-                    color={theme.color1}
-                  />
-                </Row>
+                    <Icon
+                      icon="next"
+                      autoplay={false}
+                      loop={false}
+                      color={theme.color1}
+                    />
+                  </Row>
+                )}
               </Center>
             </AnimatedButton>
-          </Row>
-        </Padding>
+          </View>
+        </Row>
       </Wrapper>
     );
   }
