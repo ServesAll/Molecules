@@ -10,18 +10,17 @@ import Animated, {
 } from "react-native-reanimated";
 import { Body } from "./Body.style";
 
-export default function BodyElement({ children, isOpen }) {
-  const minHeight = useSharedValue(Dimensions.get("screen").height - 180);
+function BodyElement({ children, isOpen }) {
+  const minHeight = useSharedValue(Dimensions.get("screen").height - 200);
 
   const transition = useDerivedValue(() => {
     return isOpen
-      ? withSpring(minHeight.value, {
-          damping: 10,
-          stiffness: 90,
-          mass: 0.5,
+      ? withTiming(minHeight.value, {
+          duration: 200,
+          easing: Easing.bezier(0.19, 1.0, 0.22, 1.0),
         })
       : withTiming(1, {
-          duration: 250,
+          duration: 200,
           easing: Easing.bezier(0.19, 1.0, 0.22, 1.0),
         });
   });
@@ -42,7 +41,9 @@ export default function BodyElement({ children, isOpen }) {
         animatedStyle,
       ]}
     >
-      <Body isOpen={isOpen}>{children}</Body>
+      <Body>{children}</Body>
     </Animated.View>
   );
 }
+
+export default React.memo(BodyElement);

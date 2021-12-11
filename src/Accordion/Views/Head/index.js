@@ -29,7 +29,7 @@ export default function HeadElement({
         BodyRef.current?.measureLayout(
           findNodeHandle(scrollRef.current),
           (x, y) => {
-            scrollRef.current?.scrollTo({ x: 0, y: y, animated: true });
+            scrollRef.current?.scrollTo({ x: 0, y: y - 20, animated: true });
           }
         );
       }
@@ -38,7 +38,7 @@ export default function HeadElement({
 
   useEffect(() => {
     if (isOpen && BodyRef.current) {
-      scrollToItem();
+      setTimeout(() => scrollToItem(), 250);
     }
   }, [isOpen]);
 

@@ -10594,7 +10594,7 @@ function HeadElement(_ref) {
 
           (_scrollRef$current = scrollRef.current) === null || _scrollRef$current === void 0 ? void 0 : _scrollRef$current.scrollTo({
             x: 0,
-            y: y,
+            y: y - 20,
             animated: true
           });
         });
@@ -10604,7 +10604,9 @@ function HeadElement(_ref) {
 
   useEffect(function () {
     if (isOpen && BodyRef.current) {
-      scrollToItem();
+      setTimeout(function () {
+        return scrollToItem();
+      }, 250);
     }
   }, [isOpen]);
   useEffect(function () {
@@ -10690,30 +10692,28 @@ var Body$2 = styled.View(_templateObject$3 || (_templateObject$3 = _taggedTempla
 function BodyElement(_ref) {
   var children = _ref.children,
       isOpen = _ref.isOpen;
-  var minHeight = useSharedValue(Dimensions.get("screen").height - 180);
+  var minHeight = useSharedValue(Dimensions.get("screen").height - 200);
   var transition = useDerivedValue(function () {
     const _f = function () {
-      return isOpen ? withSpring(minHeight.value, {
-        damping: 10,
-        stiffness: 90,
-        mass: 0.5
+      return isOpen ? withTiming(minHeight.value, {
+        duration: 200,
+        easing: Easing.bezier(0.19, 1.0, 0.22, 1.0)
       }) : withTiming(1, {
-        duration: 250,
+        duration: 200,
         easing: Easing.bezier(0.19, 1.0, 0.22, 1.0)
       });
     };
 
     _f._closure = {
       isOpen,
-      withSpring,
-      minHeight,
       withTiming,
+      minHeight,
       Easing: {
         bezier: Easing.bezier
       }
     };
-    _f.asString = "function _f(){const{isOpen,withSpring,minHeight,withTiming,Easing}=jsThis._closure;{return isOpen?withSpring(minHeight.value,{damping:10,stiffness:90,mass:0.5}):withTiming(1,{duration:250,easing:Easing.bezier(0.19,1.0,0.22,1.0)});}}";
-    _f.__workletHash = 11443503723989;
+    _f.asString = "function _f(){const{isOpen,withTiming,minHeight,Easing}=jsThis._closure;{return isOpen?withTiming(minHeight.value,{duration:200,easing:Easing.bezier(0.19,1.0,0.22,1.0)}):withTiming(1,{duration:200,easing:Easing.bezier(0.19,1.0,0.22,1.0)});}}";
+    _f.__workletHash = 4911486046926;
     _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Accordion/Views/Body/index.js (16:37)";
 
     global.__reanimatedWorkletInit(_f);
@@ -10732,7 +10732,7 @@ function BodyElement(_ref) {
     };
     _f.asString = "function _f(){const{transition}=jsThis._closure;{return{minHeight:transition.value};}}";
     _f.__workletHash = 9675814893242;
-    _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Accordion/Views/Body/index.js (29:41)";
+    _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Accordion/Views/Body/index.js (28:41)";
 
     global.__reanimatedWorkletInit(_f);
 
@@ -10743,10 +10743,10 @@ function BodyElement(_ref) {
       minHeight: 1,
       overflow: "hidden"
     }, animatedStyle]
-  }, /*#__PURE__*/React.createElement(Body$2, {
-    isOpen: isOpen
-  }, children));
+  }, /*#__PURE__*/React.createElement(Body$2, null, children));
 }
+
+var Body$3 = React.memo(BodyElement);
 
 function useAccordionHook() {
   var _ref = useAccordionContext() || {},
@@ -10817,7 +10817,7 @@ var AccordionItem = function AccordionItem(_ref) {
     setHasChanged(isOpen);
   }, [isOpen]);
   useEffect(function () {
-    defaultState && toggleAccordionItem(defaultState);
+    defaultState && toggleAccordionItem(eventKey);
   }, [defaultState]);
   useEffect(function () {
     if (isOpen !== hasChanged) {
@@ -10841,7 +10841,7 @@ AccordionItem.Head = function (props) {
 };
 
 AccordionItem.Body = function (props) {
-  return /*#__PURE__*/React.createElement(BodyElement, props);
+  return /*#__PURE__*/React.createElement(Body$3, props);
 };
 
 var _templateObject$4;

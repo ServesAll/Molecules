@@ -19,7 +19,7 @@ const AccordionItem = ({
   }, [isOpen]);
 
   useEffect(() => {
-    defaultState && toggleAccordionItem(defaultState);
+    defaultState && toggleAccordionItem(eventKey);
   }, [defaultState]);
 
   useEffect(() => {
