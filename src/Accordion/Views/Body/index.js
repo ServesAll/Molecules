@@ -10,8 +10,10 @@ import Animated, {
 } from "react-native-reanimated";
 import { Body } from "./Body.style";
 
-function BodyElement({ children, isOpen }) {
-  const minHeight = useSharedValue(Dimensions.get("screen").height - 200);
+function BodyElement({ children, isOpen, isNormal = false }) {
+  const minHeight = useSharedValue(
+    isNormal ? 100 : Dimensions.get("screen").height - 200
+  );
 
   const transition = useDerivedValue(() => {
     return isOpen
@@ -41,7 +43,7 @@ function BodyElement({ children, isOpen }) {
         animatedStyle,
       ]}
     >
-      <Body>{children}</Body>
+      <Body isOpen={isOpen}>{isOpen && children}</Body>
     </Animated.View>
   );
 }

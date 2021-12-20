@@ -10697,7 +10697,7 @@ function HeadElement(_ref) {
 }
 
 var _templateObject$3;
-var Body$2 = styled.View(_templateObject$3 || (_templateObject$3 = _taggedTemplateLiteral(["\n  width: 100%;\n  ", ";\n  z-index: ", ";\n"])), function (props) {
+var Body$2 = styled.View(_templateObject$3 || (_templateObject$3 = _taggedTemplateLiteral(["\n  width: 100%;\n  flex: 1;\n  ", ";\n  z-index: ", ";\n"])), function (props) {
   return !props.isOpen && "position: absolute";
 }, function (props) {
   return props.isOpen ? 1 : -1;
@@ -10705,8 +10705,10 @@ var Body$2 = styled.View(_templateObject$3 || (_templateObject$3 = _taggedTempla
 
 function BodyElement(_ref) {
   var children = _ref.children,
-      isOpen = _ref.isOpen;
-  var minHeight = Animated.useSharedValue(reactNative$1.Dimensions.get("screen").height - 200);
+      isOpen = _ref.isOpen,
+      _ref$isNormal = _ref.isNormal,
+      isNormal = _ref$isNormal === void 0 ? false : _ref$isNormal;
+  var minHeight = Animated.useSharedValue(isNormal ? 100 : reactNative$1.Dimensions.get("screen").height - 200);
   var transition = Animated.useDerivedValue(function () {
     const _f = function () {
       return isOpen ? Animated.withTiming(minHeight.value, {
@@ -10728,7 +10730,7 @@ function BodyElement(_ref) {
     };
     _f.asString = "function _f(){const{isOpen,withTiming,minHeight,Easing}=jsThis._closure;{return isOpen?withTiming(minHeight.value,{duration:200,easing:Easing.bezier(0.19,1.0,0.22,1.0)}):withTiming(1,{duration:200,easing:Easing.bezier(0.19,1.0,0.22,1.0)});}}";
     _f.__workletHash = 4911486046926;
-    _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Accordion/Views/Body/index.js (16:37)";
+    _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Accordion/Views/Body/index.js (18:37)";
 
     global.__reanimatedWorkletInit(_f);
 
@@ -10746,7 +10748,7 @@ function BodyElement(_ref) {
     };
     _f.asString = "function _f(){const{transition}=jsThis._closure;{return{minHeight:transition.value};}}";
     _f.__workletHash = 9675814893242;
-    _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Accordion/Views/Body/index.js (28:41)";
+    _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Accordion/Views/Body/index.js (30:41)";
 
     global.__reanimatedWorkletInit(_f);
 
@@ -10757,7 +10759,9 @@ function BodyElement(_ref) {
       minHeight: 1,
       overflow: "hidden"
     }, animatedStyle]
-  }, /*#__PURE__*/React__default['default'].createElement(Body$2, null, children));
+  }, /*#__PURE__*/React__default['default'].createElement(Body$2, {
+    isOpen: isOpen
+  }, isOpen && children));
 }
 
 var Body$3 = React__default['default'].memo(BodyElement);
@@ -21540,7 +21544,7 @@ var DurationItem = React__default['default'].memo(function (_ref) {
       }
     }), /*#__PURE__*/React__default['default'].createElement(Duration, {
       value: 45,
-      name: "45 munites",
+      name: "45 minutes",
       isActive: durationMinute === 45 && selectedHour === durationHour,
       durationToggle: function durationToggle(_ref6) {
         var value = _ref6.value;

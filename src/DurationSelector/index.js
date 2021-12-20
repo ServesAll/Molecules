@@ -49,7 +49,7 @@ const DurationItem = React.memo(
           />
           <Duration
             value={45}
-            name={"45 munites"}
+            name={"45 minutes"}
             isActive={durationMinute === 45 && selectedHour === durationHour}
             durationToggle={({ value }) =>
               durationToggle({ value, variant: "minute" })
