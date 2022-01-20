@@ -71,6 +71,32 @@ function Background(_ref) {
   }), children);
 }
 
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    enumerableOnly && (symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    })), keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread2(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = null != arguments[i] ? arguments[i] : {};
+    i % 2 ? ownKeys(Object(source), !0).forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) {
+      Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+    });
+  }
+
+  return target;
+}
+
 function _defineProperty(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
@@ -84,40 +110,6 @@ function _defineProperty(obj, key, value) {
   }
 
   return obj;
-}
-
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    if (enumerableOnly) symbols = symbols.filter(function (sym) {
-      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-    });
-    keys.push.apply(keys, symbols);
-  }
-
-  return keys;
-}
-
-function _objectSpread2(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-
-    if (i % 2) {
-      ownKeys(Object(source), true).forEach(function (key) {
-        _defineProperty(target, key, source[key]);
-      });
-    } else if (Object.getOwnPropertyDescriptors) {
-      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-      ownKeys(Object(source)).forEach(function (key) {
-        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-      });
-    }
-  }
-
-  return target;
 }
 
 function _taggedTemplateLiteral(strings, raw) {
@@ -149,18 +141,21 @@ function _arrayWithHoles(arr) {
 }
 
 function _iterableToArray(iter) {
-  if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
+  if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
 }
 
 function _iterableToArrayLimit(arr, i) {
-  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
+  var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
+
+  if (_i == null) return;
   var _arr = [];
   var _n = true;
   var _d = false;
-  var _e = undefined;
+
+  var _s, _e;
 
   try {
-    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
       _arr.push(_s.value);
 
       if (i && _arr.length === i) break;
@@ -9793,37 +9788,6 @@ function Body$1(_ref) {
 
 var ModalContext = React.createContext();
 
-function reducer(state, action) {
-  switch (action.type) {
-    case "isModalActive":
-      return _objectSpread2(_objectSpread2({}, state), {}, {
-        isModalActive: action.data
-      });
-
-    default:
-      return state;
-  }
-}
-
-var ModalProvider = function ModalProvider(_ref) {
-  var children = _ref.children,
-      value = _ref.value;
-
-  var _useReducer = useReducer(reducer, {
-    isModalActive: false
-  }),
-      _useReducer2 = _slicedToArray(_useReducer, 2),
-      isModalActive = _useReducer2[0].isModalActive,
-      dispatch = _useReducer2[1];
-
-  return /*#__PURE__*/React.createElement(ModalContext.Provider, {
-    value: _objectSpread2(_objectSpread2({}, value), {}, {
-      isModalActive: isModalActive,
-      dispatch: dispatch
-    })
-  }, children);
-};
-
 var useModalContext = function useModalContext() {
   return React.useContext(ModalContext);
 };
@@ -9859,6 +9823,43 @@ var Modal = function Modal(_ref) {
     onClose: onClose,
     variableHeight: variableHeight
   }, children));
+};
+
+var ModalContext$1 = React.createContext();
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "isModalActive":
+      return _objectSpread2(_objectSpread2({}, state), {}, {
+        isModalActive: action.data
+      });
+
+    default:
+      return state;
+  }
+}
+
+var ModalProvider = function ModalProvider(_ref) {
+  var children = _ref.children,
+      value = _ref.value;
+
+  var _useReducer = useReducer(reducer, {
+    isModalActive: false
+  }),
+      _useReducer2 = _slicedToArray(_useReducer, 2),
+      isModalActive = _useReducer2[0].isModalActive,
+      dispatch = _useReducer2[1];
+
+  return /*#__PURE__*/React.createElement(ModalContext$1.Provider, {
+    value: _objectSpread2(_objectSpread2({}, value), {}, {
+      isModalActive: isModalActive,
+      dispatch: dispatch
+    })
+  }, children);
+};
+
+var useModalContext$1 = function useModalContext() {
+  return React.useContext(ModalContext$1);
 };
 
 var _templateObject$1;
@@ -21316,7 +21317,6 @@ var Time = React.memo(function (_ref) {
       timeToggle = _ref.timeToggle;
 
   var _useThemeContext = useThemeContext(),
-      color7 = _useThemeContext.color7,
       fontFamily2 = _useThemeContext.fontFamily2;
 
   var _useState = useState(isActive),
@@ -40333,4 +40333,4 @@ var ServiceContainer = React.memo(function (_ref2) {
   }, /*#__PURE__*/React.createElement(Margin, null, children)));
 });
 
-export { AccordionItem, AccordionProvider, AccordionScroll, AccordionScroller, Actions, BookingMerchant, DateRange, DurationItem as Duration, FooterActions, ImageLoader, ImageUpload, Map$1 as Map, MerchantCard, MerchantSelector, Modal, ModalContext, ModalProvider, ResourceDragAndDrop, Screen, ServiceContainer, SlideScreen, Times as TimeSelector, Weekdays$1 as WeekdaySelector, useAccordionContext, useAccordionHook, useModalContext };
+export { AccordionItem, AccordionProvider, AccordionScroll, AccordionScroller, Actions, BookingMerchant, DateRange, DurationItem as Duration, FooterActions, ImageLoader, ImageUpload, Map$1 as Map, MerchantCard, MerchantSelector, Modal, ModalContext$1 as ModalContext, ModalProvider, ResourceDragAndDrop, Screen, ServiceContainer, SlideScreen, Times as TimeSelector, Weekdays$1 as WeekdaySelector, useAccordionContext, useAccordionHook, useModalContext$1 as useModalContext };
