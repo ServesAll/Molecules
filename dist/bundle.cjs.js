@@ -2,23 +2,28 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
-
 var React = require('react');
-var React__default = _interopDefault(React);
 var reactNative$1 = require('react-native');
 var Animated = require('react-native-reanimated');
-var Animated__default = _interopDefault(Animated);
 var reactNativeGestureHandler = require('react-native-gesture-handler');
 var reactNativeStatusBarHeight = require('react-native-status-bar-height');
 var atoms = require('@servesall/atoms');
-var LottieView = _interopDefault(require('lottie-react-native'));
+var LottieView = require('lottie-react-native');
 var MapView = require('react-native-maps');
-var MapView__default = _interopDefault(MapView);
-var ImagePicker = _interopDefault(require('react-native-image-crop-picker'));
-var format$1 = _interopDefault(require('date-fns/format'));
-var startOfMonth = _interopDefault(require('date-fns/startOfMonth'));
+var ImagePicker = require('react-native-image-crop-picker');
+var format$1 = require('date-fns/format');
+var startOfMonth = require('date-fns/startOfMonth');
 var dateFns = require('date-fns');
+
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
+var Animated__default = /*#__PURE__*/_interopDefaultLegacy(Animated);
+var LottieView__default = /*#__PURE__*/_interopDefaultLegacy(LottieView);
+var MapView__default = /*#__PURE__*/_interopDefaultLegacy(MapView);
+var ImagePicker__default = /*#__PURE__*/_interopDefaultLegacy(ImagePicker);
+var format__default = /*#__PURE__*/_interopDefaultLegacy(format$1);
+var startOfMonth__default = /*#__PURE__*/_interopDefaultLegacy(startOfMonth);
 
 function Background(_ref) {
   var children = _ref.children,
@@ -52,7 +57,7 @@ function Background(_ref) {
   React.useEffect(function () {
     opacity.value = 1;
   }, []);
-  return /*#__PURE__*/React__default.createElement(Animated__default.View, {
+  return /*#__PURE__*/React__default['default'].createElement(Animated__default['default'].View, {
     style: [{
       height: '100%',
       top: 0,
@@ -64,7 +69,7 @@ function Background(_ref) {
       zIndex: 1,
       backgroundColor: 'rgba(0, 0, 0, 0.6)'
     }, animatedStyle]
-  }, /*#__PURE__*/React__default.createElement(reactNative$1.Pressable, {
+  }, /*#__PURE__*/React__default['default'].createElement(reactNative$1.Pressable, {
     style: {
       flex: 1,
       top: 0,
@@ -4348,9 +4353,9 @@ function createStylisInstance(_temp) {
 }
 
 // 
-var StyleSheetContext = React__default.createContext();
+var StyleSheetContext = React__default['default'].createContext();
 var StyleSheetConsumer = StyleSheetContext.Consumer;
-var StylisContext = React__default.createContext();
+var StylisContext = React__default['default'].createContext();
 var StylisConsumer = StylisContext.Consumer;
 var masterSheet = new StyleSheet();
 var masterStylis = createStylisInstance();
@@ -9327,7 +9332,7 @@ function generateDisplayName(target) {
   return isTag(target) ? "styled." + target : "Styled(" + getComponentName(target) + ")";
 }
 
-var ThemeContext = React__default.createContext();
+var ThemeContext = React__default['default'].createContext();
 var ThemeConsumer = ThemeContext.Consumer;
 
 // if the user makes use of ThemeProvider or StyleSheetManager things will break.
@@ -9357,7 +9362,7 @@ var StyledNativeComponent = /*#__PURE__*/function (_Component) {
   _proto.render = function render() {
     var _this2 = this;
 
-    return /*#__PURE__*/React__default.createElement(ThemeConsumer, null, function (theme) {
+    return /*#__PURE__*/React__default['default'].createElement(ThemeConsumer, null, function (theme) {
       var _this2$props = _this2.props,
           transientAsProp = _this2$props.$as,
           renderAs = _this2$props.as,
@@ -9458,8 +9463,8 @@ var _StyledNativeComponent = (function (InlineStyle) {
     var isClass = !isTag(target);
     var isTargetStyledComp = isStyledComponent(target); // $FlowFixMe
 
-    var WrappedStyledNativeComponent = React__default.forwardRef(function (props, ref) {
-      return /*#__PURE__*/React__default.createElement(ParentComponent, _extends({}, props, {
+    var WrappedStyledNativeComponent = React__default['default'].forwardRef(function (props, ref) {
+      return /*#__PURE__*/React__default['default'].createElement(ParentComponent, _extends({}, props, {
         forwardedComponent: WrappedStyledNativeComponent,
         forwardedRef: ref
       }));
@@ -9779,14 +9784,14 @@ function Body$1(_ref) {
     return _f;
   }());
   var PlatformGracePadding = reactNative$1.Platform.OS === "ios" ? 30 : 0;
-  return /*#__PURE__*/React__default.createElement(reactNative$1.SafeAreaView, null, /*#__PURE__*/React__default.createElement(reactNative$1.StatusBar, {
+  return /*#__PURE__*/React__default['default'].createElement(reactNative$1.SafeAreaView, null, /*#__PURE__*/React__default['default'].createElement(reactNative$1.StatusBar, {
     animated: true,
     backgroundColor: "rgba(0,0,0,0.6)",
     barStyle: "light-content"
-  }), /*#__PURE__*/React__default.createElement(reactNativeGestureHandler.GestureHandlerRootView, null, /*#__PURE__*/React__default.createElement(reactNativeGestureHandler.PanGestureHandler, {
+  }), /*#__PURE__*/React__default['default'].createElement(reactNativeGestureHandler.GestureHandlerRootView, null, /*#__PURE__*/React__default['default'].createElement(reactNativeGestureHandler.PanGestureHandler, {
     activeOffsetY: [-10, 10],
     onGestureEvent: gestureHandler
-  }, /*#__PURE__*/React__default.createElement(Animated__default.View, {
+  }, /*#__PURE__*/React__default['default'].createElement(Animated__default['default'].View, {
     style: [{
       height: reactNative$1.Dimensions.get("window").height - offsetTop,
       zIndex: 11,
@@ -9795,20 +9800,75 @@ function Body$1(_ref) {
       borderTopRightRadius: 8,
       overflow: "hidden"
     }, animatedStyle, animatedStylePan]
-  }, /*#__PURE__*/React__default.createElement(BodyWrap, {
+  }, /*#__PURE__*/React__default['default'].createElement(BodyWrap, {
     height: reactNative$1.Dimensions.get("window").height - offsetTop - statusBarHeight - PlatformGracePadding
-  }, /*#__PURE__*/React__default.createElement(PanBarWrap, null, /*#__PURE__*/React__default.createElement(PanBar, null)), children)))));
+  }, /*#__PURE__*/React__default['default'].createElement(PanBarWrap, null, /*#__PURE__*/React__default['default'].createElement(PanBar, null)), children)))));
 }
+
+var ModalContext = React__default['default'].createContext();
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "isModalActive":
+      return _objectSpread2(_objectSpread2({}, state), {}, {
+        isModalActive: action.data
+      });
+
+    default:
+      return state;
+  }
+}
+
+var ModalProvider = function ModalProvider(_ref) {
+  var children = _ref.children,
+      value = _ref.value;
+
+  var _useReducer = React.useReducer(reducer, {
+    isModalActive: false
+  }),
+      _useReducer2 = _slicedToArray(_useReducer, 2),
+      isModalActive = _useReducer2[0].isModalActive,
+      dispatch = _useReducer2[1];
+
+  return /*#__PURE__*/React__default['default'].createElement(ModalContext.Provider, {
+    value: _objectSpread2(_objectSpread2({}, value), {}, {
+      isModalActive: isModalActive,
+      dispatch: dispatch
+    })
+  }, children);
+};
+
+var useModalContext = function useModalContext() {
+  return React__default['default'].useContext(ModalContext);
+};
 
 var Modal = function Modal(_ref) {
   var children = _ref.children,
       offsetTop = _ref.offsetTop,
       variableHeight = _ref.variableHeight,
       _ref$onClose = _ref.onClose,
-      onClose = _ref$onClose === void 0 ? function () {} : _ref$onClose;
-  return /*#__PURE__*/React__default.createElement(Background, {
+      onClose = _ref$onClose === void 0 ? function () {} : _ref$onClose,
+      style = _ref.style;
+
+  var _useModalContext = useModalContext(),
+      dispatch = _useModalContext.dispatch;
+
+  React.useEffect(function () {
+    dispatch && dispatch({
+      type: "isModalActive",
+      data: true
+    });
+    return function () {
+      dispatch && dispatch({
+        type: "isModalActive",
+        data: false
+      });
+    };
+  }, []);
+  return /*#__PURE__*/React__default['default'].createElement(Background, {
+    style: style,
     onClose: onClose
-  }, /*#__PURE__*/React__default.createElement(Body$1, {
+  }, /*#__PURE__*/React__default['default'].createElement(Body$1, {
     offsetTop: offsetTop,
     onClose: onClose,
     variableHeight: variableHeight
@@ -9824,9 +9884,9 @@ var Wrapper = styled.View(_templateObject$1 || (_templateObject$1 = _taggedTempl
   return props.styles;
 });
 
-var AccordionContext = React__default.createContext();
+var AccordionContext = React__default['default'].createContext();
 
-function reducer(state, action) {
+function reducer$1(state, action) {
   switch (action.type) {
     case "isActive":
       return _objectSpread2(_objectSpread2({}, state), {}, {
@@ -9852,7 +9912,7 @@ var AccordionProvider = function AccordionProvider(_ref) {
   var children = _ref.children,
       value = _ref.value;
 
-  var _useReducer = React.useReducer(reducer, {
+  var _useReducer = React.useReducer(reducer$1, {
     isActive: false,
     isActiveHeight: false,
     scrollRef: false
@@ -9864,7 +9924,7 @@ var AccordionProvider = function AccordionProvider(_ref) {
       scrollRef = _useReducer2$.scrollRef,
       dispatch = _useReducer2[1];
 
-  return /*#__PURE__*/React__default.createElement(AccordionContext.Provider, {
+  return /*#__PURE__*/React__default['default'].createElement(AccordionContext.Provider, {
     value: _objectSpread2(_objectSpread2({}, value), {}, {
       isActive: isActive,
       isActiveHeight: isActiveHeight,
@@ -9875,7 +9935,7 @@ var AccordionProvider = function AccordionProvider(_ref) {
 };
 
 var useAccordionContext = function useAccordionContext() {
-  return React__default.useContext(AccordionContext);
+  return React__default['default'].useContext(AccordionContext);
 };
 
 function Container$1(_ref) {
@@ -9916,9 +9976,9 @@ function Container$1(_ref) {
     isActive != eventKey ? isActive ? opacity.value = 0.5 : opacity.value = 1 : opacity.value = 1;
   }, [isActive]);
   var theme = atoms.useThemeContext();
-  return /*#__PURE__*/React__default.createElement(Animated__default.View, {
+  return /*#__PURE__*/React__default['default'].createElement(Animated__default['default'].View, {
     style: [animatedStyle]
-  }, /*#__PURE__*/React__default.createElement(Wrapper, {
+  }, /*#__PURE__*/React__default['default'].createElement(Wrapper, {
     theme: theme,
     styles: styles,
     border: isActive != eventKey ? isActive ? false : true : false
@@ -10584,7 +10644,12 @@ function HeadElement(_ref) {
       toggleAccordionItem = _ref.toggleAccordionItem,
       eventKey = _ref.eventKey,
       isOpen = _ref.isOpen,
-      style = _ref.style;
+      style = _ref.style,
+      _ref$lightContent = _ref.lightContent,
+      lightContent = _ref$lightContent === void 0 ? false : _ref$lightContent,
+      _ref$showToggle = _ref.showToggle,
+      showToggle = _ref$showToggle === void 0 ? true : _ref$showToggle;
+  var theme = atoms.useThemeContext();
 
   var _ref2 = useAccordionContext() || {},
       isActive = _ref2.isActive,
@@ -10649,7 +10714,7 @@ function HeadElement(_ref) {
     };
     _f.asString = "function _f(){const{withTiming,opacity,Easing}=jsThis._closure;{return{opacity:withTiming(opacity.value,{duration:750,easing:Easing.bezier(0.19,1.0,0.22,1.0)})};}}";
     _f.__workletHash = 2945649782466;
-    _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Accordion/Views/Head/index.js (55:41)";
+    _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Accordion/Views/Head/index.js (58:41)";
 
     global.__reanimatedWorkletInit(_f);
 
@@ -10658,36 +10723,43 @@ function HeadElement(_ref) {
   React.useEffect(function () {
     isActive != eventKey ? isActive ? opacity.value = 1 : opacity.value = 1 : opacity.value = 1;
   }, [isActive]);
-  return /*#__PURE__*/React__default.createElement(reactNative$1.Pressable, {
+  return /*#__PURE__*/React__default['default'].createElement(reactNative$1.Pressable, {
     ref: BodyRef,
     onPress: function onPress() {
       return toggleAccordionItem(eventKey);
     }
-  }, /*#__PURE__*/React__default.createElement(Head, {
+  }, /*#__PURE__*/React__default['default'].createElement(Head, {
     styles: style
-  }, /*#__PURE__*/React__default.createElement(atoms.Row, {
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
     style: {
       alignItems: "center",
       justifyContent: "space-between"
     }
-  }, /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+  }, /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
     style: {
       flex: 9
     }
-  }, /*#__PURE__*/React__default.createElement(Animated__default.View, {
+  }, /*#__PURE__*/React__default['default'].createElement(Animated__default['default'].View, {
     style: [animatedStyle]
-  }, children)), /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+  }, children)), showToggle && /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
     style: {
       flex: 1
     }
-  }, /*#__PURE__*/React__default.createElement(atoms.Padding, null, /*#__PURE__*/React__default.createElement(LottieView, {
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.Padding, null, /*#__PURE__*/React__default['default'].createElement(LottieView__default['default'], {
     style: {
       height: 15
     },
     ref: openRef,
     autoPlay: false,
     loop: false,
-    source: plusClose
+    source: plusClose,
+    colorFilters: [{
+      keypath: "open-vertical",
+      color: lightContent ? theme.color1 : theme.color2
+    }, {
+      keypath: "open-horizontal",
+      color: lightContent ? theme.color1 : theme.color2
+    }]
   }))))));
 }
 
@@ -10749,17 +10821,17 @@ function BodyElement(_ref) {
 
     return _f;
   }());
-  return /*#__PURE__*/React__default.createElement(Animated__default.View, {
+  return /*#__PURE__*/React__default['default'].createElement(Animated__default['default'].View, {
     style: [{
       minHeight: 1,
       overflow: "hidden"
     }, animatedStyle]
-  }, /*#__PURE__*/React__default.createElement(Body$2, {
+  }, /*#__PURE__*/React__default['default'].createElement(Body$2, {
     isOpen: isOpen
   }, isOpen && children));
 }
 
-var Body$3 = React__default.memo(BodyElement);
+var Body$3 = React__default['default'].memo(BodyElement);
 
 function useAccordionHook() {
   var _ref = useAccordionContext() || {},
@@ -10813,6 +10885,8 @@ var AccordionItem = function AccordionItem(_ref) {
       defaultState = _ref$defaultState === void 0 ? false : _ref$defaultState,
       _ref$onChange = _ref.onChange,
       onChange = _ref$onChange === void 0 ? function () {} : _ref$onChange,
+      _ref$closeItem = _ref.closeItem,
+      closeItem = _ref$closeItem === void 0 ? false : _ref$closeItem,
       _ref$eventKey = _ref.eventKey,
       eventKey = _ref$eventKey === void 0 ? false : _ref$eventKey,
       style = _ref.style;
@@ -10837,11 +10911,14 @@ var AccordionItem = function AccordionItem(_ref) {
       onChange(isOpen);
     }
   }, [isOpen, hasChanged]);
-  return /*#__PURE__*/React__default.createElement(Container$1, {
+  React.useEffect(function () {
+    closeItem && toggleAccordionItem(false);
+  }, [closeItem]);
+  return /*#__PURE__*/React__default['default'].createElement(Container$1, {
     styles: style,
     eventKey: eventKey
-  }, React__default.Children.map(children, function (child) {
-    return React__default.cloneElement(child, {
+  }, React__default['default'].Children.map(children, function (child) {
+    return React__default['default'].cloneElement(child, {
       isOpen: isOpen,
       toggleAccordionItem: toggleAccordionItem,
       eventKey: eventKey
@@ -10850,11 +10927,11 @@ var AccordionItem = function AccordionItem(_ref) {
 };
 
 AccordionItem.Head = function (props) {
-  return /*#__PURE__*/React__default.createElement(HeadElement, props);
+  return /*#__PURE__*/React__default['default'].createElement(HeadElement, props);
 };
 
 AccordionItem.Body = function (props) {
-  return /*#__PURE__*/React__default.createElement(Body$3, props);
+  return /*#__PURE__*/React__default['default'].createElement(Body$3, props);
 };
 
 var _templateObject$4;
@@ -10866,11 +10943,11 @@ function AccordionScroller(_ref) {
   var children = _ref.children,
       style = _ref.style;
   var scrollRef = React.useRef();
-  return /*#__PURE__*/React__default.createElement(AccordionProvider, {
+  return /*#__PURE__*/React__default['default'].createElement(AccordionProvider, {
     value: {
       scrollRef: scrollRef
     }
-  }, /*#__PURE__*/React__default.createElement(ScrollView, {
+  }, /*#__PURE__*/React__default['default'].createElement(ScrollView, {
     ref: scrollRef,
     styles: style
   }, children));
@@ -10890,7 +10967,7 @@ function AccordionScroll(_ref) {
       data: scrollRef
     });
   }, []);
-  return /*#__PURE__*/React__default.createElement(ScrollView, {
+  return /*#__PURE__*/React__default['default'].createElement(ScrollView, {
     ref: scrollRef,
     styles: style
   }, children);
@@ -12154,7 +12231,7 @@ var MarkerAnimation = function MarkerAnimation(_ref) {
       markerRef.current.play(21, 46);
     }
   }, [isMoving]);
-  return /*#__PURE__*/React__default.createElement(LottieView, {
+  return /*#__PURE__*/React__default['default'].createElement(LottieView__default['default'], {
     ref: markerRef,
     style: {
       height: 80,
@@ -12216,9 +12293,9 @@ function Map$1(_ref) {
   React.useEffect(function () {
     onChange(location);
   }, [location]);
-  return /*#__PURE__*/React__default.createElement(MapWrapper, {
+  return /*#__PURE__*/React__default['default'].createElement(MapWrapper, {
     theme: theme
-  }, /*#__PURE__*/React__default.createElement(MapView__default, {
+  }, /*#__PURE__*/React__default['default'].createElement(MapView__default['default'], {
     loadingEnabled: true,
     region: location,
     style: {
@@ -12234,10 +12311,10 @@ function Map$1(_ref) {
     onPanDrag: function onPanDrag(e) {
       setIsMoving(true);
     }
-  }), /*#__PURE__*/React__default.createElement(MarkerWrapper, {
+  }), /*#__PURE__*/React__default['default'].createElement(MarkerWrapper, {
     theme: theme,
     pointerEvents: "none"
-  }, /*#__PURE__*/React__default.createElement(MarkerAnimation, {
+  }, /*#__PURE__*/React__default['default'].createElement(MarkerAnimation, {
     isMoving: isMoving
   })));
 }
@@ -13013,7 +13090,7 @@ var upload = {
 
 var UploadIcon = function UploadIcon() {
   var uploadRef = React.useRef();
-  return /*#__PURE__*/React__default.createElement(LottieView, {
+  return /*#__PURE__*/React__default['default'].createElement(LottieView__default['default'], {
     ref: uploadRef,
     style: {
       height: 120,
@@ -13029,7 +13106,7 @@ var _templateObject$7, _templateObject2$4, _templateObject3$1;
 var ImageLoaderWrapper = styled.View(_templateObject$7 || (_templateObject$7 = _taggedTemplateLiteral(["\n  flex: 1;\n  align-items: stretch;\n  justify-content: center;\n  background-color: ", ";\n"])), function (props) {
   return props.background;
 });
-var ImagePreload = styled(LottieView)(_templateObject2$4 || (_templateObject2$4 = _taggedTemplateLiteral(["\n  align-items: stretch;\n  justify-content: center;\n"])));
+var ImagePreload = styled(LottieView__default['default'])(_templateObject2$4 || (_templateObject2$4 = _taggedTemplateLiteral(["\n  align-items: stretch;\n  justify-content: center;\n"])));
 var ImageComponent = styled.Image(_templateObject3$1 || (_templateObject3$1 = _taggedTemplateLiteral(["\n  flex: 1;\n  justify-content: center;\n  opacity: ", ";\n"])), function (props) {
   return props.showImage ? 1 : 0;
 });
@@ -13618,13 +13695,13 @@ var ImageLoader = function ImageLoader(_ref) {
       showImage = _useState2[0],
       setShowImage = _useState2[1];
 
-  return /*#__PURE__*/React__default.createElement(ImageLoaderWrapper, {
+  return /*#__PURE__*/React__default['default'].createElement(ImageLoaderWrapper, {
     background: background
-  }, !showImage && /*#__PURE__*/React__default.createElement(LottieView, {
+  }, !showImage && /*#__PURE__*/React__default['default'].createElement(LottieView__default['default'], {
     source: loader,
     autoPlay: true,
     loop: true
-  }), /*#__PURE__*/React__default.createElement(ImageComponent, {
+  }), /*#__PURE__*/React__default['default'].createElement(ImageComponent, {
     source: {
       uri: imageUrl
     },
@@ -13659,7 +13736,7 @@ function ImageUpload(_ref) {
   }, [image]);
 
   var pickImage = function pickImage() {
-    ImagePicker.openPicker({
+    ImagePicker__default['default'].openPicker({
       width: 400,
       height: 300,
       cropping: true
@@ -13668,24 +13745,22 @@ function ImageUpload(_ref) {
     });
   };
 
-  return /*#__PURE__*/React__default.createElement(reactNative$1.Pressable, {
+  return /*#__PURE__*/React__default['default'].createElement(reactNative$1.Pressable, {
     onPress: function onPress() {
       return pickImage();
     }
-  }, /*#__PURE__*/React__default.createElement(UploadWrapper, {
+  }, /*#__PURE__*/React__default['default'].createElement(UploadWrapper, {
     theme: theme
-  }, image && /*#__PURE__*/React__default.createElement(ImageLoader, {
+  }, image && /*#__PURE__*/React__default['default'].createElement(ImageLoader, {
     background: theme.color7,
     imageUrl: image
-  }), !image && /*#__PURE__*/React__default.createElement(UploadIconWrapper, null, /*#__PURE__*/React__default.createElement(UploadIcon, null))));
+  }), !image && /*#__PURE__*/React__default['default'].createElement(UploadIconWrapper, null, /*#__PURE__*/React__default['default'].createElement(UploadIcon, null))));
 }
 
 var _templateObject$8;
-var Wrapper$1 = styled.View(_templateObject$8 || (_templateObject$8 = _taggedTemplateLiteral(["\n  width: 100%;\n  min-height: 90px;\n  background-color: ", ";\n"])), function (props) {
-  return props.theme.color1;
-});
+var Wrapper$1 = styled.View(_templateObject$8 || (_templateObject$8 = _taggedTemplateLiteral(["\n  width: 100%;\n  min-height: 90px;\n"])));
 
-var FooterActions = React__default.memo(function (_ref) {
+var FooterActions = React__default['default'].memo(function (_ref) {
   var children = _ref.children,
       _ref$leftElement = _ref.leftElement,
       leftElement = _ref$leftElement === void 0 ? false : _ref$leftElement,
@@ -13697,15 +13772,15 @@ var FooterActions = React__default.memo(function (_ref) {
       _ref$onClick = _ref.onClick,
       _onClick = _ref$onClick === void 0 ? function () {} : _ref$onClick;
 
-  return /*#__PURE__*/React__default.createElement(Wrapper$1, {
+  return /*#__PURE__*/React__default['default'].createElement(Wrapper$1, {
     theme: theme
-  }, /*#__PURE__*/React__default.createElement(atoms.Row, {
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
     style: {
       flex: 1,
       justifyContent: "center",
       alignItems: "center"
     }
-  }, leftElement, /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+  }, leftElement, /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
     style: _objectSpread2({
       justifyContent: "center",
       alignItems: "center",
@@ -13714,7 +13789,7 @@ var FooterActions = React__default.memo(function (_ref) {
     }, (loading || success || error) && {
       margin: 0
     })
-  }, /*#__PURE__*/React__default.createElement(atoms.AnimatedButton, {
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.AnimatedButton, {
     leftElement: leftElement,
     active: active,
     color: loading ? "transparent" : theme.color2,
@@ -13724,14 +13799,14 @@ var FooterActions = React__default.memo(function (_ref) {
     },
     success: success,
     error: error,
-    successElement: /*#__PURE__*/React__default.createElement(atoms.Center, null, /*#__PURE__*/React__default.createElement(atoms.Success, null)),
-    errorElement: /*#__PURE__*/React__default.createElement(atoms.Center, null, /*#__PURE__*/React__default.createElement(atoms.Error, null)),
-    LoaderElement: /*#__PURE__*/React__default.createElement(atoms.Center, null, /*#__PURE__*/React__default.createElement(atoms.Loader, {
+    successElement: /*#__PURE__*/React__default['default'].createElement(atoms.Center, null, /*#__PURE__*/React__default['default'].createElement(atoms.Success, null)),
+    errorElement: /*#__PURE__*/React__default['default'].createElement(atoms.Center, null, /*#__PURE__*/React__default['default'].createElement(atoms.Error, null)),
+    LoaderElement: /*#__PURE__*/React__default['default'].createElement(atoms.Center, null, /*#__PURE__*/React__default['default'].createElement(atoms.Loader, {
       color: theme.color2
     }))
-  }, /*#__PURE__*/React__default.createElement(atoms.Center, null, children || /*#__PURE__*/React__default.createElement(atoms.Row, null, /*#__PURE__*/React__default.createElement(atoms.MarginHorizontal, null, /*#__PURE__*/React__default.createElement(atoms.H3, {
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.Center, null, children || /*#__PURE__*/React__default['default'].createElement(atoms.Row, null, /*#__PURE__*/React__default['default'].createElement(atoms.MarginHorizontal, null, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
     color: theme.color1
-  }, "Submit")), /*#__PURE__*/React__default.createElement(atoms.Icon, {
+  }, "Submit")), /*#__PURE__*/React__default['default'].createElement(atoms.Icon, {
     icon: "next",
     autoplay: false,
     loop: false,
@@ -13750,14 +13825,14 @@ var ImageWrapper = styled.View(_templateObject2$5 || (_templateObject2$5 = _tagg
 function MerchantCard(_ref) {
   var merchant = _ref.merchant,
       theme = _ref.theme;
-  return /*#__PURE__*/React__default.createElement(MerchantCardWrapper, {
+  return /*#__PURE__*/React__default['default'].createElement(MerchantCardWrapper, {
     theme: theme
-  }, /*#__PURE__*/React__default.createElement(ImageWrapper, {
+  }, /*#__PURE__*/React__default['default'].createElement(ImageWrapper, {
     theme: theme
-  }, /*#__PURE__*/React__default.createElement(ImageLoader, {
+  }, /*#__PURE__*/React__default['default'].createElement(ImageLoader, {
     background: theme.color7,
     imageUrl: merchant.image_uri
-  })), /*#__PURE__*/React__default.createElement(atoms.PaddingVertical, null, /*#__PURE__*/React__default.createElement(atoms.H2, null, merchant.name)));
+  })), /*#__PURE__*/React__default['default'].createElement(atoms.PaddingVertical, null, /*#__PURE__*/React__default['default'].createElement(atoms.H2, null, merchant.name)));
 }
 
 var _templateObject$a, _templateObject2$6, _templateObject3$2;
@@ -18282,11 +18357,61 @@ var Blushing_Shaded = {
 	markers: markers$1
 };
 
-var BookingMerchant = React__default.memo(function (_ref) {
+var BookingActions = React__default['default'].memo(function (_ref) {
+  var status = _ref.status,
+      theme = _ref.theme,
+      submit = _ref.submit;
+
+  if (status === "Pending") {
+    return /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
+      style: {
+        flex: 1,
+        justifyContent: "space-between"
+      }
+    }, /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
+      style: {
+        flex: 6
+      }
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.RoundedBtn, {
+      onClick: function onClick() {
+        return submit({
+          status_id: 6
+        });
+      },
+      style: {
+        borderWidth: 1,
+        borderColor: theme.color10
+      },
+      color: theme.color1
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.Center, null, /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(atoms.H3, null, "Decline"))))), /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
+      style: {
+        flex: 1
+      }
+    }), /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
+      style: {
+        flex: 6
+      }
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.RoundedBtn, {
+      onClick: function onClick() {
+        return submit({
+          status_id: 2
+        });
+      },
+      color: theme.color2
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.Center, null, /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
+      color: theme.color1
+    }, "Accept")))))));
+  }
+
+  return null;
+});
+
+var BookingMerchant = React__default['default'].memo(function (_ref) {
   var name = _ref.name,
       status = _ref.status,
       pax = _ref.pax,
       theme = _ref.theme,
+      submit = _ref.submit,
       _ref$onClick = _ref.onClick;
   var statusColors = {
     Pending: {
@@ -18304,16 +18429,48 @@ var BookingMerchant = React__default.memo(function (_ref) {
       image: Blushing_Shaded,
       autoPlay: false,
       progress: 0.5
+    },
+    Declined: {
+      color: theme.color11,
+      border: theme.color11border,
+      background: theme.color11light,
+      image: Blushing_Shaded,
+      autoPlay: false,
+      progress: 0.5
+    },
+    Cancelled: {
+      color: theme.color11,
+      border: theme.color11border,
+      background: theme.color11light,
+      image: Blushing_Shaded,
+      autoPlay: false,
+      progress: 0.5
+    },
+    Attended: {
+      color: theme.color11,
+      border: theme.color11border,
+      background: theme.color11light,
+      image: Blushing_Shaded,
+      autoPlay: false,
+      progress: 0.5
+    },
+    NoShow: {
+      color: theme.color11,
+      border: theme.color11border,
+      background: theme.color11light,
+      image: Blushing_Shaded,
+      autoPlay: false,
+      progress: 0.5
     }
   };
-  return /*#__PURE__*/React__default.createElement(Wrapper$2, {
+  return /*#__PURE__*/React__default['default'].createElement(Wrapper$2, {
     theme: theme,
     color: statusColors[status]
-  }, /*#__PURE__*/React__default.createElement(atoms.Padding, null, /*#__PURE__*/React__default.createElement(atoms.Row, {
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.Padding, null, /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
     style: {
       alignItems: "center"
     }
-  }, /*#__PURE__*/React__default.createElement(AniWrapper, null, /*#__PURE__*/React__default.createElement(LottieView, {
+  }, /*#__PURE__*/React__default['default'].createElement(AniWrapper, null, /*#__PURE__*/React__default['default'].createElement(LottieView__default['default'], {
     style: {
       height: 50
     },
@@ -18321,27 +18478,31 @@ var BookingMerchant = React__default.memo(function (_ref) {
     progress: statusColors[status].progress,
     loop: true,
     source: statusColors[status].image
-  })), /*#__PURE__*/React__default.createElement(atoms.Padding, {
+  })), /*#__PURE__*/React__default['default'].createElement(atoms.Padding, {
     style: {
       flex: 1
     }
-  }, /*#__PURE__*/React__default.createElement(atoms.Row, {
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
     style: {
       justifyContent: "space-between"
     }
-  }, /*#__PURE__*/React__default.createElement(atoms.H3, {
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
     fontFamily: theme.fontFamily3
-  }, name), /*#__PURE__*/React__default.createElement(atoms.H3, {
+  }, name), /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
     fontFamily: theme.fontFamily3
-  }, "x ", pax)), /*#__PURE__*/React__default.createElement(atoms.PaddingTop, null, /*#__PURE__*/React__default.createElement(atoms.Row, null, /*#__PURE__*/React__default.createElement(StatusWrapper, {
+  }, "x ", pax)), /*#__PURE__*/React__default['default'].createElement(atoms.PaddingTop, null, /*#__PURE__*/React__default['default'].createElement(atoms.Row, null, /*#__PURE__*/React__default['default'].createElement(StatusWrapper, {
     theme: theme,
     color: statusColors[status]
-  }, /*#__PURE__*/React__default.createElement(atoms.Padding, null, /*#__PURE__*/React__default.createElement(atoms.H4, {
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.Padding, null, /*#__PURE__*/React__default['default'].createElement(atoms.H4, {
     style: {
       lineHeight: 18
     },
     color: statusColors[status].color
-  }, status)))))))));
+  }, status))))))), /*#__PURE__*/React__default['default'].createElement(BookingActions, {
+    submit: submit,
+    theme: theme,
+    status: status
+  })));
 });
 
 var _templateObject$b;
@@ -20481,7 +20642,7 @@ var shiney_back = {
 var Actions = function Actions(_ref) {
   var children = _ref.children,
       theme = _ref.theme;
-  return /*#__PURE__*/React__default.createElement(Wrapper$3, {
+  return /*#__PURE__*/React__default['default'].createElement(Wrapper$3, {
     theme: theme
   }, children);
 };
@@ -20490,11 +20651,11 @@ Actions.NewBooking = function (_ref2) {
   var item = _ref2.item,
       theme = _ref2.theme,
       _ref2$onClick = _ref2.onClick;
-  return /*#__PURE__*/React__default.createElement(atoms.Padding, null, /*#__PURE__*/React__default.createElement(atoms.Row, {
+  return /*#__PURE__*/React__default['default'].createElement(atoms.Padding, null, /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
     style: {
       alignItems: "center"
     }
-  }, /*#__PURE__*/React__default.createElement(reactNative$1.Image, {
+  }, /*#__PURE__*/React__default['default'].createElement(reactNative$1.Image, {
     style: {
       width: 70,
       height: 70,
@@ -20503,7 +20664,7 @@ Actions.NewBooking = function (_ref2) {
     source: {
       uri: img
     }
-  }), /*#__PURE__*/React__default.createElement(LottieView, {
+  }), /*#__PURE__*/React__default['default'].createElement(LottieView__default['default'], {
     style: {
       left: -5,
       height: 80,
@@ -20512,22 +20673,22 @@ Actions.NewBooking = function (_ref2) {
     autoPlay: true,
     loop: true,
     source: shiney_back
-  }), /*#__PURE__*/React__default.createElement(atoms.PaddingHorizontal, {
+  }), /*#__PURE__*/React__default['default'].createElement(atoms.PaddingHorizontal, {
     style: {
       flex: 1
     }
-  }, /*#__PURE__*/React__default.createElement(atoms.H4, {
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.H4, {
     fontFamily: theme.fontFamily2
-  }, "New Booking!"), /*#__PURE__*/React__default.createElement(atoms.PaddingTop, null, /*#__PURE__*/React__default.createElement(atoms.Row, {
+  }, "New Booking!"), /*#__PURE__*/React__default['default'].createElement(atoms.PaddingTop, null, /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
     style: {
       justifyContent: "space-between"
     }
-  }, /*#__PURE__*/React__default.createElement(atoms.H3, {
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
     color: theme.color2
-  }, format$1(new Date(item.details.booking_date_time), "eee do LLL")), /*#__PURE__*/React__default.createElement(atoms.H3, {
+  }, format__default['default'](new Date(item.details.booking_date_time), "eee do LLL")), /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
     color: theme.color2,
     fontFamily: theme.fontFamily2
-  }, format$1(new Date(item.details.booking_date_time), "H:mm aaaa")))))));
+  }, format__default['default'](new Date(item.details.booking_date_time), "H:mm aaaa")))))));
 };
 
 var Screen = function Screen(_ref) {
@@ -20536,23 +20697,33 @@ var Screen = function Screen(_ref) {
       _ref$activeScreenId = _ref.activeScreenId,
       activeScreenId = _ref$activeScreenId === void 0 ? 0 : _ref$activeScreenId,
       setActiveScreenId = _ref.setActiveScreenId;
-  var width = Animated.useSharedValue(0);
+  var width = Animated.useSharedValue(reactNative$1.Dimensions.get("window").width);
   var opacity = Animated.useSharedValue(1);
+  var windowWidth = Animated.useSharedValue(reactNative$1.Dimensions.get("window").width);
   var animatedWidth = Animated.useAnimatedStyle(function () {
     const _f = function () {
       return {
-        width: "".concat(width.value, "%"),
-        opacity: opacity.value
+        transform: [{
+          translateX: width.value
+        }],
+        opacity: opacity.value,
+        width: windowWidth.value,
+        position: "absolute",
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0
       };
     };
 
     _f._closure = {
       width,
-      opacity
+      opacity,
+      windowWidth
     };
-    _f.asString = "function _f(){const{width,opacity}=jsThis._closure;{return{width:\"\".concat(width.value,\"%\"),opacity:opacity.value};}}";
-    _f.__workletHash = 15189959635421;
-    _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/SlideScreen/Screen.js (14:41)";
+    _f.asString = "function _f(){const{width,opacity,windowWidth}=jsThis._closure;{return{transform:[{translateX:width.value}],opacity:opacity.value,width:windowWidth.value,position:\"absolute\",top:0,bottom:0,left:0,right:0};}}";
+    _f.__workletHash = 9195235317471;
+    _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/SlideScreen/Screen.js (15:41)";
 
     global.__reanimatedWorkletInit(_f);
 
@@ -20560,7 +20731,7 @@ var Screen = function Screen(_ref) {
   }());
   React.useEffect(function () {
     if (activeScreenId === index) {
-      width.value = Animated.withTiming(100, {
+      width.value = Animated.withTiming(0, {
         duration: 250,
         easing: Animated.Easing.out(Animated.Easing.exp)
       });
@@ -20569,24 +20740,32 @@ var Screen = function Screen(_ref) {
         easing: Animated.Easing.out(Animated.Easing.exp)
       });
     } else {
-      width.value = Animated.withTiming(0, {
-        duration: 250,
-        easing: Animated.Easing.out(Animated.Easing.exp)
-      });
+      if (activeScreenId > index) {
+        width.value = Animated.withTiming(-windowWidth.value, {
+          duration: 250,
+          easing: Animated.Easing.out(Animated.Easing.exp)
+        });
+      } else {
+        width.value = Animated.withTiming(windowWidth.value, {
+          duration: 250,
+          easing: Animated.Easing.out(Animated.Easing.exp)
+        });
+      }
+
       opacity.value = Animated.withTiming(0, {
         duration: 200,
         easing: Animated.Easing.out(Animated.Easing.exp)
       });
     }
   }, [activeScreenId]);
-  return /*#__PURE__*/React__default.createElement(Animated__default.View, {
+  return /*#__PURE__*/React__default['default'].createElement(Animated__default['default'].View, {
     style: [animatedWidth]
-  }, index === activeScreenId && /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+  }, (index === activeScreenId || index === activeScreenId - 1 || index === activeScreenId + 1) && /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
     style: {
       flex: 1,
       overflow: "hidden"
     }
-  }, React__default.cloneElement(children, {
+  }, React__default['default'].cloneElement(children, {
     setActiveScreenId: setActiveScreenId,
     index: index,
     activeScreenId: activeScreenId
@@ -20601,12 +20780,12 @@ var SlideScreen = function SlideScreen(_ref) {
       activeScreenId = _useState2[0],
       setActiveScreenId = _useState2[1];
 
-  return /*#__PURE__*/React__default.createElement(atoms.Row, {
+  return /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
     style: {
       flex: 1
     }
-  }, React__default.Children.toArray(children).map(function (component, index) {
-    return /*#__PURE__*/React__default.createElement(Screen, {
+  }, React__default['default'].Children.toArray(children).map(function (component, index) {
+    return /*#__PURE__*/React__default['default'].createElement(Screen, {
       key: index,
       index: index,
       activeScreenId: activeScreenId,
@@ -20615,7 +20794,7 @@ var SlideScreen = function SlideScreen(_ref) {
   }));
 };
 
-var FlatDay = React__default.memo(function (_ref) {
+var FlatDay = React__default['default'].memo(function (_ref) {
   var day = _ref.day,
       theme = _ref.theme,
       onClick = _ref.onClick,
@@ -20624,7 +20803,7 @@ var FlatDay = React__default.memo(function (_ref) {
       inRange = _ref.inRange,
       isCompleteStart = _ref.isCompleteStart,
       isCompleteEnd = _ref.isCompleteEnd;
-  return /*#__PURE__*/React__default.createElement(reactNative$1.Pressable, {
+  return /*#__PURE__*/React__default['default'].createElement(reactNative$1.Pressable, {
     onPress: function onPress() {
       return onClick(index);
     },
@@ -20634,7 +20813,7 @@ var FlatDay = React__default.memo(function (_ref) {
       justifyContent: "center",
       zIndex: 1
     }
-  }, inRange && /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+  }, inRange && /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
     style: {
       backgroundColor: theme.color10,
       position: "absolute",
@@ -20643,7 +20822,7 @@ var FlatDay = React__default.memo(function (_ref) {
       top: 5,
       zIndex: -1
     }
-  }), isSelected && /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+  }), isSelected && /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
     style: {
       backgroundColor: theme.color2,
       position: "absolute",
@@ -20652,7 +20831,7 @@ var FlatDay = React__default.memo(function (_ref) {
       borderRadius: 25,
       zIndex: 2
     }
-  }), isCompleteStart && /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+  }), isCompleteStart && /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
     style: {
       backgroundColor: theme.color10,
       position: "absolute",
@@ -20662,7 +20841,7 @@ var FlatDay = React__default.memo(function (_ref) {
       right: 0,
       zIndex: -1
     }
-  }), isCompleteEnd && /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+  }), isCompleteEnd && /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
     style: {
       backgroundColor: theme.color10,
       position: "absolute",
@@ -20672,7 +20851,7 @@ var FlatDay = React__default.memo(function (_ref) {
       left: 0,
       zIndex: -1
     }
-  }), /*#__PURE__*/React__default.createElement(atoms.H3, {
+  }), /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
     align: "center",
     style: {
       zIndex: 3
@@ -20688,11 +20867,11 @@ var FlatMonth = function FlatMonth(_ref) {
       startDate = _ref.startDate,
       endDate = _ref.endDate;
   var theme = atoms.useThemeContext();
-  return /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+  return /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
     style: {
       height: 370
     }
-  }, /*#__PURE__*/React__default.createElement(atoms.Padding, null, /*#__PURE__*/React__default.createElement(atoms.Margin, null, /*#__PURE__*/React__default.createElement(atoms.H3, null, month.title))), /*#__PURE__*/React__default.createElement(atoms.MarginHorizontal, null, /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.Padding, null, /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(atoms.H3, null, month.title))), /*#__PURE__*/React__default['default'].createElement(atoms.MarginHorizontal, null, /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
     style: {
       flexDirection: "row",
       flex: 1,
@@ -20704,7 +20883,7 @@ var FlatMonth = function FlatMonth(_ref) {
     var inRange = startDate < setIndex && endDate > setIndex;
     var isCompleteStart = startDate && endDate && startDate === setIndex;
     var isCompleteEnd = startDate && endDate && endDate === setIndex;
-    return /*#__PURE__*/React__default.createElement(FlatDay, {
+    return /*#__PURE__*/React__default['default'].createElement(FlatDay, {
       onClick: setRange,
       theme: theme,
       day: item,
@@ -20723,115 +20902,115 @@ var calendar = [{
   month: "January",
   days: 31,
   monthNum: 100,
-  firstDay: startOfMonth(new Date(year, 0))
+  firstDay: startOfMonth__default['default'](new Date(year, 0))
 }, {
   month: "Febuary",
   days: 28,
   monthNum: 200,
-  firstDay: startOfMonth(new Date(year, 1))
+  firstDay: startOfMonth__default['default'](new Date(year, 1))
 }, {
   month: "March",
   days: 31,
   monthNum: 300,
-  firstDay: startOfMonth(new Date(year, 2))
+  firstDay: startOfMonth__default['default'](new Date(year, 2))
 }, {
   month: "April",
   days: 30,
   monthNum: 400,
-  firstDay: startOfMonth(new Date(year, 3))
+  firstDay: startOfMonth__default['default'](new Date(year, 3))
 }, {
   month: "May",
   days: 31,
   monthNum: 500,
-  firstDay: startOfMonth(new Date(year, 4))
+  firstDay: startOfMonth__default['default'](new Date(year, 4))
 }, {
   month: "June",
   days: 30,
   monthNum: 600,
-  firstDay: startOfMonth(new Date(year, 5))
+  firstDay: startOfMonth__default['default'](new Date(year, 5))
 }, {
   month: "July",
   days: 31,
   monthNum: 700,
-  firstDay: startOfMonth(new Date(year, 6))
+  firstDay: startOfMonth__default['default'](new Date(year, 6))
 }, {
   month: "August",
   days: 31,
   monthNum: 800,
-  firstDay: startOfMonth(new Date(year, 7))
+  firstDay: startOfMonth__default['default'](new Date(year, 7))
 }, {
   month: "September",
   days: 30,
   monthNum: 900,
-  firstDay: startOfMonth(new Date(year, 8))
+  firstDay: startOfMonth__default['default'](new Date(year, 8))
 }, {
   month: "October",
   days: 31,
   monthNum: 1000,
-  firstDay: startOfMonth(new Date(year, 9))
+  firstDay: startOfMonth__default['default'](new Date(year, 9))
 }, {
   month: "November",
   days: 30,
   monthNum: 1100,
-  firstDay: startOfMonth(new Date(year, 10))
+  firstDay: startOfMonth__default['default'](new Date(year, 10))
 }, {
   month: "December",
   days: 31,
   monthNum: 1200,
-  firstDay: startOfMonth(new Date(year, 11))
+  firstDay: startOfMonth__default['default'](new Date(year, 11))
 }];
 
 var Weekdays = function Weekdays() {
   var theme = atoms.useThemeContext();
-  return /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+  return /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
     style: {
       backgroundColor: theme.color1
     }
-  }, /*#__PURE__*/React__default.createElement(atoms.MarginHorizontal, null, /*#__PURE__*/React__default.createElement(atoms.Padding, null, /*#__PURE__*/React__default.createElement(atoms.Row, {
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.MarginHorizontal, null, /*#__PURE__*/React__default['default'].createElement(atoms.Padding, null, /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
     style: {
       justifyContent: "space-between"
     }
-  }, /*#__PURE__*/React__default.createElement(atoms.Center, {
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.Center, {
     style: {
       minWidth: "14%"
     }
-  }, /*#__PURE__*/React__default.createElement(atoms.H3, {
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
     fontFamily: theme.fontFamily2
-  }, "Mo")), /*#__PURE__*/React__default.createElement(atoms.Center, {
+  }, "Mo")), /*#__PURE__*/React__default['default'].createElement(atoms.Center, {
     style: {
       minWidth: "14%"
     }
-  }, /*#__PURE__*/React__default.createElement(atoms.H3, {
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
     fontFamily: theme.fontFamily2
-  }, "Tu")), /*#__PURE__*/React__default.createElement(atoms.Center, {
+  }, "Tu")), /*#__PURE__*/React__default['default'].createElement(atoms.Center, {
     style: {
       minWidth: "14%"
     }
-  }, /*#__PURE__*/React__default.createElement(atoms.H3, {
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
     fontFamily: theme.fontFamily2
-  }, "We")), /*#__PURE__*/React__default.createElement(atoms.Center, {
+  }, "We")), /*#__PURE__*/React__default['default'].createElement(atoms.Center, {
     style: {
       minWidth: "14%"
     }
-  }, /*#__PURE__*/React__default.createElement(atoms.H3, {
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
     fontFamily: theme.fontFamily2
-  }, "Th")), /*#__PURE__*/React__default.createElement(atoms.Center, {
+  }, "Th")), /*#__PURE__*/React__default['default'].createElement(atoms.Center, {
     style: {
       minWidth: "14%"
     }
-  }, /*#__PURE__*/React__default.createElement(atoms.H3, {
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
     fontFamily: theme.fontFamily2
-  }, "Fr")), /*#__PURE__*/React__default.createElement(atoms.Center, {
+  }, "Fr")), /*#__PURE__*/React__default['default'].createElement(atoms.Center, {
     style: {
       minWidth: "14%"
     }
-  }, /*#__PURE__*/React__default.createElement(atoms.H3, {
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
     fontFamily: theme.fontFamily2
-  }, "Sa")), /*#__PURE__*/React__default.createElement(atoms.Center, {
+  }, "Sa")), /*#__PURE__*/React__default['default'].createElement(atoms.Center, {
     style: {
       minWidth: "14%"
     }
-  }, /*#__PURE__*/React__default.createElement(atoms.H3, {
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
     fontFamily: theme.fontFamily2
   }, "Su"))))));
 };
@@ -20875,7 +21054,7 @@ var renderMonth = function renderMonth() {
   return DATA;
 };
 
-var FlatCalendar = React__default.memo(function (_ref2) {
+var FlatCalendar = React__default['default'].memo(function (_ref2) {
   var start = _ref2.start,
       end = _ref2.end,
       onSelect = _ref2.onSelect,
@@ -20934,9 +21113,9 @@ var FlatCalendar = React__default.memo(function (_ref2) {
     var item = _ref3.item;
 
     if (item.weekdays) {
-      return /*#__PURE__*/React__default.createElement(Weekdays, null);
+      return /*#__PURE__*/React__default['default'].createElement(Weekdays, null);
     } else {
-      return /*#__PURE__*/React__default.createElement(FlatMonth, {
+      return /*#__PURE__*/React__default['default'].createElement(FlatMonth, {
         setRange: setRange,
         startDate: startDate,
         endDate: endDate,
@@ -20947,11 +21126,11 @@ var FlatCalendar = React__default.memo(function (_ref2) {
   var keyExtractor = React.useCallback(function (item) {
     return item.id;
   }, []);
-  return /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+  return /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
     style: {
       flex: 1
     }
-  }, /*#__PURE__*/React__default.createElement(reactNativeGestureHandler.FlatList, {
+  }, /*#__PURE__*/React__default['default'].createElement(reactNativeGestureHandler.FlatList, {
     ref: scrollEl,
     getItemLayout: function getItemLayout(data, index) {
       return {
@@ -20976,7 +21155,7 @@ var FlatCalendar = React__default.memo(function (_ref2) {
   }));
 });
 
-var DateRange = React__default.memo(function (_ref) {
+var DateRange = React__default['default'].memo(function (_ref) {
   var _ref$startDate = _ref.startDate,
       startDate = _ref$startDate === void 0 ? false : _ref$startDate,
       _ref$endDate = _ref.endDate,
@@ -20987,27 +21166,23 @@ var DateRange = React__default.memo(function (_ref) {
       _ref$ListHeaderCompon = _ref.ListHeaderComponent,
       ListHeaderComponent = _ref$ListHeaderCompon === void 0 ? null : _ref$ListHeaderCompon;
   var theme = atoms.useThemeContext();
-  return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement(FlatCalendar, {
+  return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(FlatCalendar, {
     isOnedayRange: isOnedayRange,
     theme: theme,
     start: startDate,
     end: endDate,
     onSelect: onSelect,
-    ListHeaderComponent: /*#__PURE__*/React__default.createElement(ListHeaderComponent, null)
+    ListHeaderComponent: /*#__PURE__*/React__default['default'].createElement(ListHeaderComponent, null)
   }));
 });
 
-var Weekday = React__default.memo(function (_ref) {
+var Weekday = React__default['default'].memo(function (_ref) {
   var dayName = _ref.dayName,
       _ref$isActive = _ref.isActive,
       isActive = _ref$isActive === void 0 ? false : _ref$isActive,
       weekdayToggle = _ref.weekdayToggle;
 
   var _useThemeContext = atoms.useThemeContext(),
-      color1 = _useThemeContext.color1,
-      color2 = _useThemeContext.color2,
-      color11 = _useThemeContext.color11,
-      color7 = _useThemeContext.color7,
       fontFamily2 = _useThemeContext.fontFamily2;
 
   var _useState = React.useState(isActive),
@@ -21029,33 +21204,20 @@ var Weekday = React__default.memo(function (_ref) {
   React.useEffect(function () {
     setIsEnabled(isActive);
   }, [isActive]);
-  return /*#__PURE__*/React__default.createElement(atoms.PaddingHorizontal, null, /*#__PURE__*/React__default.createElement(atoms.MarginHorizontal, null, /*#__PURE__*/React__default.createElement(atoms.Padding, {
-    style: {
-      borderBottomWidth: 1,
-      borderColor: color7
+  return /*#__PURE__*/React__default['default'].createElement(atoms.PaddingHorizontal, null, /*#__PURE__*/React__default['default'].createElement(atoms.MarginHorizontal, null, /*#__PURE__*/React__default['default'].createElement(atoms.PaddingVertical, null, /*#__PURE__*/React__default['default'].createElement(atoms.Switch, {
+    value: isEnabled,
+    onValueChange: function onValueChange(value) {
+      return toggleSwitch();
     }
-  }, /*#__PURE__*/React__default.createElement(atoms.PaddingVertical, null, /*#__PURE__*/React__default.createElement(atoms.Stretch, null, /*#__PURE__*/React__default.createElement(atoms.Row, {
-    style: {
-      justifyContent: "space-between"
-    }
-  }, /*#__PURE__*/React__default.createElement(atoms.CenterLeft, null, /*#__PURE__*/React__default.createElement(atoms.H3, {
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.CenterLeft, null, /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
     fontFamily: fontFamily2,
     style: {
       textTransform: "capitalize"
     }
-  }, dayName)), /*#__PURE__*/React__default.createElement(reactNative$1.Switch, {
-    trackColor: {
-      false: color2,
-      true: color11
-    },
-    thumbColor: isActive ? color1 : color1,
-    ios_backgroundColor: color2,
-    onValueChange: toggleSwitch,
-    value: isEnabled
-  })))))));
+  }, dayName)))))));
 });
 
-var Weekdays$1 = React__default.memo(function (_ref) {
+var Weekdays$1 = React__default['default'].memo(function (_ref) {
   var days = _ref.days,
       onSelect = _ref.onSelect,
       _ref$ListHeaderCompon = _ref.ListHeaderComponent,
@@ -21091,11 +21253,11 @@ var Weekdays$1 = React__default.memo(function (_ref) {
     });
   };
 
-  return /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+  return /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
     style: {
       flex: 1
     }
-  }, /*#__PURE__*/React__default.createElement(reactNativeGestureHandler.ScrollView, null, /*#__PURE__*/React__default.createElement(ListHeaderComponent, null), /*#__PURE__*/React__default.createElement(Weekday, {
+  }, /*#__PURE__*/React__default['default'].createElement(reactNativeGestureHandler.ScrollView, null, /*#__PURE__*/React__default['default'].createElement(ListHeaderComponent, null), /*#__PURE__*/React__default['default'].createElement(Weekday, {
     dayName: "monday",
     isActive: weekdays.monday,
     weekdayToggle: function weekdayToggle(_ref3) {
@@ -21104,7 +21266,7 @@ var Weekdays$1 = React__default.memo(function (_ref) {
         day: day
       });
     }
-  }), /*#__PURE__*/React__default.createElement(Weekday, {
+  }), /*#__PURE__*/React__default['default'].createElement(Weekday, {
     dayName: "tuesday",
     isActive: weekdays.tuesday,
     weekdayToggle: function weekdayToggle(_ref4) {
@@ -21113,7 +21275,7 @@ var Weekdays$1 = React__default.memo(function (_ref) {
         day: day
       });
     }
-  }), /*#__PURE__*/React__default.createElement(Weekday, {
+  }), /*#__PURE__*/React__default['default'].createElement(Weekday, {
     dayName: "wednesday",
     isActive: weekdays.wednesday,
     weekdayToggle: function weekdayToggle(_ref5) {
@@ -21122,7 +21284,7 @@ var Weekdays$1 = React__default.memo(function (_ref) {
         day: day
       });
     }
-  }), /*#__PURE__*/React__default.createElement(Weekday, {
+  }), /*#__PURE__*/React__default['default'].createElement(Weekday, {
     dayName: "thursday",
     isActive: weekdays.thursday,
     weekdayToggle: function weekdayToggle(_ref6) {
@@ -21131,7 +21293,7 @@ var Weekdays$1 = React__default.memo(function (_ref) {
         day: day
       });
     }
-  }), /*#__PURE__*/React__default.createElement(Weekday, {
+  }), /*#__PURE__*/React__default['default'].createElement(Weekday, {
     dayName: "friday",
     isActive: weekdays.friday,
     weekdayToggle: function weekdayToggle(_ref7) {
@@ -21140,7 +21302,7 @@ var Weekdays$1 = React__default.memo(function (_ref) {
         day: day
       });
     }
-  }), /*#__PURE__*/React__default.createElement(Weekday, {
+  }), /*#__PURE__*/React__default['default'].createElement(Weekday, {
     dayName: "saturday",
     isActive: weekdays.saturday,
     weekdayToggle: function weekdayToggle(_ref8) {
@@ -21149,7 +21311,7 @@ var Weekdays$1 = React__default.memo(function (_ref) {
         day: day
       });
     }
-  }), /*#__PURE__*/React__default.createElement(Weekday, {
+  }), /*#__PURE__*/React__default['default'].createElement(Weekday, {
     dayName: "sunday",
     isActive: weekdays.sunday,
     weekdayToggle: function weekdayToggle(_ref9) {
@@ -21161,16 +21323,13 @@ var Weekdays$1 = React__default.memo(function (_ref) {
   })));
 });
 
-var Time = React__default.memo(function (_ref) {
+var Time = React__default['default'].memo(function (_ref) {
   var time = _ref.time,
       _ref$isActive = _ref.isActive,
       isActive = _ref$isActive === void 0 ? false : _ref$isActive,
       timeToggle = _ref.timeToggle;
 
   var _useThemeContext = atoms.useThemeContext(),
-      color1 = _useThemeContext.color1,
-      color2 = _useThemeContext.color2,
-      color11 = _useThemeContext.color11,
       color7 = _useThemeContext.color7,
       fontFamily2 = _useThemeContext.fontFamily2;
 
@@ -21186,38 +21345,25 @@ var Time = React__default.memo(function (_ref) {
     timeToggle(!isEnabled);
   };
 
-  return /*#__PURE__*/React__default.createElement(atoms.PaddingHorizontal, null, /*#__PURE__*/React__default.createElement(atoms.MarginHorizontal, null, /*#__PURE__*/React__default.createElement(atoms.Padding, {
-    style: {
-      borderBottomWidth: 1,
-      borderColor: color7
+  return /*#__PURE__*/React__default['default'].createElement(atoms.PaddingHorizontal, null, /*#__PURE__*/React__default['default'].createElement(atoms.MarginHorizontal, null, /*#__PURE__*/React__default['default'].createElement(atoms.PaddingVertical, null, /*#__PURE__*/React__default['default'].createElement(atoms.Switch, {
+    value: isEnabled,
+    onValueChange: function onValueChange(value) {
+      return toggleSwitch();
     }
-  }, /*#__PURE__*/React__default.createElement(atoms.PaddingVertical, null, /*#__PURE__*/React__default.createElement(atoms.Stretch, null, /*#__PURE__*/React__default.createElement(atoms.Row, {
-    style: {
-      justifyContent: "space-between"
-    }
-  }, /*#__PURE__*/React__default.createElement(atoms.CenterLeft, null, /*#__PURE__*/React__default.createElement(atoms.H3, {
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.CenterLeft, null, /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
     fontFamily: fontFamily2
-  }, time)), /*#__PURE__*/React__default.createElement(reactNative$1.Switch, {
-    trackColor: {
-      false: color2,
-      true: color11
-    },
-    thumbColor: isActive ? color1 : color1,
-    ios_backgroundColor: color2,
-    onValueChange: toggleSwitch,
-    value: isEnabled
-  })))))));
+  }, time)))))));
 });
 
 var DividerElement = function DividerElement(_ref) {
   var name = _ref.name,
       color = _ref.color;
-  return /*#__PURE__*/React__default.createElement(atoms.MarginHorizontal, null, /*#__PURE__*/React__default.createElement(atoms.Margin, null, /*#__PURE__*/React__default.createElement(atoms.H2, {
+  return /*#__PURE__*/React__default['default'].createElement(atoms.MarginHorizontal, null, /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(atoms.H2, {
     color: color
   }, name)));
 };
 
-var Times = React__default.memo(function (_ref2) {
+var Times = React__default['default'].memo(function (_ref2) {
   var _ref2$timesSelected = _ref2.timesSelected,
       timesSelected = _ref2$timesSelected === void 0 ? [] : _ref2$timesSelected,
       onSelect = _ref2.onSelect,
@@ -21286,24 +21432,24 @@ var Times = React__default.memo(function (_ref2) {
     }
   };
 
-  return /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+  return /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
     style: {
       flex: 1
     }
-  }, /*#__PURE__*/React__default.createElement(reactNativeGestureHandler.ScrollView, null, /*#__PURE__*/React__default.createElement(ListHeaderComponent, null), times.map(function (_ref4) {
+  }, /*#__PURE__*/React__default['default'].createElement(reactNativeGestureHandler.ScrollView, null, /*#__PURE__*/React__default['default'].createElement(ListHeaderComponent, null), times.map(function (_ref4) {
     var time = _ref4.time,
         minuteValue = _ref4.minuteValue;
-    return /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+    return /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
       key: minuteValue
-    }, minuteValue >= 240 && minuteValue < 270 && /*#__PURE__*/React__default.createElement(DividerElement, {
+    }, minuteValue >= 240 && minuteValue < 270 && /*#__PURE__*/React__default['default'].createElement(DividerElement, {
       name: "Morning"
-    }), minuteValue >= 720 && minuteValue < 750 && /*#__PURE__*/React__default.createElement(DividerElement, {
+    }), minuteValue >= 720 && minuteValue < 750 && /*#__PURE__*/React__default['default'].createElement(DividerElement, {
       name: "Afternoon"
-    }), minuteValue >= 1020 && minuteValue < 1050 && /*#__PURE__*/React__default.createElement(DividerElement, {
+    }), minuteValue >= 1020 && minuteValue < 1050 && /*#__PURE__*/React__default['default'].createElement(DividerElement, {
       name: "Evening"
-    }), minuteValue >= 1440 && /*#__PURE__*/React__default.createElement(DividerElement, {
+    }), minuteValue >= 1440 && /*#__PURE__*/React__default['default'].createElement(DividerElement, {
       name: "Night"
-    }), /*#__PURE__*/React__default.createElement(Time, {
+    }), /*#__PURE__*/React__default['default'].createElement(Time, {
       isActive: toggledTimes.includes(minuteValue),
       time: time,
       timeToggle: function timeToggle(value) {
@@ -21317,16 +21463,16 @@ var Times = React__default.memo(function (_ref2) {
 });
 
 function ResourceDraggable() {
-  return /*#__PURE__*/React__default.createElement(atoms.Margin, null);
+  return /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null);
 }
 
 function DragArea(_ref) {
   var _ref$resources = _ref.resources,
       resources = _ref$resources === void 0 ? [] : _ref$resources;
-  return /*#__PURE__*/React__default.createElement(reactNativeGestureHandler.ScrollView, {
+  return /*#__PURE__*/React__default['default'].createElement(reactNativeGestureHandler.ScrollView, {
     horizontal: true
   }, resources.map(function () {
-    return /*#__PURE__*/React__default.createElement(ResourceDraggable, null);
+    return /*#__PURE__*/React__default['default'].createElement(ResourceDraggable, null);
   }));
 }
 
@@ -21336,12 +21482,12 @@ function DropArea(_ref) {
   var _useThemeContext = atoms.useThemeContext(),
       color11border = _useThemeContext.color11border;
 
-  return /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+  return /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
     style: {
       width: width,
       height: width
     }
-  }, /*#__PURE__*/React__default.createElement(atoms.Center, null, /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.Center, null, /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
     style: {
       backgroundColor: color11border,
       width: 24,
@@ -21369,17 +21515,17 @@ function DropArea$1(_ref) {
   var items = [];
 
   for (var i = 1; i <= DEFAULT_SIZES[category_id]; i++) {
-    items.push( /*#__PURE__*/React__default.createElement(DropArea, {
+    items.push( /*#__PURE__*/React__default['default'].createElement(DropArea, {
       width: ChildWidth,
       key: i
     }));
   }
 
-  return /*#__PURE__*/React__default.createElement(atoms.Margin, {
+  return /*#__PURE__*/React__default['default'].createElement(atoms.Margin, {
     style: {
       flex: 1
     }
-  }, /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+  }, /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
     style: {
       height: windowWidth - 40,
       width: windowWidth - 40,
@@ -21388,7 +21534,7 @@ function DropArea$1(_ref) {
       borderWidth: 1,
       borderColor: color11border
     }
-  }, /*#__PURE__*/React__default.createElement(atoms.Row, {
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
     style: {
       flex: 1,
       flexWrap: "wrap"
@@ -21397,22 +21543,22 @@ function DropArea$1(_ref) {
 }
 
 function ResourceDragAndDrop() {
-  return /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+  return /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
     style: {
       flex: 1
     }
-  }, /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+  }, /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
     style: {
       flex: 8
     }
-  }, /*#__PURE__*/React__default.createElement(DropArea$1, null)), /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+  }, /*#__PURE__*/React__default['default'].createElement(DropArea$1, null)), /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
     style: {
       flex: 1
     }
-  }, /*#__PURE__*/React__default.createElement(DragArea, null)));
+  }, /*#__PURE__*/React__default['default'].createElement(DragArea, null)));
 }
 
-var Duration = React__default.memo(function (_ref) {
+var Duration = React__default['default'].memo(function (_ref) {
   var name = _ref.name,
       value = _ref.value,
       _ref$isActive = _ref.isActive,
@@ -21420,10 +21566,6 @@ var Duration = React__default.memo(function (_ref) {
       durationToggle = _ref.durationToggle;
 
   var _useThemeContext = atoms.useThemeContext(),
-      color1 = _useThemeContext.color1,
-      color2 = _useThemeContext.color2,
-      color11 = _useThemeContext.color11,
-      color7 = _useThemeContext.color7,
       fontFamily2 = _useThemeContext.fontFamily2;
 
   var _useState = React.useState(isActive),
@@ -21445,33 +21587,20 @@ var Duration = React__default.memo(function (_ref) {
       value: isEnabled ? value : 0
     });
   }, [isEnabled]);
-  return /*#__PURE__*/React__default.createElement(atoms.PaddingHorizontal, null, /*#__PURE__*/React__default.createElement(atoms.MarginHorizontal, null, /*#__PURE__*/React__default.createElement(atoms.Padding, {
-    style: {
-      borderBottomWidth: 1,
-      borderColor: color7
+  return /*#__PURE__*/React__default['default'].createElement(atoms.PaddingHorizontal, null, /*#__PURE__*/React__default['default'].createElement(atoms.MarginHorizontal, null, /*#__PURE__*/React__default['default'].createElement(atoms.PaddingVertical, null, /*#__PURE__*/React__default['default'].createElement(atoms.Switch, {
+    value: isEnabled,
+    onValueChange: function onValueChange(value) {
+      return toggleSwitch();
     }
-  }, /*#__PURE__*/React__default.createElement(atoms.PaddingVertical, null, /*#__PURE__*/React__default.createElement(atoms.Stretch, null, /*#__PURE__*/React__default.createElement(atoms.Row, {
-    style: {
-      justifyContent: "space-between"
-    }
-  }, /*#__PURE__*/React__default.createElement(atoms.CenterLeft, null, /*#__PURE__*/React__default.createElement(atoms.H3, {
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.CenterLeft, null, /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
     fontFamily: fontFamily2,
     style: {
       textTransform: "capitalize"
     }
-  }, name)), /*#__PURE__*/React__default.createElement(reactNative$1.Switch, {
-    trackColor: {
-      false: color2,
-      true: color11
-    },
-    thumbColor: isActive ? color1 : color1,
-    ios_backgroundColor: color2,
-    onValueChange: toggleSwitch,
-    value: isEnabled
-  })))))));
+  }, name)))))));
 });
 
-var DurationItem = React__default.memo(function (_ref) {
+var DurationItem = React__default['default'].memo(function (_ref) {
   var _ref$duration = _ref.duration,
       duration = _ref$duration === void 0 ? 0 : _ref$duration,
       onSelect = _ref.onSelect,
@@ -21515,7 +21644,7 @@ var DurationItem = React__default.memo(function (_ref) {
 
   var MinuteValues = function MinuteValues(_ref3) {
     var selectedHour = _ref3.selectedHour;
-    return /*#__PURE__*/React__default.createElement(atoms.Margin, null, /*#__PURE__*/React__default.createElement(Duration, {
+    return /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(Duration, {
       value: 15,
       name: "15 minutes",
       isActive: durationMinute === 15 && selectedHour === durationHour,
@@ -21526,7 +21655,7 @@ var DurationItem = React__default.memo(function (_ref) {
           variant: "minute"
         });
       }
-    }), /*#__PURE__*/React__default.createElement(Duration, {
+    }), /*#__PURE__*/React__default['default'].createElement(Duration, {
       value: 30,
       name: "30 minutes",
       isActive: durationMinute === 30 && selectedHour === durationHour,
@@ -21537,7 +21666,7 @@ var DurationItem = React__default.memo(function (_ref) {
           variant: "minute"
         });
       }
-    }), /*#__PURE__*/React__default.createElement(Duration, {
+    }), /*#__PURE__*/React__default['default'].createElement(Duration, {
       value: 45,
       name: "45 minutes",
       isActive: durationMinute === 45 && selectedHour === durationHour,
@@ -21551,11 +21680,11 @@ var DurationItem = React__default.memo(function (_ref) {
     }));
   };
 
-  return /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+  return /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
     style: {
       flex: 1
     }
-  }, /*#__PURE__*/React__default.createElement(reactNativeGestureHandler.ScrollView, null, /*#__PURE__*/React__default.createElement(ListHeaderComponent, null), /*#__PURE__*/React__default.createElement(Duration, {
+  }, /*#__PURE__*/React__default['default'].createElement(reactNativeGestureHandler.ScrollView, null, /*#__PURE__*/React__default['default'].createElement(ListHeaderComponent, null), /*#__PURE__*/React__default['default'].createElement(Duration, {
     value: 15,
     name: "15 minutes",
     isActive: durationHour === 0.25 || durationHour === 0 && durationMinute === 15,
@@ -21567,7 +21696,7 @@ var DurationItem = React__default.memo(function (_ref) {
         hour: 0
       });
     }
-  }), /*#__PURE__*/React__default.createElement(Duration, {
+  }), /*#__PURE__*/React__default['default'].createElement(Duration, {
     value: 30,
     name: "30 minutes",
     isActive: durationHour === 0.5 || durationHour === 0 && durationMinute === 30,
@@ -21579,7 +21708,7 @@ var DurationItem = React__default.memo(function (_ref) {
         hour: 0
       });
     }
-  }), /*#__PURE__*/React__default.createElement(Duration, {
+  }), /*#__PURE__*/React__default['default'].createElement(Duration, {
     value: 45,
     name: "45 minutes",
     isActive: durationHour === 0.75 || durationHour === 0 && durationMinute === 45,
@@ -21591,7 +21720,7 @@ var DurationItem = React__default.memo(function (_ref) {
         hour: 0
       });
     }
-  }), /*#__PURE__*/React__default.createElement(Duration, {
+  }), /*#__PURE__*/React__default['default'].createElement(Duration, {
     value: 1,
     name: "1 hour",
     isActive: durationHour === 1,
@@ -21601,9 +21730,9 @@ var DurationItem = React__default.memo(function (_ref) {
         value: value
       });
     }
-  }), durationHour === 1 && /*#__PURE__*/React__default.createElement(MinuteValues, {
+  }), durationHour === 1 && /*#__PURE__*/React__default['default'].createElement(MinuteValues, {
     selectedHour: 1
-  }), /*#__PURE__*/React__default.createElement(Duration, {
+  }), /*#__PURE__*/React__default['default'].createElement(Duration, {
     value: 2,
     name: "2 hours",
     isActive: durationHour === 2,
@@ -21613,9 +21742,9 @@ var DurationItem = React__default.memo(function (_ref) {
         value: value
       });
     }
-  }), durationHour === 2 && /*#__PURE__*/React__default.createElement(MinuteValues, {
+  }), durationHour === 2 && /*#__PURE__*/React__default['default'].createElement(MinuteValues, {
     selectedHour: 2
-  }), /*#__PURE__*/React__default.createElement(Duration, {
+  }), /*#__PURE__*/React__default['default'].createElement(Duration, {
     value: 3,
     name: "3 hours",
     isActive: durationHour === 3,
@@ -21625,9 +21754,9 @@ var DurationItem = React__default.memo(function (_ref) {
         value: value
       });
     }
-  }), durationHour === 3 && /*#__PURE__*/React__default.createElement(MinuteValues, {
+  }), durationHour === 3 && /*#__PURE__*/React__default['default'].createElement(MinuteValues, {
     selectedHour: 3
-  }), /*#__PURE__*/React__default.createElement(Duration, {
+  }), /*#__PURE__*/React__default['default'].createElement(Duration, {
     value: 4,
     name: "4 hours",
     isActive: durationHour === 4,
@@ -21637,9 +21766,9 @@ var DurationItem = React__default.memo(function (_ref) {
         value: value
       });
     }
-  }), durationHour === 4 && /*#__PURE__*/React__default.createElement(MinuteValues, {
+  }), durationHour === 4 && /*#__PURE__*/React__default['default'].createElement(MinuteValues, {
     selectedHour: 4
-  }), /*#__PURE__*/React__default.createElement(Duration, {
+  }), /*#__PURE__*/React__default['default'].createElement(Duration, {
     value: 5,
     name: "5 hours",
     isActive: durationHour === 5,
@@ -21649,9 +21778,9 @@ var DurationItem = React__default.memo(function (_ref) {
         value: value
       });
     }
-  }), durationHour === 5 && /*#__PURE__*/React__default.createElement(MinuteValues, {
+  }), durationHour === 5 && /*#__PURE__*/React__default['default'].createElement(MinuteValues, {
     selectedHour: 5
-  }), /*#__PURE__*/React__default.createElement(Duration, {
+  }), /*#__PURE__*/React__default['default'].createElement(Duration, {
     value: 6,
     name: "6 hours",
     isActive: durationHour === 6,
@@ -21661,9 +21790,9 @@ var DurationItem = React__default.memo(function (_ref) {
         value: value
       });
     }
-  }), durationHour === 6 && /*#__PURE__*/React__default.createElement(MinuteValues, {
+  }), durationHour === 6 && /*#__PURE__*/React__default['default'].createElement(MinuteValues, {
     selectedHour: 6
-  }), /*#__PURE__*/React__default.createElement(Duration, {
+  }), /*#__PURE__*/React__default['default'].createElement(Duration, {
     value: 7,
     name: "7 hours",
     isActive: durationHour === 7,
@@ -21673,9 +21802,9 @@ var DurationItem = React__default.memo(function (_ref) {
         value: value
       });
     }
-  }), durationHour === 7 && /*#__PURE__*/React__default.createElement(MinuteValues, {
+  }), durationHour === 7 && /*#__PURE__*/React__default['default'].createElement(MinuteValues, {
     selectedHour: 7
-  }), /*#__PURE__*/React__default.createElement(Duration, {
+  }), /*#__PURE__*/React__default['default'].createElement(Duration, {
     value: 8,
     name: "8 hours",
     isActive: durationHour === 8,
@@ -21685,9 +21814,9 @@ var DurationItem = React__default.memo(function (_ref) {
         value: value
       });
     }
-  }), durationHour === 8 && /*#__PURE__*/React__default.createElement(MinuteValues, {
+  }), durationHour === 8 && /*#__PURE__*/React__default['default'].createElement(MinuteValues, {
     selectedHour: 8
-  }), /*#__PURE__*/React__default.createElement(Duration, {
+  }), /*#__PURE__*/React__default['default'].createElement(Duration, {
     value: 9,
     name: "9 hours",
     isActive: durationHour === 9,
@@ -21697,9 +21826,9 @@ var DurationItem = React__default.memo(function (_ref) {
         value: value
       });
     }
-  }), durationHour === 9 && /*#__PURE__*/React__default.createElement(MinuteValues, {
+  }), durationHour === 9 && /*#__PURE__*/React__default['default'].createElement(MinuteValues, {
     selectedHour: 9
-  }), /*#__PURE__*/React__default.createElement(Duration, {
+  }), /*#__PURE__*/React__default['default'].createElement(Duration, {
     value: 10,
     name: "10 hours",
     isActive: durationHour === 10,
@@ -21709,9 +21838,9 @@ var DurationItem = React__default.memo(function (_ref) {
         value: value
       });
     }
-  }), durationHour === 10 && /*#__PURE__*/React__default.createElement(MinuteValues, {
+  }), durationHour === 10 && /*#__PURE__*/React__default['default'].createElement(MinuteValues, {
     selectedHour: 10
-  }), /*#__PURE__*/React__default.createElement(Duration, {
+  }), /*#__PURE__*/React__default['default'].createElement(Duration, {
     value: 11,
     name: "11 hours",
     isActive: durationHour === 11,
@@ -21721,9 +21850,9 @@ var DurationItem = React__default.memo(function (_ref) {
         value: value
       });
     }
-  }), durationHour === 11 && /*#__PURE__*/React__default.createElement(MinuteValues, {
+  }), durationHour === 11 && /*#__PURE__*/React__default['default'].createElement(MinuteValues, {
     selectedHour: 11
-  }), /*#__PURE__*/React__default.createElement(Duration, {
+  }), /*#__PURE__*/React__default['default'].createElement(Duration, {
     value: 12,
     name: "12 hours",
     isActive: durationHour === 12,
@@ -21733,9 +21862,18489 @@ var DurationItem = React__default.memo(function (_ref) {
         value: value
       });
     }
-  }), durationHour === 12 && /*#__PURE__*/React__default.createElement(MinuteValues, {
+  }), durationHour === 12 && /*#__PURE__*/React__default['default'].createElement(MinuteValues, {
     selectedHour: 12
   })));
+});
+
+var MerchantSelector = React__default['default'].memo(function (_ref) {
+  var merchants = _ref.merchants,
+      _ref$onChange = _ref.onChange,
+      onChange = _ref$onChange === void 0 ? function () {} : _ref$onChange,
+      _ref$page = _ref.page,
+      page = _ref$page === void 0 ? "" : _ref$page;
+
+  var _useState = React.useState(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      closeItem = _useState2[0],
+      setCloseItem = _useState2[1];
+
+  var _useState3 = React.useState(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      selected = _useState4[0],
+      setSelected = _useState4[1];
+
+  var theme = atoms.useThemeContext();
+  React.useEffect(function () {
+    selected && onChange(selected);
+  }, [selected]);
+  React.useEffect(function () {
+    if (!selected && merchants) {
+      setSelected(merchants[0].merchant);
+      onChange(merchants[0].merchant);
+    }
+  }, [merchants]);
+  return /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
+    style: {
+      backgroundColor: theme.color1
+    }
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
+    style: {
+      borderBottomWidth: 1,
+      borderColor: theme.color7
+    }
+  }, /*#__PURE__*/React__default['default'].createElement(AccordionItem, {
+    key: "MerchantBookings",
+    eventKey: "MerchantBookings",
+    closeItem: closeItem,
+    onChange: function onChange() {
+      return setCloseItem(false);
+    }
+  }, /*#__PURE__*/React__default['default'].createElement(AccordionItem.Head, {
+    lightContent: false
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
+    color: theme.color2
+  }, selected ? selected.profile.name : merchants[0].merchant.profile.name || null), /*#__PURE__*/React__default['default'].createElement(atoms.H1, {
+    color: theme.color2
+  }, page))), /*#__PURE__*/React__default['default'].createElement(AccordionItem.Body, {
+    isNormal: true
+  }, merchants.map(function (_ref2, index) {
+    var merchant = _ref2.merchant;
+    return /*#__PURE__*/React__default['default'].createElement(atoms.Margin, {
+      key: index
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.Row, null, /*#__PURE__*/React__default['default'].createElement(atoms.TextBtn, {
+      borderColorActive: theme.color9,
+      borderColorIdle: theme.color10,
+      style: {
+        borderWidth: 1,
+        borderColor: theme.color10
+      },
+      onClick: function onClick() {
+        setSelected(merchant);
+        setCloseItem(true);
+      }
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.MarginVertical, null, /*#__PURE__*/React__default['default'].createElement(atoms.H2, {
+      color: theme.color2
+    }, merchant.profile.name || null, " ", page)))));
+  }))))));
+});
+
+var img$1 = "data:image/png;base64,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";
+
+var _templateObject$c, _templateObject2$7, _templateObject3$3;
+var Body$4 = styled.View(_templateObject$c || (_templateObject$c = _taggedTemplateLiteral(["\n  border-bottom-left-radius: ", ";\n  border-bottom-right-radius: ", ";\n  background-color: ", ";\n  border-width: 1px;\n  border-color: ", ";\n"])), function (props) {
+  return props.theme.borderRadius;
+}, function (props) {
+  return props.theme.borderRadius;
+}, function (props) {
+  return props.theme.color1;
+}, function (props) {
+  return props.theme.color10;
+});
+var Wrapper$4 = styled.View(_templateObject2$7 || (_templateObject2$7 = _taggedTemplateLiteral(["\n  border-radius: ", ";\n"])), function (props) {
+  return props.theme.borderRadius;
+});
+var ImageWrap = styled.View(_templateObject3$3 || (_templateObject3$3 = _taggedTemplateLiteral(["\n  border-top-left-radius: ", ";\n  border-top-right-radius: ", ";\n  overflow: hidden;\n"])), function (props) {
+  return props.theme.borderRadius;
+}, function (props) {
+  return props.theme.borderRadius;
+});
+
+var ip$7 = 0;
+var fr$7 = 60;
+var v$7 = "5.1.20";
+var assets$7 = [
+];
+var layers$7 = [
+	{
+		ty: 4,
+		nm: "sports",
+		ip: 0,
+		st: 0,
+		ind: 1,
+		hix: 1,
+		ks: {
+			o: {
+				a: 0,
+				k: 100
+			},
+			or: {
+				a: 0,
+				k: [
+					0,
+					0,
+					0
+				]
+			},
+			a: {
+				a: 0,
+				k: [
+					204,
+					205.5,
+					0
+				]
+			},
+			p: {
+				s: true,
+				x: {
+					a: 0,
+					k: 150
+				},
+				y: {
+					a: 0,
+					k: 150
+				}
+			},
+			rx: {
+				a: 0,
+				k: 0
+			},
+			ry: {
+				a: 0,
+				k: 0
+			},
+			rz: {
+				a: 0,
+				k: 0
+			},
+			s: {
+				a: 0,
+				k: [
+					67.60000000000001,
+					67.60000000000001
+				]
+			}
+		},
+		shapes: [
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: false,
+								v: [
+									[
+										29,
+										35.5836527
+									],
+									[
+										23.0246824,
+										13.4926129
+									],
+									[
+										28.3289667,
+										2.58365268
+									]
+								],
+								i: [
+									[
+										0,
+										0
+									],
+									[
+										0.2582367999999988,
+										4.3889659000000005
+									],
+									[
+										-3.794426399999999,
+										2.88367428
+									]
+								],
+								o: [
+									[
+										-3.7253082000000006,
+										-10.338394000000001
+									],
+									[
+										-0.2582369,
+										-4.388965859999999
+									],
+									[
+										0,
+										0
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 100
+						},
+						c: {
+							a: 0,
+							k: [
+								0.8823529411764706,
+								0.4392156862745098,
+								0.3333333333333333,
+								1
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1,
+						w: {
+							a: 0,
+							k: 1
+						}
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						r: 1
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								176.5,
+								72.916
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: false,
+								v: [
+									[
+										0,
+										24.5836527
+									],
+									[
+										11.8812914,
+										10.2852925
+									],
+									[
+										13.743615,
+										0.583652682
+									]
+								],
+								i: [
+									[
+										0,
+										0
+									],
+									[
+										-1.9038221100000001,
+										3.2527133999999993
+									],
+									[
+										0.662272999999999,
+										3.215046548
+									]
+								],
+								o: [
+									[
+										6.01703883,
+										-6.279526799999999
+									],
+									[
+										1.9038220999999993,
+										-3.2527133200000007
+									],
+									[
+										0,
+										0
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 100
+						},
+						c: {
+							a: 0,
+							k: [
+								0.8823529411764706,
+								0.4392156862745098,
+								0.3333333333333333,
+								1
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1,
+						w: {
+							a: 0,
+							k: 1
+						}
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						r: 1
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								176.5,
+								72.916
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: false,
+								v: [
+									[
+										13,
+										37.5836527
+									],
+									[
+										16.4790561,
+										12.6374825
+									],
+									[
+										24,
+										1.58365268
+									]
+								],
+								i: [
+									[
+										0,
+										0
+									],
+									[
+										-1.4113851000000004,
+										4.619078399999999
+									],
+									[
+										-3.6025776,
+										2.7501415399999996
+									]
+								],
+								o: [
+									[
+										0.9079856,
+										-12.0117018
+									],
+									[
+										1.4113849999999992,
+										-4.619078330000001
+									],
+									[
+										0,
+										0
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 100
+						},
+						c: {
+							a: 0,
+							k: [
+								0.8823529411764706,
+								0.4392156862745098,
+								0.3333333333333333,
+								1
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1,
+						w: {
+							a: 0,
+							k: 1
+						}
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						r: 1
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								176.5,
+								72.916
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: false,
+								v: [
+									[
+										2,
+										9.58365268
+									],
+									[
+										21.133671,
+										12.6753978
+									],
+									[
+										37,
+										22.5836527
+									]
+								],
+								i: [
+									[
+										0,
+										0
+									],
+									[
+										-3.8380131000000013,
+										-1.4821062999999999
+									],
+									[
+										-6.739539499999999,
+										-5.1233968999999995
+									]
+								],
+								o: [
+									[
+										8.9177676,
+										0.5790571199999999
+									],
+									[
+										3.838013199999999,
+										1.4821063999999993
+									],
+									[
+										0,
+										0
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 100
+						},
+						c: {
+							a: 0,
+							k: [
+								0.8823529411764706,
+								0.4392156862745098,
+								0.3333333333333333,
+								1
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1,
+						w: {
+							a: 0,
+							k: 1
+						}
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						r: 1
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								176.5,
+								72.916
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										190.27452,
+										78.121705
+									],
+									[
+										196.477065,
+										76.9836791
+									],
+									[
+										202.408382,
+										79.0214822
+									],
+									[
+										202.408381,
+										79.0214863
+									],
+									[
+										204.316621,
+										80.5152524
+									],
+									[
+										206.496186,
+										83.658291
+									],
+									[
+										206.496186,
+										83.658291
+									],
+									[
+										202.121674,
+										88.0328022
+									],
+									[
+										200.772066,
+										87.8194094
+									],
+									[
+										195.060745,
+										86.3203631
+									],
+									[
+										191.00705,
+										87.3690234
+									],
+									[
+										186.551519,
+										85.1431275
+									],
+									[
+										186.370417,
+										84.0283121
+									],
+									[
+										186.370417,
+										83.0001325
+									]
+								],
+								i: [
+									[
+										-2.2823029999999846,
+										0.5127001999999976
+									],
+									[
+										-0.7577220000000011,
+										0
+									],
+									[
+										-3.047134,
+										-1.3585353999999938
+									],
+									[
+										0,
+										0
+									],
+									[
+										-0.5039659999999913,
+										-0.6468666999999897
+									],
+									[
+										0,
+										-0.2303017000000125
+									],
+									[
+										0,
+										0
+									],
+									[
+										2.4159760000000006,
+										0
+									],
+									[
+										0.4359149999999943,
+										0.14138370000000577
+									],
+									[
+										0.7263110000000097,
+										0
+									],
+									[
+										2.0949830000000134,
+										-0.6991069000000039
+									],
+									[
+										0.6156949999999881,
+										1.8450275999999945
+									],
+									[
+										0,
+										0.3789281000000102
+									],
+									[
+										0,
+										0
+									]
+								],
+								o: [
+									[
+										3.3773079999999993,
+										-0.7586839000000083
+									],
+									[
+										0.9070769999999868,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0.7489470000000154,
+										0.3339107999999982
+									],
+									[
+										1.453043000000008,
+										1.865057400000012
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										2.4159757999999982
+									],
+									[
+										-0.45826900000000137,
+										0
+									],
+									[
+										-3.08123599999999,
+										-0.9993654000000021
+									],
+									[
+										-0.6074800000000096,
+										0
+									],
+									[
+										-1.84502599999999,
+										0.6157022999999953
+									],
+									[
+										-0.11994800000002215,
+										-0.3594426000000084
+									],
+									[
+										0,
+										0
+									],
+									[
+										-0.000003999999989900971,
+										-2.339181200000013
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9803921568627451,
+								0.6941176470588235,
+								0.6274509803921569,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								-15.411,
+								144.757
+							]
+						},
+						r: {
+							a: 0,
+							k: 319.99692858056477
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								200,
+								92
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								33,
+								33
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								1,
+								0.5333333333333333,
+								0.4235294117647059,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								-8.012,
+								-0.928
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								203,
+								92
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								40,
+								40
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.8823529411764706,
+								0.4392156862745098,
+								0.3333333333333333,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								-8.012,
+								-0.928
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								200,
+								99
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								40,
+								40
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.25098039215686274,
+								0.7215686274509804,
+								0.592156862745098,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								-8.012,
+								-0.928
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										140.568107,
+										317.89124
+									],
+									[
+										142.568107,
+										319.89124
+									],
+									[
+										140.568107,
+										321.89124
+									],
+									[
+										133.954639,
+										321.890569
+									],
+									[
+										135.770782,
+										326.397405
+									],
+									[
+										129.270782,
+										332.897405
+									],
+									[
+										122.770782,
+										326.397405
+									],
+									[
+										124.586924,
+										321.890569
+									],
+									[
+										116.568107,
+										321.89124
+									],
+									[
+										114.568107,
+										319.89124
+									],
+									[
+										116.568107,
+										317.89124
+									]
+								],
+								i: [
+									[
+										0,
+										0
+									],
+									[
+										0,
+										-1.104569999999967
+									],
+									[
+										1.104568999999998,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										-1.74990200000002
+									],
+									[
+										3.5898500000000126,
+										0
+									],
+									[
+										0,
+										3.58985100000001
+									],
+									[
+										-1.1246459999999985,
+										1.1685399999999504
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										1.1045690000000263
+									],
+									[
+										-1.1045699999999954,
+										0
+									]
+								],
+								o: [
+									[
+										1.104568999999998,
+										0
+									],
+									[
+										0,
+										1.1045690000000263
+									],
+									[
+										0,
+										0
+									],
+									[
+										1.1246460000000127,
+										1.1685399999999504
+									],
+									[
+										0,
+										3.58985100000001
+									],
+									[
+										-3.589850999999996,
+										0
+									],
+									[
+										0,
+										-1.74990200000002
+									],
+									[
+										0,
+										0
+									],
+									[
+										-1.1045699999999954,
+										0
+									],
+									[
+										0,
+										-1.104569999999967
+									],
+									[
+										0,
+										0
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.12156862745098039,
+								0.17647058823529413,
+								0.20784313725490197,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								-100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								490.424,
+								602.39
+							]
+						},
+						r: {
+							a: 0,
+							k: 310.02746294528845
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										143.148094,
+										11.3981971
+									],
+									[
+										145.148094,
+										13.3981971
+									],
+									[
+										143.148094,
+										15.3981971
+									],
+									[
+										136.534626,
+										15.3975263
+									],
+									[
+										138.350768,
+										19.9043626
+									],
+									[
+										131.850768,
+										26.4043626
+									],
+									[
+										125.350768,
+										19.9043626
+									],
+									[
+										127.166911,
+										15.3975263
+									],
+									[
+										119.148094,
+										15.3981971
+									],
+									[
+										117.148094,
+										13.3981971
+									],
+									[
+										119.148094,
+										11.3981971
+									]
+								],
+								i: [
+									[
+										0,
+										0
+									],
+									[
+										0,
+										-1.1045695000000002
+									],
+									[
+										1.1045690000000263,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										-1.7499022999999987
+									],
+									[
+										3.58985100000001,
+										0
+									],
+									[
+										0,
+										3.5898508000000007
+									],
+									[
+										-1.1246459999999985,
+										1.1685394999999996
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										1.1045694999999984
+									],
+									[
+										-1.1045699999999954,
+										0
+									]
+								],
+								o: [
+									[
+										1.1045690000000263,
+										0
+									],
+									[
+										0,
+										1.1045694999999984
+									],
+									[
+										0,
+										0
+									],
+									[
+										1.1246459999999843,
+										1.1685394999999996
+									],
+									[
+										0,
+										3.5898508000000007
+									],
+									[
+										-3.589849999999984,
+										0
+									],
+									[
+										0,
+										-1.7499022999999987
+									],
+									[
+										0,
+										0
+									],
+									[
+										-1.1045699999999954,
+										0
+									],
+									[
+										0,
+										-1.1045695000000002
+									],
+									[
+										0,
+										0
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.12156862745098039,
+								0.17647058823529413,
+								0.20784313725490197,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								-7.908,
+								183.832
+							]
+						},
+						r: {
+							a: 0,
+							k: 310.02746294528845
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										19,
+										1.75
+									],
+									[
+										19,
+										9.75
+									]
+								],
+								i: [
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									]
+								],
+								o: [
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 23.2708698
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								1
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1,
+						w: {
+							a: 0,
+							k: 1
+						}
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						r: 1
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								-100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								317.316,
+								368.009
+							]
+						},
+						r: {
+							a: 0,
+							k: 8.995437383553925
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										15,
+										1.75
+									],
+									[
+										15,
+										9.75
+									]
+								],
+								i: [
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									]
+								],
+								o: [
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 23.2708698
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								1
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1,
+						w: {
+							a: 0,
+							k: 1
+						}
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						r: 1
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								-100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								317.316,
+								368.009
+							]
+						},
+						r: {
+							a: 0,
+							k: 8.995437383553925
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										11.5,
+										1.25
+									],
+									[
+										11.5,
+										9.25
+									]
+								],
+								i: [
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									]
+								],
+								o: [
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 23.2708698
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								1
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1,
+						w: {
+							a: 0,
+							k: 1
+						}
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						r: 1
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								-100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								317.316,
+								368.009
+							]
+						},
+						r: {
+							a: 0,
+							k: 8.995437383553925
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								13,
+								1
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								14,
+								2
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 23.4702797
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								-100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								317.316,
+								368.009
+							]
+						},
+						r: {
+							a: 0,
+							k: 8.995437383553925
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								14,
+								4
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								17,
+								2
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 23.4702797
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								-100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								317.316,
+								368.009
+							]
+						},
+						r: {
+							a: 0,
+							k: 8.995437383553925
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								12,
+								9
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								24,
+								4
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 23.4702797
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								-100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								317.316,
+								368.009
+							]
+						},
+						r: {
+							a: 0,
+							k: 8.995437383553925
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										0,
+										80.9980568
+									],
+									[
+										20.4896932,
+										69.7597487
+									],
+									[
+										20.4896932,
+										90
+									],
+									[
+										0,
+										100.698972
+									]
+								],
+								i: [
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									]
+								],
+								o: [
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 23.0414117
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								-100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								338.974,
+								297.28
+							]
+						},
+						r: {
+							a: 0,
+							k: 8.995437383553925
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "rc",
+						s: {
+							a: 0,
+							k: [
+								2,
+								90
+							]
+						},
+						r: {
+							a: 0,
+							k: 1
+						},
+						p: {
+							a: 0,
+							k: [
+								10.30309239,
+								45
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 23.0414117
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								-100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								338.974,
+								297.28
+							]
+						},
+						r: {
+							a: 0,
+							k: 8.995437383553925
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										19,
+										1.75
+									],
+									[
+										19,
+										9.75
+									]
+								],
+								i: [
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									]
+								],
+								o: [
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 100
+						},
+						c: {
+							a: 0,
+							k: [
+								0.25098039215686274,
+								0.7215686274509804,
+								0.592156862745098,
+								1
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1,
+						w: {
+							a: 0,
+							k: 1
+						}
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						r: 1
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								76.443,
+								160.991
+							]
+						},
+						r: {
+							a: 0,
+							k: 10.026761414789405
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										15,
+										1.75
+									],
+									[
+										15,
+										9.75
+									]
+								],
+								i: [
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									]
+								],
+								o: [
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 100
+						},
+						c: {
+							a: 0,
+							k: [
+								0.25098039215686274,
+								0.7215686274509804,
+								0.592156862745098,
+								1
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1,
+						w: {
+							a: 0,
+							k: 1
+						}
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						r: 1
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								76.443,
+								160.991
+							]
+						},
+						r: {
+							a: 0,
+							k: 10.026761414789405
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										11.5,
+										1.25
+									],
+									[
+										11.5,
+										9.25
+									]
+								],
+								i: [
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									]
+								],
+								o: [
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 100
+						},
+						c: {
+							a: 0,
+							k: [
+								0.25098039215686274,
+								0.7215686274509804,
+								0.592156862745098,
+								1
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1,
+						w: {
+							a: 0,
+							k: 1
+						}
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						r: 1
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								76.443,
+								160.991
+							]
+						},
+						r: {
+							a: 0,
+							k: 10.026761414789405
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								13,
+								1
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								14,
+								2
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.25098039215686274,
+								0.7215686274509804,
+								0.592156862745098,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								76.443,
+								160.991
+							]
+						},
+						r: {
+							a: 0,
+							k: 10.026761414789405
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								14,
+								4
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								17,
+								2
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.25098039215686274,
+								0.7215686274509804,
+								0.592156862745098,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								76.443,
+								160.991
+							]
+						},
+						r: {
+							a: 0,
+							k: 10.026761414789405
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								12,
+								9
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								24,
+								4
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.25098039215686274,
+								0.7215686274509804,
+								0.592156862745098,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								76.443,
+								160.991
+							]
+						},
+						r: {
+							a: 0,
+							k: 10.026761414789405
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										0,
+										80.9980568
+									],
+									[
+										20.4896932,
+										69.7597487
+									],
+									[
+										20.4896932,
+										90
+									],
+									[
+										0,
+										100.698972
+									]
+								],
+								i: [
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									]
+								],
+								o: [
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.25098039215686274,
+								0.7215686274509804,
+								0.592156862745098,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								79.051,
+								87.066
+							]
+						},
+						r: {
+							a: 0,
+							k: 10.026761414789405
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "rc",
+						s: {
+							a: 0,
+							k: [
+								2,
+								90
+							]
+						},
+						r: {
+							a: 0,
+							k: 1
+						},
+						p: {
+							a: 0,
+							k: [
+								10.30309239,
+								45
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.25098039215686274,
+								0.7215686274509804,
+								0.592156862745098,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								79.051,
+								87.066
+							]
+						},
+						r: {
+							a: 0,
+							k: 10.026761414789405
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "rc",
+						s: {
+							a: 0,
+							k: [
+								140,
+								5
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						},
+						p: {
+							a: 0,
+							k: [
+								131.1480936,
+								2.898197088
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.3333333333333333,
+								0.9372549019607843,
+								0.7686274509803922,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								-7.908,
+								183.832
+							]
+						},
+						r: {
+							a: 0,
+							k: 310.02746294528845
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "rc",
+						s: {
+							a: 0,
+							k: [
+								140,
+								5
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						},
+						p: {
+							a: 0,
+							k: [
+								131.1480936,
+								339.898197
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.3333333333333333,
+								0.9372549019607843,
+								0.7686274509803922,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								-7.908,
+								183.832
+							]
+						},
+						r: {
+							a: 0,
+							k: 310.02746294528845
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										131.148094,
+										141.898197
+									],
+									[
+										111.702657,
+										149.952761
+									],
+									[
+										103.648094,
+										169.398197
+									],
+									[
+										111.702657,
+										188.843634
+									],
+									[
+										131.148094,
+										196.898197
+									],
+									[
+										150.59353,
+										188.843634
+									],
+									[
+										158.648094,
+										169.398197
+									],
+									[
+										150.59353,
+										149.952761
+									]
+								],
+								i: [
+									[
+										7.59391500000001,
+										0
+									],
+									[
+										4.976520999999991,
+										-4.976522000000017
+									],
+									[
+										0,
+										-7.59391500000001
+									],
+									[
+										-4.976521000000005,
+										-4.976522000000017
+									],
+									[
+										-7.593915999999993,
+										0
+									],
+									[
+										-4.976520999999991,
+										4.976520999999991
+									],
+									[
+										0,
+										7.593914999999981
+									],
+									[
+										4.9765210000000195,
+										4.976520999999991
+									]
+								],
+								o: [
+									[
+										-7.593915999999993,
+										0
+									],
+									[
+										-4.976521000000005,
+										4.976520999999991
+									],
+									[
+										0,
+										7.593914999999981
+									],
+									[
+										4.976520999999991,
+										4.976520999999991
+									],
+									[
+										7.59391500000001,
+										0
+									],
+									[
+										4.9765210000000195,
+										-4.976522000000017
+									],
+									[
+										0,
+										-7.59391500000001
+									],
+									[
+										-4.976520999999991,
+										-4.976522000000017
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 100
+						},
+						c: {
+							a: 0,
+							k: [
+								1,
+								1,
+								1,
+								1
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1,
+						w: {
+							a: 0,
+							k: 5
+						}
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						r: 1
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								-7.908,
+								183.832
+							]
+						},
+						r: {
+							a: 0,
+							k: 310.02746294528845
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "rc",
+						s: {
+							a: 0,
+							k: [
+								218,
+								5
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						},
+						p: {
+							a: 0,
+							k: [
+								130.1480936,
+								168.898197
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								1,
+								1,
+								1,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								-7.908,
+								183.832
+							]
+						},
+						r: {
+							a: 0,
+							k: 310.02746294528845
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										58.6903685,
+										269.898197
+									],
+									[
+										80.311338,
+										319.088396
+									],
+									[
+										131.148094,
+										339.898197
+									],
+									[
+										182.413335,
+										318.663439
+									],
+									[
+										203.605798,
+										269.898197
+									]
+								],
+								i: [
+									[
+										0,
+										0
+									],
+									[
+										-12.818590300000011,
+										-12.608300999999983
+									],
+									[
+										-19.803264999999982,
+										0
+									],
+									[
+										-13.119918999999982,
+										13.119919000000039
+									],
+									[
+										-0.6447419999999795,
+										19.026595000000043
+									]
+								],
+								o: [
+									[
+										0.6518450000000016,
+										19.241968000000043
+									],
+									[
+										13.084650499999995,
+										12.869996000000015
+									],
+									[
+										20.02032200000002,
+										0
+									],
+									[
+										12.57159200000001,
+										-12.57159200000001
+									],
+									[
+										0,
+										0
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 100
+						},
+						c: {
+							a: 0,
+							k: [
+								1,
+								1,
+								1,
+								1
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1,
+						w: {
+							a: 0,
+							k: 5
+						}
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						r: 1
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								-100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								459.035,
+								576.025
+							]
+						},
+						r: {
+							a: 0,
+							k: 310.02746294528845
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										58.6903685,
+										2.89819709
+									],
+									[
+										80.311338,
+										52.0883957
+									],
+									[
+										131.148094,
+										72.8981971
+									],
+									[
+										182.413335,
+										51.6634387
+									],
+									[
+										203.605798,
+										2.89819709
+									]
+								],
+								i: [
+									[
+										0,
+										0
+									],
+									[
+										-12.818590300000011,
+										-12.608300700000001
+									],
+									[
+										-19.803264999999982,
+										0
+									],
+									[
+										-13.119918999999982,
+										13.119919499999995
+									],
+									[
+										-0.6447419999999795,
+										19.02659461
+									]
+								],
+								o: [
+									[
+										0.6518450000000016,
+										19.24196831
+									],
+									[
+										13.084650499999995,
+										12.869996100000002
+									],
+									[
+										20.02032200000002,
+										0
+									],
+									[
+										12.57159200000001,
+										-12.571591900000001
+									],
+									[
+										0,
+										0
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 100
+						},
+						c: {
+							a: 0,
+							k: [
+								1,
+								1,
+								1,
+								1
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1,
+						w: {
+							a: 0,
+							k: 5
+						}
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						r: 1
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								-7.908,
+								183.832
+							]
+						},
+						r: {
+							a: 0,
+							k: 310.02746294528845
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "rc",
+						s: {
+							a: 0,
+							k: [
+								218,
+								342
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						},
+						p: {
+							a: 0,
+							k: [
+								130,
+								183
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.3333333333333333,
+								0.9372549019607843,
+								0.7686274509803922,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								-100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								263.163,
+								411.509
+							]
+						},
+						r: {
+							a: 0,
+							k: 130.0041237151838
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "sports shape group",
+				it: [
+					{
+						ty: "rc",
+						s: {
+							a: 0,
+							k: [
+								218,
+								342
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						},
+						p: {
+							a: 0,
+							k: [
+								109.518824241,
+								171.881120786
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 22.962194099999998
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								-100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								263.163,
+								411.509
+							]
+						},
+						r: {
+							a: 0,
+							k: 130.0041237151838
+						}
+					}
+				]
+			}
+		],
+		op: 1
+	}
+];
+var op$7 = 1;
+var w$7 = 300;
+var h$7 = 300;
+var sports = {
+	ip: ip$7,
+	fr: fr$7,
+	v: v$7,
+	assets: assets$7,
+	layers: layers$7,
+	op: op$7,
+	w: w$7,
+	h: h$7
+};
+
+var ip$8 = 0;
+var fr$8 = 60;
+var v$8 = "5.1.20";
+var assets$8 = [
+];
+var layers$8 = [
+	{
+		ty: 4,
+		nm: "fitness",
+		ip: 0,
+		st: 0,
+		ind: 1,
+		hix: 1,
+		ks: {
+			o: {
+				a: 0,
+				k: 100
+			},
+			or: {
+				a: 0,
+				k: [
+					0,
+					0,
+					0
+				]
+			},
+			a: {
+				a: 0,
+				k: [
+					90,
+					92.5,
+					0
+				]
+			},
+			p: {
+				s: true,
+				x: {
+					a: 0,
+					k: 137
+				},
+				y: {
+					a: 0,
+					k: 150
+				}
+			},
+			rx: {
+				a: 0,
+				k: 0
+			},
+			ry: {
+				a: 0,
+				k: 0
+			},
+			rz: {
+				a: 0,
+				k: 0
+			},
+			s: {
+				a: 0,
+				k: [
+					100,
+					100,
+					100
+				]
+			}
+		},
+		shapes: [
+			{
+				ty: "gr",
+				nm: "fitness shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										66.3788111,
+										85
+									],
+									[
+										68.338335,
+										85
+									],
+									[
+										71.8864356,
+										88.5481006
+									],
+									[
+										71.3584119,
+										90.4104751
+									],
+									[
+										66.3662962,
+										107.5
+									],
+									[
+										69.1142025,
+										125.741029
+									],
+									[
+										66.9969028,
+										129.845223
+									],
+									[
+										66.0034702,
+										130
+									],
+									[
+										58.8339221,
+										125.43707
+									],
+									[
+										55,
+										107.5
+									],
+									[
+										58.6361776,
+										89.9926325
+									]
+								],
+								i: [
+									[
+										-3.3371801999999917,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										-1.959561800000003
+									],
+									[
+										0.34519960000000083,
+										-0.559861600000005
+									],
+									[
+										0,
+										-5.996116999999998
+									],
+									[
+										-1.8319375000000093,
+										-5.736420999999993
+									],
+									[
+										1.718034000000003,
+										-0.5486580000000174
+									],
+									[
+										0.3371486000000061,
+										0
+									],
+									[
+										1.3012523999999956,
+										2.783961000000005
+									],
+									[
+										0,
+										6.489834999999999
+									],
+									[
+										-2.4241184000000047,
+										5.351324300000002
+									]
+								],
+								o: [
+									[
+										0,
+										0
+									],
+									[
+										1.959561899999997,
+										0
+									],
+									[
+										0,
+										0.6577292999999997
+									],
+									[
+										-3.3280770999999874,
+										5.396899899999994
+									],
+									[
+										0,
+										6.424266000000003
+									],
+									[
+										0.5487011000000024,
+										1.7180199999999957
+									],
+									[
+										-0.32116879999999526,
+										0.10256599999999594
+									],
+									[
+										-3.073060099999992,
+										0
+									],
+									[
+										-2.555948100000002,
+										-5.468212000000008
+									],
+									[
+										0,
+										-6.320254000000006
+									],
+									[
+										1.377025599999996,
+										-3.0398308999999983
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.6980392156862745,
+								0.7450980392156863,
+								0.7647058823529411,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "fitness shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								76,
+								71
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								17,
+								17
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.6980392156862745,
+								0.7450980392156863,
+								0.7647058823529411,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "fitness shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										77.1928207,
+										51.2720759
+									],
+									[
+										69.9853204,
+										43.0288464
+									],
+									[
+										68.7031877,
+										32.1316346
+									],
+									[
+										80,
+										23.6949797
+									],
+									[
+										64.9915499,
+										29.7874402
+									],
+									[
+										61.3774051,
+										39.3350722
+									],
+									[
+										67.6239053,
+										50.0164132
+									]
+								],
+								i: [
+									[
+										4.013198099999997,
+										1.8690288000000024
+									],
+									[
+										2.1295347999999876,
+										4.249467100000004
+									],
+									[
+										-1.0238501000000042,
+										2.4235638000000037
+									],
+									[
+										-5.533998199999999,
+										2.272898399999999
+									],
+									[
+										1.4482511000000073,
+										-1.1875903999999977
+									],
+									[
+										-0.3322781999999975,
+										-4.293398400000001
+									],
+									[
+										-4.764672200000007,
+										-3.753957200000002
+									]
+								],
+								o: [
+									[
+										-2.675465399999993,
+										-1.2460191999999992
+									],
+									[
+										-1.8786052000000097,
+										-4.841244099999997
+									],
+									[
+										1.9972099000000014,
+										-3.351538299999998
+									],
+									[
+										-8.5573823,
+										2.8740500000000004
+									],
+									[
+										-2.1723765999999927,
+										1.7813855000000025
+									],
+									[
+										0.33227820000000463,
+										4.293398400000001
+									],
+									[
+										4.764672199999993,
+										3.753957299999996
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.27058823529411763,
+								0.3058823529411765,
+								0.3176470588235294,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "fitness shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										161.740102,
+										65.0920971
+									],
+									[
+										170.703694,
+										37.9127715
+									],
+									[
+										166.622662,
+										18.0436781
+									],
+									[
+										166.221898,
+										35.0416738
+									],
+									[
+										153.777678,
+										57.868686
+									]
+								],
+								i: [
+									[
+										0,
+										0
+									],
+									[
+										-3.1740330000000085,
+										6.600247000000003
+									],
+									[
+										5.894721000000004,
+										6.6458154
+									],
+									[
+										1.082000999999991,
+										-4.837445999999996
+									],
+									[
+										7.214145000000002,
+										-10.380562099999999
+									]
+								],
+								o: [
+									[
+										2.801694999999995,
+										-11.519303400000005
+									],
+									[
+										3.17403299999998,
+										-6.600246899999998
+									],
+									[
+										0.8148250000000132,
+										6.494551099999999
+									],
+									[
+										-1.082002000000017,
+										4.837446
+									],
+									[
+										0,
+										0
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.27058823529411763,
+								0.3058823529411765,
+								0.3176470588235294,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "fitness shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										75.0946692,
+										175
+									],
+									[
+										142.905331,
+										175
+									],
+									[
+										173.957863,
+										87.5
+									],
+									[
+										159.906489,
+										66.6745563
+									],
+									[
+										134.160477,
+										51.2720759
+									],
+									[
+										162.94978,
+										90.0278891
+									],
+									[
+										144.286952,
+										143.921532
+									]
+								],
+								i: [
+									[
+										35.587626799999995,
+										-13.34304499999999
+									],
+									[
+										0,
+										0
+									],
+									[
+										12.511734999999987,
+										37.134961000000004
+									],
+									[
+										7.7883779999999945,
+										7.882931299999996
+									],
+									[
+										1.2071400000000096,
+										-5.628954299999997
+									],
+									[
+										-11.549110000000013,
+										-33.91520679999999
+									],
+									[
+										18.598903999999976,
+										-13.014893
+									]
+								],
+								o: [
+									[
+										0,
+										0
+									],
+									[
+										33.213423000000006,
+										-21.198373000000004
+									],
+									[
+										0,
+										0
+									],
+									[
+										-10.824623000000003,
+										-10.956036500000003
+									],
+									[
+										-1.1895059999999944,
+										5.546724400000002
+									],
+									[
+										6.089014999999989,
+										17.8810479
+									],
+									[
+										-10.540562000000023,
+										7.3759339999999725
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.27058823529411763,
+								0.3058823529411765,
+								0.3176470588235294,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "fitness shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										74.6815504,
+										0
+									],
+									[
+										127.622662,
+										18.0436781
+									],
+									[
+										131.703694,
+										37.9127715
+									],
+									[
+										123.550537,
+										63.2422993
+									],
+									[
+										122.926977,
+										67.9676145
+									],
+									[
+										140,
+										113.748601
+									],
+									[
+										103.905331,
+										175
+									],
+									[
+										36.0946692,
+										175
+									],
+									[
+										0,
+										113.748601
+									],
+									[
+										16.8245054,
+										68.2263491
+									],
+									[
+										16.1875639,
+										63.2422993
+									],
+									[
+										8.03440648,
+										37.9127715
+									],
+									[
+										12.1154396,
+										18.0436781
+									],
+									[
+										65.9337819,
+										0.0176349043
+									],
+									[
+										65.9315504,
+										0
+									]
+								],
+								i: [
+									[
+										0,
+										0
+									],
+									[
+										-9.28007500000001,
+										-9.017968000000002
+									],
+									[
+										0,
+										0
+									],
+									[
+										1.930306999999999,
+										-11.136023600000001
+									],
+									[
+										0.1223540000000014,
+										-1.4578465999999963
+									],
+									[
+										0,
+										-17.51362549999999
+									],
+									[
+										21.525244,
+										-11.939077999999995
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										26.35748500000001
+									],
+									[
+										-10.48851068,
+										12.238772100000006
+									],
+									[
+										0.3121647999999979,
+										1.8008918000000023
+									],
+									[
+										0,
+										0
+									],
+									[
+										-9.6604469,
+										9.3875971
+									],
+									[
+										-21.713825399999998,
+										0.43582642670000005
+									],
+									[
+										0,
+										0
+									]
+								],
+								o: [
+									[
+										21.44990399999999,
+										0.682786122
+									],
+									[
+										9.660445999999993,
+										9.3875971
+									],
+									[
+										0,
+										0
+									],
+									[
+										-0.2933530000000104,
+										1.692363400000005
+									],
+									[
+										10.640422999999998,
+										12.256051999999997
+									],
+									[
+										0,
+										26.35748500000001
+									],
+									[
+										0,
+										0
+									],
+									[
+										-21.5252441,
+										-11.939077999999995
+									],
+									[
+										0,
+										-17.38161679999999
+									],
+									[
+										-0.10942830000000114,
+										-1.5150458999999898
+									],
+									[
+										-1.9303077000000002,
+										-11.136023600000001
+									],
+									[
+										0,
+										0
+									],
+									[
+										9.4076878,
+										-9.14197698
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										72.05625,
+										18.8112717
+									],
+									[
+										67.68125,
+										18.8112717
+									],
+									[
+										67.6815504,
+										18.8463574
+									],
+									[
+										30.627555,
+										30.154172
+									],
+									[
+										34.3329545,
+										49.0005296
+									],
+									[
+										38.4357344,
+										51.2720759
+									],
+									[
+										70,
+										43.7531714
+									],
+									[
+										101.487764,
+										51.2175492
+									],
+									[
+										105.405146,
+										49.0005296
+									],
+									[
+										109.110546,
+										30.154172
+									],
+									[
+										72.0565504,
+										18.8463574
+									],
+									[
+										72.0565504,
+										18.8463574
+									]
+								],
+								i: [
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										3.0056703999999996,
+										-4.366534999999999
+									],
+									[
+										-4.935977900000001,
+										-6.769488500000001
+									],
+									[
+										-1.6624034000000023,
+										-0.33055829999999986
+									],
+									[
+										-11.353323199999998,
+										0
+									],
+									[
+										-9.4651451,
+										-4.774970000000003
+									],
+									[
+										-0.9140359999999959,
+										1.2535629999999998
+									],
+									[
+										3.005669999999995,
+										4.366534900000001
+									],
+									[
+										18.526997999999992,
+										0
+									],
+									[
+										0,
+										0
+									]
+								],
+								o: [
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										-18.526997700000003,
+										0
+									],
+									[
+										-3.005670300000002,
+										4.366534900000001
+									],
+									[
+										0.9499623000000028,
+										1.302833800000002
+									],
+									[
+										9.488906399999998,
+										-4.816219799999999
+									],
+									[
+										11.3254022,
+										0
+									],
+									[
+										1.5889630000000068,
+										-0.32525000000000404
+									],
+									[
+										4.935979000000003,
+										-6.769488500000001
+									],
+									[
+										-3.005669999999995,
+										-4.366534999999999
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 1,
+						c: {
+							a: 0,
+							k: [
+								0.38823529411764707,
+								0.43137254901960786,
+								0.4470588235294118,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								39,
+								0
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "fitness shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										49.9376545,
+										105.306948
+									],
+									[
+										54.7338064,
+										108.734109
+									],
+									[
+										27.1279401,
+										121.906588
+									],
+									[
+										28.3215566,
+										129.442786
+									],
+									[
+										40.7529815,
+										130.718875
+									],
+									[
+										40.7529815,
+										130.718875
+									],
+									[
+										67.5723401,
+										117.904948
+									],
+									[
+										70.6686053,
+										120.116941
+									],
+									[
+										27.1074017,
+										137.626309
+									],
+									[
+										12.6891019,
+										132.447
+									],
+									[
+										12.6891019,
+										120.116941
+									]
+								],
+								i: [
+									[
+										-21.8726509,
+										7.432721999999998
+									],
+									[
+										0,
+										0
+									],
+									[
+										2.135936600000001,
+										-1.8143989999999945
+									],
+									[
+										-3.0589221,
+										-1.9381270000000086
+									],
+									[
+										-6.2483352,
+										0.44135800000000813
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										2.163026199999999,
+										2.5777769999999975
+									],
+									[
+										-4.439576300000001,
+										3.660910000000001
+									]
+								],
+								o: [
+									[
+										0,
+										0
+									],
+									[
+										-16.2679743,
+										6.9672529999999995
+									],
+									[
+										-3.3190136999999993,
+										2.819378999999998
+									],
+									[
+										2.0392814,
+										1.2920839999999885
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										-7.449173699999999,
+										-0.875095999999985
+									],
+									[
+										-3.244539230000001,
+										-3.8666660000000093
+									],
+									[
+										2.9597175999999994,
+										-2.440607
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 22.6398601
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "fitness shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										76.7965436,
+										185
+									],
+									[
+										156,
+										162.5
+									],
+									[
+										80,
+										123.55211
+									],
+									[
+										0,
+										162.5
+									]
+								],
+								i: [
+									[
+										-43.078210500000004,
+										0
+									],
+									[
+										0,
+										13.53097600000001
+									],
+									[
+										43.07821,
+										0
+									],
+									[
+										0,
+										-13.53097600000001
+									]
+								],
+								o: [
+									[
+										43.07821039999999,
+										0
+									],
+									[
+										0,
+										-13.53097600000001
+									],
+									[
+										-43.0782105,
+										0
+									],
+									[
+										0,
+										13.53097600000001
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 22.6398601
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			}
+		],
+		op: 1
+	}
+];
+var op$8 = 1;
+var w$8 = 300;
+var h$8 = 300;
+var fitness = {
+	ip: ip$8,
+	fr: fr$8,
+	v: v$8,
+	assets: assets$8,
+	layers: layers$8,
+	op: op$8,
+	w: w$8,
+	h: h$8
+};
+
+var ip$9 = 0;
+var fr$9 = 60;
+var v$9 = "5.1.20";
+var assets$9 = [
+];
+var layers$9 = [
+	{
+		ty: 4,
+		nm: "restaurant",
+		ip: 0,
+		st: 0,
+		ind: 1,
+		hix: 1,
+		ks: {
+			o: {
+				a: 0,
+				k: 100
+			},
+			or: {
+				a: 0,
+				k: [
+					0,
+					0,
+					0
+				]
+			},
+			a: {
+				a: 0,
+				k: [
+					258,
+					277,
+					0
+				]
+			},
+			p: {
+				s: true,
+				x: {
+					a: 0,
+					k: 150.000003738945
+				},
+				y: {
+					a: 0,
+					k: 150.0000040142937
+				}
+			},
+			rx: {
+				a: 0,
+				k: 0
+			},
+			ry: {
+				a: 0,
+				k: 0
+			},
+			rz: {
+				a: 0,
+				k: 0
+			},
+			s: {
+				a: 0,
+				k: [
+					46.400000000000006,
+					46.400000000000006
+				]
+			}
+		},
+		shapes: [
+			{
+				ty: "gr",
+				nm: "restaurant shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										1.8,
+										0
+									],
+									[
+										0,
+										1.84615385
+									],
+									[
+										9,
+										12
+									],
+									[
+										18,
+										1.84615385
+									],
+									[
+										16.2,
+										0
+									],
+									[
+										14.4,
+										1.84615385
+									],
+									[
+										9,
+										8.30769231
+									],
+									[
+										3.6,
+										1.84615385
+									]
+								],
+								i: [
+									[
+										1.2,
+										0
+									],
+									[
+										0,
+										-1.2307692350000001
+									],
+									[
+										-9,
+										0
+									],
+									[
+										0,
+										6.76923077
+									],
+									[
+										1.1999999999999993,
+										0
+									],
+									[
+										0,
+										-1.2307692350000001
+									],
+									[
+										3.5999999999999996,
+										0
+									],
+									[
+										0,
+										1.8461538399999997
+									]
+								],
+								o: [
+									[
+										-1.200000001,
+										0
+									],
+									[
+										0,
+										1.8461538399999997
+									],
+									[
+										6,
+										0
+									],
+									[
+										0,
+										-1.2307692350000001
+									],
+									[
+										-1.1999999999999993,
+										0
+									],
+									[
+										0,
+										4.307692299999999
+									],
+									[
+										-5.4,
+										0
+									],
+									[
+										0,
+										-1.2307692350000001
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 1,
+						c: {
+							a: 0,
+							k: [
+								0.12156862745098039,
+								0.17647058823529413,
+								0.20784313725490197,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								262.031,
+								155.803
+							]
+						},
+						r: {
+							a: 0,
+							k: 134.98885653282196
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "restaurant shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										9,
+										33
+									],
+									[
+										11,
+										31.1666667
+									],
+									[
+										11,
+										1.83333333
+									],
+									[
+										9,
+										0
+									],
+									[
+										7,
+										1.83333333
+									],
+									[
+										7,
+										31.1666667
+									]
+								],
+								i: [
+									[
+										-1.3333333400000003,
+										0
+									],
+									[
+										0,
+										1.2222222999999985
+									],
+									[
+										0,
+										18.333333370000002
+									],
+									[
+										1.3333332999999996,
+										0
+									],
+									[
+										0,
+										-1.2222222200000001
+									],
+									[
+										0,
+										-1.222222300000002
+									]
+								],
+								o: [
+									[
+										1.3333332999999996,
+										0
+									],
+									[
+										0,
+										-1.222222300000002
+									],
+									[
+										0,
+										-1.2222222200000001
+									],
+									[
+										-1.3333333400000003,
+										0
+									],
+									[
+										0,
+										18.333333370000002
+									],
+									[
+										0,
+										1.2222222999999985
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 1,
+						c: {
+							a: 0,
+							k: [
+								0.12156862745098039,
+								0.17647058823529413,
+								0.20784313725490197,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								262.031,
+								155.803
+							]
+						},
+						r: {
+							a: 0,
+							k: 134.98885653282196
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "restaurant shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										1.8,
+										0
+									],
+									[
+										0,
+										1.84615385
+									],
+									[
+										9,
+										12
+									],
+									[
+										18,
+										1.84615385
+									],
+									[
+										16.2,
+										0
+									],
+									[
+										14.4,
+										1.84615385
+									],
+									[
+										9,
+										8.30769231
+									],
+									[
+										3.6,
+										1.84615385
+									]
+								],
+								i: [
+									[
+										1.2,
+										0
+									],
+									[
+										0,
+										-1.2307692350000001
+									],
+									[
+										-9,
+										0
+									],
+									[
+										0,
+										6.76923077
+									],
+									[
+										1.1999999999999993,
+										0
+									],
+									[
+										0,
+										-1.2307692350000001
+									],
+									[
+										3.5999999999999996,
+										0
+									],
+									[
+										0,
+										1.8461538399999997
+									]
+								],
+								o: [
+									[
+										-1.200000001,
+										0
+									],
+									[
+										0,
+										1.8461538399999997
+									],
+									[
+										6,
+										0
+									],
+									[
+										0,
+										-1.2307692350000001
+									],
+									[
+										-1.1999999999999993,
+										0
+									],
+									[
+										0,
+										4.307692299999999
+									],
+									[
+										-5.4,
+										0
+									],
+									[
+										0,
+										-1.2307692350000001
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 1,
+						c: {
+							a: 0,
+							k: [
+								0.12156862745098039,
+								0.17647058823529413,
+								0.20784313725490197,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								263.91,
+								360.275
+							]
+						},
+						r: {
+							a: 0,
+							k: 315.0121957629266
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "restaurant shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										9,
+										33
+									],
+									[
+										11,
+										31.1666667
+									],
+									[
+										11,
+										1.83333333
+									],
+									[
+										9,
+										0
+									],
+									[
+										7,
+										1.83333333
+									],
+									[
+										7,
+										31.1666667
+									]
+								],
+								i: [
+									[
+										-1.3333333400000003,
+										0
+									],
+									[
+										0,
+										1.2222222999999985
+									],
+									[
+										0,
+										18.333333370000002
+									],
+									[
+										1.3333332999999996,
+										0
+									],
+									[
+										0,
+										-1.2222222200000001
+									],
+									[
+										0,
+										-1.222222300000002
+									]
+								],
+								o: [
+									[
+										1.3333332999999996,
+										0
+									],
+									[
+										0,
+										-1.222222300000002
+									],
+									[
+										0,
+										-1.2222222200000001
+									],
+									[
+										-1.3333333400000003,
+										0
+									],
+									[
+										0,
+										18.333333370000002
+									],
+									[
+										0,
+										1.2222222999999985
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 1,
+						c: {
+							a: 0,
+							k: [
+								0.12156862745098039,
+								0.17647058823529413,
+								0.20784313725490197,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								263.91,
+								360.275
+							]
+						},
+						r: {
+							a: 0,
+							k: 315.0121957629266
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "restaurant shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										3.16123313,
+										0.321361901
+									],
+									[
+										5.46961576,
+										1.483458
+									],
+									[
+										5.51999962,
+										0.437152134
+									],
+									[
+										12.4938317,
+										15.1077849
+									],
+									[
+										5.6628624,
+										21.2175342
+									],
+									[
+										5.66123313,
+										38.0991397
+									],
+									[
+										3.16123313,
+										40.3213619
+									],
+									[
+										0.661233132,
+										38.0991397
+									],
+									[
+										0.661233132,
+										38.0991397
+									],
+									[
+										0.661233132,
+										2.54358412
+									]
+								],
+								i: [
+									[
+										-1.66666667,
+										0
+									],
+									[
+										-0.33367482999999964,
+										-0.774730733
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										-3.3498707000000003
+									],
+									[
+										4.5539795000000005,
+										-0.9777132000000002
+									],
+									[
+										0,
+										0
+									],
+									[
+										1.66666668,
+										0
+									],
+									[
+										0,
+										1.481481500000001
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									]
+								],
+								o: [
+									[
+										1.20524692,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										4.64922138,
+										6.430551106
+									],
+									[
+										0,
+										3.0954530999999985
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										1.481481500000001
+									],
+									[
+										-1.66666667,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										-1.4814814799999998
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 1,
+						c: {
+							a: 0,
+							k: [
+								0.12156862745098039,
+								0.17647058823529413,
+								0.20784313725490197,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								171.671,
+								252.706
+							]
+						},
+						r: {
+							a: 0,
+							k: 136.99420881577984
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "restaurant shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										5.07498754,
+										0.576265324
+									],
+									[
+										11.9242869,
+										15.9205496
+									],
+									[
+										5.63982208,
+										22.2087663
+									],
+									[
+										5.63857257,
+										39.2984875
+									],
+									[
+										3.28142971,
+										41.5762653
+									],
+									[
+										0.924286857,
+										39.2984875
+									],
+									[
+										0.924286857,
+										39.2984875
+									],
+									[
+										0.924286857,
+										2.8540431
+									],
+									[
+										3.28142971,
+										0.576265324
+									],
+									[
+										5.04833294,
+										1.14478871
+									]
+								],
+								i: [
+									[
+										0,
+										0
+									],
+									[
+										0,
+										-3.5036913
+									],
+									[
+										4.189643179999999,
+										-1.058659200000001
+									],
+									[
+										0,
+										0
+									],
+									[
+										1.5714285800000005,
+										0
+									],
+									[
+										0,
+										1.5185186000000002
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										-1.57142857,
+										0
+									],
+									[
+										-0.39285689,
+										-0.37901559100000004
+									]
+								],
+								o: [
+									[
+										4.5661995399999995,
+										6.7258315159999995
+									],
+									[
+										0,
+										3.133485300000002
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										1.5185186000000002
+									],
+									[
+										-1.57142857,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										-1.5185185200000002
+									],
+									[
+										0.7850785999999998,
+										0
+									],
+									[
+										0,
+										0
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 1,
+						c: {
+							a: 0,
+							k: [
+								0.12156862745098039,
+								0.17647058823529413,
+								0.20784313725490197,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								349.428,
+								265.467
+							]
+						},
+						r: {
+							a: 0,
+							k: 317.0175480458845
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "restaurant shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								49,
+								40
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								60,
+								60
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								1,
+								1,
+								1,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								261.697,
+								323.676
+							]
+						},
+						r: {
+							a: 0,
+							k: 315.0121957629266
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "restaurant shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										49,
+										80
+									],
+									[
+										70.6354937,
+										46
+									],
+									[
+										43.6965281,
+										8.49979827
+									],
+									[
+										9,
+										40
+									]
+								],
+								i: [
+									[
+										-22.09139,
+										0
+									],
+									[
+										0,
+										22.091390000000004
+									],
+									[
+										22.091389999999997,
+										0
+									],
+									[
+										0,
+										-22.09139
+									]
+								],
+								o: [
+									[
+										22.091390000000004,
+										0
+									],
+									[
+										0,
+										-22.09139
+									],
+									[
+										-22.09139,
+										0
+									],
+									[
+										0,
+										22.091389999999997
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9764705882352941,
+								0.9764705882352941,
+								0.9764705882352941,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								261.697,
+								323.676
+							]
+						},
+						r: {
+							a: 0,
+							k: 315.0121957629266
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "restaurant shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								49,
+								40
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								80,
+								80
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								1,
+								1,
+								1,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								261.697,
+								323.676
+							]
+						},
+						r: {
+							a: 0,
+							k: 315.0121957629266
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "restaurant shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								44,
+								46
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								88,
+								88
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 39.0980114
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.38823529411764707,
+								0.43137254901960786,
+								0.4745098039215686,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								261.697,
+								323.676
+							]
+						},
+						r: {
+							a: 0,
+							k: 315.0121957629266
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "restaurant shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								49,
+								40
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								60,
+								60
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								1,
+								1,
+								1,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								133.737,
+								201.319
+							]
+						},
+						r: {
+							a: 0,
+							k: 315.0121957629266
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "restaurant shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										49,
+										80
+									],
+									[
+										70.6354937,
+										46
+									],
+									[
+										43.6965281,
+										8.49979827
+									],
+									[
+										9,
+										40
+									]
+								],
+								i: [
+									[
+										-22.09139,
+										0
+									],
+									[
+										0,
+										22.091390000000004
+									],
+									[
+										22.091389999999997,
+										0
+									],
+									[
+										0,
+										-22.09139
+									]
+								],
+								o: [
+									[
+										22.091390000000004,
+										0
+									],
+									[
+										0,
+										-22.09139
+									],
+									[
+										-22.09139,
+										0
+									],
+									[
+										0,
+										22.091389999999997
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9764705882352941,
+								0.9764705882352941,
+								0.9764705882352941,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								133.737,
+								201.319
+							]
+						},
+						r: {
+							a: 0,
+							k: 315.0121957629266
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "restaurant shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								49,
+								40
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								80,
+								80
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								1,
+								1,
+								1,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								133.737,
+								201.319
+							]
+						},
+						r: {
+							a: 0,
+							k: 315.0121957629266
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "restaurant shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								44,
+								46
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								88,
+								88
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 39.0980114
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.38823529411764707,
+								0.43137254901960786,
+								0.4745098039215686,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								133.737,
+								201.319
+							]
+						},
+						r: {
+							a: 0,
+							k: 315.0121957629266
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "restaurant shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								200,
+								315
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								300,
+								300
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								1,
+								1,
+								1,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								-104.553,
+								177.934
+							]
+						},
+						r: {
+							a: 0,
+							k: 315.0121957629266
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "restaurant shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										201,
+										493.07921
+									],
+									[
+										251.582031,
+										343.289504
+									],
+									[
+										201,
+										193.499798
+									],
+									[
+										143.081942,
+										343.289504
+									],
+									[
+										133.669064,
+										450.061105
+									],
+									[
+										123.423423,
+										475.504224
+									]
+								],
+								i: [
+									[
+										-32.422968,
+										0
+									],
+									[
+										0,
+										82.72657099999998
+									],
+									[
+										98.30668500000002,
+										0
+									],
+									[
+										0,
+										-82.72657000000004
+									],
+									[
+										13.560429999999997,
+										-3.4428369999999973
+									],
+									[
+										-2.0733199999999954,
+										-1.2196670000000154
+									]
+								],
+								o: [
+									[
+										98.30668500000002,
+										0
+									],
+									[
+										0,
+										-82.72657000000004
+									],
+									[
+										-98.306685,
+										0
+									],
+									[
+										0,
+										41.23450299999996
+									],
+									[
+										-9.176200999999992,
+										2.3297319999999786
+									],
+									[
+										25.886407000000005,
+										15.228136000000006
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 9.63723776
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								-104.553,
+								177.934
+							]
+						},
+						r: {
+							a: 0,
+							k: 315.0121957629266
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "restaurant shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										151.124549,
+										10.096607
+									],
+									[
+										51.9868194,
+										29.0150078
+									],
+									[
+										11.2947359,
+										99.1594214
+									],
+									[
+										154.900874,
+										188.342704
+									],
+									[
+										154.900874,
+										196.32166
+									],
+									[
+										40.8657382,
+										183.026368
+									],
+									[
+										1.42108547e-14,
+										98.7466751
+									],
+									[
+										40.8657382,
+										10.096607
+									],
+									[
+										154.900874,
+										3.31730497
+									]
+								],
+								i: [
+									[
+										17.08640299999999,
+										0
+									],
+									[
+										37.0427775,
+										-20.23994049
+									],
+									[
+										0,
+										-30.958812300000005
+									],
+									[
+										-95.73742549999999,
+										-7.568920999999989
+									],
+									[
+										18.046206000000012,
+										-2.9350600000000213
+									],
+									[
+										23.078643399999997,
+										15.475853999999998
+									],
+									[
+										0,
+										44.05236389999999
+									],
+									[
+										-24.489898900000004,
+										17.143456800000003
+									],
+									[
+										-6.583237999999994,
+										-0.6246471699999998
+									]
+								],
+								o: [
+									[
+										-10.289854999999989,
+										0
+									],
+									[
+										-24.467116200000003,
+										13.3686784
+									],
+									[
+										0,
+										51.88660159999999
+									],
+									[
+										18.046206000000012,
+										2.3842439999999954
+									],
+									[
+										-27.069309999999987,
+										4.402588999999978
+									],
+									[
+										-23.078643400000004,
+										-15.475854999999996
+									],
+									[
+										0,
+										-44.05236370000001
+									],
+									[
+										24.489898899999993,
+										-17.14345678
+									],
+									[
+										6.583237000000025,
+										0.6246471700000003
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9254901960784314,
+								0.8470588235294118,
+								0.6039215686274509,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								107.624,
+								-34.153
+							]
+						},
+						r: {
+							a: 0,
+							k: 45.03448269728271
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "restaurant shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										154.900874,
+										20.9167733
+									],
+									[
+										52.9872776,
+										98.7466751
+									],
+									[
+										154.900874,
+										176.576577
+									],
+									[
+										154.900874,
+										196.32166
+									],
+									[
+										40.8657382,
+										183.026368
+									],
+									[
+										0,
+										98.7466751
+									],
+									[
+										40.8657382,
+										10.096607
+									],
+									[
+										154.900874,
+										3.31730497
+									]
+								],
+								i: [
+									[
+										17.086404000000016,
+										0
+									],
+									[
+										0,
+										-77.8299018
+									],
+									[
+										-67.94239769999999,
+										0
+									],
+									[
+										18.046206000000012,
+										-2.9350600000000213
+									],
+									[
+										23.078643399999997,
+										15.475853999999998
+									],
+									[
+										0,
+										44.05236389999999
+									],
+									[
+										-24.489898900000004,
+										17.143456800000003
+									],
+									[
+										-6.583237999999994,
+										-0.6246471699999998
+									]
+								],
+								o: [
+									[
+										-17.086403999999987,
+										0
+									],
+									[
+										0,
+										51.88660089999999
+									],
+									[
+										18.046206000000012,
+										10.228329000000002
+									],
+									[
+										-27.069309999999987,
+										4.402588999999978
+									],
+									[
+										-23.078643400000004,
+										-15.475854999999996
+									],
+									[
+										0,
+										-44.05236370000001
+									],
+									[
+										24.489898899999993,
+										-17.14345678
+									],
+									[
+										6.583237000000025,
+										0.6246471700000003
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								1,
+								0.9176470588235294,
+								0.6549019607843137,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								107.624,
+								-34.153
+							]
+						},
+						r: {
+							a: 0,
+							k: 45.03448269728271
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "restaurant shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										153.900874,
+										20.9167733
+									],
+									[
+										51.9868194,
+										98.7466751
+									],
+									[
+										104.089271,
+										60.8234366
+									],
+									[
+										179.211301,
+										43.2056664
+									]
+								],
+								i: [
+									[
+										11.724269000000021,
+										0
+									],
+									[
+										0,
+										-77.8299018
+									],
+									[
+										-34.806894099999994,
+										37.181775699999996
+									],
+									[
+										-35.773735999999985,
+										-3.538648099999996
+									]
+								],
+								o: [
+									[
+										-17.586403999999987,
+										0
+									],
+									[
+										0,
+										36.485110899999995
+									],
+									[
+										14.307617000000008,
+										-15.283828200000002
+									],
+									[
+										-5.149349000000001,
+										-14.859262099999999
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.8862745098039215,
+								0.7058823529411765,
+								0.37254901960784315,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								107.624,
+								-34.153
+							]
+						},
+						r: {
+							a: 0,
+							k: 45.03448269728271
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "restaurant shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										153.900874,
+										20.9167733
+									],
+									[
+										51.9872776,
+										98.7466751
+									],
+									[
+										179.211301,
+										43.2056664
+									]
+								],
+								i: [
+									[
+										11.724269000000021,
+										0
+									],
+									[
+										0,
+										-77.8299018
+									],
+									[
+										-84.8160157,
+										88.9139406
+									]
+								],
+								o: [
+									[
+										-17.586403999999987,
+										0
+									],
+									[
+										0,
+										51.88660089999999
+									],
+									[
+										-5.149349000000001,
+										-14.859262099999999
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9568627450980393,
+								0.7647058823529411,
+								0.4117647058823529,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								107.624,
+								-34.153
+							]
+						},
+						r: {
+							a: 0,
+							k: 45.03448269728271
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "restaurant shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										153.900874,
+										20.9167733
+									],
+									[
+										51.9872776,
+										98.7466751
+									],
+									[
+										153.900874,
+										176.576577
+									],
+									[
+										179.211301,
+										159.763866
+									],
+									[
+										184.983379,
+										98.7466751
+									],
+									[
+										179.211301,
+										43.2056664
+									]
+								],
+								i: [
+									[
+										11.724269000000021,
+										0
+									],
+									[
+										0,
+										-77.8299018
+									],
+									[
+										-21.211876999999987,
+										0
+									],
+									[
+										-2.7323669999999822,
+										11.208473999999995
+									],
+									[
+										0,
+										28.20211189999999
+									],
+									[
+										3.8480519999999956,
+										8.825227400000003
+									]
+								],
+								o: [
+									[
+										-17.586403999999987,
+										0
+									],
+									[
+										0,
+										77.82990189999998
+									],
+									[
+										14.141251000000011,
+										0
+									],
+									[
+										3.8480519999999956,
+										-12.476015000000018
+									],
+									[
+										0,
+										-28.202111700000003
+									],
+									[
+										-5.149349000000001,
+										-14.859262099999999
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9921568627450981,
+								0.796078431372549,
+								0.43137254901960786,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								107.624,
+								-34.153
+							]
+						},
+						r: {
+							a: 0,
+							k: 45.03448269728271
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "restaurant shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										151.124549,
+										10.096607
+									],
+									[
+										51.9868194,
+										29.0150078
+									],
+									[
+										11.2947359,
+										99.1594214
+									],
+									[
+										154.900874,
+										188.342704
+									],
+									[
+										154.900874,
+										196.32166
+									],
+									[
+										40.8657382,
+										183.026368
+									],
+									[
+										1.42108547e-14,
+										98.7466751
+									],
+									[
+										40.8657382,
+										10.096607
+									],
+									[
+										154.900874,
+										3.31730497
+									]
+								],
+								i: [
+									[
+										17.08640299999999,
+										0
+									],
+									[
+										37.0427775,
+										-20.23994049
+									],
+									[
+										0,
+										-30.958812300000005
+									],
+									[
+										-95.73742549999999,
+										-7.568920999999989
+									],
+									[
+										18.046206000000012,
+										-2.9350600000000213
+									],
+									[
+										23.078643399999997,
+										15.475853999999998
+									],
+									[
+										0,
+										44.05236389999999
+									],
+									[
+										-24.489898900000004,
+										17.143456800000003
+									],
+									[
+										-6.583237999999994,
+										-0.6246471699999998
+									]
+								],
+								o: [
+									[
+										-10.289854999999989,
+										0
+									],
+									[
+										-24.467116200000003,
+										13.3686784
+									],
+									[
+										0,
+										51.88660159999999
+									],
+									[
+										18.046206000000012,
+										2.3842439999999954
+									],
+									[
+										-27.069309999999987,
+										4.402588999999978
+									],
+									[
+										-23.078643400000004,
+										-15.475854999999996
+									],
+									[
+										0,
+										-44.05236370000001
+									],
+									[
+										24.489898899999993,
+										-17.14345678
+									],
+									[
+										6.583237000000025,
+										0.6246471700000003
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9254901960784314,
+								0.8470588235294118,
+								0.6039215686274509,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								-100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								550.179,
+								408.59
+							]
+						},
+						r: {
+							a: 0,
+							k: 44.97718691776963
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "restaurant shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										154.900874,
+										20.9167733
+									],
+									[
+										52.9872776,
+										98.7466751
+									],
+									[
+										154.900874,
+										176.576577
+									],
+									[
+										154.900874,
+										196.32166
+									],
+									[
+										40.8657382,
+										183.026368
+									],
+									[
+										0,
+										98.7466751
+									],
+									[
+										40.8657382,
+										10.096607
+									],
+									[
+										154.900874,
+										3.31730497
+									]
+								],
+								i: [
+									[
+										17.086404000000016,
+										0
+									],
+									[
+										0,
+										-77.8299018
+									],
+									[
+										-67.94239769999999,
+										0
+									],
+									[
+										18.046206000000012,
+										-2.9350600000000213
+									],
+									[
+										23.078643399999997,
+										15.475853999999998
+									],
+									[
+										0,
+										44.05236389999999
+									],
+									[
+										-24.489898900000004,
+										17.143456800000003
+									],
+									[
+										-6.583237999999994,
+										-0.6246471699999998
+									]
+								],
+								o: [
+									[
+										-17.086403999999987,
+										0
+									],
+									[
+										0,
+										51.88660089999999
+									],
+									[
+										18.046206000000012,
+										10.228329000000002
+									],
+									[
+										-27.069309999999987,
+										4.402588999999978
+									],
+									[
+										-23.078643400000004,
+										-15.475854999999996
+									],
+									[
+										0,
+										-44.05236370000001
+									],
+									[
+										24.489898899999993,
+										-17.14345678
+									],
+									[
+										6.583237000000025,
+										0.6246471700000003
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								1,
+								0.9176470588235294,
+								0.6549019607843137,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								-100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								550.179,
+								408.59
+							]
+						},
+						r: {
+							a: 0,
+							k: 44.97718691776963
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "restaurant shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										153.900874,
+										20.9167733
+									],
+									[
+										51.9868194,
+										98.7466751
+									],
+									[
+										104.089271,
+										60.8234366
+									],
+									[
+										179.211301,
+										43.2056664
+									]
+								],
+								i: [
+									[
+										11.724269000000021,
+										0
+									],
+									[
+										0,
+										-77.8299018
+									],
+									[
+										-34.806894099999994,
+										37.181775699999996
+									],
+									[
+										-35.773735999999985,
+										-3.538648099999996
+									]
+								],
+								o: [
+									[
+										-17.586403999999987,
+										0
+									],
+									[
+										0,
+										36.485110899999995
+									],
+									[
+										14.307617000000008,
+										-15.283828200000002
+									],
+									[
+										-5.149349000000001,
+										-14.859262099999999
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.8862745098039215,
+								0.7058823529411765,
+								0.37254901960784315,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								-100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								550.179,
+								408.59
+							]
+						},
+						r: {
+							a: 0,
+							k: 44.97718691776963
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "restaurant shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										153.900874,
+										20.9167733
+									],
+									[
+										51.9872776,
+										98.7466751
+									],
+									[
+										179.211301,
+										43.2056664
+									]
+								],
+								i: [
+									[
+										11.724269000000021,
+										0
+									],
+									[
+										0,
+										-77.8299018
+									],
+									[
+										-84.8160157,
+										88.9139406
+									]
+								],
+								o: [
+									[
+										-17.586403999999987,
+										0
+									],
+									[
+										0,
+										51.88660089999999
+									],
+									[
+										-5.149349000000001,
+										-14.859262099999999
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9568627450980393,
+								0.7647058823529411,
+								0.4117647058823529,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								-100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								550.179,
+								408.59
+							]
+						},
+						r: {
+							a: 0,
+							k: 44.97718691776963
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "restaurant shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										153.900874,
+										20.9167733
+									],
+									[
+										51.9872776,
+										98.7466751
+									],
+									[
+										153.900874,
+										176.576577
+									],
+									[
+										179.211301,
+										159.763866
+									],
+									[
+										184.983379,
+										98.7466751
+									],
+									[
+										179.211301,
+										43.2056664
+									]
+								],
+								i: [
+									[
+										11.724269000000021,
+										0
+									],
+									[
+										0,
+										-77.8299018
+									],
+									[
+										-21.211876999999987,
+										0
+									],
+									[
+										-2.7323669999999822,
+										11.208473999999995
+									],
+									[
+										0,
+										28.20211189999999
+									],
+									[
+										3.8480519999999956,
+										8.825227400000003
+									]
+								],
+								o: [
+									[
+										-17.586403999999987,
+										0
+									],
+									[
+										0,
+										77.82990189999998
+									],
+									[
+										14.141251000000011,
+										0
+									],
+									[
+										3.8480519999999956,
+										-12.476015000000018
+									],
+									[
+										0,
+										-28.202111700000003
+									],
+									[
+										-5.149349000000001,
+										-14.859262099999999
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9921568627450981,
+								0.796078431372549,
+								0.43137254901960786,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								-100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								550.179,
+								408.59
+							]
+						},
+						r: {
+							a: 0,
+							k: 44.97718691776963
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "restaurant shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										98.6540445,
+										0.0000581483844
+									],
+									[
+										100.145335,
+										0.00227126126
+									],
+									[
+										154.900874,
+										3.31730497
+									],
+									[
+										161.580736,
+										8.0967294
+									],
+									[
+										154.900874,
+										20.9167733
+									],
+									[
+										153.99283,
+										20.9171313
+									],
+									[
+										179.211301,
+										43.2056664
+									],
+									[
+										184.983379,
+										98.7466751
+									],
+									[
+										179.211301,
+										159.763866
+									],
+									[
+										154.387247,
+										176.574346
+									],
+									[
+										154.900874,
+										176.576577
+									],
+									[
+										167.764428,
+										191.246846
+									],
+									[
+										154.900874,
+										196.32166
+									],
+									[
+										125.207145,
+										198.316201
+									],
+									[
+										123.954656,
+										198.318842
+									],
+									[
+										40.8657382,
+										183.026368
+									],
+									[
+										0,
+										98.7466751
+									],
+									[
+										40.8657382,
+										10.096607
+									]
+								],
+								i: [
+									[
+										-22.8849029,
+										0.0130038748156
+									],
+									[
+										0,
+										0
+									],
+									[
+										-3.4891159999999957,
+										-0.3310629999999999
+									],
+									[
+										1.5760390000000086,
+										-1.8563122699999992
+									],
+									[
+										11.43553,
+										0
+									],
+									[
+										0.32095200000000546,
+										-0.0003580000000020789
+									],
+									[
+										-5.136442999999986,
+										-14.822020799999997
+									],
+									[
+										0,
+										-28.202111700000003
+									],
+									[
+										3.8480519999999956,
+										-12.476015000000018
+									],
+									[
+										13.84847400000001,
+										-0.12761299999999665
+									],
+									[
+										-0.1718659999999943,
+										0
+									],
+									[
+										2.4566149999999993,
+										-3.5272209999999973
+									],
+									[
+										11.032729000000018,
+										-1.7943779999999947
+									],
+									[
+										11.648393999999996,
+										-0.048461000000003196
+									],
+									[
+										0,
+										0
+									],
+									[
+										16.3858368,
+										10.98785700000002
+									],
+									[
+										0,
+										44.05236389999999
+									],
+									[
+										-24.489898900000004,
+										17.143456800000003
+									]
+								],
+								o: [
+									[
+										0,
+										0
+									],
+									[
+										26.322513,
+										0.09254341864
+									],
+									[
+										4.100099,
+										0.3890358700000003
+									],
+									[
+										3.832969999999989,
+										5.216492500000001
+									],
+									[
+										-0.2841769999999997,
+										0
+									],
+									[
+										11.674582000000015,
+										0.036929900000000515
+									],
+									[
+										3.8480519999999956,
+										8.825227400000003
+									],
+									[
+										0,
+										28.20211189999999
+									],
+									[
+										-2.7008950000000027,
+										11.079373000000004
+									],
+									[
+										0.17011199999998894,
+										0.0020650000000159707
+									],
+									[
+										11.032317000000006,
+										6.252958000000007
+									],
+									[
+										2.4569339999999897,
+										1.5889939999999854
+									],
+									[
+										-7.579406999999975,
+										1.2327249999999879
+									],
+									[
+										0,
+										0
+									],
+									[
+										-29.745659500000002,
+										0.0019850000000189993
+									],
+									[
+										-23.078643400000004,
+										-15.475854999999996
+									],
+									[
+										0,
+										-44.05236370000001
+									],
+									[
+										11.265353499999996,
+										-7.885990110000001
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 22.6016171
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								102.664,
+								13.222
+							]
+						},
+						r: {
+							a: 0,
+							k: 45.03448269728271
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "restaurant shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										98.6540445,
+										0.0000581483844
+									],
+									[
+										100.145335,
+										0.00227126126
+									],
+									[
+										154.900874,
+										3.31730497
+									],
+									[
+										161.580736,
+										8.0967294
+									],
+									[
+										154.900874,
+										20.9167733
+									],
+									[
+										153.99283,
+										20.9171313
+									],
+									[
+										179.211301,
+										43.2056664
+									],
+									[
+										184.983379,
+										98.7466751
+									],
+									[
+										179.211301,
+										159.763866
+									],
+									[
+										154.387247,
+										176.574346
+									],
+									[
+										154.900874,
+										176.576577
+									],
+									[
+										167.764428,
+										191.246846
+									],
+									[
+										154.900874,
+										196.32166
+									],
+									[
+										125.207145,
+										198.316201
+									],
+									[
+										123.954656,
+										198.318842
+									],
+									[
+										40.8657382,
+										183.026368
+									],
+									[
+										0,
+										98.7466751
+									],
+									[
+										40.8657382,
+										10.096607
+									]
+								],
+								i: [
+									[
+										-22.8849029,
+										0.0130038748156
+									],
+									[
+										0,
+										0
+									],
+									[
+										-3.4891159999999957,
+										-0.3310629999999999
+									],
+									[
+										1.5760390000000086,
+										-1.8563122699999992
+									],
+									[
+										11.43553,
+										0
+									],
+									[
+										0.32095200000000546,
+										-0.0003580000000020789
+									],
+									[
+										-5.136442999999986,
+										-14.822020799999997
+									],
+									[
+										0,
+										-28.202111700000003
+									],
+									[
+										3.8480519999999956,
+										-12.476015000000018
+									],
+									[
+										13.84847400000001,
+										-0.12761299999999665
+									],
+									[
+										-0.1718659999999943,
+										0
+									],
+									[
+										2.4566149999999993,
+										-3.5272209999999973
+									],
+									[
+										11.032729000000018,
+										-1.7943779999999947
+									],
+									[
+										11.648393999999996,
+										-0.048461000000003196
+									],
+									[
+										0,
+										0
+									],
+									[
+										16.3858368,
+										10.98785700000002
+									],
+									[
+										0,
+										44.05236389999999
+									],
+									[
+										-24.489898900000004,
+										17.143456800000003
+									]
+								],
+								o: [
+									[
+										0,
+										0
+									],
+									[
+										26.322513,
+										0.09254341864
+									],
+									[
+										4.100099,
+										0.3890358700000003
+									],
+									[
+										3.832969999999989,
+										5.216492500000001
+									],
+									[
+										-0.2841769999999997,
+										0
+									],
+									[
+										11.674582000000015,
+										0.036929900000000515
+									],
+									[
+										3.8480519999999956,
+										8.825227400000003
+									],
+									[
+										0,
+										28.20211189999999
+									],
+									[
+										-2.7008950000000027,
+										11.079373000000004
+									],
+									[
+										0.17011199999998894,
+										0.0020650000000159707
+									],
+									[
+										11.032317000000006,
+										6.252958000000007
+									],
+									[
+										2.4569339999999897,
+										1.5889939999999854
+									],
+									[
+										-7.579406999999975,
+										1.2327249999999879
+									],
+									[
+										0,
+										0
+									],
+									[
+										-29.745659500000002,
+										0.0019850000000189993
+									],
+									[
+										-23.078643400000004,
+										-15.475854999999996
+									],
+									[
+										0,
+										-44.05236370000001
+									],
+									[
+										11.265353499999996,
+										-7.885990110000001
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 22.740930900000002
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								-100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								540.977,
+								451.722
+							]
+						},
+						r: {
+							a: 0,
+							k: 44.97718691776963
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "restaurant shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								150,
+								335
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								300,
+								300
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 23.3664773
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								-104.553,
+								177.934
+							]
+						},
+						r: {
+							a: 0,
+							k: 315.0121957629266
+						}
+					}
+				]
+			}
+		],
+		op: 1
+	}
+];
+var op$9 = 1;
+var w$9 = 300;
+var h$9 = 300;
+var restaurant = {
+	ip: ip$9,
+	fr: fr$9,
+	v: v$9,
+	assets: assets$9,
+	layers: layers$9,
+	op: op$9,
+	w: w$9,
+	h: h$9
+};
+
+var ip$a = 0;
+var fr$a = 60;
+var v$a = "5.1.20";
+var assets$a = [
+];
+var layers$a = [
+	{
+		ty: 4,
+		nm: "spaandbeauty",
+		ip: 0,
+		st: 0,
+		ind: 1,
+		hix: 1,
+		ks: {
+			o: {
+				a: 0,
+				k: 100
+			},
+			or: {
+				a: 0,
+				k: [
+					0,
+					0,
+					0
+				]
+			},
+			a: {
+				a: 0,
+				k: [
+					103.5,
+					124,
+					0
+				]
+			},
+			p: {
+				s: true,
+				x: {
+					a: 0,
+					k: 160
+				},
+				y: {
+					a: 0,
+					k: 150
+				}
+			},
+			rx: {
+				a: 0,
+				k: 0
+			},
+			ry: {
+				a: 0,
+				k: 0
+			},
+			rz: {
+				a: 0,
+				k: 0
+			},
+			s: {
+				a: 0,
+				k: [
+					100,
+					100,
+					100
+				]
+			}
+		},
+		shapes: [
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								13,
+								21
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								4,
+								9
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9019607843137255,
+								0.9921568627450981,
+								0.9647058823529412,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								102,
+								125
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								7,
+								7
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								4.19354838,
+								9.22580646
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9019607843137255,
+								0.9921568627450981,
+								0.9647058823529412,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								-100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								109.129,
+								122.047
+							]
+						},
+						r: {
+							a: 0,
+							k: 134.98885653282196
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								18,
+								18
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								4.19354838,
+								9.22580646
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9019607843137255,
+								0.9921568627450981,
+								0.9647058823529412,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								-100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								120.871,
+								117.183
+							]
+						},
+						r: {
+							a: 0,
+							k: 134.98885653282196
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								7,
+								18
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								4.19354838,
+								9.22580646
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9019607843137255,
+								0.9921568627450981,
+								0.9647058823529412,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								117.432,
+								125.486
+							]
+						},
+						r: {
+							a: 0,
+							k: 44.97718691776963
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								18,
+								7
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								4.19354838,
+								9.22580646
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9019607843137255,
+								0.9921568627450981,
+								0.9647058823529412,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								112.568,
+								113.744
+							]
+						},
+						r: {
+							a: 0,
+							k: 44.97718691776963
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								21,
+								13
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								4,
+								9
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9019607843137255,
+								0.9921568627450981,
+								0.9647058823529412,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								136.5,
+								117.5
+							]
+						},
+						r: {
+							a: 0,
+							k: 90.01166961505233
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								5,
+								13
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								4,
+								9
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9019607843137255,
+								0.9921568627450981,
+								0.9647058823529412,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								120.5,
+								133.5
+							]
+						},
+						r: {
+							a: 0,
+							k: 90.01166961505233
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								13,
+								4
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								4,
+								9
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9019607843137255,
+								0.9921568627450981,
+								0.9647058823529412,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								102,
+								125
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								13,
+								21
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								4,
+								9
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9019607843137255,
+								0.9921568627450981,
+								0.9647058823529412,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								53,
+								125
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								7,
+								7
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								4.19354838,
+								9.22580646
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9019607843137255,
+								0.9921568627450981,
+								0.9647058823529412,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								-100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								60.129,
+								122.047
+							]
+						},
+						r: {
+							a: 0,
+							k: 134.98885653282196
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								18,
+								18
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								4.19354838,
+								9.22580646
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9019607843137255,
+								0.9921568627450981,
+								0.9647058823529412,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								-100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								71.871,
+								117.183
+							]
+						},
+						r: {
+							a: 0,
+							k: 134.98885653282196
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								7,
+								18
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								4.19354838,
+								9.22580646
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9019607843137255,
+								0.9921568627450981,
+								0.9647058823529412,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								68.432,
+								125.486
+							]
+						},
+						r: {
+							a: 0,
+							k: 44.97718691776963
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								18,
+								7
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								4.19354838,
+								9.22580646
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9019607843137255,
+								0.9921568627450981,
+								0.9647058823529412,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								63.568,
+								113.744
+							]
+						},
+						r: {
+							a: 0,
+							k: 44.97718691776963
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								21,
+								13
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								4,
+								9
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9019607843137255,
+								0.9921568627450981,
+								0.9647058823529412,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								87.5,
+								117.5
+							]
+						},
+						r: {
+							a: 0,
+							k: 90.01166961505233
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								5,
+								13
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								4,
+								9
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9019607843137255,
+								0.9921568627450981,
+								0.9647058823529412,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								71.5,
+								133.5
+							]
+						},
+						r: {
+							a: 0,
+							k: 90.01166961505233
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								13,
+								4
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								4,
+								9
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9019607843137255,
+								0.9921568627450981,
+								0.9647058823529412,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								53,
+								125
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										122.37,
+										165.11975
+									],
+									[
+										147.29907,
+										176.91975
+									],
+									[
+										163.011953,
+										171.09075
+									],
+									[
+										149.72,
+										192.84475
+									],
+									[
+										123.9,
+										206.445632
+									],
+									[
+										98.581742,
+										196.890189
+									],
+									[
+										82.792276,
+										173.09575
+									],
+									[
+										98.581742,
+										176.91975
+									]
+								],
+								i: [
+									[
+										-10.331913999999998,
+										7.587273999999979
+									],
+									[
+										-5.301756000000012,
+										0
+									],
+									[
+										-5.173500000000018,
+										3.8859999999999957
+									],
+									[
+										4.522593999999998,
+										-4.088155999999998
+									],
+									[
+										10.819999999999993,
+										0
+									],
+									[
+										7.083552999999995,
+										5.746745000000004
+									],
+									[
+										5.803942300000003,
+										12.031794999999988
+									],
+									[
+										-5.5269251,
+										0.2793929999999989
+									]
+								],
+								o: [
+									[
+										11.317623999999995,
+										7.866666999999978
+									],
+									[
+										5.301754999999986,
+										0
+									],
+									[
+										-4.338707999999997,
+										10.414510999999976
+									],
+									[
+										-6.783889999999985,
+										6.132233999999983
+									],
+									[
+										-10.820000000000007,
+										0
+									],
+									[
+										-4.722368400000008,
+										-3.831164000000001
+									],
+									[
+										4.9993855999999965,
+										2.828725999999989
+									],
+									[
+										5.526924999999991,
+										-0.2793929999999989
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										127.83,
+										175.038602
+									],
+									[
+										122.278756,
+										177.865334
+									],
+									[
+										116.91,
+										175.038602
+									],
+									[
+										108.785659,
+										179.174339
+									],
+									[
+										122.278756,
+										197.38788
+									],
+									[
+										135.79163,
+										179.174339
+									]
+								],
+								i: [
+									[
+										2.896405999999999,
+										0
+									],
+									[
+										1.7698919999999987,
+										-1.8844879999999762
+									],
+									[
+										1.6701089999999965,
+										0
+									],
+									[
+										1.8304630000000088,
+										-2.933638000000002
+									],
+									[
+										-15.197198,
+										0
+									],
+									[
+										1.8984069999999917,
+										2.9336389999999994
+									]
+								],
+								o: [
+									[
+										-1.9309370000000001,
+										0
+									],
+									[
+										-1.9090610000000083,
+										-1.8844879999999762
+									],
+									[
+										-2.5051639999999935,
+										0
+									],
+									[
+										-1.8304619999999971,
+										2.9336389999999994
+									],
+									[
+										15.197198,
+										0
+									],
+									[
+										-1.8984069999999917,
+										-2.933638000000002
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								1,
+								0.9725490196078431,
+								0.8823529411764706,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								-32,
+								-12
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										82.792276,
+										134.977211
+									],
+									[
+										122.37,
+										96.7443127
+									],
+									[
+										163.011953,
+										134.977211
+									],
+									[
+										143.6125,
+										123.464948
+									],
+									[
+										122.455,
+										134.977211
+									],
+									[
+										101.080756,
+										123.464948
+									]
+								],
+								i: [
+									[
+										3.056141199999999,
+										-7.674842000000012
+									],
+									[
+										-20.753332999999998,
+										0
+									],
+									[
+										-6.341302000000013,
+										-25.488599000000008
+									],
+									[
+										8.166130999999979,
+										0
+									],
+									[
+										5.938868999999997,
+										-7.674842000000012
+									],
+									[
+										9.136178000000001,
+										0
+									]
+								],
+								o: [
+									[
+										5.631816000000001,
+										-25.488599000000008
+									],
+									[
+										20.753332999999998,
+										0
+									],
+									[
+										-4.7668370000000095,
+										-7.674842000000012
+									],
+									[
+										-8.166131000000007,
+										0
+									],
+									[
+										-5.1133179999999925,
+										-7.674842000000012
+									],
+									[
+										-9.13617889999999,
+										0
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								1,
+								0.9725490196078431,
+								0.8823529411764706,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								-32,
+								-12
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								98,
+								150
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								37,
+								37
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.3333333333333333,
+								0.9372549019607843,
+								0.7686274509803922,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								-32,
+								-12
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								146,
+								150
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								37,
+								37
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.3333333333333333,
+								0.9372549019607843,
+								0.7686274509803922,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								-32,
+								-12
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								146,
+								150
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								45,
+								45
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0,
+								0.7215686274509804,
+								0.5803921568627451,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								-32,
+								-12
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								98,
+								150
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								45,
+								45
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0,
+								0.7215686274509804,
+								0.5803921568627451,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								-32,
+								-12
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										60.27,
+										149.91975
+									],
+									[
+										54.37,
+										153.74675
+									],
+									[
+										48.48,
+										149.91975
+									],
+									[
+										42.03,
+										156.37175
+									],
+									[
+										66.72,
+										156.37175
+									]
+								],
+								i: [
+									[
+										3.559999999999995,
+										0
+									],
+									[
+										1.0100000000000051,
+										-2.2539999999999907
+									],
+									[
+										2.6300000000000026,
+										0
+									],
+									[
+										0,
+										-3.562999999999988
+									],
+									[
+										0,
+										0
+									]
+								],
+								o: [
+									[
+										-2.6300000000000026,
+										0
+									],
+									[
+										-1,
+										-2.2539999999999907
+									],
+									[
+										-3.5700000000000003,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										-3.562999999999988
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								1,
+								0.4627450980392157,
+								0.4588235294117647,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								36,
+								15
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										54.37,
+										161.83275
+									],
+									[
+										59.83,
+										156.37175
+									],
+									[
+										48.91,
+										156.37175
+									]
+								],
+								i: [
+									[
+										-3.009999999999998,
+										0
+									],
+									[
+										0,
+										3.0160000000000196
+									],
+									[
+										0,
+										0
+									]
+								],
+								o: [
+									[
+										3.020000000000003,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										3.0160000000000196
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								1,
+								1,
+								0.996078431372549,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								36,
+								15
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										54.37,
+										161.83275
+									],
+									[
+										48.91,
+										156.37175
+									],
+									[
+										42.03,
+										156.37175
+									],
+									[
+										54.37,
+										168.71775
+									],
+									[
+										66.72,
+										156.37175
+									],
+									[
+										59.83,
+										156.37175
+									]
+								],
+								i: [
+									[
+										3.020000000000003,
+										0
+									],
+									[
+										0,
+										3.0160000000000196
+									],
+									[
+										0,
+										0
+									],
+									[
+										-6.82,
+										0
+									],
+									[
+										0,
+										6.819000000000017
+									],
+									[
+										0,
+										0
+									]
+								],
+								o: [
+									[
+										-3.009999999999998,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										6.819000000000017
+									],
+									[
+										6.82,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										3.0160000000000196
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.8392156862745098,
+								0.18823529411764706,
+								0.19215686274509805,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								36,
+								15
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										30.49,
+										101.39075
+									],
+									[
+										26.54,
+										101.39075
+									],
+									[
+										8.14,
+										119.79875
+									],
+									[
+										8.14,
+										123.74375
+									],
+									[
+										18.03,
+										142.30375
+									],
+									[
+										49.05,
+										111.28475
+									]
+								],
+								i: [
+									[
+										7.73,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										-5.970000000000001,
+										-4.013000000000005
+									],
+									[
+										0,
+										0
+									]
+								],
+								o: [
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										7.731999999999999
+									],
+									[
+										0,
+										0
+									],
+									[
+										-4.009999999999998,
+										-5.9680000000000035
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.8745098039215686,
+								0.30980392156862746,
+								0.5294117647058824,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								36,
+								15
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										54.37,
+										181.19975
+									],
+									[
+										54.37,
+										181.19975
+									],
+									[
+										11.29,
+										138.11975
+									],
+									[
+										11.29,
+										150.48875
+									],
+									[
+										54.37,
+										193.56975
+									],
+									[
+										97.45,
+										150.48875
+									],
+									[
+										97.45,
+										138.11975
+									]
+								],
+								i: [
+									[
+										23.699999999999996,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										23.69399999999999
+									],
+									[
+										0,
+										0
+									],
+									[
+										-23.689999999999998,
+										0
+									],
+									[
+										0,
+										23.694999999999993
+									],
+									[
+										0,
+										0
+									]
+								],
+								o: [
+									[
+										0,
+										0
+									],
+									[
+										-23.689999999999998,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										23.694999999999993
+									],
+									[
+										23.699999999999996,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										23.69399999999999
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9803921568627451,
+								0.6941176470588235,
+								0.6274509803921569,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								36,
+								15
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										54.37,
+										193.56975
+									],
+									[
+										54.37,
+										193.56975
+									],
+									[
+										11.29,
+										150.48875
+									],
+									[
+										11.29,
+										108.82875
+									],
+									[
+										54.37,
+										65.74775
+									],
+									[
+										97.45,
+										108.82875
+									],
+									[
+										97.45,
+										150.48875
+									]
+								],
+								i: [
+									[
+										23.699999999999996,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										23.694999999999993
+									],
+									[
+										0,
+										0
+									],
+									[
+										-23.689999999999998,
+										0
+									],
+									[
+										0,
+										-23.694999999999993
+									],
+									[
+										0,
+										0
+									]
+								],
+								o: [
+									[
+										0,
+										0
+									],
+									[
+										-23.689999999999998,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										-23.694999999999993
+									],
+									[
+										23.699999999999996,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										23.694999999999993
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9803921568627451,
+								0.7843137254901961,
+								0.7411764705882353,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								36,
+								15
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										21.64,
+										134.29775
+									],
+									[
+										11.85,
+										144.09075
+									],
+									[
+										2.06,
+										134.29775
+									],
+									[
+										11.85,
+										124.50475
+									]
+								],
+								i: [
+									[
+										0,
+										-5.4080000000000155
+									],
+									[
+										5.410000000000002,
+										0
+									],
+									[
+										0,
+										5.407999999999987
+									],
+									[
+										-5.409999999999999,
+										0
+									]
+								],
+								o: [
+									[
+										0,
+										5.407999999999987
+									],
+									[
+										-5.409999999999999,
+										0
+									],
+									[
+										0,
+										-5.4080000000000155
+									],
+									[
+										5.410000000000002,
+										0
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9803921568627451,
+								0.6941176470588235,
+								0.6274509803921569,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								36,
+								15
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										106.69,
+										134.29775
+									],
+									[
+										96.89,
+										144.09075
+									],
+									[
+										87.1,
+										134.29775
+									],
+									[
+										96.89,
+										124.50475
+									]
+								],
+								i: [
+									[
+										0,
+										-5.4080000000000155
+									],
+									[
+										5.409999999999997,
+										0
+									],
+									[
+										0,
+										5.407999999999987
+									],
+									[
+										-5.409999999999997,
+										0
+									]
+								],
+								o: [
+									[
+										0,
+										5.407999999999987
+									],
+									[
+										-5.409999999999997,
+										0
+									],
+									[
+										0,
+										-5.4080000000000155
+									],
+									[
+										5.409999999999997,
+										0
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9803921568627451,
+								0.6941176470588235,
+								0.6274509803921569,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								36,
+								15
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										108.75,
+										110.33075
+									],
+									[
+										54.37,
+										164.70675
+									],
+									[
+										0,
+										110.33075
+									],
+									[
+										54.37,
+										55.95475
+									]
+								],
+								i: [
+									[
+										0,
+										-30.03099999999999
+									],
+									[
+										30.03000000000001,
+										0
+									],
+									[
+										0,
+										30.031000000000006
+									],
+									[
+										-30.029999999999998,
+										0
+									]
+								],
+								o: [
+									[
+										0,
+										30.031000000000006
+									],
+									[
+										-30.029999999999998,
+										0
+									],
+									[
+										0,
+										-30.03099999999999
+									],
+									[
+										30.03000000000001,
+										0
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.17647058823529413,
+								0.20392156862745098,
+								0.21176470588235294,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								36,
+								15
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										58.54,
+										111.75375
+									],
+									[
+										58.54,
+										111.75375
+									],
+									[
+										58.54,
+										84.63375
+									],
+									[
+										80.58,
+										62.59775
+									],
+									[
+										107.7,
+										62.59775
+									],
+									[
+										107.7,
+										62.59875
+									],
+									[
+										107.7,
+										89.71875
+									],
+									[
+										85.66,
+										111.75375
+									]
+								],
+								i: [
+									[
+										7.460000000000001,
+										7.457999999999998
+									],
+									[
+										0,
+										0
+									],
+									[
+										-7.460000000000001,
+										7.457999999999998
+									],
+									[
+										0,
+										0
+									],
+									[
+										-7.460000000000008,
+										-7.457999999999998
+									],
+									[
+										0,
+										0
+									],
+									[
+										7.450000000000003,
+										-7.457999999999998
+									],
+									[
+										0,
+										0
+									]
+								],
+								o: [
+									[
+										0,
+										0
+									],
+									[
+										-7.460000000000001,
+										-7.457999999999998
+									],
+									[
+										0,
+										0
+									],
+									[
+										7.450000000000003,
+										-7.457999999999998
+									],
+									[
+										0,
+										0
+									],
+									[
+										7.450000000000003,
+										7.457999999999991
+									],
+									[
+										0,
+										0
+									],
+									[
+										-7.459999999999994,
+										7.457999999999998
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								1,
+								0.4627450980392157,
+								0.4588235294117647,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								36,
+								15
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										156.43,
+										80.81975
+									],
+									[
+										89.48,
+										80.81975
+									],
+									[
+										89.48,
+										13.86675
+									],
+									[
+										156.43,
+										13.86675
+									]
+								],
+								i: [
+									[
+										18.48999999999998,
+										-18.488999999999997
+									],
+									[
+										18.47999999999999,
+										18.489000000000004
+									],
+									[
+										-18.49000000000001,
+										18.488000000000003
+									],
+									[
+										-18.49000000000001,
+										-18.489
+									]
+								],
+								o: [
+									[
+										-18.49000000000001,
+										18.489000000000004
+									],
+									[
+										-18.49000000000001,
+										-18.488999999999997
+									],
+									[
+										18.47999999999999,
+										-18.489
+									],
+									[
+										18.48999999999998,
+										18.488000000000003
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.17647058823529413,
+								0.20392156862745098,
+								0.21176470588235294,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								36,
+								15
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										54.46,
+										215.21775
+									],
+									[
+										54.46,
+										215.21775
+									],
+									[
+										39.25,
+										200.01275
+									],
+									[
+										39.25,
+										172.69575
+									],
+									[
+										54.46,
+										157.49075
+									],
+									[
+										69.66,
+										172.69575
+									],
+									[
+										69.66,
+										200.01275
+									]
+								],
+								i: [
+									[
+										8.36,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										8.361999999999995
+									],
+									[
+										0,
+										0
+									],
+									[
+										-8.36,
+										0
+									],
+									[
+										0,
+										-8.361999999999995
+									],
+									[
+										0,
+										0
+									]
+								],
+								o: [
+									[
+										0,
+										0
+									],
+									[
+										-8.36,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										-8.361999999999995
+									],
+									[
+										8.36,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										8.361999999999995
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.8156862745098039,
+								0.5843137254901961,
+								0.5294117647058824,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								36,
+								15
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										54.46,
+										232.74175
+									],
+									[
+										54.46,
+										232.74175
+									],
+									[
+										39.25,
+										217.53675
+									],
+									[
+										39.25,
+										190.21975
+									],
+									[
+										54.46,
+										175.01575
+									],
+									[
+										69.66,
+										190.21975
+									],
+									[
+										69.66,
+										217.53675
+									]
+								],
+								i: [
+									[
+										8.36,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										8.361999999999995
+									],
+									[
+										0,
+										0
+									],
+									[
+										-8.36,
+										0
+									],
+									[
+										0,
+										-8.363
+									],
+									[
+										0,
+										0
+									]
+								],
+								o: [
+									[
+										0,
+										0
+									],
+									[
+										-8.36,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										-8.363
+									],
+									[
+										8.36,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										8.361999999999995
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9803921568627451,
+								0.6941176470588235,
+								0.6274509803921569,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								36,
+								15
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "spaandbeauty shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										188.899901,
+										34.6477817
+									],
+									[
+										188.899901,
+										101.600782
+									],
+									[
+										138.36725,
+										112.301548
+									],
+									[
+										138.008559,
+										112.659768
+									],
+									[
+										141.219901,
+										131.111782
+									],
+									[
+										137.807254,
+										150.112473
+									],
+									[
+										139.159901,
+										155.078782
+									],
+									[
+										129.919486,
+										164.856069
+									],
+									[
+										129.919901,
+										171.269782
+									],
+									[
+										102.129637,
+										211.532607
+									],
+									[
+										102.129901,
+										238.317782
+									],
+									[
+										87.2426778,
+										253.519584
+									],
+									[
+										86.9299007,
+										253.522782
+									],
+									[
+										71.7199007,
+										238.317782
+									],
+									[
+										71.7200905,
+										211.595681
+									],
+									[
+										43.7599007,
+										171.269782
+									],
+									[
+										43.7593457,
+										164.856013
+									],
+									[
+										34.5299007,
+										155.078782
+									],
+									[
+										35.8810375,
+										150.110406
+									],
+									[
+										32.4699007,
+										131.111782
+									],
+									[
+										86.8399007,
+										76.7357817
+									],
+									[
+										110.143938,
+										81.968428
+									],
+									[
+										121.949901,
+										34.6477817
+									]
+								],
+								i: [
+									[
+										-18.49000000000001,
+										-18.489000000000004
+									],
+									[
+										18.49000000000001,
+										-18.4890003
+									],
+									[
+										16.934277999999978,
+										6.527889999999999
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										-6.4776350000000065
+									],
+									[
+										2.206489000000005,
+										-5.914774999999992
+									],
+									[
+										0,
+										-1.8129889999999875
+									],
+									[
+										5.149916999999988,
+										-0.28996499999999514
+									],
+									[
+										0,
+										0
+									],
+									[
+										16.207297999999994,
+										-6.201229000000012
+									],
+									[
+										0,
+										0
+									],
+									[
+										8.21715420000001,
+										-0.16811500000000024
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										8.361999999999995
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										18.380926000000017
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										5.219925000000018
+									],
+									[
+										-0.8586565999999962,
+										1.456596999999988
+									],
+									[
+										0,
+										6.683405999999991
+									],
+									[
+										-30.03,
+										0
+									],
+									[
+										-7.0634390000000025,
+										-3.355234699999997
+									],
+									[
+										-12.808480000000003,
+										12.807093899999998
+									]
+								],
+								o: [
+									[
+										18.49000000000001,
+										18.488
+									],
+									[
+										-13.662473000000006,
+										13.66173400000001
+									],
+									[
+										0,
+										0
+									],
+									[
+										2.0784400000000005,
+										5.7612900000000025
+									],
+									[
+										0,
+										6.683784000000003
+									],
+									[
+										0.8592669999999885,
+										1.455303000000015
+									],
+									[
+										0,
+										5.2202640000000144
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										18.318490999999995
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										8.257475
+									],
+									[
+										0,
+										0
+									],
+									[
+										-8.36,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										-16.2921161,
+										-6.15701900000002
+									],
+									[
+										0,
+										0
+									],
+									[
+										-5.148795399999997,
+										-0.29046399999998584
+									],
+									[
+										0,
+										-1.8134019999999964
+									],
+									[
+										-2.2056102999999965,
+										-5.913431000000003
+									],
+									[
+										0,
+										-30.031000000000006
+									],
+									[
+										8.3393114,
+										0
+									],
+									[
+										-4.938246000000007,
+										-16.193741000000003
+									],
+									[
+										18.480000000000004,
+										-18.489000000000004
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 23.2954545
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								-68.626,
+								31.059
+							]
+						},
+						r: {
+							a: 0,
+							k: 341.9985079135884
+						}
+					}
+				]
+			}
+		],
+		op: 1
+	}
+];
+var op$a = 1;
+var w$a = 300;
+var h$a = 300;
+var spa = {
+	ip: ip$a,
+	fr: fr$a,
+	v: v$a,
+	assets: assets$a,
+	layers: layers$a,
+	op: op$a,
+	w: w$a,
+	h: h$a
+};
+
+var ip$b = 0;
+var fr$b = 60;
+var v$b = "5.1.20";
+var assets$b = [
+];
+var layers$b = [
+	{
+		ty: 4,
+		nm: "pet",
+		ip: 0,
+		st: 0,
+		ind: 1,
+		hix: 1,
+		ks: {
+			o: {
+				a: 0,
+				k: 100
+			},
+			or: {
+				a: 0,
+				k: [
+					0,
+					0,
+					0
+				]
+			},
+			a: {
+				a: 0,
+				k: [
+					290.5,
+					346,
+					0
+				]
+			},
+			p: {
+				s: true,
+				x: {
+					a: 0,
+					k: 144
+				},
+				y: {
+					a: 0,
+					k: 150.0000013212051
+				}
+			},
+			rx: {
+				a: 0,
+				k: 0
+			},
+			ry: {
+				a: 0,
+				k: 0
+			},
+			rz: {
+				a: 0,
+				k: 0
+			},
+			s: {
+				a: 0,
+				k: [
+					28.599999999999998,
+					28.599999999999998
+				]
+			}
+		},
+		shapes: [
+			{
+				ty: "gr",
+				nm: "pet shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								198,
+								29
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								18,
+								21
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9647058823529412,
+								0.9372549019607843,
+								0.8901960784313725,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								189,
+								289
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "pet shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								20,
+								29
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								18,
+								21
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9647058823529412,
+								0.9372549019607843,
+								0.8901960784313725,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								189,
+								289
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "pet shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										83,
+										189
+									],
+									[
+										82,
+										285.376884
+									],
+									[
+										121.849558,
+										321
+									],
+									[
+										161,
+										285.376884
+									],
+									[
+										161.5,
+										189
+									],
+									[
+										143.5,
+										185.5
+									],
+									[
+										122.5,
+										177
+									],
+									[
+										100.5,
+										185.5
+									]
+								],
+								i: [
+									[
+										8.184418899999997,
+										-0.2849520000000041
+									],
+									[
+										0,
+										0
+									],
+									[
+										-26.1002955,
+										0
+									],
+									[
+										0,
+										23.748743999999988
+									],
+									[
+										0,
+										0
+									],
+									[
+										2.7005320000000097,
+										1.9960450000000094
+									],
+									[
+										6.28409400000001,
+										0
+									],
+									[
+										8.5,
+										-5
+									]
+								],
+								o: [
+									[
+										0,
+										0
+									],
+									[
+										0.4660767000000021,
+										23.748743999999988
+									],
+									[
+										26.10029499999999,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										-9.29946799999999,
+										-0.3372880000000009
+									],
+									[
+										-11.5,
+										-8.5
+									],
+									[
+										-5.493632000000005,
+										0
+									],
+									[
+										-3.482247799999996,
+										2.0483810000000062
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								1,
+								0.4627450980392157,
+								0.4588235294117647,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								189,
+								289
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "pet shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										79,
+										197
+									],
+									[
+										78,
+										293.376884
+									],
+									[
+										117.849558,
+										329
+									],
+									[
+										157,
+										293.376884
+									],
+									[
+										157.5,
+										197
+									],
+									[
+										139.5,
+										193.5
+									],
+									[
+										118.5,
+										185
+									],
+									[
+										96.5,
+										193.5
+									]
+								],
+								i: [
+									[
+										8.184418899999997,
+										-0.2849520000000041
+									],
+									[
+										0,
+										0
+									],
+									[
+										-26.1002955,
+										0
+									],
+									[
+										0,
+										23.748743999999988
+									],
+									[
+										0,
+										0
+									],
+									[
+										2.7005320000000097,
+										1.9960450000000094
+									],
+									[
+										6.284093999999996,
+										0
+									],
+									[
+										8.5,
+										-5
+									]
+								],
+								o: [
+									[
+										0,
+										0
+									],
+									[
+										0.4660767000000021,
+										23.748743999999988
+									],
+									[
+										26.10029499999999,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										-9.29946799999999,
+										-0.3372880000000009
+									],
+									[
+										-11.5,
+										-8.5
+									],
+									[
+										-5.493632000000005,
+										0
+									],
+									[
+										-3.482247799999996,
+										2.0483810000000062
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 11.1915428
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								189,
+								289
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "pet shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										122.864094,
+										126
+									],
+									[
+										151.929949,
+										114
+									],
+									[
+										122.864094,
+										102
+									],
+									[
+										93.7982383,
+										114
+									]
+								],
+								i: [
+									[
+										-15.017358999999999,
+										0
+									],
+									[
+										-3.391017000000005,
+										6.615385000000003
+									],
+									[
+										29.065855,
+										0
+									],
+									[
+										-2.6643700999999993,
+										-6.615385000000003
+									]
+								],
+								o: [
+									[
+										15.017358000000002,
+										0
+									],
+									[
+										3.3910160000000076,
+										-6.615385000000003
+									],
+									[
+										-29.0658557,
+										0
+									],
+									[
+										2.6643700000000052,
+										6.615385000000003
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9647058823529412,
+								0.9372549019607843,
+								0.8901960784313725,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								189,
+								289
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "pet shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										123,
+										172
+									],
+									[
+										183,
+										133
+									],
+									[
+										123,
+										94
+									],
+									[
+										63,
+										133
+									]
+								],
+								i: [
+									[
+										-31,
+										0
+									],
+									[
+										-7,
+										21.5
+									],
+									[
+										60,
+										0
+									],
+									[
+										-5.5,
+										-21.5
+									]
+								],
+								o: [
+									[
+										31,
+										0
+									],
+									[
+										7,
+										-21.5
+									],
+									[
+										-60,
+										0
+									],
+									[
+										5.5,
+										21.5
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.17647058823529413,
+								0.20392156862745098,
+								0.21176470588235294,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								189,
+								289
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "pet shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								207,
+								40
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								58,
+								80
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.17647058823529413,
+								0.20392156862745098,
+								0.21176470588235294,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								189,
+								289
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "pet shape group",
+				it: [
+					{
+						ty: "el",
+						p: {
+							a: 0,
+							k: [
+								29,
+								40
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								58,
+								80
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.17647058823529413,
+								0.20392156862745098,
+								0.21176470588235294,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								189,
+								289
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "pet shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										309,
+										505
+									],
+									[
+										338,
+										493
+									],
+									[
+										338,
+										493
+									],
+									[
+										337.998522,
+										493.033356
+									],
+									[
+										366.5,
+										505.135989
+									],
+									[
+										414,
+										505.135989
+									],
+									[
+										395,
+										575.635989
+									],
+									[
+										337.5,
+										613.635989
+									],
+									[
+										337.498709,
+										613.497965
+									],
+									[
+										280.5,
+										575.5
+									],
+									[
+										261.5,
+										505
+									]
+								],
+								i: [
+									[
+										-13.638598000000002,
+										4.991904999999974
+									],
+									[
+										-5,
+										-1.5
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										-5.672161000000017,
+										-2.0760849999999778
+									],
+									[
+										-9.115721000000008,
+										-22.54941500000001
+									],
+									[
+										12.879587000000015,
+										-18.26712699999996
+									],
+									[
+										28.54639800000001,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										12.804003000000023,
+										18.159925000000044
+									],
+									[
+										-9.115721000000008,
+										22.549414999999954
+									]
+								],
+								o: [
+									[
+										5.852362000000028,
+										-2.142041000000006
+									],
+									[
+										0,
+										0
+									],
+									[
+										0,
+										0
+									],
+									[
+										5.6073990000000435,
+										-0.7066530000000171
+									],
+									[
+										13.638598000000002,
+										4.991905000000031
+									],
+									[
+										9.115721000000008,
+										22.549414999999954
+									],
+									[
+										-12.879587000000015,
+										18.26712699999996
+									],
+									[
+										0,
+										0
+									],
+									[
+										-28.233659000000046,
+										-0.229520999999977
+									],
+									[
+										-12.879587000000015,
+										-18.26712699999996
+									],
+									[
+										9.115721000000008,
+										-22.54941500000001
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.17647058823529413,
+								0.20392156862745098,
+								0.21176470588235294,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								-26.5,
+								-27
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "pet shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										338.5,
+										269.5
+									],
+									[
+										268.5,
+										400
+									],
+									[
+										125,
+										410
+									],
+									[
+										58,
+										485
+									],
+									[
+										338.5,
+										710
+									],
+									[
+										601.5,
+										485
+									],
+									[
+										548.5,
+										410
+									],
+									[
+										395.5,
+										396
+									]
+								],
+								i: [
+									[
+										31.086385000000007,
+										0
+									],
+									[
+										58.5,
+										-31
+									],
+									[
+										47.468376000000006,
+										-13.793371999999977
+									],
+									[
+										0,
+										-16.030198999999982
+									],
+									[
+										-242,
+										0
+									],
+									[
+										0,
+										82
+									],
+									[
+										34.62636399999997,
+										9.096660999999983
+									],
+									[
+										41.412751000000014,
+										26.053395000000023
+									]
+								],
+								o: [
+									[
+										-32,
+										0
+									],
+									[
+										-29.024770999999987,
+										15.380648000000008
+									],
+									[
+										-43.0584827,
+										12.511944000000028
+									],
+									[
+										0,
+										81
+									],
+									[
+										242,
+										0
+									],
+									[
+										0,
+										-22.576865999999995
+									],
+									[
+										-44.59553199999999,
+										-11.715651999999977
+									],
+									[
+										-43.220596,
+										-27.19073800000001
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9647058823529412,
+								0.9372549019607843,
+								0.8901960784313725,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								-26.5,
+								-27
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "pet shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										338.5,
+										174
+									],
+									[
+										58,
+										485
+									],
+									[
+										338.5,
+										710
+									],
+									[
+										601.5,
+										485
+									]
+								],
+								i: [
+									[
+										220.5,
+										0
+									],
+									[
+										0,
+										-81
+									],
+									[
+										-242,
+										0
+									],
+									[
+										0,
+										82
+									]
+								],
+								o: [
+									[
+										-220.5,
+										0
+									],
+									[
+										0,
+										81
+									],
+									[
+										242,
+										0
+									],
+									[
+										0,
+										-82
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9921568627450981,
+								0.796078431372549,
+								0.43137254901960786,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								-26.5,
+								-27
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "pet shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										184.774169,
+										394.994454
+									],
+									[
+										265.993022,
+										249.497227
+									],
+									[
+										184.774169,
+										104
+									],
+									[
+										103.555316,
+										249.497227
+									]
+								],
+								i: [
+									[
+										-100.9032617,
+										-0.7104120000000194
+									],
+									[
+										6.749615000000006,
+										78.564907
+									],
+									[
+										44.85593399999999,
+										0
+									],
+									[
+										12.534667999999996,
+										-78.29985000000002
+									]
+								],
+								o: [
+									[
+										100.90326200000001,
+										0.71041299999996
+									],
+									[
+										-6.749615000000006,
+										-78.564907
+									],
+									[
+										-44.85593399999999,
+										0
+									],
+									[
+										-12.534667100000007,
+										78.29984999999999
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9647058823529412,
+								0.9372549019607843,
+								0.8901960784313725,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								-91.429,
+								37.552
+							]
+						},
+						r: {
+							a: 0,
+							k: 342.97253616531077
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "pet shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										166.839324,
+										367
+									],
+									[
+										262.839324,
+										195
+									],
+									[
+										166.839324,
+										23
+									],
+									[
+										70.8393245,
+										195
+									]
+								],
+								i: [
+									[
+										-119.26680520000001,
+										-0.8398159999999848
+									],
+									[
+										7.977988000000039,
+										92.87574899999998
+									],
+									[
+										53.01933599999998,
+										0
+									],
+									[
+										14.81587119999999,
+										-92.562411
+									]
+								],
+								o: [
+									[
+										119.266806,
+										0.8398159999999848
+									],
+									[
+										-7.977986999999985,
+										-92.875749
+									],
+									[
+										-53.01933600000001,
+										0
+									],
+									[
+										-14.815871300000005,
+										92.562411
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9921568627450981,
+								0.796078431372549,
+								0.43137254901960786,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								-76.289,
+								29.859
+							]
+						},
+						r: {
+							a: 0,
+							k: 342.97253616531077
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "pet shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										494.774169,
+										394.994454
+									],
+									[
+										575.993022,
+										249.497227
+									],
+									[
+										494.774169,
+										104
+									],
+									[
+										413.555316,
+										249.497227
+									]
+								],
+								i: [
+									[
+										-100.90326199999998,
+										-0.7104120000000194
+									],
+									[
+										6.749614999999949,
+										78.564907
+									],
+									[
+										44.85593399999999,
+										0
+									],
+									[
+										12.53466800000001,
+										-78.29985000000002
+									]
+								],
+								o: [
+									[
+										100.90326199999998,
+										0.71041299999996
+									],
+									[
+										-6.749614999999949,
+										-78.564907
+									],
+									[
+										-44.85593399999999,
+										0
+									],
+									[
+										-12.534667000000013,
+										78.29984999999999
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9647058823529412,
+								0.9372549019607843,
+								0.8901960784313725,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								-100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								1011.883,
+								128.187
+							]
+						},
+						r: {
+							a: 0,
+							k: 196.98288996597702
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "pet shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										511.839324,
+										367
+									],
+									[
+										607.839324,
+										195
+									],
+									[
+										511.839324,
+										23
+									],
+									[
+										415.839324,
+										195
+									]
+								],
+								i: [
+									[
+										-119.26680499999998,
+										-0.8398159999999848
+									],
+									[
+										7.977987999999982,
+										92.87574899999998
+									],
+									[
+										53.01933600000001,
+										0
+									],
+									[
+										14.815872000000013,
+										-92.562411
+									]
+								],
+								o: [
+									[
+										119.26680600000003,
+										0.8398159999999848
+									],
+									[
+										-7.977986999999985,
+										-92.875749
+									],
+									[
+										-53.01933599999995,
+										0
+									],
+									[
+										-14.815870999999959,
+										92.562411
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0.9921568627450981,
+								0.796078431372549,
+								0.43137254901960786,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								-100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								1028.881,
+								130.728
+							]
+						},
+						r: {
+							a: 0,
+							k: 196.98288996597702
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "pet shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										322.5,
+										174
+									],
+									[
+										26.5,
+										481.406716
+									],
+									[
+										322.74103,
+										719
+									],
+									[
+										600.5,
+										481.406716
+									]
+								],
+								i: [
+									[
+										238.5,
+										0
+									],
+									[
+										0,
+										-85.53358200000002
+									],
+									[
+										-255.58049640000002,
+										0
+									],
+									[
+										-1,
+										135.90671700000001
+									]
+								],
+								o: [
+									[
+										-238.5,
+										0
+									],
+									[
+										0,
+										85.53358299999996
+									],
+									[
+										255.58049699999992,
+										0
+									],
+									[
+										1,
+										-135.90671600000002
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 12.546437899999999
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								-26.5,
+								-27
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "pet shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										486.839324,
+										373
+									],
+									[
+										582.839324,
+										201
+									],
+									[
+										486.839324,
+										29
+									],
+									[
+										390.839324,
+										201
+									]
+								],
+								i: [
+									[
+										-119.26680499999998,
+										-0.8398159999999848
+									],
+									[
+										7.977987999999982,
+										92.87574899999998
+									],
+									[
+										53.01933600000001,
+										0
+									],
+									[
+										14.815872000000013,
+										-92.562411
+									]
+								],
+								o: [
+									[
+										119.26680600000003,
+										0.8398159999999848
+									],
+									[
+										-7.977986999999985,
+										-92.875749
+									],
+									[
+										-53.01933599999995,
+										0
+									],
+									[
+										-14.815870999999959,
+										92.562411
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 10.2655157
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								-100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								981.727,
+								123.681
+							]
+						},
+						r: {
+							a: 0,
+							k: 196.98288996597702
+						}
+					}
+				]
+			},
+			{
+				ty: "gr",
+				nm: "pet shape group",
+				it: [
+					{
+						ty: "sh",
+						ks: {
+							a: 0,
+							k: {
+								c: true,
+								v: [
+									[
+										150.839324,
+										385
+									],
+									[
+										246.839324,
+										213
+									],
+									[
+										150.839324,
+										41
+									],
+									[
+										54.8393245,
+										213
+									]
+								],
+								i: [
+									[
+										-119.26680520000001,
+										-0.8398159999999848
+									],
+									[
+										7.977987999999982,
+										92.87574899999998
+									],
+									[
+										53.01933599999998,
+										0
+									],
+									[
+										14.815871199999997,
+										-92.562411
+									]
+								],
+								o: [
+									[
+										119.266806,
+										0.8398159999999848
+									],
+									[
+										-7.977987000000013,
+										-92.875749
+									],
+									[
+										-53.01933550000001,
+										0
+									],
+									[
+										-14.815871299999998,
+										92.562411
+									]
+								]
+							}
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "fl",
+						o: {
+							a: 0,
+							k: 8.20039336
+						},
+						r: 2,
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								1
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								-82.251,
+								25.968
+							]
+						},
+						r: {
+							a: 0,
+							k: 342.97253616531077
+						}
+					}
+				]
+			}
+		],
+		op: 1
+	}
+];
+var op$b = 1;
+var w$b = 300;
+var h$b = 300;
+var pet = {
+	ip: ip$b,
+	fr: fr$b,
+	v: v$b,
+	assets: assets$b,
+	layers: layers$b,
+	op: op$b,
+	w: w$b,
+	h: h$b
+};
+
+var ImageRender = function ImageRender(_ref) {
+  var available_categories = _ref.available_categories,
+      service = _ref.service;
+  var categoryObject = available_categories.find(function (e) {
+    return e.category_id == service.category_id;
+  });
+
+  if (service.asset) {
+    return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(reactNative$1.Image, {
+      source: {
+        uri: service.asset.cdn_uri || null
+      },
+      resizeMode: "cover",
+      style: {
+        width: "100%",
+        height: 80,
+        position: "absolute",
+        left: 0,
+        top: 0
+      }
+    }), /*#__PURE__*/React__default['default'].createElement(reactNative$1.Image, {
+      source: {
+        uri: img$1
+      },
+      resizeMode: "cover",
+      style: {
+        width: "100%",
+        height: 80,
+        left: 0,
+        top: 0
+      }
+    }));
+  } else {
+    return /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
+      style: {
+        width: "100%",
+        backgroundColor: categoryObject.color,
+        height: 80,
+        left: 0,
+        top: 0,
+        overflow: "hidden",
+        alignItems: "flex-end"
+      }
+    }, /*#__PURE__*/React__default['default'].createElement(LottieView__default['default'], {
+      style: {
+        height: 120
+      },
+      autoPlay: false,
+      loop: false,
+      source: categoryObject.image
+    }));
+  }
+};
+
+var ServiceContainer = React__default['default'].memo(function (_ref2) {
+  var service = _ref2.service,
+      children = _ref2.children,
+      _ref2$onClick = _ref2.onClick;
+  var theme = atoms.useThemeContext();
+  var available_categories = [{
+    category_id: 1,
+    id: "restaurants",
+    name: "Restaurant",
+    color: theme.color6,
+    image: restaurant
+  }, {
+    category_id: 2,
+    id: "fitness",
+    name: "Fitness",
+    color: theme.color15,
+    image: fitness
+  }, {
+    category_id: 3,
+    id: "sports",
+    name: "Sports",
+    color: theme.color11,
+    image: sports
+  }, {
+    category_id: 5,
+    id: "spa",
+    name: "Spa & Beauty",
+    color: theme.color12,
+    image: spa
+  }, {
+    category_id: 8,
+    id: "pet",
+    name: "Pet Services",
+    color: theme.color5,
+    image: pet
+  }];
+  return /*#__PURE__*/React__default['default'].createElement(Wrapper$4, {
+    theme: theme
+  }, /*#__PURE__*/React__default['default'].createElement(ImageWrap, {
+    theme: theme
+  }, /*#__PURE__*/React__default['default'].createElement(ImageRender, {
+    available_categories: available_categories,
+    service: service
+  }), /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
+    style: {
+      width: "100%",
+      position: "absolute",
+      left: 0,
+      right: 0,
+      bottom: 0
+    }
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
+    color: theme.color1
+  }, service.name)))), /*#__PURE__*/React__default['default'].createElement(Body$4, {
+    theme: theme
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, children)));
 });
 
 exports.AccordionItem = AccordionItem;
@@ -21751,10 +40360,16 @@ exports.ImageLoader = ImageLoader;
 exports.ImageUpload = ImageUpload;
 exports.Map = Map$1;
 exports.MerchantCard = MerchantCard;
+exports.MerchantSelector = MerchantSelector;
 exports.Modal = Modal;
+exports.ModalContext = ModalContext;
+exports.ModalProvider = ModalProvider;
 exports.ResourceDragAndDrop = ResourceDragAndDrop;
 exports.Screen = Screen;
+exports.ServiceContainer = ServiceContainer;
 exports.SlideScreen = SlideScreen;
 exports.TimeSelector = Times;
 exports.WeekdaySelector = Weekdays$1;
 exports.useAccordionContext = useAccordionContext;
+exports.useAccordionHook = useAccordionHook;
+exports.useModalContext = useModalContext;

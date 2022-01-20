@@ -1,29 +1,14 @@
 import React from "react";
-import {
-  H3,
-  H4,
-  Padding,
-  Center,
-  AnimatedButton,
-  Margin,
-  Row,
-  Success,
-  Error,
-  Loader,
-  MarginHorizontal,
-  Icon,
-  PaddingVertical,
-  PaddingTop,
-  MarginTop,
-} from "@servesall/atoms";
+import { H3, H4, Padding, Row, PaddingTop } from "@servesall/atoms";
 import { Wrapper, AniWrapper, StatusWrapper } from "./BookingMerchant.style";
 import LottieView from "lottie-react-native";
 import Happy_Shaded from "./Assets/Happy_Shaded.json";
 import Meh_Shaded from "./Assets/Meh_Shaded.json";
 import Blushing_Shaded from "./Assets/Blushing_Shaded.json";
+import BookingActions from "./BookingActions";
 
 const BookingMerchant = React.memo(
-  ({ name, status, pax, theme, onClick = () => {} }) => {
+  ({ name, status, pax, theme, submit, onClick = () => {} }) => {
     const statusColors = {
       Pending: {
         color: theme.color12,
@@ -34,6 +19,38 @@ const BookingMerchant = React.memo(
         progress: null,
       },
       Confirmed: {
+        color: theme.color11,
+        border: theme.color11border,
+        background: theme.color11light,
+        image: Blushing_Shaded,
+        autoPlay: false,
+        progress: 0.5,
+      },
+      Declined: {
+        color: theme.color11,
+        border: theme.color11border,
+        background: theme.color11light,
+        image: Blushing_Shaded,
+        autoPlay: false,
+        progress: 0.5,
+      },
+      Cancelled: {
+        color: theme.color11,
+        border: theme.color11border,
+        background: theme.color11light,
+        image: Blushing_Shaded,
+        autoPlay: false,
+        progress: 0.5,
+      },
+      Attended: {
+        color: theme.color11,
+        border: theme.color11border,
+        background: theme.color11light,
+        image: Blushing_Shaded,
+        autoPlay: false,
+        progress: 0.5,
+      },
+      NoShow: {
         color: theme.color11,
         border: theme.color11border,
         background: theme.color11light,
@@ -80,6 +97,7 @@ const BookingMerchant = React.memo(
               </PaddingTop>
             </Padding>
           </Row>
+          <BookingActions submit={submit} theme={theme} status={status} />
         </Padding>
       </Wrapper>
     );

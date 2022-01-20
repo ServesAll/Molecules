@@ -8,6 +8,7 @@ const AccordionItem = ({
   children,
   defaultState = false,
   onChange = () => {},
+  closeItem = false,
   eventKey = false,
   style,
 }) => {
@@ -27,6 +28,10 @@ const AccordionItem = ({
       onChange(isOpen);
     }
   }, [isOpen, hasChanged]);
+
+  useEffect(() => {
+    closeItem && toggleAccordionItem(false);
+  }, [closeItem]);
 
   return (
     <Container styles={style} eventKey={eventKey}>

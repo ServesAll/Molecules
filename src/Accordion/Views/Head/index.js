@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Head } from "./Head.style";
 import { findNodeHandle, Pressable, View } from "react-native";
-import { Row, Padding } from "@servesall/atoms";
+import { Row, Padding, useThemeContext } from "@servesall/atoms";
 import LottieView from "lottie-react-native";
 import plusClose from "./Assets/plusClose.json";
 import { useAccordionContext } from "../../GlobalToggle";
@@ -18,7 +18,10 @@ export default function HeadElement({
   eventKey,
   isOpen,
   style,
+  lightContent = false,
+  showToggle = true,
 }) {
+  const theme = useThemeContext();
   const { isActive, scrollRef } = useAccordionContext() || {};
   const BodyRef = useRef();
   const openRef = useRef();
@@ -81,19 +84,31 @@ export default function HeadElement({
           <View style={{ flex: 9 }}>
             <Animated.View style={[animatedStyle]}>{children}</Animated.View>
           </View>
-          <View style={{ flex: 1 }}>
-            <Padding>
-              <LottieView
-                style={{
-                  height: 15,
-                }}
-                ref={openRef}
-                autoPlay={false}
-                loop={false}
-                source={plusClose}
-              />
-            </Padding>
-          </View>
+          {showToggle && (
+            <View style={{ flex: 1 }}>
+              <Padding>
+                <LottieView
+                  style={{
+                    height: 15,
+                  }}
+                  ref={openRef}
+                  autoPlay={false}
+                  loop={false}
+                  source={plusClose}
+                  colorFilters={[
+                    {
+                      keypath: "open-vertical",
+                      color: lightContent ? theme.color1 : theme.color2,
+                    },
+                    {
+                      keypath: "open-horizontal",
+                      color: lightContent ? theme.color1 : theme.color2,
+                    },
+                  ]}
+                />
+              </Padding>
+            </View>
+          )}
         </Row>
       </Head>
     </Pressable>
