@@ -23,7 +23,7 @@ const MerchantSelector = React.memo(
     }, [selected]);
 
     useEffect(() => {
-      if (!selected && merchants) {
+      if (merchants) {
         setSelected(merchants[0].merchant);
         onChange(merchants[0].merchant);
       }
@@ -43,8 +43,8 @@ const MerchantSelector = React.memo(
                 <Margin>
                   <H3 color={theme.color2}>
                     {selected
-                      ? selected.profile.name
-                      : merchants[0].merchant.profile.name || null}
+                      ? selected.profile?.name
+                      : merchants[0]?.merchant?.profile?.name || null}
                   </H3>
                   <H1 color={theme.color2}>{page}</H1>
                 </Margin>
@@ -65,7 +65,7 @@ const MerchantSelector = React.memo(
                         >
                           <MarginVertical>
                             <H2 color={theme.color2}>
-                              {merchant.profile.name || null} {page}
+                              {merchant?.profile?.name || null} {page}
                             </H2>
                           </MarginVertical>
                         </TextBtn>

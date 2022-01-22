@@ -1,16 +1,18 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('react'), require('react-native'), require('react-native-reanimated'), require('react-native-gesture-handler'), require('react-native-status-bar-height'), require('@servesall/atoms'), require('lottie-react-native'), require('react-native-maps'), require('react-native-image-crop-picker'), require('date-fns/format'), require('date-fns/startOfMonth'), require('date-fns')) :
   typeof define === 'function' && define.amd ? define(['exports', 'react', 'react-native', 'react-native-reanimated', 'react-native-gesture-handler', 'react-native-status-bar-height', '@servesall/atoms', 'lottie-react-native', 'react-native-maps', 'react-native-image-crop-picker', 'date-fns/format', 'date-fns/startOfMonth', 'date-fns'], factory) :
-  (global = global || self, factory(global['@servesall/molecules'] = {}, global.React, global['react-native'], global['react-native-reanimated'], global['react-native-gesture-handler'], global['react-native-status-bar-height'], global['@servesall/atoms'], global['lottie-react-native'], global['react-native-maps'], global['react-native-image-crop-picker'], global.format$1, global.startOfMonth, global.dateFns));
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global['@servesall/molecules'] = {}, global.React, global['react-native'], global['react-native-reanimated'], global['react-native-gesture-handler'], global['react-native-status-bar-height'], global['@servesall/atoms'], global['lottie-react-native'], global['react-native-maps'], global['react-native-image-crop-picker'], global.format$1, global.startOfMonth, global.dateFns));
 }(this, (function (exports, React, reactNative$1, Animated, reactNativeGestureHandler, reactNativeStatusBarHeight, atoms, LottieView, MapView, ImagePicker, format$1, startOfMonth, dateFns) { 'use strict';
 
-  var React__default = 'default' in React ? React['default'] : React;
-  var Animated__default = 'default' in Animated ? Animated['default'] : Animated;
-  LottieView = LottieView && Object.prototype.hasOwnProperty.call(LottieView, 'default') ? LottieView['default'] : LottieView;
-  var MapView__default = 'default' in MapView ? MapView['default'] : MapView;
-  ImagePicker = ImagePicker && Object.prototype.hasOwnProperty.call(ImagePicker, 'default') ? ImagePicker['default'] : ImagePicker;
-  format$1 = format$1 && Object.prototype.hasOwnProperty.call(format$1, 'default') ? format$1['default'] : format$1;
-  startOfMonth = startOfMonth && Object.prototype.hasOwnProperty.call(startOfMonth, 'default') ? startOfMonth['default'] : startOfMonth;
+  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+  var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
+  var Animated__default = /*#__PURE__*/_interopDefaultLegacy(Animated);
+  var LottieView__default = /*#__PURE__*/_interopDefaultLegacy(LottieView);
+  var MapView__default = /*#__PURE__*/_interopDefaultLegacy(MapView);
+  var ImagePicker__default = /*#__PURE__*/_interopDefaultLegacy(ImagePicker);
+  var format__default = /*#__PURE__*/_interopDefaultLegacy(format$1);
+  var startOfMonth__default = /*#__PURE__*/_interopDefaultLegacy(startOfMonth);
 
   function Background(_ref) {
     var children = _ref.children,
@@ -44,7 +46,7 @@
     React.useEffect(function () {
       opacity.value = 1;
     }, []);
-    return /*#__PURE__*/React__default.createElement(Animated__default.View, {
+    return /*#__PURE__*/React__default['default'].createElement(Animated__default['default'].View, {
       style: [{
         height: '100%',
         top: 0,
@@ -56,7 +58,7 @@
         zIndex: 1,
         backgroundColor: 'rgba(0, 0, 0, 0.6)'
       }, animatedStyle]
-    }, /*#__PURE__*/React__default.createElement(reactNative$1.Pressable, {
+    }, /*#__PURE__*/React__default['default'].createElement(reactNative$1.Pressable, {
       style: {
         flex: 1,
         top: 0,
@@ -4335,9 +4337,9 @@
   }
 
   // 
-  var StyleSheetContext = React__default.createContext();
+  var StyleSheetContext = React__default['default'].createContext();
   var StyleSheetConsumer = StyleSheetContext.Consumer;
-  var StylisContext = React__default.createContext();
+  var StylisContext = React__default['default'].createContext();
   var StylisConsumer = StylisContext.Consumer;
   var masterSheet = new StyleSheet();
   var masterStylis = createStylisInstance();
@@ -9314,7 +9316,7 @@
     return isTag(target) ? "styled." + target : "Styled(" + getComponentName(target) + ")";
   }
 
-  var ThemeContext = React__default.createContext();
+  var ThemeContext = React__default['default'].createContext();
   var ThemeConsumer = ThemeContext.Consumer;
 
   // if the user makes use of ThemeProvider or StyleSheetManager things will break.
@@ -9344,7 +9346,7 @@
     _proto.render = function render() {
       var _this2 = this;
 
-      return /*#__PURE__*/React__default.createElement(ThemeConsumer, null, function (theme) {
+      return /*#__PURE__*/React__default['default'].createElement(ThemeConsumer, null, function (theme) {
         var _this2$props = _this2.props,
             transientAsProp = _this2$props.$as,
             renderAs = _this2$props.as,
@@ -9445,8 +9447,8 @@
       var isClass = !isTag(target);
       var isTargetStyledComp = isStyledComponent(target); // $FlowFixMe
 
-      var WrappedStyledNativeComponent = React__default.forwardRef(function (props, ref) {
-        return /*#__PURE__*/React__default.createElement(ParentComponent, _extends({}, props, {
+      var WrappedStyledNativeComponent = React__default['default'].forwardRef(function (props, ref) {
+        return /*#__PURE__*/React__default['default'].createElement(ParentComponent, _extends({}, props, {
           forwardedComponent: WrappedStyledNativeComponent,
           forwardedRef: ref
         }));
@@ -9766,14 +9768,14 @@
       return _f;
     }());
     var PlatformGracePadding = reactNative$1.Platform.OS === "ios" ? 30 : 0;
-    return /*#__PURE__*/React__default.createElement(reactNative$1.SafeAreaView, null, /*#__PURE__*/React__default.createElement(reactNative$1.StatusBar, {
+    return /*#__PURE__*/React__default['default'].createElement(reactNative$1.SafeAreaView, null, /*#__PURE__*/React__default['default'].createElement(reactNative$1.StatusBar, {
       animated: true,
       backgroundColor: "rgba(0,0,0,0.6)",
       barStyle: "light-content"
-    }), /*#__PURE__*/React__default.createElement(reactNativeGestureHandler.GestureHandlerRootView, null, /*#__PURE__*/React__default.createElement(reactNativeGestureHandler.PanGestureHandler, {
+    }), /*#__PURE__*/React__default['default'].createElement(reactNativeGestureHandler.GestureHandlerRootView, null, /*#__PURE__*/React__default['default'].createElement(reactNativeGestureHandler.PanGestureHandler, {
       activeOffsetY: [-10, 10],
       onGestureEvent: gestureHandler
-    }, /*#__PURE__*/React__default.createElement(Animated__default.View, {
+    }, /*#__PURE__*/React__default['default'].createElement(Animated__default['default'].View, {
       style: [{
         height: reactNative$1.Dimensions.get("window").height - offsetTop,
         zIndex: 11,
@@ -9782,15 +9784,46 @@
         borderTopRightRadius: 8,
         overflow: "hidden"
       }, animatedStyle, animatedStylePan]
-    }, /*#__PURE__*/React__default.createElement(BodyWrap, {
+    }, /*#__PURE__*/React__default['default'].createElement(BodyWrap, {
       height: reactNative$1.Dimensions.get("window").height - offsetTop - statusBarHeight - PlatformGracePadding
-    }, /*#__PURE__*/React__default.createElement(PanBarWrap, null, /*#__PURE__*/React__default.createElement(PanBar, null)), children)))));
+    }, /*#__PURE__*/React__default['default'].createElement(PanBarWrap, null, /*#__PURE__*/React__default['default'].createElement(PanBar, null)), children)))));
   }
 
-  var ModalContext = React__default.createContext();
+  var ModalContext = React__default['default'].createContext();
+
+  function reducer(state, action) {
+    switch (action.type) {
+      case "isModalActive":
+        return _objectSpread2(_objectSpread2({}, state), {}, {
+          isModalActive: action.data
+        });
+
+      default:
+        return state;
+    }
+  }
+
+  var ModalProvider = function ModalProvider(_ref) {
+    var children = _ref.children,
+        value = _ref.value;
+
+    var _useReducer = React.useReducer(reducer, {
+      isModalActive: false
+    }),
+        _useReducer2 = _slicedToArray(_useReducer, 2),
+        isModalActive = _useReducer2[0].isModalActive,
+        dispatch = _useReducer2[1];
+
+    return /*#__PURE__*/React__default['default'].createElement(ModalContext.Provider, {
+      value: _objectSpread2(_objectSpread2({}, value), {}, {
+        isModalActive: isModalActive,
+        dispatch: dispatch
+      })
+    }, children);
+  };
 
   var useModalContext = function useModalContext() {
-    return React__default.useContext(ModalContext);
+    return React__default['default'].useContext(ModalContext);
   };
 
   var Modal = function Modal(_ref) {
@@ -9816,51 +9849,14 @@
         });
       };
     }, []);
-    return /*#__PURE__*/React__default.createElement(Background, {
+    return /*#__PURE__*/React__default['default'].createElement(Background, {
       style: style,
       onClose: onClose
-    }, /*#__PURE__*/React__default.createElement(Body$1, {
+    }, /*#__PURE__*/React__default['default'].createElement(Body$1, {
       offsetTop: offsetTop,
       onClose: onClose,
       variableHeight: variableHeight
     }, children));
-  };
-
-  var ModalContext$1 = React__default.createContext();
-
-  function reducer(state, action) {
-    switch (action.type) {
-      case "isModalActive":
-        return _objectSpread2(_objectSpread2({}, state), {}, {
-          isModalActive: action.data
-        });
-
-      default:
-        return state;
-    }
-  }
-
-  var ModalProvider = function ModalProvider(_ref) {
-    var children = _ref.children,
-        value = _ref.value;
-
-    var _useReducer = React.useReducer(reducer, {
-      isModalActive: false
-    }),
-        _useReducer2 = _slicedToArray(_useReducer, 2),
-        isModalActive = _useReducer2[0].isModalActive,
-        dispatch = _useReducer2[1];
-
-    return /*#__PURE__*/React__default.createElement(ModalContext$1.Provider, {
-      value: _objectSpread2(_objectSpread2({}, value), {}, {
-        isModalActive: isModalActive,
-        dispatch: dispatch
-      })
-    }, children);
-  };
-
-  var useModalContext$1 = function useModalContext() {
-    return React__default.useContext(ModalContext$1);
   };
 
   var _templateObject$1;
@@ -9872,7 +9868,7 @@
     return props.styles;
   });
 
-  var AccordionContext = React__default.createContext();
+  var AccordionContext = React__default['default'].createContext();
 
   function reducer$1(state, action) {
     switch (action.type) {
@@ -9912,7 +9908,7 @@
         scrollRef = _useReducer2$.scrollRef,
         dispatch = _useReducer2[1];
 
-    return /*#__PURE__*/React__default.createElement(AccordionContext.Provider, {
+    return /*#__PURE__*/React__default['default'].createElement(AccordionContext.Provider, {
       value: _objectSpread2(_objectSpread2({}, value), {}, {
         isActive: isActive,
         isActiveHeight: isActiveHeight,
@@ -9923,7 +9919,7 @@
   };
 
   var useAccordionContext = function useAccordionContext() {
-    return React__default.useContext(AccordionContext);
+    return React__default['default'].useContext(AccordionContext);
   };
 
   function Container$1(_ref) {
@@ -9964,9 +9960,9 @@
       isActive != eventKey ? isActive ? opacity.value = 0.5 : opacity.value = 1 : opacity.value = 1;
     }, [isActive]);
     var theme = atoms.useThemeContext();
-    return /*#__PURE__*/React__default.createElement(Animated__default.View, {
+    return /*#__PURE__*/React__default['default'].createElement(Animated__default['default'].View, {
       style: [animatedStyle]
-    }, /*#__PURE__*/React__default.createElement(Wrapper, {
+    }, /*#__PURE__*/React__default['default'].createElement(Wrapper, {
       theme: theme,
       styles: styles,
       border: isActive != eventKey ? isActive ? false : true : false
@@ -10711,29 +10707,29 @@
     React.useEffect(function () {
       isActive != eventKey ? isActive ? opacity.value = 1 : opacity.value = 1 : opacity.value = 1;
     }, [isActive]);
-    return /*#__PURE__*/React__default.createElement(reactNative$1.Pressable, {
+    return /*#__PURE__*/React__default['default'].createElement(reactNative$1.Pressable, {
       ref: BodyRef,
       onPress: function onPress() {
         return toggleAccordionItem(eventKey);
       }
-    }, /*#__PURE__*/React__default.createElement(Head, {
+    }, /*#__PURE__*/React__default['default'].createElement(Head, {
       styles: style
-    }, /*#__PURE__*/React__default.createElement(atoms.Row, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
       style: {
         alignItems: "center",
         justifyContent: "space-between"
       }
-    }, /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+    }, /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
       style: {
         flex: 9
       }
-    }, /*#__PURE__*/React__default.createElement(Animated__default.View, {
+    }, /*#__PURE__*/React__default['default'].createElement(Animated__default['default'].View, {
       style: [animatedStyle]
-    }, children)), showToggle && /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+    }, children)), showToggle && /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
       style: {
         flex: 1
       }
-    }, /*#__PURE__*/React__default.createElement(atoms.Padding, null, /*#__PURE__*/React__default.createElement(LottieView, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.Padding, null, /*#__PURE__*/React__default['default'].createElement(LottieView__default['default'], {
       style: {
         height: 15
       },
@@ -10809,17 +10805,17 @@
 
       return _f;
     }());
-    return /*#__PURE__*/React__default.createElement(Animated__default.View, {
+    return /*#__PURE__*/React__default['default'].createElement(Animated__default['default'].View, {
       style: [{
         minHeight: 1,
         overflow: "hidden"
       }, animatedStyle]
-    }, /*#__PURE__*/React__default.createElement(Body$2, {
+    }, /*#__PURE__*/React__default['default'].createElement(Body$2, {
       isOpen: isOpen
     }, isOpen && children));
   }
 
-  var Body$3 = React__default.memo(BodyElement);
+  var Body$3 = React__default['default'].memo(BodyElement);
 
   function useAccordionHook() {
     var _ref = useAccordionContext() || {},
@@ -10902,11 +10898,11 @@
     React.useEffect(function () {
       closeItem && toggleAccordionItem(false);
     }, [closeItem]);
-    return /*#__PURE__*/React__default.createElement(Container$1, {
+    return /*#__PURE__*/React__default['default'].createElement(Container$1, {
       styles: style,
       eventKey: eventKey
-    }, React__default.Children.map(children, function (child) {
-      return React__default.cloneElement(child, {
+    }, React__default['default'].Children.map(children, function (child) {
+      return React__default['default'].cloneElement(child, {
         isOpen: isOpen,
         toggleAccordionItem: toggleAccordionItem,
         eventKey: eventKey
@@ -10915,11 +10911,11 @@
   };
 
   AccordionItem.Head = function (props) {
-    return /*#__PURE__*/React__default.createElement(HeadElement, props);
+    return /*#__PURE__*/React__default['default'].createElement(HeadElement, props);
   };
 
   AccordionItem.Body = function (props) {
-    return /*#__PURE__*/React__default.createElement(Body$3, props);
+    return /*#__PURE__*/React__default['default'].createElement(Body$3, props);
   };
 
   var _templateObject$4;
@@ -10931,11 +10927,11 @@
     var children = _ref.children,
         style = _ref.style;
     var scrollRef = React.useRef();
-    return /*#__PURE__*/React__default.createElement(AccordionProvider, {
+    return /*#__PURE__*/React__default['default'].createElement(AccordionProvider, {
       value: {
         scrollRef: scrollRef
       }
-    }, /*#__PURE__*/React__default.createElement(ScrollView, {
+    }, /*#__PURE__*/React__default['default'].createElement(ScrollView, {
       ref: scrollRef,
       styles: style
     }, children));
@@ -10955,7 +10951,7 @@
         data: scrollRef
       });
     }, []);
-    return /*#__PURE__*/React__default.createElement(ScrollView, {
+    return /*#__PURE__*/React__default['default'].createElement(ScrollView, {
       ref: scrollRef,
       styles: style
     }, children);
@@ -12219,7 +12215,7 @@
         markerRef.current.play(21, 46);
       }
     }, [isMoving]);
-    return /*#__PURE__*/React__default.createElement(LottieView, {
+    return /*#__PURE__*/React__default['default'].createElement(LottieView__default['default'], {
       ref: markerRef,
       style: {
         height: 80,
@@ -12281,9 +12277,9 @@
     React.useEffect(function () {
       onChange(location);
     }, [location]);
-    return /*#__PURE__*/React__default.createElement(MapWrapper, {
+    return /*#__PURE__*/React__default['default'].createElement(MapWrapper, {
       theme: theme
-    }, /*#__PURE__*/React__default.createElement(MapView__default, {
+    }, /*#__PURE__*/React__default['default'].createElement(MapView__default['default'], {
       loadingEnabled: true,
       region: location,
       style: {
@@ -12299,10 +12295,10 @@
       onPanDrag: function onPanDrag(e) {
         setIsMoving(true);
       }
-    }), /*#__PURE__*/React__default.createElement(MarkerWrapper, {
+    }), /*#__PURE__*/React__default['default'].createElement(MarkerWrapper, {
       theme: theme,
       pointerEvents: "none"
-    }, /*#__PURE__*/React__default.createElement(MarkerAnimation, {
+    }, /*#__PURE__*/React__default['default'].createElement(MarkerAnimation, {
       isMoving: isMoving
     })));
   }
@@ -13078,7 +13074,7 @@
 
   var UploadIcon = function UploadIcon() {
     var uploadRef = React.useRef();
-    return /*#__PURE__*/React__default.createElement(LottieView, {
+    return /*#__PURE__*/React__default['default'].createElement(LottieView__default['default'], {
       ref: uploadRef,
       style: {
         height: 120,
@@ -13094,7 +13090,7 @@
   var ImageLoaderWrapper = styled.View(_templateObject$7 || (_templateObject$7 = _taggedTemplateLiteral(["\n  flex: 1;\n  align-items: stretch;\n  justify-content: center;\n  background-color: ", ";\n"])), function (props) {
     return props.background;
   });
-  var ImagePreload = styled(LottieView)(_templateObject2$4 || (_templateObject2$4 = _taggedTemplateLiteral(["\n  align-items: stretch;\n  justify-content: center;\n"])));
+  var ImagePreload = styled(LottieView__default['default'])(_templateObject2$4 || (_templateObject2$4 = _taggedTemplateLiteral(["\n  align-items: stretch;\n  justify-content: center;\n"])));
   var ImageComponent = styled.Image(_templateObject3$1 || (_templateObject3$1 = _taggedTemplateLiteral(["\n  flex: 1;\n  justify-content: center;\n  opacity: ", ";\n"])), function (props) {
     return props.showImage ? 1 : 0;
   });
@@ -13683,13 +13679,13 @@
         showImage = _useState2[0],
         setShowImage = _useState2[1];
 
-    return /*#__PURE__*/React__default.createElement(ImageLoaderWrapper, {
+    return /*#__PURE__*/React__default['default'].createElement(ImageLoaderWrapper, {
       background: background
-    }, !showImage && /*#__PURE__*/React__default.createElement(LottieView, {
+    }, !showImage && /*#__PURE__*/React__default['default'].createElement(LottieView__default['default'], {
       source: loader,
       autoPlay: true,
       loop: true
-    }), /*#__PURE__*/React__default.createElement(ImageComponent, {
+    }), /*#__PURE__*/React__default['default'].createElement(ImageComponent, {
       source: {
         uri: imageUrl
       },
@@ -13724,7 +13720,7 @@
     }, [image]);
 
     var pickImage = function pickImage() {
-      ImagePicker.openPicker({
+      ImagePicker__default['default'].openPicker({
         width: 400,
         height: 300,
         cropping: true
@@ -13733,22 +13729,22 @@
       });
     };
 
-    return /*#__PURE__*/React__default.createElement(reactNative$1.Pressable, {
+    return /*#__PURE__*/React__default['default'].createElement(reactNative$1.Pressable, {
       onPress: function onPress() {
         return pickImage();
       }
-    }, /*#__PURE__*/React__default.createElement(UploadWrapper, {
+    }, /*#__PURE__*/React__default['default'].createElement(UploadWrapper, {
       theme: theme
-    }, image && /*#__PURE__*/React__default.createElement(ImageLoader, {
+    }, image && /*#__PURE__*/React__default['default'].createElement(ImageLoader, {
       background: theme.color7,
       imageUrl: image
-    }), !image && /*#__PURE__*/React__default.createElement(UploadIconWrapper, null, /*#__PURE__*/React__default.createElement(UploadIcon, null))));
+    }), !image && /*#__PURE__*/React__default['default'].createElement(UploadIconWrapper, null, /*#__PURE__*/React__default['default'].createElement(UploadIcon, null))));
   }
 
   var _templateObject$8;
   var Wrapper$1 = styled.View(_templateObject$8 || (_templateObject$8 = _taggedTemplateLiteral(["\n  width: 100%;\n  min-height: 90px;\n"])));
 
-  var FooterActions = React__default.memo(function (_ref) {
+  var FooterActions = React__default['default'].memo(function (_ref) {
     var children = _ref.children,
         _ref$leftElement = _ref.leftElement,
         leftElement = _ref$leftElement === void 0 ? false : _ref$leftElement,
@@ -13760,15 +13756,15 @@
         _ref$onClick = _ref.onClick,
         _onClick = _ref$onClick === void 0 ? function () {} : _ref$onClick;
 
-    return /*#__PURE__*/React__default.createElement(Wrapper$1, {
+    return /*#__PURE__*/React__default['default'].createElement(Wrapper$1, {
       theme: theme
-    }, /*#__PURE__*/React__default.createElement(atoms.Row, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
       style: {
         flex: 1,
         justifyContent: "center",
         alignItems: "center"
       }
-    }, leftElement, /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+    }, leftElement, /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
       style: _objectSpread2({
         justifyContent: "center",
         alignItems: "center",
@@ -13777,7 +13773,7 @@
       }, (loading || success || error) && {
         margin: 0
       })
-    }, /*#__PURE__*/React__default.createElement(atoms.AnimatedButton, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.AnimatedButton, {
       leftElement: leftElement,
       active: active,
       color: loading ? "transparent" : theme.color2,
@@ -13787,14 +13783,14 @@
       },
       success: success,
       error: error,
-      successElement: /*#__PURE__*/React__default.createElement(atoms.Center, null, /*#__PURE__*/React__default.createElement(atoms.Success, null)),
-      errorElement: /*#__PURE__*/React__default.createElement(atoms.Center, null, /*#__PURE__*/React__default.createElement(atoms.Error, null)),
-      LoaderElement: /*#__PURE__*/React__default.createElement(atoms.Center, null, /*#__PURE__*/React__default.createElement(atoms.Loader, {
+      successElement: /*#__PURE__*/React__default['default'].createElement(atoms.Center, null, /*#__PURE__*/React__default['default'].createElement(atoms.Success, null)),
+      errorElement: /*#__PURE__*/React__default['default'].createElement(atoms.Center, null, /*#__PURE__*/React__default['default'].createElement(atoms.Error, null)),
+      LoaderElement: /*#__PURE__*/React__default['default'].createElement(atoms.Center, null, /*#__PURE__*/React__default['default'].createElement(atoms.Loader, {
         color: theme.color2
       }))
-    }, /*#__PURE__*/React__default.createElement(atoms.Center, null, children || /*#__PURE__*/React__default.createElement(atoms.Row, null, /*#__PURE__*/React__default.createElement(atoms.MarginHorizontal, null, /*#__PURE__*/React__default.createElement(atoms.H3, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.Center, null, children || /*#__PURE__*/React__default['default'].createElement(atoms.Row, null, /*#__PURE__*/React__default['default'].createElement(atoms.MarginHorizontal, null, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
       color: theme.color1
-    }, "Submit")), /*#__PURE__*/React__default.createElement(atoms.Icon, {
+    }, "Submit")), /*#__PURE__*/React__default['default'].createElement(atoms.Icon, {
       icon: "next",
       autoplay: false,
       loop: false,
@@ -13813,14 +13809,14 @@
   function MerchantCard(_ref) {
     var merchant = _ref.merchant,
         theme = _ref.theme;
-    return /*#__PURE__*/React__default.createElement(MerchantCardWrapper, {
+    return /*#__PURE__*/React__default['default'].createElement(MerchantCardWrapper, {
       theme: theme
-    }, /*#__PURE__*/React__default.createElement(ImageWrapper, {
+    }, /*#__PURE__*/React__default['default'].createElement(ImageWrapper, {
       theme: theme
-    }, /*#__PURE__*/React__default.createElement(ImageLoader, {
+    }, /*#__PURE__*/React__default['default'].createElement(ImageLoader, {
       background: theme.color7,
       imageUrl: merchant.image_uri
-    })), /*#__PURE__*/React__default.createElement(atoms.PaddingVertical, null, /*#__PURE__*/React__default.createElement(atoms.H2, null, merchant.name)));
+    })), /*#__PURE__*/React__default['default'].createElement(atoms.PaddingVertical, null, /*#__PURE__*/React__default['default'].createElement(atoms.H2, null, merchant.name)));
   }
 
   var _templateObject$a, _templateObject2$6, _templateObject3$2;
@@ -18345,22 +18341,22 @@
   	markers: markers$1
   };
 
-  var BookingActions = React__default.memo(function (_ref) {
+  var BookingActions = React__default['default'].memo(function (_ref) {
     var status = _ref.status,
         theme = _ref.theme,
         submit = _ref.submit;
 
     if (status === "Pending") {
-      return /*#__PURE__*/React__default.createElement(atoms.Margin, null, /*#__PURE__*/React__default.createElement(atoms.Row, {
+      return /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
         style: {
           flex: 1,
           justifyContent: "space-between"
         }
-      }, /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+      }, /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
         style: {
           flex: 6
         }
-      }, /*#__PURE__*/React__default.createElement(atoms.RoundedBtn, {
+      }, /*#__PURE__*/React__default['default'].createElement(atoms.RoundedBtn, {
         onClick: function onClick() {
           return submit({
             status_id: 6
@@ -18371,22 +18367,22 @@
           borderColor: theme.color10
         },
         color: theme.color1
-      }, /*#__PURE__*/React__default.createElement(atoms.Center, null, /*#__PURE__*/React__default.createElement(atoms.Margin, null, /*#__PURE__*/React__default.createElement(atoms.H3, null, "Decline"))))), /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+      }, /*#__PURE__*/React__default['default'].createElement(atoms.Center, null, /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(atoms.H3, null, "Decline"))))), /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
         style: {
           flex: 1
         }
-      }), /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+      }), /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
         style: {
           flex: 6
         }
-      }, /*#__PURE__*/React__default.createElement(atoms.RoundedBtn, {
+      }, /*#__PURE__*/React__default['default'].createElement(atoms.RoundedBtn, {
         onClick: function onClick() {
           return submit({
             status_id: 2
           });
         },
         color: theme.color2
-      }, /*#__PURE__*/React__default.createElement(atoms.Center, null, /*#__PURE__*/React__default.createElement(atoms.Margin, null, /*#__PURE__*/React__default.createElement(atoms.H3, {
+      }, /*#__PURE__*/React__default['default'].createElement(atoms.Center, null, /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
         color: theme.color1
       }, "Accept")))))));
     }
@@ -18394,7 +18390,7 @@
     return null;
   });
 
-  var BookingMerchant = React__default.memo(function (_ref) {
+  var BookingMerchant = React__default['default'].memo(function (_ref) {
     var name = _ref.name,
         status = _ref.status,
         pax = _ref.pax,
@@ -18451,14 +18447,14 @@
         progress: 0.5
       }
     };
-    return /*#__PURE__*/React__default.createElement(Wrapper$2, {
+    return /*#__PURE__*/React__default['default'].createElement(Wrapper$2, {
       theme: theme,
       color: statusColors[status]
-    }, /*#__PURE__*/React__default.createElement(atoms.Padding, null, /*#__PURE__*/React__default.createElement(atoms.Row, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.Padding, null, /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
       style: {
         alignItems: "center"
       }
-    }, /*#__PURE__*/React__default.createElement(AniWrapper, null, /*#__PURE__*/React__default.createElement(LottieView, {
+    }, /*#__PURE__*/React__default['default'].createElement(AniWrapper, null, /*#__PURE__*/React__default['default'].createElement(LottieView__default['default'], {
       style: {
         height: 50
       },
@@ -18466,27 +18462,27 @@
       progress: statusColors[status].progress,
       loop: true,
       source: statusColors[status].image
-    })), /*#__PURE__*/React__default.createElement(atoms.Padding, {
+    })), /*#__PURE__*/React__default['default'].createElement(atoms.Padding, {
       style: {
         flex: 1
       }
-    }, /*#__PURE__*/React__default.createElement(atoms.Row, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
       style: {
         justifyContent: "space-between"
       }
-    }, /*#__PURE__*/React__default.createElement(atoms.H3, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
       fontFamily: theme.fontFamily3
-    }, name), /*#__PURE__*/React__default.createElement(atoms.H3, {
+    }, name), /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
       fontFamily: theme.fontFamily3
-    }, "x ", pax)), /*#__PURE__*/React__default.createElement(atoms.PaddingTop, null, /*#__PURE__*/React__default.createElement(atoms.Row, null, /*#__PURE__*/React__default.createElement(StatusWrapper, {
+    }, "x ", pax)), /*#__PURE__*/React__default['default'].createElement(atoms.PaddingTop, null, /*#__PURE__*/React__default['default'].createElement(atoms.Row, null, /*#__PURE__*/React__default['default'].createElement(StatusWrapper, {
       theme: theme,
       color: statusColors[status]
-    }, /*#__PURE__*/React__default.createElement(atoms.Padding, null, /*#__PURE__*/React__default.createElement(atoms.H4, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.Padding, null, /*#__PURE__*/React__default['default'].createElement(atoms.H4, {
       style: {
         lineHeight: 18
       },
       color: statusColors[status].color
-    }, status))))))), /*#__PURE__*/React__default.createElement(BookingActions, {
+    }, status))))))), /*#__PURE__*/React__default['default'].createElement(BookingActions, {
       submit: submit,
       theme: theme,
       status: status
@@ -20630,7 +20626,7 @@
   var Actions = function Actions(_ref) {
     var children = _ref.children,
         theme = _ref.theme;
-    return /*#__PURE__*/React__default.createElement(Wrapper$3, {
+    return /*#__PURE__*/React__default['default'].createElement(Wrapper$3, {
       theme: theme
     }, children);
   };
@@ -20639,11 +20635,11 @@
     var item = _ref2.item,
         theme = _ref2.theme,
         _ref2$onClick = _ref2.onClick;
-    return /*#__PURE__*/React__default.createElement(atoms.Padding, null, /*#__PURE__*/React__default.createElement(atoms.Row, {
+    return /*#__PURE__*/React__default['default'].createElement(atoms.Padding, null, /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
       style: {
         alignItems: "center"
       }
-    }, /*#__PURE__*/React__default.createElement(reactNative$1.Image, {
+    }, /*#__PURE__*/React__default['default'].createElement(reactNative$1.Image, {
       style: {
         width: 70,
         height: 70,
@@ -20652,7 +20648,7 @@
       source: {
         uri: img
       }
-    }), /*#__PURE__*/React__default.createElement(LottieView, {
+    }), /*#__PURE__*/React__default['default'].createElement(LottieView__default['default'], {
       style: {
         left: -5,
         height: 80,
@@ -20661,22 +20657,22 @@
       autoPlay: true,
       loop: true,
       source: shiney_back
-    }), /*#__PURE__*/React__default.createElement(atoms.PaddingHorizontal, {
+    }), /*#__PURE__*/React__default['default'].createElement(atoms.PaddingHorizontal, {
       style: {
         flex: 1
       }
-    }, /*#__PURE__*/React__default.createElement(atoms.H4, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.H4, {
       fontFamily: theme.fontFamily2
-    }, "New Booking!"), /*#__PURE__*/React__default.createElement(atoms.PaddingTop, null, /*#__PURE__*/React__default.createElement(atoms.Row, {
+    }, "New Booking!"), /*#__PURE__*/React__default['default'].createElement(atoms.PaddingTop, null, /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
       style: {
         justifyContent: "space-between"
       }
-    }, /*#__PURE__*/React__default.createElement(atoms.H3, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
       color: theme.color2
-    }, format$1(new Date(item.details.booking_date_time), "eee do LLL")), /*#__PURE__*/React__default.createElement(atoms.H3, {
+    }, format__default['default'](new Date(item.details.booking_date_time), "eee do LLL")), /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
       color: theme.color2,
       fontFamily: theme.fontFamily2
-    }, format$1(new Date(item.details.booking_date_time), "H:mm aaaa")))))));
+    }, format__default['default'](new Date(item.details.booking_date_time), "H:mm aaaa")))))));
   };
 
   var Screen = function Screen(_ref) {
@@ -20746,14 +20742,14 @@
         });
       }
     }, [activeScreenId]);
-    return /*#__PURE__*/React__default.createElement(Animated__default.View, {
+    return /*#__PURE__*/React__default['default'].createElement(Animated__default['default'].View, {
       style: [animatedWidth]
-    }, (index === activeScreenId || index === activeScreenId - 1 || index === activeScreenId + 1) && /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+    }, (index === activeScreenId || index === activeScreenId - 1 || index === activeScreenId + 1) && /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
       style: {
         flex: 1,
         overflow: "hidden"
       }
-    }, React__default.cloneElement(children, {
+    }, React__default['default'].cloneElement(children, {
       setActiveScreenId: setActiveScreenId,
       index: index,
       activeScreenId: activeScreenId
@@ -20768,12 +20764,12 @@
         activeScreenId = _useState2[0],
         setActiveScreenId = _useState2[1];
 
-    return /*#__PURE__*/React__default.createElement(atoms.Row, {
+    return /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
       style: {
         flex: 1
       }
-    }, React__default.Children.toArray(children).map(function (component, index) {
-      return /*#__PURE__*/React__default.createElement(Screen, {
+    }, React__default['default'].Children.toArray(children).map(function (component, index) {
+      return /*#__PURE__*/React__default['default'].createElement(Screen, {
         key: index,
         index: index,
         activeScreenId: activeScreenId,
@@ -20782,7 +20778,7 @@
     }));
   };
 
-  var FlatDay = React__default.memo(function (_ref) {
+  var FlatDay = React__default['default'].memo(function (_ref) {
     var day = _ref.day,
         theme = _ref.theme,
         onClick = _ref.onClick,
@@ -20791,7 +20787,7 @@
         inRange = _ref.inRange,
         isCompleteStart = _ref.isCompleteStart,
         isCompleteEnd = _ref.isCompleteEnd;
-    return /*#__PURE__*/React__default.createElement(reactNative$1.Pressable, {
+    return /*#__PURE__*/React__default['default'].createElement(reactNative$1.Pressable, {
       onPress: function onPress() {
         return onClick(index);
       },
@@ -20801,7 +20797,7 @@
         justifyContent: "center",
         zIndex: 1
       }
-    }, inRange && /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+    }, inRange && /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
       style: {
         backgroundColor: theme.color10,
         position: "absolute",
@@ -20810,7 +20806,7 @@
         top: 5,
         zIndex: -1
       }
-    }), isSelected && /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+    }), isSelected && /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
       style: {
         backgroundColor: theme.color2,
         position: "absolute",
@@ -20819,7 +20815,7 @@
         borderRadius: 25,
         zIndex: 2
       }
-    }), isCompleteStart && /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+    }), isCompleteStart && /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
       style: {
         backgroundColor: theme.color10,
         position: "absolute",
@@ -20829,7 +20825,7 @@
         right: 0,
         zIndex: -1
       }
-    }), isCompleteEnd && /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+    }), isCompleteEnd && /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
       style: {
         backgroundColor: theme.color10,
         position: "absolute",
@@ -20839,7 +20835,7 @@
         left: 0,
         zIndex: -1
       }
-    }), /*#__PURE__*/React__default.createElement(atoms.H3, {
+    }), /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
       align: "center",
       style: {
         zIndex: 3
@@ -20855,11 +20851,11 @@
         startDate = _ref.startDate,
         endDate = _ref.endDate;
     var theme = atoms.useThemeContext();
-    return /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+    return /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
       style: {
         height: 370
       }
-    }, /*#__PURE__*/React__default.createElement(atoms.Padding, null, /*#__PURE__*/React__default.createElement(atoms.Margin, null, /*#__PURE__*/React__default.createElement(atoms.H3, null, month.title))), /*#__PURE__*/React__default.createElement(atoms.MarginHorizontal, null, /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.Padding, null, /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(atoms.H3, null, month.title))), /*#__PURE__*/React__default['default'].createElement(atoms.MarginHorizontal, null, /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
       style: {
         flexDirection: "row",
         flex: 1,
@@ -20871,7 +20867,7 @@
       var inRange = startDate < setIndex && endDate > setIndex;
       var isCompleteStart = startDate && endDate && startDate === setIndex;
       var isCompleteEnd = startDate && endDate && endDate === setIndex;
-      return /*#__PURE__*/React__default.createElement(FlatDay, {
+      return /*#__PURE__*/React__default['default'].createElement(FlatDay, {
         onClick: setRange,
         theme: theme,
         day: item,
@@ -20890,115 +20886,115 @@
     month: "January",
     days: 31,
     monthNum: 100,
-    firstDay: startOfMonth(new Date(year, 0))
+    firstDay: startOfMonth__default['default'](new Date(year, 0))
   }, {
     month: "Febuary",
     days: 28,
     monthNum: 200,
-    firstDay: startOfMonth(new Date(year, 1))
+    firstDay: startOfMonth__default['default'](new Date(year, 1))
   }, {
     month: "March",
     days: 31,
     monthNum: 300,
-    firstDay: startOfMonth(new Date(year, 2))
+    firstDay: startOfMonth__default['default'](new Date(year, 2))
   }, {
     month: "April",
     days: 30,
     monthNum: 400,
-    firstDay: startOfMonth(new Date(year, 3))
+    firstDay: startOfMonth__default['default'](new Date(year, 3))
   }, {
     month: "May",
     days: 31,
     monthNum: 500,
-    firstDay: startOfMonth(new Date(year, 4))
+    firstDay: startOfMonth__default['default'](new Date(year, 4))
   }, {
     month: "June",
     days: 30,
     monthNum: 600,
-    firstDay: startOfMonth(new Date(year, 5))
+    firstDay: startOfMonth__default['default'](new Date(year, 5))
   }, {
     month: "July",
     days: 31,
     monthNum: 700,
-    firstDay: startOfMonth(new Date(year, 6))
+    firstDay: startOfMonth__default['default'](new Date(year, 6))
   }, {
     month: "August",
     days: 31,
     monthNum: 800,
-    firstDay: startOfMonth(new Date(year, 7))
+    firstDay: startOfMonth__default['default'](new Date(year, 7))
   }, {
     month: "September",
     days: 30,
     monthNum: 900,
-    firstDay: startOfMonth(new Date(year, 8))
+    firstDay: startOfMonth__default['default'](new Date(year, 8))
   }, {
     month: "October",
     days: 31,
     monthNum: 1000,
-    firstDay: startOfMonth(new Date(year, 9))
+    firstDay: startOfMonth__default['default'](new Date(year, 9))
   }, {
     month: "November",
     days: 30,
     monthNum: 1100,
-    firstDay: startOfMonth(new Date(year, 10))
+    firstDay: startOfMonth__default['default'](new Date(year, 10))
   }, {
     month: "December",
     days: 31,
     monthNum: 1200,
-    firstDay: startOfMonth(new Date(year, 11))
+    firstDay: startOfMonth__default['default'](new Date(year, 11))
   }];
 
   var Weekdays = function Weekdays() {
     var theme = atoms.useThemeContext();
-    return /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+    return /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
       style: {
         backgroundColor: theme.color1
       }
-    }, /*#__PURE__*/React__default.createElement(atoms.MarginHorizontal, null, /*#__PURE__*/React__default.createElement(atoms.Padding, null, /*#__PURE__*/React__default.createElement(atoms.Row, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.MarginHorizontal, null, /*#__PURE__*/React__default['default'].createElement(atoms.Padding, null, /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
       style: {
         justifyContent: "space-between"
       }
-    }, /*#__PURE__*/React__default.createElement(atoms.Center, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.Center, {
       style: {
         minWidth: "14%"
       }
-    }, /*#__PURE__*/React__default.createElement(atoms.H3, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
       fontFamily: theme.fontFamily2
-    }, "Mo")), /*#__PURE__*/React__default.createElement(atoms.Center, {
+    }, "Mo")), /*#__PURE__*/React__default['default'].createElement(atoms.Center, {
       style: {
         minWidth: "14%"
       }
-    }, /*#__PURE__*/React__default.createElement(atoms.H3, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
       fontFamily: theme.fontFamily2
-    }, "Tu")), /*#__PURE__*/React__default.createElement(atoms.Center, {
+    }, "Tu")), /*#__PURE__*/React__default['default'].createElement(atoms.Center, {
       style: {
         minWidth: "14%"
       }
-    }, /*#__PURE__*/React__default.createElement(atoms.H3, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
       fontFamily: theme.fontFamily2
-    }, "We")), /*#__PURE__*/React__default.createElement(atoms.Center, {
+    }, "We")), /*#__PURE__*/React__default['default'].createElement(atoms.Center, {
       style: {
         minWidth: "14%"
       }
-    }, /*#__PURE__*/React__default.createElement(atoms.H3, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
       fontFamily: theme.fontFamily2
-    }, "Th")), /*#__PURE__*/React__default.createElement(atoms.Center, {
+    }, "Th")), /*#__PURE__*/React__default['default'].createElement(atoms.Center, {
       style: {
         minWidth: "14%"
       }
-    }, /*#__PURE__*/React__default.createElement(atoms.H3, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
       fontFamily: theme.fontFamily2
-    }, "Fr")), /*#__PURE__*/React__default.createElement(atoms.Center, {
+    }, "Fr")), /*#__PURE__*/React__default['default'].createElement(atoms.Center, {
       style: {
         minWidth: "14%"
       }
-    }, /*#__PURE__*/React__default.createElement(atoms.H3, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
       fontFamily: theme.fontFamily2
-    }, "Sa")), /*#__PURE__*/React__default.createElement(atoms.Center, {
+    }, "Sa")), /*#__PURE__*/React__default['default'].createElement(atoms.Center, {
       style: {
         minWidth: "14%"
       }
-    }, /*#__PURE__*/React__default.createElement(atoms.H3, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
       fontFamily: theme.fontFamily2
     }, "Su"))))));
   };
@@ -21042,7 +21038,7 @@
     return DATA;
   };
 
-  var FlatCalendar = React__default.memo(function (_ref2) {
+  var FlatCalendar = React__default['default'].memo(function (_ref2) {
     var start = _ref2.start,
         end = _ref2.end,
         onSelect = _ref2.onSelect,
@@ -21101,9 +21097,9 @@
       var item = _ref3.item;
 
       if (item.weekdays) {
-        return /*#__PURE__*/React__default.createElement(Weekdays, null);
+        return /*#__PURE__*/React__default['default'].createElement(Weekdays, null);
       } else {
-        return /*#__PURE__*/React__default.createElement(FlatMonth, {
+        return /*#__PURE__*/React__default['default'].createElement(FlatMonth, {
           setRange: setRange,
           startDate: startDate,
           endDate: endDate,
@@ -21114,11 +21110,11 @@
     var keyExtractor = React.useCallback(function (item) {
       return item.id;
     }, []);
-    return /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+    return /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
       style: {
         flex: 1
       }
-    }, /*#__PURE__*/React__default.createElement(reactNativeGestureHandler.FlatList, {
+    }, /*#__PURE__*/React__default['default'].createElement(reactNativeGestureHandler.FlatList, {
       ref: scrollEl,
       getItemLayout: function getItemLayout(data, index) {
         return {
@@ -21143,7 +21139,7 @@
     }));
   });
 
-  var DateRange = React__default.memo(function (_ref) {
+  var DateRange = React__default['default'].memo(function (_ref) {
     var _ref$startDate = _ref.startDate,
         startDate = _ref$startDate === void 0 ? false : _ref$startDate,
         _ref$endDate = _ref.endDate,
@@ -21154,17 +21150,17 @@
         _ref$ListHeaderCompon = _ref.ListHeaderComponent,
         ListHeaderComponent = _ref$ListHeaderCompon === void 0 ? null : _ref$ListHeaderCompon;
     var theme = atoms.useThemeContext();
-    return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement(FlatCalendar, {
+    return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(FlatCalendar, {
       isOnedayRange: isOnedayRange,
       theme: theme,
       start: startDate,
       end: endDate,
       onSelect: onSelect,
-      ListHeaderComponent: /*#__PURE__*/React__default.createElement(ListHeaderComponent, null)
+      ListHeaderComponent: /*#__PURE__*/React__default['default'].createElement(ListHeaderComponent, null)
     }));
   });
 
-  var Weekday = React__default.memo(function (_ref) {
+  var Weekday = React__default['default'].memo(function (_ref) {
     var dayName = _ref.dayName,
         _ref$isActive = _ref.isActive,
         isActive = _ref$isActive === void 0 ? false : _ref$isActive,
@@ -21192,12 +21188,12 @@
     React.useEffect(function () {
       setIsEnabled(isActive);
     }, [isActive]);
-    return /*#__PURE__*/React__default.createElement(atoms.PaddingHorizontal, null, /*#__PURE__*/React__default.createElement(atoms.MarginHorizontal, null, /*#__PURE__*/React__default.createElement(atoms.PaddingVertical, null, /*#__PURE__*/React__default.createElement(atoms.Switch, {
+    return /*#__PURE__*/React__default['default'].createElement(atoms.PaddingHorizontal, null, /*#__PURE__*/React__default['default'].createElement(atoms.MarginHorizontal, null, /*#__PURE__*/React__default['default'].createElement(atoms.PaddingVertical, null, /*#__PURE__*/React__default['default'].createElement(atoms.Switch, {
       value: isEnabled,
       onValueChange: function onValueChange(value) {
         return toggleSwitch();
       }
-    }, /*#__PURE__*/React__default.createElement(atoms.CenterLeft, null, /*#__PURE__*/React__default.createElement(atoms.Margin, null, /*#__PURE__*/React__default.createElement(atoms.H3, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.CenterLeft, null, /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
       fontFamily: fontFamily2,
       style: {
         textTransform: "capitalize"
@@ -21205,7 +21201,7 @@
     }, dayName)))))));
   });
 
-  var Weekdays$1 = React__default.memo(function (_ref) {
+  var Weekdays$1 = React__default['default'].memo(function (_ref) {
     var days = _ref.days,
         onSelect = _ref.onSelect,
         _ref$ListHeaderCompon = _ref.ListHeaderComponent,
@@ -21241,11 +21237,11 @@
       });
     };
 
-    return /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+    return /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
       style: {
         flex: 1
       }
-    }, /*#__PURE__*/React__default.createElement(reactNativeGestureHandler.ScrollView, null, /*#__PURE__*/React__default.createElement(ListHeaderComponent, null), /*#__PURE__*/React__default.createElement(Weekday, {
+    }, /*#__PURE__*/React__default['default'].createElement(reactNativeGestureHandler.ScrollView, null, /*#__PURE__*/React__default['default'].createElement(ListHeaderComponent, null), /*#__PURE__*/React__default['default'].createElement(Weekday, {
       dayName: "monday",
       isActive: weekdays.monday,
       weekdayToggle: function weekdayToggle(_ref3) {
@@ -21254,7 +21250,7 @@
           day: day
         });
       }
-    }), /*#__PURE__*/React__default.createElement(Weekday, {
+    }), /*#__PURE__*/React__default['default'].createElement(Weekday, {
       dayName: "tuesday",
       isActive: weekdays.tuesday,
       weekdayToggle: function weekdayToggle(_ref4) {
@@ -21263,7 +21259,7 @@
           day: day
         });
       }
-    }), /*#__PURE__*/React__default.createElement(Weekday, {
+    }), /*#__PURE__*/React__default['default'].createElement(Weekday, {
       dayName: "wednesday",
       isActive: weekdays.wednesday,
       weekdayToggle: function weekdayToggle(_ref5) {
@@ -21272,7 +21268,7 @@
           day: day
         });
       }
-    }), /*#__PURE__*/React__default.createElement(Weekday, {
+    }), /*#__PURE__*/React__default['default'].createElement(Weekday, {
       dayName: "thursday",
       isActive: weekdays.thursday,
       weekdayToggle: function weekdayToggle(_ref6) {
@@ -21281,7 +21277,7 @@
           day: day
         });
       }
-    }), /*#__PURE__*/React__default.createElement(Weekday, {
+    }), /*#__PURE__*/React__default['default'].createElement(Weekday, {
       dayName: "friday",
       isActive: weekdays.friday,
       weekdayToggle: function weekdayToggle(_ref7) {
@@ -21290,7 +21286,7 @@
           day: day
         });
       }
-    }), /*#__PURE__*/React__default.createElement(Weekday, {
+    }), /*#__PURE__*/React__default['default'].createElement(Weekday, {
       dayName: "saturday",
       isActive: weekdays.saturday,
       weekdayToggle: function weekdayToggle(_ref8) {
@@ -21299,7 +21295,7 @@
           day: day
         });
       }
-    }), /*#__PURE__*/React__default.createElement(Weekday, {
+    }), /*#__PURE__*/React__default['default'].createElement(Weekday, {
       dayName: "sunday",
       isActive: weekdays.sunday,
       weekdayToggle: function weekdayToggle(_ref9) {
@@ -21311,7 +21307,7 @@
     })));
   });
 
-  var Time = React__default.memo(function (_ref) {
+  var Time = React__default['default'].memo(function (_ref) {
     var time = _ref.time,
         _ref$isActive = _ref.isActive,
         isActive = _ref$isActive === void 0 ? false : _ref$isActive,
@@ -21332,12 +21328,12 @@
       timeToggle(!isEnabled);
     };
 
-    return /*#__PURE__*/React__default.createElement(atoms.PaddingHorizontal, null, /*#__PURE__*/React__default.createElement(atoms.MarginHorizontal, null, /*#__PURE__*/React__default.createElement(atoms.PaddingVertical, null, /*#__PURE__*/React__default.createElement(atoms.Switch, {
+    return /*#__PURE__*/React__default['default'].createElement(atoms.PaddingHorizontal, null, /*#__PURE__*/React__default['default'].createElement(atoms.MarginHorizontal, null, /*#__PURE__*/React__default['default'].createElement(atoms.PaddingVertical, null, /*#__PURE__*/React__default['default'].createElement(atoms.Switch, {
       value: isEnabled,
       onValueChange: function onValueChange(value) {
         return toggleSwitch();
       }
-    }, /*#__PURE__*/React__default.createElement(atoms.CenterLeft, null, /*#__PURE__*/React__default.createElement(atoms.Margin, null, /*#__PURE__*/React__default.createElement(atoms.H3, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.CenterLeft, null, /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
       fontFamily: fontFamily2
     }, time)))))));
   });
@@ -21345,12 +21341,12 @@
   var DividerElement = function DividerElement(_ref) {
     var name = _ref.name,
         color = _ref.color;
-    return /*#__PURE__*/React__default.createElement(atoms.MarginHorizontal, null, /*#__PURE__*/React__default.createElement(atoms.Margin, null, /*#__PURE__*/React__default.createElement(atoms.H2, {
+    return /*#__PURE__*/React__default['default'].createElement(atoms.MarginHorizontal, null, /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(atoms.H2, {
       color: color
     }, name)));
   };
 
-  var Times = React__default.memo(function (_ref2) {
+  var Times = React__default['default'].memo(function (_ref2) {
     var _ref2$timesSelected = _ref2.timesSelected,
         timesSelected = _ref2$timesSelected === void 0 ? [] : _ref2$timesSelected,
         onSelect = _ref2.onSelect,
@@ -21419,24 +21415,24 @@
       }
     };
 
-    return /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+    return /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
       style: {
         flex: 1
       }
-    }, /*#__PURE__*/React__default.createElement(reactNativeGestureHandler.ScrollView, null, /*#__PURE__*/React__default.createElement(ListHeaderComponent, null), times.map(function (_ref4) {
+    }, /*#__PURE__*/React__default['default'].createElement(reactNativeGestureHandler.ScrollView, null, /*#__PURE__*/React__default['default'].createElement(ListHeaderComponent, null), times.map(function (_ref4) {
       var time = _ref4.time,
           minuteValue = _ref4.minuteValue;
-      return /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+      return /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
         key: minuteValue
-      }, minuteValue >= 240 && minuteValue < 270 && /*#__PURE__*/React__default.createElement(DividerElement, {
+      }, minuteValue >= 240 && minuteValue < 270 && /*#__PURE__*/React__default['default'].createElement(DividerElement, {
         name: "Morning"
-      }), minuteValue >= 720 && minuteValue < 750 && /*#__PURE__*/React__default.createElement(DividerElement, {
+      }), minuteValue >= 720 && minuteValue < 750 && /*#__PURE__*/React__default['default'].createElement(DividerElement, {
         name: "Afternoon"
-      }), minuteValue >= 1020 && minuteValue < 1050 && /*#__PURE__*/React__default.createElement(DividerElement, {
+      }), minuteValue >= 1020 && minuteValue < 1050 && /*#__PURE__*/React__default['default'].createElement(DividerElement, {
         name: "Evening"
-      }), minuteValue >= 1440 && /*#__PURE__*/React__default.createElement(DividerElement, {
+      }), minuteValue >= 1440 && /*#__PURE__*/React__default['default'].createElement(DividerElement, {
         name: "Night"
-      }), /*#__PURE__*/React__default.createElement(Time, {
+      }), /*#__PURE__*/React__default['default'].createElement(Time, {
         isActive: toggledTimes.includes(minuteValue),
         time: time,
         timeToggle: function timeToggle(value) {
@@ -21450,16 +21446,16 @@
   });
 
   function ResourceDraggable() {
-    return /*#__PURE__*/React__default.createElement(atoms.Margin, null);
+    return /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null);
   }
 
   function DragArea(_ref) {
     var _ref$resources = _ref.resources,
         resources = _ref$resources === void 0 ? [] : _ref$resources;
-    return /*#__PURE__*/React__default.createElement(reactNativeGestureHandler.ScrollView, {
+    return /*#__PURE__*/React__default['default'].createElement(reactNativeGestureHandler.ScrollView, {
       horizontal: true
     }, resources.map(function () {
-      return /*#__PURE__*/React__default.createElement(ResourceDraggable, null);
+      return /*#__PURE__*/React__default['default'].createElement(ResourceDraggable, null);
     }));
   }
 
@@ -21469,12 +21465,12 @@
     var _useThemeContext = atoms.useThemeContext(),
         color11border = _useThemeContext.color11border;
 
-    return /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+    return /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
       style: {
         width: width,
         height: width
       }
-    }, /*#__PURE__*/React__default.createElement(atoms.Center, null, /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.Center, null, /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
       style: {
         backgroundColor: color11border,
         width: 24,
@@ -21502,17 +21498,17 @@
     var items = [];
 
     for (var i = 1; i <= DEFAULT_SIZES[category_id]; i++) {
-      items.push( /*#__PURE__*/React__default.createElement(DropArea, {
+      items.push( /*#__PURE__*/React__default['default'].createElement(DropArea, {
         width: ChildWidth,
         key: i
       }));
     }
 
-    return /*#__PURE__*/React__default.createElement(atoms.Margin, {
+    return /*#__PURE__*/React__default['default'].createElement(atoms.Margin, {
       style: {
         flex: 1
       }
-    }, /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+    }, /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
       style: {
         height: windowWidth - 40,
         width: windowWidth - 40,
@@ -21521,7 +21517,7 @@
         borderWidth: 1,
         borderColor: color11border
       }
-    }, /*#__PURE__*/React__default.createElement(atoms.Row, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
       style: {
         flex: 1,
         flexWrap: "wrap"
@@ -21530,22 +21526,22 @@
   }
 
   function ResourceDragAndDrop() {
-    return /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+    return /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
       style: {
         flex: 1
       }
-    }, /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+    }, /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
       style: {
         flex: 8
       }
-    }, /*#__PURE__*/React__default.createElement(DropArea$1, null)), /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+    }, /*#__PURE__*/React__default['default'].createElement(DropArea$1, null)), /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
       style: {
         flex: 1
       }
-    }, /*#__PURE__*/React__default.createElement(DragArea, null)));
+    }, /*#__PURE__*/React__default['default'].createElement(DragArea, null)));
   }
 
-  var Duration = React__default.memo(function (_ref) {
+  var Duration = React__default['default'].memo(function (_ref) {
     var name = _ref.name,
         value = _ref.value,
         _ref$isActive = _ref.isActive,
@@ -21574,12 +21570,12 @@
         value: isEnabled ? value : 0
       });
     }, [isEnabled]);
-    return /*#__PURE__*/React__default.createElement(atoms.PaddingHorizontal, null, /*#__PURE__*/React__default.createElement(atoms.MarginHorizontal, null, /*#__PURE__*/React__default.createElement(atoms.PaddingVertical, null, /*#__PURE__*/React__default.createElement(atoms.Switch, {
+    return /*#__PURE__*/React__default['default'].createElement(atoms.PaddingHorizontal, null, /*#__PURE__*/React__default['default'].createElement(atoms.MarginHorizontal, null, /*#__PURE__*/React__default['default'].createElement(atoms.PaddingVertical, null, /*#__PURE__*/React__default['default'].createElement(atoms.Switch, {
       value: isEnabled,
       onValueChange: function onValueChange(value) {
         return toggleSwitch();
       }
-    }, /*#__PURE__*/React__default.createElement(atoms.CenterLeft, null, /*#__PURE__*/React__default.createElement(atoms.Margin, null, /*#__PURE__*/React__default.createElement(atoms.H3, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.CenterLeft, null, /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
       fontFamily: fontFamily2,
       style: {
         textTransform: "capitalize"
@@ -21587,7 +21583,7 @@
     }, name)))))));
   });
 
-  var DurationItem = React__default.memo(function (_ref) {
+  var DurationItem = React__default['default'].memo(function (_ref) {
     var _ref$duration = _ref.duration,
         duration = _ref$duration === void 0 ? 0 : _ref$duration,
         onSelect = _ref.onSelect,
@@ -21631,7 +21627,7 @@
 
     var MinuteValues = function MinuteValues(_ref3) {
       var selectedHour = _ref3.selectedHour;
-      return /*#__PURE__*/React__default.createElement(atoms.Margin, null, /*#__PURE__*/React__default.createElement(Duration, {
+      return /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(Duration, {
         value: 15,
         name: "15 minutes",
         isActive: durationMinute === 15 && selectedHour === durationHour,
@@ -21642,7 +21638,7 @@
             variant: "minute"
           });
         }
-      }), /*#__PURE__*/React__default.createElement(Duration, {
+      }), /*#__PURE__*/React__default['default'].createElement(Duration, {
         value: 30,
         name: "30 minutes",
         isActive: durationMinute === 30 && selectedHour === durationHour,
@@ -21653,7 +21649,7 @@
             variant: "minute"
           });
         }
-      }), /*#__PURE__*/React__default.createElement(Duration, {
+      }), /*#__PURE__*/React__default['default'].createElement(Duration, {
         value: 45,
         name: "45 minutes",
         isActive: durationMinute === 45 && selectedHour === durationHour,
@@ -21667,11 +21663,11 @@
       }));
     };
 
-    return /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+    return /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
       style: {
         flex: 1
       }
-    }, /*#__PURE__*/React__default.createElement(reactNativeGestureHandler.ScrollView, null, /*#__PURE__*/React__default.createElement(ListHeaderComponent, null), /*#__PURE__*/React__default.createElement(Duration, {
+    }, /*#__PURE__*/React__default['default'].createElement(reactNativeGestureHandler.ScrollView, null, /*#__PURE__*/React__default['default'].createElement(ListHeaderComponent, null), /*#__PURE__*/React__default['default'].createElement(Duration, {
       value: 15,
       name: "15 minutes",
       isActive: durationHour === 0.25 || durationHour === 0 && durationMinute === 15,
@@ -21683,7 +21679,7 @@
           hour: 0
         });
       }
-    }), /*#__PURE__*/React__default.createElement(Duration, {
+    }), /*#__PURE__*/React__default['default'].createElement(Duration, {
       value: 30,
       name: "30 minutes",
       isActive: durationHour === 0.5 || durationHour === 0 && durationMinute === 30,
@@ -21695,7 +21691,7 @@
           hour: 0
         });
       }
-    }), /*#__PURE__*/React__default.createElement(Duration, {
+    }), /*#__PURE__*/React__default['default'].createElement(Duration, {
       value: 45,
       name: "45 minutes",
       isActive: durationHour === 0.75 || durationHour === 0 && durationMinute === 45,
@@ -21707,7 +21703,7 @@
           hour: 0
         });
       }
-    }), /*#__PURE__*/React__default.createElement(Duration, {
+    }), /*#__PURE__*/React__default['default'].createElement(Duration, {
       value: 1,
       name: "1 hour",
       isActive: durationHour === 1,
@@ -21717,9 +21713,9 @@
           value: value
         });
       }
-    }), durationHour === 1 && /*#__PURE__*/React__default.createElement(MinuteValues, {
+    }), durationHour === 1 && /*#__PURE__*/React__default['default'].createElement(MinuteValues, {
       selectedHour: 1
-    }), /*#__PURE__*/React__default.createElement(Duration, {
+    }), /*#__PURE__*/React__default['default'].createElement(Duration, {
       value: 2,
       name: "2 hours",
       isActive: durationHour === 2,
@@ -21729,9 +21725,9 @@
           value: value
         });
       }
-    }), durationHour === 2 && /*#__PURE__*/React__default.createElement(MinuteValues, {
+    }), durationHour === 2 && /*#__PURE__*/React__default['default'].createElement(MinuteValues, {
       selectedHour: 2
-    }), /*#__PURE__*/React__default.createElement(Duration, {
+    }), /*#__PURE__*/React__default['default'].createElement(Duration, {
       value: 3,
       name: "3 hours",
       isActive: durationHour === 3,
@@ -21741,9 +21737,9 @@
           value: value
         });
       }
-    }), durationHour === 3 && /*#__PURE__*/React__default.createElement(MinuteValues, {
+    }), durationHour === 3 && /*#__PURE__*/React__default['default'].createElement(MinuteValues, {
       selectedHour: 3
-    }), /*#__PURE__*/React__default.createElement(Duration, {
+    }), /*#__PURE__*/React__default['default'].createElement(Duration, {
       value: 4,
       name: "4 hours",
       isActive: durationHour === 4,
@@ -21753,9 +21749,9 @@
           value: value
         });
       }
-    }), durationHour === 4 && /*#__PURE__*/React__default.createElement(MinuteValues, {
+    }), durationHour === 4 && /*#__PURE__*/React__default['default'].createElement(MinuteValues, {
       selectedHour: 4
-    }), /*#__PURE__*/React__default.createElement(Duration, {
+    }), /*#__PURE__*/React__default['default'].createElement(Duration, {
       value: 5,
       name: "5 hours",
       isActive: durationHour === 5,
@@ -21765,9 +21761,9 @@
           value: value
         });
       }
-    }), durationHour === 5 && /*#__PURE__*/React__default.createElement(MinuteValues, {
+    }), durationHour === 5 && /*#__PURE__*/React__default['default'].createElement(MinuteValues, {
       selectedHour: 5
-    }), /*#__PURE__*/React__default.createElement(Duration, {
+    }), /*#__PURE__*/React__default['default'].createElement(Duration, {
       value: 6,
       name: "6 hours",
       isActive: durationHour === 6,
@@ -21777,9 +21773,9 @@
           value: value
         });
       }
-    }), durationHour === 6 && /*#__PURE__*/React__default.createElement(MinuteValues, {
+    }), durationHour === 6 && /*#__PURE__*/React__default['default'].createElement(MinuteValues, {
       selectedHour: 6
-    }), /*#__PURE__*/React__default.createElement(Duration, {
+    }), /*#__PURE__*/React__default['default'].createElement(Duration, {
       value: 7,
       name: "7 hours",
       isActive: durationHour === 7,
@@ -21789,9 +21785,9 @@
           value: value
         });
       }
-    }), durationHour === 7 && /*#__PURE__*/React__default.createElement(MinuteValues, {
+    }), durationHour === 7 && /*#__PURE__*/React__default['default'].createElement(MinuteValues, {
       selectedHour: 7
-    }), /*#__PURE__*/React__default.createElement(Duration, {
+    }), /*#__PURE__*/React__default['default'].createElement(Duration, {
       value: 8,
       name: "8 hours",
       isActive: durationHour === 8,
@@ -21801,9 +21797,9 @@
           value: value
         });
       }
-    }), durationHour === 8 && /*#__PURE__*/React__default.createElement(MinuteValues, {
+    }), durationHour === 8 && /*#__PURE__*/React__default['default'].createElement(MinuteValues, {
       selectedHour: 8
-    }), /*#__PURE__*/React__default.createElement(Duration, {
+    }), /*#__PURE__*/React__default['default'].createElement(Duration, {
       value: 9,
       name: "9 hours",
       isActive: durationHour === 9,
@@ -21813,9 +21809,9 @@
           value: value
         });
       }
-    }), durationHour === 9 && /*#__PURE__*/React__default.createElement(MinuteValues, {
+    }), durationHour === 9 && /*#__PURE__*/React__default['default'].createElement(MinuteValues, {
       selectedHour: 9
-    }), /*#__PURE__*/React__default.createElement(Duration, {
+    }), /*#__PURE__*/React__default['default'].createElement(Duration, {
       value: 10,
       name: "10 hours",
       isActive: durationHour === 10,
@@ -21825,9 +21821,9 @@
           value: value
         });
       }
-    }), durationHour === 10 && /*#__PURE__*/React__default.createElement(MinuteValues, {
+    }), durationHour === 10 && /*#__PURE__*/React__default['default'].createElement(MinuteValues, {
       selectedHour: 10
-    }), /*#__PURE__*/React__default.createElement(Duration, {
+    }), /*#__PURE__*/React__default['default'].createElement(Duration, {
       value: 11,
       name: "11 hours",
       isActive: durationHour === 11,
@@ -21837,9 +21833,9 @@
           value: value
         });
       }
-    }), durationHour === 11 && /*#__PURE__*/React__default.createElement(MinuteValues, {
+    }), durationHour === 11 && /*#__PURE__*/React__default['default'].createElement(MinuteValues, {
       selectedHour: 11
-    }), /*#__PURE__*/React__default.createElement(Duration, {
+    }), /*#__PURE__*/React__default['default'].createElement(Duration, {
       value: 12,
       name: "12 hours",
       isActive: durationHour === 12,
@@ -21849,12 +21845,14 @@
           value: value
         });
       }
-    }), durationHour === 12 && /*#__PURE__*/React__default.createElement(MinuteValues, {
+    }), durationHour === 12 && /*#__PURE__*/React__default['default'].createElement(MinuteValues, {
       selectedHour: 12
     })));
   });
 
-  var MerchantSelector = React__default.memo(function (_ref) {
+  var MerchantSelector = React__default['default'].memo(function (_ref) {
+    var _selected$profile, _merchants$, _merchants$$merchant, _merchants$$merchant$;
+
     var merchants = _ref.merchants,
         _ref$onChange = _ref.onChange,
         onChange = _ref$onChange === void 0 ? function () {} : _ref$onChange,
@@ -21876,40 +21874,42 @@
       selected && onChange(selected);
     }, [selected]);
     React.useEffect(function () {
-      if (!selected && merchants) {
+      if (merchants) {
         setSelected(merchants[0].merchant);
         onChange(merchants[0].merchant);
       }
     }, [merchants]);
-    return /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+    return /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
       style: {
         backgroundColor: theme.color1
       }
-    }, /*#__PURE__*/React__default.createElement(atoms.Margin, null, /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
       style: {
         borderBottomWidth: 1,
         borderColor: theme.color7
       }
-    }, /*#__PURE__*/React__default.createElement(AccordionItem, {
+    }, /*#__PURE__*/React__default['default'].createElement(AccordionItem, {
       key: "MerchantBookings",
       eventKey: "MerchantBookings",
       closeItem: closeItem,
       onChange: function onChange() {
         return setCloseItem(false);
       }
-    }, /*#__PURE__*/React__default.createElement(AccordionItem.Head, {
+    }, /*#__PURE__*/React__default['default'].createElement(AccordionItem.Head, {
       lightContent: false
-    }, /*#__PURE__*/React__default.createElement(atoms.Margin, null, /*#__PURE__*/React__default.createElement(atoms.H3, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
       color: theme.color2
-    }, selected ? selected.profile.name : merchants[0].merchant.profile.name || null), /*#__PURE__*/React__default.createElement(atoms.H1, {
+    }, selected ? (_selected$profile = selected.profile) === null || _selected$profile === void 0 ? void 0 : _selected$profile.name : ((_merchants$ = merchants[0]) === null || _merchants$ === void 0 ? void 0 : (_merchants$$merchant = _merchants$.merchant) === null || _merchants$$merchant === void 0 ? void 0 : (_merchants$$merchant$ = _merchants$$merchant.profile) === null || _merchants$$merchant$ === void 0 ? void 0 : _merchants$$merchant$.name) || null), /*#__PURE__*/React__default['default'].createElement(atoms.H1, {
       color: theme.color2
-    }, page))), /*#__PURE__*/React__default.createElement(AccordionItem.Body, {
+    }, page))), /*#__PURE__*/React__default['default'].createElement(AccordionItem.Body, {
       isNormal: true
     }, merchants.map(function (_ref2, index) {
+      var _merchant$profile;
+
       var merchant = _ref2.merchant;
-      return /*#__PURE__*/React__default.createElement(atoms.Margin, {
+      return /*#__PURE__*/React__default['default'].createElement(atoms.Margin, {
         key: index
-      }, /*#__PURE__*/React__default.createElement(atoms.Row, null, /*#__PURE__*/React__default.createElement(atoms.TextBtn, {
+      }, /*#__PURE__*/React__default['default'].createElement(atoms.Row, null, /*#__PURE__*/React__default['default'].createElement(atoms.TextBtn, {
         borderColorActive: theme.color9,
         borderColorIdle: theme.color10,
         style: {
@@ -21920,9 +21920,9 @@
           setSelected(merchant);
           setCloseItem(true);
         }
-      }, /*#__PURE__*/React__default.createElement(atoms.MarginVertical, null, /*#__PURE__*/React__default.createElement(atoms.H2, {
+      }, /*#__PURE__*/React__default['default'].createElement(atoms.MarginVertical, null, /*#__PURE__*/React__default['default'].createElement(atoms.H2, {
         color: theme.color2
-      }, merchant.profile.name || null, " ", page)))));
+      }, (merchant === null || merchant === void 0 ? void 0 : (_merchant$profile = merchant.profile) === null || _merchant$profile === void 0 ? void 0 : _merchant$profile.name) || null, " ", page)))));
     }))))));
   });
 
@@ -40230,7 +40230,7 @@
     });
 
     if (service.asset) {
-      return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement(reactNative$1.Image, {
+      return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(reactNative$1.Image, {
         source: {
           uri: service.asset.cdn_uri || null
         },
@@ -40242,7 +40242,7 @@
           left: 0,
           top: 0
         }
-      }), /*#__PURE__*/React__default.createElement(reactNative$1.Image, {
+      }), /*#__PURE__*/React__default['default'].createElement(reactNative$1.Image, {
         source: {
           uri: img$1
         },
@@ -40255,7 +40255,7 @@
         }
       }));
     } else {
-      return /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+      return /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
         style: {
           width: "100%",
           backgroundColor: categoryObject.color,
@@ -40265,7 +40265,7 @@
           overflow: "hidden",
           alignItems: "flex-end"
         }
-      }, /*#__PURE__*/React__default.createElement(LottieView, {
+      }, /*#__PURE__*/React__default['default'].createElement(LottieView__default['default'], {
         style: {
           height: 120
         },
@@ -40276,7 +40276,7 @@
     }
   };
 
-  var ServiceContainer = React__default.memo(function (_ref2) {
+  var ServiceContainer = React__default['default'].memo(function (_ref2) {
     var service = _ref2.service,
         children = _ref2.children,
         _ref2$onClick = _ref2.onClick;
@@ -40312,14 +40312,14 @@
       color: theme.color5,
       image: pet
     }];
-    return /*#__PURE__*/React__default.createElement(Wrapper$4, {
+    return /*#__PURE__*/React__default['default'].createElement(Wrapper$4, {
       theme: theme
-    }, /*#__PURE__*/React__default.createElement(ImageWrap, {
+    }, /*#__PURE__*/React__default['default'].createElement(ImageWrap, {
       theme: theme
-    }, /*#__PURE__*/React__default.createElement(ImageRender, {
+    }, /*#__PURE__*/React__default['default'].createElement(ImageRender, {
       available_categories: available_categories,
       service: service
-    }), /*#__PURE__*/React__default.createElement(reactNative$1.View, {
+    }), /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
       style: {
         width: "100%",
         position: "absolute",
@@ -40327,11 +40327,11 @@
         right: 0,
         bottom: 0
       }
-    }, /*#__PURE__*/React__default.createElement(atoms.Margin, null, /*#__PURE__*/React__default.createElement(atoms.H3, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
       color: theme.color1
-    }, service.name)))), /*#__PURE__*/React__default.createElement(Body$4, {
+    }, service.name)))), /*#__PURE__*/React__default['default'].createElement(Body$4, {
       theme: theme
-    }, /*#__PURE__*/React__default.createElement(atoms.Margin, null, children)));
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, children)));
   });
 
   exports.AccordionItem = AccordionItem;
@@ -40349,7 +40349,7 @@
   exports.MerchantCard = MerchantCard;
   exports.MerchantSelector = MerchantSelector;
   exports.Modal = Modal;
-  exports.ModalContext = ModalContext$1;
+  exports.ModalContext = ModalContext;
   exports.ModalProvider = ModalProvider;
   exports.ResourceDragAndDrop = ResourceDragAndDrop;
   exports.Screen = Screen;
@@ -40359,7 +40359,7 @@
   exports.WeekdaySelector = Weekdays$1;
   exports.useAccordionContext = useAccordionContext;
   exports.useAccordionHook = useAccordionHook;
-  exports.useModalContext = useModalContext$1;
+  exports.useModalContext = useModalContext;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

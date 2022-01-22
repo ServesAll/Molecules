@@ -9788,6 +9788,37 @@ function Body$1(_ref) {
 
 var ModalContext = React.createContext();
 
+function reducer(state, action) {
+  switch (action.type) {
+    case "isModalActive":
+      return _objectSpread2(_objectSpread2({}, state), {}, {
+        isModalActive: action.data
+      });
+
+    default:
+      return state;
+  }
+}
+
+var ModalProvider = function ModalProvider(_ref) {
+  var children = _ref.children,
+      value = _ref.value;
+
+  var _useReducer = useReducer(reducer, {
+    isModalActive: false
+  }),
+      _useReducer2 = _slicedToArray(_useReducer, 2),
+      isModalActive = _useReducer2[0].isModalActive,
+      dispatch = _useReducer2[1];
+
+  return /*#__PURE__*/React.createElement(ModalContext.Provider, {
+    value: _objectSpread2(_objectSpread2({}, value), {}, {
+      isModalActive: isModalActive,
+      dispatch: dispatch
+    })
+  }, children);
+};
+
 var useModalContext = function useModalContext() {
   return React.useContext(ModalContext);
 };
@@ -9823,43 +9854,6 @@ var Modal = function Modal(_ref) {
     onClose: onClose,
     variableHeight: variableHeight
   }, children));
-};
-
-var ModalContext$1 = React.createContext();
-
-function reducer(state, action) {
-  switch (action.type) {
-    case "isModalActive":
-      return _objectSpread2(_objectSpread2({}, state), {}, {
-        isModalActive: action.data
-      });
-
-    default:
-      return state;
-  }
-}
-
-var ModalProvider = function ModalProvider(_ref) {
-  var children = _ref.children,
-      value = _ref.value;
-
-  var _useReducer = useReducer(reducer, {
-    isModalActive: false
-  }),
-      _useReducer2 = _slicedToArray(_useReducer, 2),
-      isModalActive = _useReducer2[0].isModalActive,
-      dispatch = _useReducer2[1];
-
-  return /*#__PURE__*/React.createElement(ModalContext$1.Provider, {
-    value: _objectSpread2(_objectSpread2({}, value), {}, {
-      isModalActive: isModalActive,
-      dispatch: dispatch
-    })
-  }, children);
-};
-
-var useModalContext$1 = function useModalContext() {
-  return React.useContext(ModalContext$1);
 };
 
 var _templateObject$1;
@@ -21854,6 +21848,8 @@ var DurationItem = React.memo(function (_ref) {
 });
 
 var MerchantSelector = React.memo(function (_ref) {
+  var _selected$profile, _merchants$, _merchants$$merchant, _merchants$$merchant$;
+
   var merchants = _ref.merchants,
       _ref$onChange = _ref.onChange,
       onChange = _ref$onChange === void 0 ? function () {} : _ref$onChange,
@@ -21875,7 +21871,7 @@ var MerchantSelector = React.memo(function (_ref) {
     selected && onChange(selected);
   }, [selected]);
   useEffect(function () {
-    if (!selected && merchants) {
+    if (merchants) {
       setSelected(merchants[0].merchant);
       onChange(merchants[0].merchant);
     }
@@ -21900,11 +21896,13 @@ var MerchantSelector = React.memo(function (_ref) {
     lightContent: false
   }, /*#__PURE__*/React.createElement(Margin, null, /*#__PURE__*/React.createElement(H3, {
     color: theme.color2
-  }, selected ? selected.profile.name : merchants[0].merchant.profile.name || null), /*#__PURE__*/React.createElement(H1, {
+  }, selected ? (_selected$profile = selected.profile) === null || _selected$profile === void 0 ? void 0 : _selected$profile.name : ((_merchants$ = merchants[0]) === null || _merchants$ === void 0 ? void 0 : (_merchants$$merchant = _merchants$.merchant) === null || _merchants$$merchant === void 0 ? void 0 : (_merchants$$merchant$ = _merchants$$merchant.profile) === null || _merchants$$merchant$ === void 0 ? void 0 : _merchants$$merchant$.name) || null), /*#__PURE__*/React.createElement(H1, {
     color: theme.color2
   }, page))), /*#__PURE__*/React.createElement(AccordionItem.Body, {
     isNormal: true
   }, merchants.map(function (_ref2, index) {
+    var _merchant$profile;
+
     var merchant = _ref2.merchant;
     return /*#__PURE__*/React.createElement(Margin, {
       key: index
@@ -21921,7 +21919,7 @@ var MerchantSelector = React.memo(function (_ref) {
       }
     }, /*#__PURE__*/React.createElement(MarginVertical, null, /*#__PURE__*/React.createElement(H2, {
       color: theme.color2
-    }, merchant.profile.name || null, " ", page)))));
+    }, (merchant === null || merchant === void 0 ? void 0 : (_merchant$profile = merchant.profile) === null || _merchant$profile === void 0 ? void 0 : _merchant$profile.name) || null, " ", page)))));
   }))))));
 });
 
@@ -40333,4 +40331,4 @@ var ServiceContainer = React.memo(function (_ref2) {
   }, /*#__PURE__*/React.createElement(Margin, null, children)));
 });
 
-export { AccordionItem, AccordionProvider, AccordionScroll, AccordionScroller, Actions, BookingMerchant, DateRange, DurationItem as Duration, FooterActions, ImageLoader, ImageUpload, Map$1 as Map, MerchantCard, MerchantSelector, Modal, ModalContext$1 as ModalContext, ModalProvider, ResourceDragAndDrop, Screen, ServiceContainer, SlideScreen, Times as TimeSelector, Weekdays$1 as WeekdaySelector, useAccordionContext, useAccordionHook, useModalContext$1 as useModalContext };
+export { AccordionItem, AccordionProvider, AccordionScroll, AccordionScroller, Actions, BookingMerchant, DateRange, DurationItem as Duration, FooterActions, ImageLoader, ImageUpload, Map$1 as Map, MerchantCard, MerchantSelector, Modal, ModalContext, ModalProvider, ResourceDragAndDrop, Screen, ServiceContainer, SlideScreen, Times as TimeSelector, Weekdays$1 as WeekdaySelector, useAccordionContext, useAccordionHook, useModalContext };
