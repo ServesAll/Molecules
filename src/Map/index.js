@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { MapWrapper, MarkerWrapper } from "./Map.style";
-import MapView, {Marker} from "react-native-maps";
-import GetLocation from "react-native-get-location";
+import MapView, { Marker } from "react-native-maps";
+import Geolocation from "react-native-geolocation-service";
 import MapMarker from "./Marker";
 
 const DEFAULT_LOCATION = {
@@ -11,7 +11,12 @@ const DEFAULT_LOCATION = {
   longitudeDelta: 0.01,
 };
 
-export default function Map({ longitude, latitude, theme, onChange = () => {} }) {
+export default function Map({
+  longitude,
+  latitude,
+  theme,
+  onChange = () => {},
+}) {
   const [location, setLocation] = useState(DEFAULT_LOCATION);
   const [isMoving, setIsMoving] = useState(false);
 
@@ -31,19 +36,21 @@ export default function Map({ longitude, latitude, theme, onChange = () => {} })
 
   useEffect(() => {
     if (!longitude) {
-      GetLocation.getCurrentPosition({
-        enableHighAccuracy: true,
-        timeout: 15000,
-      })
-        .then((location) => {
+      Geolocation.getCurrentPosition(
+        (position) => {
           setLocation(
-            Object.assign(location, {
+            Object.assign(position.coords, {
               latitudeDelta: 0.005,
               longitudeDelta: 0.01,
             })
           );
-        })
-        .catch((error) => {});
+        },
+        (error) => {
+          // See error code charts below.
+          //console.log(error.code, error.message);
+        },
+        { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
+      );
     }
   }, []);
 

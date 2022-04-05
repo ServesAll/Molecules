@@ -1,14 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Row } from "@servesall/atoms";
 import Screen from "./Screen";
 
-const SlideScreen = ({ children, defaultScreen = 0 }) => {
-  const [activeScreenId, setActiveScreenId] = useState(defaultScreen);
-
-  useEffect(() => {
-    setActiveScreenId(defaultScreen);
-  }, [defaultScreen]);
-
+const Child = React.memo(({ children, activeScreenId, setActiveScreenId }) => {
   return (
     <Row style={{ flex: 1 }}>
       {React.Children.toArray(children).map((component, index) => (
@@ -23,6 +17,6 @@ const SlideScreen = ({ children, defaultScreen = 0 }) => {
       ))}
     </Row>
   );
-};
+});
 
-export default SlideScreen;
+export default Child;

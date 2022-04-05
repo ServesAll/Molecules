@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('react'), require('react-native'), require('react-native-reanimated'), require('react-native-gesture-handler'), require('react-native-status-bar-height'), require('@servesall/atoms'), require('lottie-react-native'), require('react-native-maps'), require('react-native-image-crop-picker'), require('date-fns/format'), require('date-fns/startOfMonth'), require('date-fns')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'react', 'react-native', 'react-native-reanimated', 'react-native-gesture-handler', 'react-native-status-bar-height', '@servesall/atoms', 'lottie-react-native', 'react-native-maps', 'react-native-image-crop-picker', 'date-fns/format', 'date-fns/startOfMonth', 'date-fns'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global['@servesall/molecules'] = {}, global.React, global['react-native'], global['react-native-reanimated'], global['react-native-gesture-handler'], global['react-native-status-bar-height'], global['@servesall/atoms'], global['lottie-react-native'], global['react-native-maps'], global['react-native-image-crop-picker'], global.format$1, global.startOfMonth, global.dateFns));
-}(this, (function (exports, React, reactNative$1, Animated, reactNativeGestureHandler, reactNativeStatusBarHeight, atoms, LottieView, MapView, ImagePicker, format$1, startOfMonth, dateFns) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('react'), require('react-native'), require('react-native-reanimated'), require('react-native-gesture-handler'), require('react-native-status-bar-height'), require('@servesall/atoms'), require('lottie-react-native'), require('react-native-maps'), require('react-native-geolocation-service'), require('react-native-image-crop-picker'), require('date-fns/format'), require('date-fns/startOfMonth'), require('date-fns'), require('@react-navigation/native'), require('@gorhom/bottom-sheet')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'react', 'react-native', 'react-native-reanimated', 'react-native-gesture-handler', 'react-native-status-bar-height', '@servesall/atoms', 'lottie-react-native', 'react-native-maps', 'react-native-geolocation-service', 'react-native-image-crop-picker', 'date-fns/format', 'date-fns/startOfMonth', 'date-fns', '@react-navigation/native', '@gorhom/bottom-sheet'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global['@servesall/molecules'] = {}, global.React, global['react-native'], global['react-native-reanimated'], global['react-native-gesture-handler'], global['react-native-status-bar-height'], global['@servesall/atoms'], global['lottie-react-native'], global['react-native-maps'], global['react-native-geolocation-service'], global['react-native-image-crop-picker'], global.format$1, global.startOfMonth, global.dateFns, global.native, global.BottomSheet));
+}(this, (function (exports, React, reactNative$1, Animated, reactNativeGestureHandler, reactNativeStatusBarHeight, atoms, LottieView, MapView, Geolocation, ImagePicker, format$1, startOfMonth, dateFns, native, BottomSheet) { 'use strict';
 
   function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -10,9 +10,11 @@
   var Animated__default = /*#__PURE__*/_interopDefaultLegacy(Animated);
   var LottieView__default = /*#__PURE__*/_interopDefaultLegacy(LottieView);
   var MapView__default = /*#__PURE__*/_interopDefaultLegacy(MapView);
+  var Geolocation__default = /*#__PURE__*/_interopDefaultLegacy(Geolocation);
   var ImagePicker__default = /*#__PURE__*/_interopDefaultLegacy(ImagePicker);
   var format__default = /*#__PURE__*/_interopDefaultLegacy(format$1);
   var startOfMonth__default = /*#__PURE__*/_interopDefaultLegacy(startOfMonth);
+  var BottomSheet__default = /*#__PURE__*/_interopDefaultLegacy(BottomSheet);
 
   function Background(_ref) {
     var children = _ref.children,
@@ -113,6 +115,24 @@
     }
 
     return obj;
+  }
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
   }
 
   function _taggedTemplateLiteral(strings, raw) {
@@ -3549,8 +3569,8 @@
     return Constructor;
   }
 
-  function _extends() {
-    _extends = Object.assign || function (target) {
+  function _extends$1() {
+    _extends$1 = Object.assign || function (target) {
       for (var i = 1; i < arguments.length; i++) {
         var source = arguments[i];
 
@@ -3564,7 +3584,7 @@
       return target;
     };
 
-    return _extends.apply(this, arguments);
+    return _extends$1.apply(this, arguments);
   }
 
   function _inheritsLoose(subClass, superClass) {
@@ -4087,7 +4107,7 @@
         globalStyles = {};
       }
 
-      this.options = _extends({}, defaultOptions, {}, options);
+      this.options = _extends$1({}, defaultOptions, {}, options);
       this.gs = globalStyles;
       this.names = new Map(names); // We rehydrate only once and use the sheet that is created first
 
@@ -4104,7 +4124,7 @@
         withNames = true;
       }
 
-      return new StyleSheet(_extends({}, this.options, {}, options), this.gs, withNames && this.names || undefined);
+      return new StyleSheet(_extends$1({}, this.options, {}, options), this.gs, withNames && this.names || undefined);
     };
 
     _proto.allocateGSInstance = function allocateGSInstance(id) {
@@ -9365,7 +9385,7 @@
         var generatedStyles = _this2.generateAndInjectStyles(determineTheme(_this2.props, theme, defaultProps) || EMPTY_OBJECT, _this2.props);
 
         var isTargetTag = isTag(elementToBeRendered);
-        var computedProps = _this2.attrs !== props ? _extends({}, props, {}, _this2.attrs) : props;
+        var computedProps = _this2.attrs !== props ? _extends$1({}, props, {}, _this2.attrs) : props;
         var propFilterFn = shouldForwardProp || isTargetTag && validAttr;
         var propsForElement = {};
         var key;
@@ -9389,7 +9409,7 @@
     _proto.buildExecutionContext = function buildExecutionContext(theme, props, attrs) {
       var _this3 = this;
 
-      var context = _extends({}, props, {
+      var context = _extends$1({}, props, {
         theme: theme
       });
 
@@ -9448,7 +9468,7 @@
       var isTargetStyledComp = isStyledComponent(target); // $FlowFixMe
 
       var WrappedStyledNativeComponent = React__default['default'].forwardRef(function (props, ref) {
-        return /*#__PURE__*/React__default['default'].createElement(ParentComponent, _extends({}, props, {
+        return /*#__PURE__*/React__default['default'].createElement(ParentComponent, _extends$1({}, props, {
           forwardedComponent: WrappedStyledNativeComponent,
           forwardedRef: ref
         }));
@@ -9496,7 +9516,7 @@
             __ = options.componentId,
             optionsToCopy = _objectWithoutPropertiesLoose(options, ["displayName", "componentId"]);
 
-        var newOptions = _extends({}, optionsToCopy, {
+        var newOptions = _extends$1({}, optionsToCopy, {
           attrs: finalAttrs,
           ParentComponent: ParentComponent
         });
@@ -9584,13 +9604,13 @@
 
 
     templateFunction.withConfig = function (config) {
-      return constructWithOptions(componentConstructor, tag, _extends({}, options, {}, config));
+      return constructWithOptions(componentConstructor, tag, _extends$1({}, options, {}, config));
     };
     /* Modify/inject new props at runtime */
 
 
     templateFunction.attrs = function (attrs) {
-      return constructWithOptions(componentConstructor, tag, _extends({}, options, {
+      return constructWithOptions(componentConstructor, tag, _extends$1({}, options, {
         attrs: Array.prototype.concat(options.attrs, attrs).filter(Boolean)
       }));
     };
@@ -10965,174 +10985,6 @@
   });
   var MarkerWrapper = styled.View(_templateObject2$2 || (_templateObject2$2 = _taggedTemplateLiteral(["\n  position: absolute;\n  z-index: 9;\n  width: 80px;\n  height: 120px;\n  align-items: center;\n    justify-content: center;\n"])));
 
-  /**
-  * MIT License
-  * 
-  * Copyright (c) 2019 Douglas Nassif Roma Junior
-  * 
-  * Permission is hereby granted, free of charge, to any person obtaining a copy
-  * of this software and associated documentation files (the "Software"), to deal
-  * in the Software without restriction, including without limitation the rights
-  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-  * copies of the Software, and to permit persons to whom the Software is
-  * furnished to do so, subject to the following conditions:
-  * 
-  * The above copyright notice and this permission notice shall be included in all
-  * copies or substantial portions of the Software.
-  * 
-  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-  * SOFTWARE. 
-  */
-
-  class LocationError extends Error {
-
-      constructor(code, message) {
-          super(message);
-          this.name = 'LocationError';
-          this.code = code;
-          this.message = message;
-      }
-
-  }
-
-  /**
-  * MIT License
-  * 
-  * Copyright (c) 2019 Douglas Nassif Roma Junior
-  * 
-  * Permission is hereby granted, free of charge, to any person obtaining a copy
-  * of this software and associated documentation files (the "Software"), to deal
-  * in the Software without restriction, including without limitation the rights
-  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-  * copies of the Software, and to permit persons to whom the Software is
-  * furnished to do so, subject to the following conditions:
-  * 
-  * The above copyright notice and this permission notice shall be included in all
-  * copies or substantial portions of the Software.
-  * 
-  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-  * SOFTWARE. 
-  */
-
-  const { OS } = reactNative$1.Platform;
-  const Version = parseInt(reactNative$1.Platform.Version);
-  const { ReactNativeGetLocation } = reactNative$1.NativeModules;
-
-  async function openUrlIfCan(url) {
-      if (await reactNative$1.Linking.canOpenURL(url)) {
-          await reactNative$1.Linking.openURL(url);
-          return true;
-      }
-      return false;
-  }
-
-  async function openIOSSettings(root, path = '') {
-      if (await openUrlIfCan(`App-Prefs:root=${root}${path ? `&path=${path}` : ''}`)) {
-          return true;
-      }
-      if (await openUrlIfCan('App-Prefs:')) {
-          return true;
-      }
-      return false;
-  }
-  async function requestAndroidPermission(enableHighAccuracy = false) {
-      const { PERMISSIONS, RESULTS } = reactNative$1.PermissionsAndroid;
-      const granted = await reactNative$1.PermissionsAndroid.request(enableHighAccuracy
-          ? PERMISSIONS.ACCESS_FINE_LOCATION
-          : PERMISSIONS.ACCESS_COARSE_LOCATION);
-      if (granted !== RESULTS.GRANTED) {
-          throw new LocationError('UNAUTHORIZED', 'Authorization denied');
-      }
-      return true;
-  }
-
-  var GetLocation = {
-      async getCurrentPosition(options = {
-          enableHighAccuracy: false,
-          timeout: 0,
-      }) {
-          if (OS === 'android') {
-              await requestAndroidPermission(options.enableHighAccuracy);
-          }
-          try {
-              const location = await ReactNativeGetLocation.getCurrentPosition(options);
-              return location;
-          } catch (error) {
-              const { code, message } = error;
-              const locationError = new LocationError(code, message);
-              locationError.stack = error.stack;
-              throw locationError;
-          }
-      },
-
-      // Extra functions
-
-      openAppSettings() {
-          return ReactNativeGetLocation.openAppSettings();
-      },
-
-      /**
-       * Only for Android
-       */
-      async openWifiSettings() {
-          if (OS === 'android') {
-              return ReactNativeGetLocation.openWifiSettings();
-          }
-
-          if (await openIOSSettings('WIFI')) {
-              return true;
-          }
-
-          return ReactNativeGetLocation.openAppSettings();
-      },
-
-      /**
-       * Only for Android
-       */
-      async openCelularSettings() {
-          if (OS === 'android') {
-              return ReactNativeGetLocation.openCelularSettings();
-          }
-
-          if (await openIOSSettings('MOBILE_DATA_SETTINGS_ID')) {
-              return true;
-          }
-
-          return ReactNativeGetLocation.openAppSettings();
-      },
-
-      /**
-       * Only for Android
-       */
-      async openGpsSettings() {
-          if (OS === 'android') {
-              return ReactNativeGetLocation.openGpsSettings();
-          }
-
-          if (Version >= 10) {
-              if (await openIOSSettings('Privacy', 'LOCATION')) {
-                  return true;
-              }
-          } else {
-              if (await openIOSSettings('LOCATION_SERVICES')) {
-                  return true;
-              }
-          }
-
-          return ReactNativeGetLocation.openAppSettings();
-      },
-  };
-
   var ip$1 = 0;
   var fr$1 = 60;
   var v$1 = "5.1.20";
@@ -12263,15 +12115,18 @@
     }, [longitude, latitude]);
     React.useEffect(function () {
       if (!longitude) {
-        GetLocation.getCurrentPosition({
-          enableHighAccuracy: true,
-          timeout: 15000
-        }).then(function (location) {
-          setLocation(Object.assign(location, {
+        Geolocation__default['default'].getCurrentPosition(function (position) {
+          setLocation(Object.assign(position.coords, {
             latitudeDelta: 0.005,
             longitudeDelta: 0.01
           }));
-        }).catch(function (error) {});
+        }, function (error) {// See error code charts below.
+          //console.log(error.code, error.message);
+        }, {
+          enableHighAccuracy: true,
+          timeout: 15000,
+          maximumAge: 10000
+        });
       }
     }, []);
     React.useEffect(function () {
@@ -20757,13 +20612,18 @@
   };
 
   var SlideScreen = function SlideScreen(_ref) {
-    var children = _ref.children;
+    var children = _ref.children,
+        _ref$defaultScreen = _ref.defaultScreen,
+        defaultScreen = _ref$defaultScreen === void 0 ? 0 : _ref$defaultScreen;
 
-    var _useState = React.useState(0),
+    var _useState = React.useState(defaultScreen),
         _useState2 = _slicedToArray(_useState, 2),
         activeScreenId = _useState2[0],
         setActiveScreenId = _useState2[1];
 
+    React.useEffect(function () {
+      setActiveScreenId(defaultScreen);
+    }, [defaultScreen]);
     return /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
       style: {
         flex: 1
@@ -21883,12 +21743,12 @@
       style: {
         backgroundColor: theme.color1
       }
-    }, /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.PaddingHorizontal, null, /*#__PURE__*/React__default['default'].createElement(atoms.PaddingHorizontal, {
       style: {
         borderBottomWidth: 1,
-        borderColor: theme.color7
+        borderColor: theme.color10
       }
-    }, /*#__PURE__*/React__default['default'].createElement(AccordionItem, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.PaddingTop, null, /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, null, /*#__PURE__*/React__default['default'].createElement(AccordionItem, {
       key: "MerchantBookings",
       eventKey: "MerchantBookings",
       closeItem: closeItem,
@@ -21923,7 +21783,7 @@
       }, /*#__PURE__*/React__default['default'].createElement(atoms.MarginVertical, null, /*#__PURE__*/React__default['default'].createElement(atoms.H2, {
         color: theme.color2
       }, (merchant === null || merchant === void 0 ? void 0 : (_merchant$profile = merchant.profile) === null || _merchant$profile === void 0 ? void 0 : _merchant$profile.name) || null, " ", page)))));
-    }))))));
+    }))))))));
   });
 
   var img$1 = "data:image/png;base64,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";
@@ -40334,6 +40194,673 @@
     }, /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, children)));
   });
 
+  var Screen$1 = function Screen(_ref) {
+    var children = _ref.children,
+        index = _ref.index,
+        _ref$activeScreenId = _ref.activeScreenId,
+        activeScreenId = _ref$activeScreenId === void 0 ? 0 : _ref$activeScreenId,
+        setActiveScreenId = _ref.setActiveScreenId;
+    var width = Animated.useSharedValue(reactNative$1.Dimensions.get("window").width);
+    var opacity = Animated.useSharedValue(1);
+    var windowWidth = Animated.useSharedValue(reactNative$1.Dimensions.get("window").width);
+    var animatedWidth = Animated.useAnimatedStyle(function () {
+      const _f = function () {
+        return {
+          transform: [{
+            translateX: width.value
+          }],
+          opacity: opacity.value,
+          width: windowWidth.value,
+          position: "absolute",
+          top: 0,
+          bottom: 0,
+          left: 0,
+          right: 0
+        };
+      };
+
+      _f._closure = {
+        width,
+        opacity,
+        windowWidth
+      };
+      _f.asString = "function _f(){const{width,opacity,windowWidth}=jsThis._closure;{return{transform:[{translateX:width.value}],opacity:opacity.value,width:windowWidth.value,position:\"absolute\",top:0,bottom:0,left:0,right:0};}}";
+      _f.__workletHash = 9195235317471;
+      _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/GamifiedSlideScreen/SlideScreen/Screen.js (15:41)";
+
+      global.__reanimatedWorkletInit(_f);
+
+      return _f;
+    }());
+    React.useEffect(function () {
+      if (activeScreenId === index) {
+        width.value = Animated.withTiming(0, {
+          duration: 250,
+          easing: Animated.Easing.out(Animated.Easing.exp)
+        });
+        opacity.value = Animated.withTiming(1, {
+          duration: 200,
+          easing: Animated.Easing.out(Animated.Easing.exp)
+        });
+      } else {
+        if (activeScreenId > index) {
+          width.value = Animated.withTiming(-windowWidth.value, {
+            duration: 250,
+            easing: Animated.Easing.out(Animated.Easing.exp)
+          });
+        } else {
+          width.value = Animated.withTiming(windowWidth.value, {
+            duration: 250,
+            easing: Animated.Easing.out(Animated.Easing.exp)
+          });
+        }
+
+        opacity.value = Animated.withTiming(0, {
+          duration: 200,
+          easing: Animated.Easing.out(Animated.Easing.exp)
+        });
+      }
+    }, [activeScreenId]);
+    return /*#__PURE__*/React__default['default'].createElement(Animated__default['default'].View, {
+      style: [animatedWidth]
+    }, index === activeScreenId && /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, {
+      style: {
+        flex: 1,
+        overflow: "hidden"
+      }
+    }, React__default['default'].cloneElement(children, {
+      setActiveScreenId: setActiveScreenId,
+      index: index,
+      activeScreenId: activeScreenId
+    })));
+  };
+
+  var Child = React__default['default'].memo(function (_ref) {
+    var children = _ref.children,
+        activeScreenId = _ref.activeScreenId,
+        setActiveScreenId = _ref.setActiveScreenId;
+    return /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
+      style: {
+        flex: 1
+      }
+    }, React__default['default'].Children.toArray(children).map(function (component, index) {
+      return /*#__PURE__*/React__default['default'].createElement(Screen$1, {
+        key: index,
+        index: index,
+        activeScreenId: activeScreenId,
+        setActiveScreenId: setActiveScreenId
+      }, component);
+    }));
+  });
+
+  var SlideScreen$1 = function SlideScreen(_ref) {
+    var children = _ref.children,
+        _ref$defaultScreen = _ref.defaultScreen,
+        defaultScreen = _ref$defaultScreen === void 0 ? 0 : _ref$defaultScreen,
+        _ref$setActiveScreen = _ref.setActiveScreen,
+        setActiveScreen = _ref$setActiveScreen === void 0 ? function () {} : _ref$setActiveScreen;
+
+    var _useState = React.useState(defaultScreen),
+        _useState2 = _slicedToArray(_useState, 2),
+        activeScreenId = _useState2[0],
+        setActiveScreenId = _useState2[1];
+
+    React.useEffect(function () {
+      setActiveScreenId(defaultScreen);
+      setActiveScreen(defaultScreen);
+    }, [defaultScreen]);
+    React.useEffect(function () {
+      setActiveScreen(activeScreenId);
+    }, [activeScreenId]);
+    return /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
+      style: {
+        flex: 1
+      }
+    }, /*#__PURE__*/React__default['default'].createElement(Child, {
+      children: children,
+      activeScreenId: activeScreenId,
+      setActiveScreenId: setActiveScreenId
+    }));
+  };
+
+  var _templateObject$d;
+  var SubmitWrapper = styled.View(_templateObject$d || (_templateObject$d = _taggedTemplateLiteral(["\n  width: 46px;\n  height: 46px;\n  border-radius: 0px;\n  background-color: ", ";\n  overflow: hidden;\n"])), function (props) {
+    return props.theme.color1;
+  });
+
+  function Submit() {
+    var animation = React.useRef(null);
+    React.useEffect(function () {//animation.current.play(12, 132);
+    }, []);
+    return null;
+  }
+
+  var _templateObject$e, _templateObject2$8;
+  var GreyBar = styled.View(_templateObject$e || (_templateObject$e = _taggedTemplateLiteral(["\n  width: 100%;\n  position: absolute;\n  height: 16px;\n  top: 50%;\n  margin-top: -8px;\n  background-color: ", ";\n  border-radius: 8px;\n"])), function (props) {
+    return props.theme.color10;
+  });
+  var Step = styled.View(_templateObject2$8 || (_templateObject2$8 = _taggedTemplateLiteral(["\n  width: 16px;\n  position: absolute;\n  height: 16px;\n  top: 50%;\n  left: ", "%;\n  margin-left: -8px;\n  margin-top: -8px;\n  background-color: ", ";\n  border-radius: 8px;\n"])), function (props) {
+    return props.left;
+  }, function (props) {
+    return props.theme.color10;
+  });
+
+  function Background$1(_ref) {
+    var theme = _ref.theme;
+    return /*#__PURE__*/React__default['default'].createElement(GreyBar, {
+      theme: theme
+    });
+  }
+
+  var _templateObject$f, _templateObject2$9, _templateObject3$4;
+  var GreenBar = styled.View(_templateObject$f || (_templateObject$f = _taggedTemplateLiteral(["\n  width: 100%;\n  height: 16px;\n  background-color: ", ";\n  border-radius: 8px;\n  margin-top: -8px;\n"])), function (props) {
+    return props.theme.green;
+  });
+  var GreenStep = styled.View(_templateObject2$9 || (_templateObject2$9 = _taggedTemplateLiteral(["\n  width: 16px;\n  position: absolute;\n  height: 16px;\n  top: 50%;\n  left: ", "%;\n  margin-left: -16px;\n  margin-top: -8px;\n  background-color: ", ";\n  border-radius: 8px;\n"])), function (props) {
+    return props.left;
+  }, function (props) {
+    return props.theme.green;
+  });
+  var PulseWrapper = styled.View(_templateObject3$4 || (_templateObject3$4 = _taggedTemplateLiteral(["\n  width: 40px;\n  position: absolute;\n  height: 40px;\n  top: 50%;\n  left: ", "%;\n  margin-left: -28px;\n  margin-top: -20px;\n  border-radius: 20px;\n"])), function (props) {
+    return props.left;
+  });
+
+  var ip$c = 0;
+  var fr$c = 60;
+  var v$c = "5.1.20";
+  var assets$c = [
+  ];
+  var layers$c = [
+  	{
+  		ty: 4,
+  		nm: "pulse",
+  		ip: 0,
+  		st: 0,
+  		ind: 1,
+  		hix: 1,
+  		ks: {
+  			o: {
+  				a: 1,
+  				k: [
+  					{
+  						t: 0,
+  						s: [
+  							100
+  						],
+  						e: [
+  							0
+  						],
+  						i: {
+  							x: [
+  								0.675
+  							],
+  							y: [
+  								0.19
+  							]
+  						},
+  						o: {
+  							x: [
+  								0.55
+  							],
+  							y: [
+  								0.055
+  							]
+  						}
+  					},
+  					{
+  						t: 96
+  					}
+  				]
+  			},
+  			or: {
+  				a: 0,
+  				k: [
+  					0,
+  					0,
+  					0
+  				]
+  			},
+  			a: {
+  				a: 0,
+  				k: [
+  					50,
+  					50,
+  					0
+  				]
+  			},
+  			p: {
+  				s: true,
+  				x: {
+  					a: 1,
+  					k: [
+  						{
+  							t: 0,
+  							s: [
+  								100
+  							],
+  							e: [
+  								100.49999555200338
+  							],
+  							i: {
+  								x: [
+  									0.515
+  								],
+  								y: [
+  									0.955
+  								]
+  							},
+  							o: {
+  								x: [
+  									0.455
+  								],
+  								y: [
+  									0.03
+  								]
+  							}
+  						},
+  						{
+  							t: 96
+  						}
+  					]
+  				},
+  				y: {
+  					a: 1,
+  					k: [
+  						{
+  							t: 0,
+  							s: [
+  								100
+  							],
+  							e: [
+  								99.49999555200338
+  							],
+  							i: {
+  								x: [
+  									0.515
+  								],
+  								y: [
+  									0.955
+  								]
+  							},
+  							o: {
+  								x: [
+  									0.455
+  								],
+  								y: [
+  									0.03
+  								]
+  							}
+  						},
+  						{
+  							t: 96
+  						}
+  					]
+  				}
+  			},
+  			rx: {
+  				a: 0,
+  				k: 0
+  			},
+  			ry: {
+  				a: 0,
+  				k: 0
+  			},
+  			rz: {
+  				a: 0,
+  				k: 0
+  			},
+  			s: {
+  				a: 1,
+  				k: [
+  					{
+  						t: 0,
+  						s: [
+  							100,
+  							100
+  						],
+  						e: [
+  							199,
+  							199
+  						],
+  						i: {
+  							x: [
+  								0.515,
+  								0.515
+  							],
+  							y: [
+  								0.955,
+  								0.955
+  							]
+  						},
+  						o: {
+  							x: [
+  								0.455,
+  								0.455
+  							],
+  							y: [
+  								0.03,
+  								0.03
+  							]
+  						}
+  					},
+  					{
+  						t: 96
+  					}
+  				]
+  			}
+  		},
+  		shapes: [
+  			{
+  				ty: "gr",
+  				nm: "pulse shape group",
+  				it: [
+  					{
+  						ty: "el",
+  						p: {
+  							a: 0,
+  							k: [
+  								50,
+  								63
+  							]
+  						},
+  						s: {
+  							a: 0,
+  							k: [
+  								100,
+  								100
+  							]
+  						}
+  					},
+  					{
+  						ty: "st",
+  						o: {
+  							a: 0,
+  							k: 0
+  						},
+  						w: {
+  							a: 0,
+  							k: 0
+  						},
+  						c: {
+  							a: 0,
+  							k: [
+  								0,
+  								0,
+  								0,
+  								0
+  							]
+  						},
+  						lc: 3,
+  						lj: 1,
+  						ml: 1
+  					},
+  					{
+  						ty: "fl",
+  						o: {
+  							a: 0,
+  							k: 100
+  						},
+  						r: 2,
+  						c: {
+  							a: 0,
+  							k: [
+  								0.3333333333333333,
+  								0.9372549019607843,
+  								0.7686274509803922,
+  								1
+  							]
+  						}
+  					},
+  					{
+  						ty: "tr",
+  						o: {
+  							a: 0,
+  							k: 100
+  						},
+  						a: {
+  							a: 0,
+  							k: [
+  								0,
+  								0
+  							]
+  						},
+  						s: {
+  							a: 0,
+  							k: [
+  								100,
+  								100
+  							]
+  						},
+  						p: {
+  							a: 0,
+  							k: [
+  								0,
+  								-13
+  							]
+  						},
+  						r: {
+  							a: 0,
+  							k: 0
+  						}
+  					}
+  				]
+  			}
+  		],
+  		op: 96
+  	}
+  ];
+  var op$c = 96;
+  var w$c = 200;
+  var h$c = 200;
+  var green_pulse = {
+  	ip: ip$c,
+  	fr: fr$c,
+  	v: v$c,
+  	assets: assets$c,
+  	layers: layers$c,
+  	op: op$c,
+  	w: w$c,
+  	h: h$c
+  };
+
+  function Foreground(_ref) {
+    var steps = _ref.steps,
+        currentStep = _ref.currentStep,
+        theme = _ref.theme;
+
+    var _useState = React.useState(currentStep),
+        _useState2 = _slicedToArray(_useState, 2),
+        activeStep = _useState2[0],
+        setActiveStep = _useState2[1];
+
+    var stepsLenght = steps - 1;
+    var width = Animated.useSharedValue(0);
+    var animatedWidth = Animated.useAnimatedStyle(function () {
+      const _f = function () {
+        return {
+          width: width.value + "%",
+          top: "50%",
+          position: "absolute",
+          left: 0
+        };
+      };
+
+      _f._closure = {
+        width
+      };
+      _f.asString = "function _f(){const{width}=jsThis._closure;{return{width:width.value+\"%\",top:\"50%\",position:\"absolute\",left:0};}}";
+      _f.__workletHash = 12242490297983;
+      _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/GamifiedSlideScreen/Header/Foreground/index.js (17:41)";
+
+      global.__reanimatedWorkletInit(_f);
+
+      return _f;
+    }());
+    React.useEffect(function () {
+      setActiveStep(currentStep);
+      /*
+      const success = steps.findIndex((object) => {
+        return object.success;
+      });
+      
+      setSuccessStep(success);
+      */
+
+      width.value = Animated.withTiming((currentStep + 1) * 100 / (stepsLenght + 1), {
+        duration: 200,
+        easing: Animated.Easing.out(Animated.Easing.exp)
+      });
+    }, [steps, currentStep]);
+    return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(Animated__default['default'].View, {
+      style: [animatedWidth]
+    }, /*#__PURE__*/React__default['default'].createElement(GreenBar, {
+      theme: theme,
+      width: (activeStep + 1) * 100 / (stepsLenght + 1)
+    })), Array.from(Array(stepsLenght).keys()).map(function (step, index) {
+      return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, activeStep === index && /*#__PURE__*/React__default['default'].createElement(PulseWrapper, {
+        left: (index + 1) * 100 / (stepsLenght + 1)
+      }, /*#__PURE__*/React__default['default'].createElement(LottieView__default['default'], {
+        style: {
+          width: 40
+        },
+        autoPlay: true,
+        loop: true,
+        source: green_pulse
+      })));
+    }));
+  }
+
+  var _templateObject$g, _templateObject2$a, _templateObject3$5, _templateObject4$1, _templateObject5;
+  var GreyBar$1 = styled.View(_templateObject$g || (_templateObject$g = _taggedTemplateLiteral(["\n  width: 100%;\n  position: absolute;\n  height: 16px;\n  top: 50%;\n  margin-top: -8px;\n  background-color: ", ";\n  border-radius: 8px;\n"])), function (props) {
+    return props.theme.color10;
+  });
+  var GreenBar$1 = styled.View(_templateObject2$a || (_templateObject2$a = _taggedTemplateLiteral(["\n  width: 30%;\n  position: absolute;\n  height: 16px;\n  top: 50%;\n  margin-top: -8px;\n  background-color: ", ";\n  border-radius: 8px;\n"])), function (props) {
+    return props.theme.green;
+  });
+  var BarWrapper = styled.View(_templateObject3$5 || (_templateObject3$5 = _taggedTemplateLiteral(["\n  width: 100%;\n  height: 100%;\n  flex: 1;\n"])));
+  var SubmitWrapper$1 = styled.View(_templateObject4$1 || (_templateObject4$1 = _taggedTemplateLiteral([""])));
+  var Step$1 = styled.View(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n  width: 20px;\n  position: absolute;\n  height: 20px;\n  top: 50%;\n  left: ", "%;\n  margin-left: -10px;\n  margin-top: -10px;\n  background-color: ", ";\n  border-radius: 10px;\n"])), function (props) {
+    return props.left;
+  }, function (props) {
+    return props.theme.color10;
+  });
+
+  function GamifiedHeader(_ref) {
+    var steps = _ref.steps,
+        currentStep = _ref.currentStep;
+    var theme = atoms.useThemeContext();
+    return /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
+      style: {
+        alignItems: "center"
+      }
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.MarginVertical, null, /*#__PURE__*/React__default['default'].createElement(BarWrapper, null, /*#__PURE__*/React__default['default'].createElement(Background$1, {
+      theme: theme,
+      steps: steps,
+      currentStep: currentStep
+    }), steps > 0 && /*#__PURE__*/React__default['default'].createElement(Foreground, {
+      theme: theme,
+      steps: steps,
+      currentStep: currentStep
+    }))), /*#__PURE__*/React__default['default'].createElement(Submit, null)));
+  }
+
+  function BottomBar(_ref) {
+    var activeScreen = _ref.activeScreen,
+        setActiveScreen = _ref.setActiveScreen;
+    var theme = atoms.useThemeContext();
+    return /*#__PURE__*/React__default['default'].createElement(atoms.Box, {
+      style: {
+        backgroundColor: theme.color1,
+        borderTopWidth: 1,
+        borderColor: theme.color10
+      }
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.MarginVertical, null, /*#__PURE__*/React__default['default'].createElement(atoms.Row, null, /*#__PURE__*/React__default['default'].createElement(atoms.Box, {
+      style: {
+        flex: 4
+      }
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.MarginHorizontal, null, /*#__PURE__*/React__default['default'].createElement(atoms.RoundBtn, {
+      size: "small",
+      active: activeScreen !== 0,
+      color: theme.color1,
+      onClick: function onClick() {
+        activeScreen !== 0 && setActiveScreen(activeScreen - 1);
+      }
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.Center, null, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
+      color: theme.color2
+    }, "Back"))))), /*#__PURE__*/React__default['default'].createElement(atoms.Box, {
+      style: {
+        flex: 6
+      }
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.MarginHorizontal, null, /*#__PURE__*/React__default['default'].createElement(atoms.RoundBtn, {
+      size: "small",
+      color: theme.color2,
+      onClick: function onClick() {
+        setActiveScreen(activeScreen + 1);
+      }
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.Center, null, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
+      color: theme.color1
+    }, "Next"))))))));
+  }
+
+  function GamifiedSlideScreen(_ref) {
+    var children = _ref.children,
+        defaultScreen = _ref.defaultScreen,
+        loading = _ref.loading;
+    var number_of_children = children.length;
+    var theme = atoms.useThemeContext();
+
+    var _useState = React.useState(defaultScreen),
+        _useState2 = _slicedToArray(_useState, 2),
+        activeScreen = _useState2[0],
+        setActiveScreen = _useState2[1];
+
+    var navigation = native.useNavigation();
+    var snapPoints = React.useMemo(function () {
+      return ["94%"];
+    }, []);
+    var handleSheetChanges = React.useCallback(function (index) {
+      if (index === -1) {
+        navigation.goBack();
+      }
+    }, []); // renders
+
+    var renderFooter = React.useCallback(function (props) {
+      return /*#__PURE__*/React__default['default'].createElement(BottomSheet.BottomSheetFooter, _extends({}, props, {
+        bottomInset: 0
+      }), /*#__PURE__*/React__default['default'].createElement(BottomBar, {
+        setActiveScreen: setActiveScreen,
+        activeScreen: activeScreen
+      }));
+    }, [activeScreen]);
+    return /*#__PURE__*/React__default['default'].createElement(atoms.Box, {
+      style: {
+        backgroundColor: "rgba(0, 0, 0, 0.4)"
+      }
+    }, /*#__PURE__*/React__default['default'].createElement(reactNative$1.StatusBar, {
+      barStyle: "dark-content",
+      backgroundColor: "rgba(0, 0, 0, 0.4)"
+    }), /*#__PURE__*/React__default['default'].createElement(BottomSheet__default['default'], {
+      index: 0,
+      snapPoints: snapPoints,
+      onChange: handleSheetChanges,
+      enablePanDownToClose: true,
+      footerComponent: renderFooter
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.Box, null, loading && /*#__PURE__*/React__default['default'].createElement(atoms.FullScreen, {
+      style: {
+        backgroundColor: theme.color1
+      }
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.Center, null, /*#__PURE__*/React__default['default'].createElement(atoms.Loader, {
+      color: theme.color2
+    }))), /*#__PURE__*/React__default['default'].createElement(GamifiedHeader, {
+      currentStep: activeScreen,
+      steps: number_of_children
+    }), /*#__PURE__*/React__default['default'].createElement(SlideScreen$1, {
+      setActiveScreen: setActiveScreen,
+      defaultScreen: activeScreen,
+      children: children
+    }))));
+  }
+
   exports.AccordionItem = AccordionItem;
   exports.AccordionProvider = AccordionProvider;
   exports.AccordionScroll = AccordionScroll;
@@ -40343,6 +40870,7 @@
   exports.DateRange = DateRange;
   exports.Duration = DurationItem;
   exports.FooterActions = FooterActions;
+  exports.GamifiedSlideScreen = GamifiedSlideScreen;
   exports.ImageLoader = ImageLoader;
   exports.ImageUpload = ImageUpload;
   exports.Map = Map$1;

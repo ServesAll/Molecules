@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 import {
   Margin,
+  PaddingTop,
   MarginVertical,
+  PaddingHorizontal,
   TextBtn,
   H1,
   H2,
@@ -31,52 +33,61 @@ const MerchantSelector = React.memo(
 
     return (
       <View style={{ backgroundColor: theme.color1 }}>
-        <Margin>
-          <View style={{ borderBottomWidth: 1, borderColor: theme.color7 }}>
-            <AccordionItem
-              key={"MerchantBookings"}
-              eventKey={"MerchantBookings"}
-              closeItem={closeItem}
-              onChange={() => setCloseItem(false)}
-            >
-              <AccordionItem.Head lightContent={false}>
-                <Margin>
-                  <H3 color={theme.color2}>
-                    {selected
-                      ? selected.profile?.name
-                      : merchants[0]?.merchant?.profile?.name || null}
-                  </H3>
-                  <H1 color={theme.color2}>{page}</H1>
-                </Margin>
-              </AccordionItem.Head>
-              <AccordionItem.Body isNormal={true}>
-                {merchants.map(({ merchant }, index) => {
-                  return (
-                    <Margin key={index}>
-                      <Row>
-                        <TextBtn
-                          borderColorActive={theme.color9}
-                          borderColorIdle={theme.color10}
-                          style={{ borderWidth: 1, borderColor: theme.color10 }}
-                          onClick={() => {
-                            setSelected(merchant);
-                            setCloseItem(true);
-                          }}
-                        >
-                          <MarginVertical>
-                            <H2 color={theme.color2}>
-                              {merchant?.profile?.name || null} {page}
-                            </H2>
-                          </MarginVertical>
-                        </TextBtn>
-                      </Row>
+        <PaddingHorizontal>
+          <PaddingHorizontal
+            style={{ borderBottomWidth: 1, borderColor: theme.color10 }}
+          >
+            <PaddingTop>
+              <View>
+                <AccordionItem
+                  key={"MerchantBookings"}
+                  eventKey={"MerchantBookings"}
+                  closeItem={closeItem}
+                  onChange={() => setCloseItem(false)}
+                >
+                  <AccordionItem.Head lightContent={false}>
+                    <Margin>
+                      <H3 color={theme.color2}>
+                        {selected
+                          ? selected.profile?.name
+                          : merchants[0]?.merchant?.profile?.name || null}
+                      </H3>
+                      <H1 color={theme.color2}>{page}</H1>
                     </Margin>
-                  );
-                })}
-              </AccordionItem.Body>
-            </AccordionItem>
-          </View>
-        </Margin>
+                  </AccordionItem.Head>
+                  <AccordionItem.Body isNormal={true}>
+                    {merchants.map(({ merchant }, index) => {
+                      return (
+                        <Margin key={index}>
+                          <Row>
+                            <TextBtn
+                              borderColorActive={theme.color9}
+                              borderColorIdle={theme.color10}
+                              style={{
+                                borderWidth: 1,
+                                borderColor: theme.color10,
+                              }}
+                              onClick={() => {
+                                setSelected(merchant);
+                                setCloseItem(true);
+                              }}
+                            >
+                              <MarginVertical>
+                                <H2 color={theme.color2}>
+                                  {merchant?.profile?.name || null} {page}
+                                </H2>
+                              </MarginVertical>
+                            </TextBtn>
+                          </Row>
+                        </Margin>
+                      );
+                    })}
+                  </AccordionItem.Body>
+                </AccordionItem>
+              </View>
+            </PaddingTop>
+          </PaddingHorizontal>
+        </PaddingHorizontal>
       </View>
     );
   }

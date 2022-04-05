@@ -33,6 +33,7 @@ export default {
         "lottie-react-native": "lottie-react-native",
         "react-native-image-crop-picker": "react-native-image-crop-picker",
         "@servesall/atoms": "@servesall/atoms",
+        "react-native-geolocation-service": "react-native-geolocation-service",
       },
     },
   ],
@@ -64,5 +65,6 @@ export default {
     "react-native-maps",
     "react-native-image-crop-picker",
     "@servesall/atoms",
+    "react-native-geolocation-service",
   ],
 };
