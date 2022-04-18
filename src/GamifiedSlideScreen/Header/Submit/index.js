@@ -11,15 +11,12 @@ export default function Submit() {
     //animation.current.play(12, 132);
   }, []);
 
-  return null;
-
   return (
     <SubmitWrapper>
-      <Padding />
       <Center>
         <LottieView
           style={{
-            width: 46,
+            width: 40,
           }}
           autoPlay={false}
           loop={true}

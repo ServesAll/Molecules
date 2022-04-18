@@ -25,6 +25,7 @@ import Duration from "./DurationSelector";
 import MerchantSelector from "./MerchantSelector";
 import ServiceContainer from "./ServiceContainer";
 import GamifiedSlideScreen from "./GamifiedSlideScreen";
+import NewGamifiedSlideScreen from "./NewGamifiedSlideScreen";
 
 export {
   Modal,
@@ -54,4 +55,5 @@ export {
   MerchantSelector,
   ServiceContainer,
   GamifiedSlideScreen,
+  NewGamifiedSlideScreen,
 };

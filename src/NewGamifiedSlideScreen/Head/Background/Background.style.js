@@ -10,30 +10,14 @@ export const GreyBar = styled.View`
   border-radius: 8px;
 `;
 
-export const GreenBar = styled.View`
-  width: 30%;
+export const Step = styled.View`
+  width: 16px;
   position: absolute;
   height: 16px;
   top: 50%;
-  margin-top: -8px;
-  background-color: ${(props) => props.theme.green};
-  border-radius: 8px;
-`;
-
-export const BarWrapper = styled.View`
-  flex-grow: 1;
-`;
-
-export const SubmitWrapper = styled.View``;
-
-export const Step = styled.View`
-  width: 20px;
-  position: absolute;
-  height: 20px;
-  top: 50%;
   left: ${(props) => props.left}%;
-  margin-left: -10px;
-  margin-top: -10px;
+  margin-left: -8px;
+  margin-top: -8px;
   background-color: ${(props) => props.theme.color10};
-  border-radius: 10px;
+  border-radius: 8px;
 `;

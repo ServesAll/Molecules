@@ -8,15 +8,16 @@ import {
 } from "@servesall/atoms";
 import { StatusBar } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import BottomSheet, { BottomSheetFooter } from "@gorhom/bottom-sheet";
+import BottomSheet from "@gorhom/bottom-sheet";
 import SlideScreen from "./SlideScreen";
 import Header from "./Header";
 import BottomBar from "./BottomBar";
 
 export default function GamifiedSlideScreen({
   children,
-  defaultScreen,
+  defaultScreen = 0,
   loading,
+  Footer,
 }) {
   const number_of_children = children.length;
   const theme = useThemeContext();
@@ -33,14 +34,14 @@ export default function GamifiedSlideScreen({
   // renders
   const renderFooter = useCallback(
     (props) => (
-      <BottomSheetFooter {...props} bottomInset={0}>
-        <BottomBar
-          setActiveScreen={setActiveScreen}
-          activeScreen={activeScreen}
-        />
-      </BottomSheetFooter>
+      <BottomBar
+        props={props}
+        Footer={Footer}
+        activeScreen={activeScreen}
+        setActiveScreen={setActiveScreen}
+      />
     ),
-    [activeScreen]
+    [activeScreen, Footer]
   );
 
   return (
