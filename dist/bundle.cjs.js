@@ -35,7 +35,7 @@ function Background(_ref) {
       onClose = _ref.onClose;
   var opacity = Animated.useSharedValue(0);
   var animatedStyle = Animated.useAnimatedStyle(function () {
-    const _f = function () {
+    var _f = function _f() {
       return {
         opacity: Animated.withTiming(opacity.value, {
           duration: 450,
@@ -46,7 +46,7 @@ function Background(_ref) {
 
     _f._closure = {
       withTiming: Animated.withTiming,
-      opacity,
+      opacity: opacity,
       Easing: {
         bezier: Animated.Easing.bezier
       }
@@ -54,9 +54,7 @@ function Background(_ref) {
     _f.asString = "function _f(){const{withTiming,opacity,Easing}=jsThis._closure;{return{opacity:withTiming(opacity.value,{duration:450,easing:Easing.bezier(0.19,1.0,0.22,1.0)})};}}";
     _f.__workletHash = 10498767669633;
     _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Modal/Background/index.js (13:41)";
-
-    global.__reanimatedWorkletInit(_f);
-
+    _f.__optimalization = 2;
     return _f;
   }());
   React.useEffect(function () {
@@ -9682,7 +9680,7 @@ function Body$1(_ref) {
   var offset = Animated.useSharedValue(2000);
   var x = Animated.useSharedValue(0);
   var animatedStyle = Animated.useAnimatedStyle(function () {
-    const _f = function () {
+    var _f = function _f() {
       return {
         transform: [{
           translateY: Animated.withSpring(offset.value, {
@@ -9696,14 +9694,12 @@ function Body$1(_ref) {
 
     _f._closure = {
       withSpring: Animated.withSpring,
-      offset
+      offset: offset
     };
     _f.asString = "function _f(){const{withSpring,offset}=jsThis._closure;{return{transform:[{translateY:withSpring(offset.value,{damping:10,stiffness:90,mass:0.5})}]};}}";
     _f.__workletHash = 14161509466377;
     _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Modal/Body/index.js (28:41)";
-
-    global.__reanimatedWorkletInit(_f);
-
+    _f.__optimalization = 2;
     return _f;
   }());
   React.useEffect(function () {
@@ -9716,40 +9712,34 @@ function Body$1(_ref) {
 
   var gestureHandler = Animated.useAnimatedGestureHandler({
     onStart: function () {
-      const _f = function (event, ctx) {
+      var _f = function _f(event, ctx) {
         ctx.startY = x.value === 0 ? offset.value : x.value;
       };
 
       _f._closure = {
-        x,
-        offset
+        x: x,
+        offset: offset
       };
-      _f.asString = "function onStart(event,ctx){const{x,offset}=jsThis._closure;{ctx.startY=x.value===0?offset.value:x.value;}}";
-      _f.__workletHash = 10748898788119;
+      _f.asString = "function _f(event,ctx){const{x,offset}=jsThis._closure;{ctx.startY=x.value===0?offset.value:x.value;}}";
+      _f.__workletHash = 6050850853551;
       _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Modal/Body/index.js (51:13)";
-
-      global.__reanimatedWorkletInit(_f);
-
       return _f;
     }(),
     onActive: function () {
-      const _f = function (event, ctx) {
+      var _f = function _f(event, ctx) {
         x.value = ctx.startY + event.translationY;
       };
 
       _f._closure = {
-        x
+        x: x
       };
-      _f.asString = "function onActive(event,ctx){const{x}=jsThis._closure;{x.value=ctx.startY+event.translationY;}}";
-      _f.__workletHash = 3182690952060;
+      _f.asString = "function _f(event,ctx){const{x}=jsThis._closure;{x.value=ctx.startY+event.translationY;}}";
+      _f.__workletHash = 15981876012680;
       _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Modal/Body/index.js (54:14)";
-
-      global.__reanimatedWorkletInit(_f);
-
       return _f;
     }(),
     onEnd: function () {
-      const _f = function (_) {
+      var _f = function _f(_) {
         if (x.value < statusBarHeight && variableHeight) {
           x.value = Animated.withSpring(statusBarHeight);
         }
@@ -9764,25 +9754,22 @@ function Body$1(_ref) {
       };
 
       _f._closure = {
-        x,
-        statusBarHeight,
-        variableHeight,
+        x: x,
+        statusBarHeight: statusBarHeight,
+        variableHeight: variableHeight,
         withSpring: Animated.withSpring,
-        offsetTop,
+        offsetTop: offsetTop,
         runOnJS: Animated.runOnJS,
-        close
+        close: close
       };
-      _f.asString = "function onEnd(_){const{x,statusBarHeight,variableHeight,withSpring,offsetTop,runOnJS,close}=jsThis._closure;{if(x.value<statusBarHeight&&variableHeight){x.value=withSpring(statusBarHeight);}if(!variableHeight){x.value=withSpring(offsetTop);}if(_.translationY>300||x.value>550){runOnJS(close)();}}}";
-      _f.__workletHash = 9421720351401;
+      _f.asString = "function _f(_){const{x,statusBarHeight,variableHeight,withSpring,offsetTop,runOnJS,close}=jsThis._closure;{if(x.value<statusBarHeight&&variableHeight){x.value=withSpring(statusBarHeight);}if(!variableHeight){x.value=withSpring(offsetTop);}if(_.translationY>300||x.value>550){runOnJS(close)();}}}";
+      _f.__workletHash = 14411579282462;
       _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Modal/Body/index.js (57:11)";
-
-      global.__reanimatedWorkletInit(_f);
-
       return _f;
     }()
   });
   var animatedStylePan = Animated.useAnimatedStyle(function () {
-    const _f = function () {
+    var _f = function _f() {
       return {
         transform: [{
           translateY: x.value
@@ -9791,14 +9778,12 @@ function Body$1(_ref) {
     };
 
     _f._closure = {
-      x
+      x: x
     };
     _f.asString = "function _f(){const{x}=jsThis._closure;{return{transform:[{translateY:x.value}]};}}";
     _f.__workletHash = 15133577060486;
     _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Modal/Body/index.js (71:44)";
-
-    global.__reanimatedWorkletInit(_f);
-
+    _f.__optimalization = 3;
     return _f;
   }());
   var PlatformGracePadding = reactNative$1.Platform.OS === "ios" ? 30 : 0;
@@ -9966,7 +9951,7 @@ function Container$1(_ref) {
 
   var opacity = Animated.useSharedValue(1);
   var animatedStyle = Animated.useAnimatedStyle(function () {
-    const _f = function () {
+    var _f = function _f() {
       return {
         opacity: Animated.withTiming(opacity.value, {
           duration: 750,
@@ -9977,7 +9962,7 @@ function Container$1(_ref) {
 
     _f._closure = {
       withTiming: Animated.withTiming,
-      opacity,
+      opacity: opacity,
       Easing: {
         bezier: Animated.Easing.bezier
       }
@@ -9985,9 +9970,7 @@ function Container$1(_ref) {
     _f.asString = "function _f(){const{withTiming,opacity,Easing}=jsThis._closure;{return{opacity:withTiming(opacity.value,{duration:750,easing:Easing.bezier(0.19,1.0,0.22,1.0)})};}}";
     _f.__workletHash = 2945649782466;
     _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Accordion/Views/Container/index.js (17:41)";
-
-    global.__reanimatedWorkletInit(_f);
-
+    _f.__optimalization = 2;
     return _f;
   }());
   React.useEffect(function () {
@@ -10714,7 +10697,7 @@ function HeadElement(_ref) {
   }, [isOpen]);
   var opacity = Animated.useSharedValue(1);
   var animatedStyle = Animated.useAnimatedStyle(function () {
-    const _f = function () {
+    var _f = function _f() {
       return {
         opacity: Animated.withTiming(opacity.value, {
           duration: 750,
@@ -10725,7 +10708,7 @@ function HeadElement(_ref) {
 
     _f._closure = {
       withTiming: Animated.withTiming,
-      opacity,
+      opacity: opacity,
       Easing: {
         bezier: Animated.Easing.bezier
       }
@@ -10733,9 +10716,7 @@ function HeadElement(_ref) {
     _f.asString = "function _f(){const{withTiming,opacity,Easing}=jsThis._closure;{return{opacity:withTiming(opacity.value,{duration:750,easing:Easing.bezier(0.19,1.0,0.22,1.0)})};}}";
     _f.__workletHash = 2945649782466;
     _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Accordion/Views/Head/index.js (58:41)";
-
-    global.__reanimatedWorkletInit(_f);
-
+    _f.__optimalization = 2;
     return _f;
   }());
   React.useEffect(function () {
@@ -10795,7 +10776,7 @@ function BodyElement(_ref) {
       isNormal = _ref$isNormal === void 0 ? false : _ref$isNormal;
   var minHeight = Animated.useSharedValue(isNormal ? 100 : reactNative$1.Dimensions.get("screen").height - 200);
   var transition = Animated.useDerivedValue(function () {
-    const _f = function () {
+    var _f = function _f() {
       return isOpen ? Animated.withTiming(minHeight.value, {
         duration: 200,
         easing: Animated.Easing.bezier(0.19, 1.0, 0.22, 1.0)
@@ -10806,9 +10787,9 @@ function BodyElement(_ref) {
     };
 
     _f._closure = {
-      isOpen,
+      isOpen: isOpen,
       withTiming: Animated.withTiming,
-      minHeight,
+      minHeight: minHeight,
       Easing: {
         bezier: Animated.Easing.bezier
       }
@@ -10816,27 +10797,22 @@ function BodyElement(_ref) {
     _f.asString = "function _f(){const{isOpen,withTiming,minHeight,Easing}=jsThis._closure;{return isOpen?withTiming(minHeight.value,{duration:200,easing:Easing.bezier(0.19,1.0,0.22,1.0)}):withTiming(1,{duration:200,easing:Easing.bezier(0.19,1.0,0.22,1.0)});}}";
     _f.__workletHash = 4911486046926;
     _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Accordion/Views/Body/index.js (18:37)";
-
-    global.__reanimatedWorkletInit(_f);
-
     return _f;
   }());
   var animatedStyle = Animated.useAnimatedStyle(function () {
-    const _f = function () {
+    var _f = function _f() {
       return {
         minHeight: transition.value
       };
     };
 
     _f._closure = {
-      transition
+      transition: transition
     };
     _f.asString = "function _f(){const{transition}=jsThis._closure;{return{minHeight:transition.value};}}";
     _f.__workletHash = 9675814893242;
     _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Accordion/Views/Body/index.js (30:41)";
-
-    global.__reanimatedWorkletInit(_f);
-
+    _f.__optimalization = 3;
     return _f;
   }());
   return /*#__PURE__*/React__default['default'].createElement(Animated__default['default'].View, {
@@ -20554,7 +20530,7 @@ var Screen = function Screen(_ref) {
   var opacity = Animated.useSharedValue(1);
   var windowWidth = Animated.useSharedValue(reactNative$1.Dimensions.get("window").width);
   var animatedWidth = Animated.useAnimatedStyle(function () {
-    const _f = function () {
+    var _f = function _f() {
       return {
         transform: [{
           translateX: width.value
@@ -20570,16 +20546,14 @@ var Screen = function Screen(_ref) {
     };
 
     _f._closure = {
-      width,
-      opacity,
-      windowWidth
+      width: width,
+      opacity: opacity,
+      windowWidth: windowWidth
     };
     _f.asString = "function _f(){const{width,opacity,windowWidth}=jsThis._closure;{return{transform:[{translateX:width.value}],opacity:opacity.value,width:windowWidth.value,position:\"absolute\",top:0,bottom:0,left:0,right:0};}}";
     _f.__workletHash = 9195235317471;
     _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/SlideScreen/Screen.js (15:41)";
-
-    global.__reanimatedWorkletInit(_f);
-
+    _f.__optimalization = 3;
     return _f;
   }());
   React.useEffect(function () {
@@ -40218,7 +40192,7 @@ var Screen$1 = function Screen(_ref) {
   var opacity = Animated.useSharedValue(1);
   var windowWidth = Animated.useSharedValue(reactNative$1.Dimensions.get("window").width);
   var animatedWidth = Animated.useAnimatedStyle(function () {
-    const _f = function () {
+    var _f = function _f() {
       return {
         transform: [{
           translateX: width.value
@@ -40234,16 +40208,14 @@ var Screen$1 = function Screen(_ref) {
     };
 
     _f._closure = {
-      width,
-      opacity,
-      windowWidth
+      width: width,
+      opacity: opacity,
+      windowWidth: windowWidth
     };
     _f.asString = "function _f(){const{width,opacity,windowWidth}=jsThis._closure;{return{transform:[{translateX:width.value}],opacity:opacity.value,width:windowWidth.value,position:\"absolute\",top:0,bottom:0,left:0,right:0};}}";
     _f.__workletHash = 9195235317471;
     _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/GamifiedSlideScreen/SlideScreen/Screen.js (15:41)";
-
-    global.__reanimatedWorkletInit(_f);
-
+    _f.__optimalization = 3;
     return _f;
   }());
   React.useEffect(function () {
@@ -45014,7 +44986,7 @@ function Foreground(_ref) {
   var stepsLenght = steps - 1;
   var width = Animated.useSharedValue(0);
   var animatedWidth = Animated.useAnimatedStyle(function () {
-    const _f = function () {
+    var _f = function _f() {
       return {
         width: width.value + "%",
         top: "50%",
@@ -45024,14 +44996,12 @@ function Foreground(_ref) {
     };
 
     _f._closure = {
-      width
+      width: width
     };
     _f.asString = "function _f(){const{width}=jsThis._closure;{return{width:width.value+\"%\",top:\"50%\",position:\"absolute\",left:0};}}";
     _f.__workletHash = 12242490297983;
     _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/GamifiedSlideScreen/Header/Foreground/index.js (17:41)";
-
-    global.__reanimatedWorkletInit(_f);
-
+    _f.__optimalization = 3;
     return _f;
   }());
   React.useEffect(function () {
@@ -45231,7 +45201,7 @@ var Screen$2 = function Screen(_ref) {
   var opacity = Animated.useSharedValue(1);
   var windowWidth = Animated.useSharedValue(reactNative$1.Dimensions.get("window").width);
   var animatedWidth = Animated.useAnimatedStyle(function () {
-    const _f = function () {
+    var _f = function _f() {
       return {
         transform: [{
           translateX: width.value
@@ -45247,16 +45217,14 @@ var Screen$2 = function Screen(_ref) {
     };
 
     _f._closure = {
-      width,
-      opacity,
-      windowWidth
+      width: width,
+      opacity: opacity,
+      windowWidth: windowWidth
     };
     _f.asString = "function _f(){const{width,opacity,windowWidth}=jsThis._closure;{return{transform:[{translateX:width.value}],opacity:opacity.value,width:windowWidth.value,position:\"absolute\",top:0,bottom:0,left:0,right:0};}}";
     _f.__workletHash = 9195235317471;
     _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/NewGamifiedSlideScreen/Body/Screen.js (15:41)";
-
-    global.__reanimatedWorkletInit(_f);
-
+    _f.__optimalization = 3;
     return _f;
   }());
   React.useEffect(function () {
@@ -45674,7 +45642,7 @@ function Foreground$1(_ref) {
   var stepsLenght = steps - 1;
   var width = Animated.useSharedValue(0);
   var animatedWidth = Animated.useAnimatedStyle(function () {
-    const _f = function () {
+    var _f = function _f() {
       return {
         width: width.value + "%",
         top: "50%",
@@ -45684,14 +45652,12 @@ function Foreground$1(_ref) {
     };
 
     _f._closure = {
-      width
+      width: width
     };
     _f.asString = "function _f(){const{width}=jsThis._closure;{return{width:width.value+\"%\",top:\"50%\",position:\"absolute\",left:0};}}";
     _f.__workletHash = 12242490297983;
     _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/NewGamifiedSlideScreen/Head/Foreground/index.js (17:41)";
-
-    global.__reanimatedWorkletInit(_f);
-
+    _f.__optimalization = 3;
     return _f;
   }());
   React.useEffect(function () {
@@ -45887,6 +45853,110 @@ SlideItem.Footer = function (props) {
   return /*#__PURE__*/React__default['default'].createElement(BottomBar$3, props);
 };
 
+var FooterBtn = function FooterBtn(_ref) {
+  var children = _ref.children,
+      theme = _ref.theme,
+      loading = _ref.loading,
+      success = _ref.success,
+      error = _ref.error,
+      style = _ref.style;
+  var translateY = Animated.useSharedValue(200);
+  var height = Animated.useSharedValue(70);
+  var right = Animated.useSharedValue(0);
+  var left = Animated.useSharedValue(0);
+  var bottom = Animated.useSharedValue(10);
+  var animatedStyle = Animated.useAnimatedStyle(function () {
+    var _f = function _f() {
+      return {
+        transform: [{
+          translateY: translateY.value
+        }],
+        width: "100%"
+      };
+    };
+
+    _f._closure = {
+      translateY: translateY
+    };
+    _f.asString = "function _f(){const{translateY}=jsThis._closure;{return{transform:[{translateY:translateY.value}],width:\"100%\"};}}";
+    _f.__workletHash = 232655703170;
+    _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/FooterButton/index.js (18:41)";
+    _f.__optimalization = 3;
+    return _f;
+  }());
+  var animatedAbsolute = Animated.useAnimatedStyle(function () {
+    var _f = function _f() {
+      return {
+        height: height.value,
+        right: right.value,
+        left: left.value,
+        bottom: bottom.value
+      };
+    };
+
+    _f._closure = {
+      height: height,
+      right: right,
+      left: left,
+      bottom: bottom
+    };
+    _f.asString = "function _f(){const{height,right,left,bottom}=jsThis._closure;{return{height:height.value,right:right.value,left:left.value,bottom:bottom.value};}}";
+    _f.__workletHash = 12878771773755;
+    _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/FooterButton/index.js (29:44)";
+    _f.__optimalization = 3;
+    return _f;
+  }());
+  React.useEffect(function () {
+    translateY.value = Animated.withTiming(0, {
+      duration: 450,
+      easing: Animated.Easing.in(Animated.Easing.elastic(2))
+    });
+  }, []);
+  React.useEffect(function () {
+    if (loading) {
+      height.value = Animated.withTiming(reactNative$1.Dimensions.get("window").height, {
+        duration: 250
+      });
+      right.value = Animated.withTiming(0, {
+        duration: 250,
+        easing: Animated.Easing.in(Animated.Easing.elastic(2))
+      });
+      bottom.value = Animated.withTiming(0, {
+        duration: 250,
+        easing: Animated.Easing.in(Animated.Easing.elastic(2))
+      });
+    } else {
+      setTimeout(function () {
+        height.value = Animated.withTiming(70, {
+          duration: 200
+        });
+        right.value = Animated.withTiming(0, {
+          duration: 200,
+          easing: Animated.Easing.in(Animated.Easing.elastic(2))
+        });
+        bottom.value = Animated.withTiming(10, {
+          duration: 200,
+          easing: Animated.Easing.in(Animated.Easing.elastic(2))
+        });
+      }, 600);
+    }
+  }, [loading]);
+  return /*#__PURE__*/React__default['default'].createElement(Animated__default['default'].View, {
+    style: [{
+      flex: 1,
+      position: "absolute",
+      height: 70,
+      width: "100%",
+      zIndex: 11,
+      backgroundColor: loading || success || error ? "rgba(255, 255, 255, 0.8)" : "rgba(255, 255, 255, 0)"
+    }, animatedAbsolute]
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.Center, null, /*#__PURE__*/React__default['default'].createElement(Animated__default['default'].View, {
+    style: [animatedStyle]
+  }, success && /*#__PURE__*/React__default['default'].createElement(atoms.Center, null, /*#__PURE__*/React__default['default'].createElement(atoms.Success, null)), error && /*#__PURE__*/React__default['default'].createElement(atoms.Center, null, /*#__PURE__*/React__default['default'].createElement(atoms.Error, null)), !success && !error && loading && /*#__PURE__*/React__default['default'].createElement(atoms.Center, null, /*#__PURE__*/React__default['default'].createElement(atoms.Loader, {
+    color: theme.color2
+  })), !success && !error && !loading && /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, children))));
+};
+
 exports.AccordionItem = AccordionItem;
 exports.AccordionProvider = AccordionProvider;
 exports.AccordionScroll = AccordionScroll;
@@ -45896,6 +45966,7 @@ exports.BookingMerchant = BookingMerchant;
 exports.DateRange = DateRange;
 exports.Duration = DurationItem;
 exports.FooterActions = FooterActions;
+exports.FooterBtn = FooterBtn;
 exports.GamifiedSlideScreen = GamifiedSlideScreen;
 exports.ImageLoader = ImageLoader;
 exports.ImageUpload = ImageUpload;

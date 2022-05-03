@@ -19,7 +19,7 @@ function Background(_ref) {
       onClose = _ref.onClose;
   var opacity = useSharedValue(0);
   var animatedStyle = useAnimatedStyle(function () {
-    const _f = function () {
+    var _f = function _f() {
       return {
         opacity: withTiming(opacity.value, {
           duration: 450,
@@ -29,8 +29,8 @@ function Background(_ref) {
     };
 
     _f._closure = {
-      withTiming,
-      opacity,
+      withTiming: withTiming,
+      opacity: opacity,
       Easing: {
         bezier: Easing.bezier
       }
@@ -38,9 +38,7 @@ function Background(_ref) {
     _f.asString = "function _f(){const{withTiming,opacity,Easing}=jsThis._closure;{return{opacity:withTiming(opacity.value,{duration:450,easing:Easing.bezier(0.19,1.0,0.22,1.0)})};}}";
     _f.__workletHash = 10498767669633;
     _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Modal/Background/index.js (13:41)";
-
-    global.__reanimatedWorkletInit(_f);
-
+    _f.__optimalization = 2;
     return _f;
   }());
   useEffect(function () {
@@ -9666,7 +9664,7 @@ function Body$1(_ref) {
   var offset = useSharedValue(2000);
   var x = useSharedValue(0);
   var animatedStyle = useAnimatedStyle(function () {
-    const _f = function () {
+    var _f = function _f() {
       return {
         transform: [{
           translateY: withSpring(offset.value, {
@@ -9679,15 +9677,13 @@ function Body$1(_ref) {
     };
 
     _f._closure = {
-      withSpring,
-      offset
+      withSpring: withSpring,
+      offset: offset
     };
     _f.asString = "function _f(){const{withSpring,offset}=jsThis._closure;{return{transform:[{translateY:withSpring(offset.value,{damping:10,stiffness:90,mass:0.5})}]};}}";
     _f.__workletHash = 14161509466377;
     _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Modal/Body/index.js (28:41)";
-
-    global.__reanimatedWorkletInit(_f);
-
+    _f.__optimalization = 2;
     return _f;
   }());
   useEffect(function () {
@@ -9700,40 +9696,34 @@ function Body$1(_ref) {
 
   var gestureHandler = useAnimatedGestureHandler({
     onStart: function () {
-      const _f = function (event, ctx) {
+      var _f = function _f(event, ctx) {
         ctx.startY = x.value === 0 ? offset.value : x.value;
       };
 
       _f._closure = {
-        x,
-        offset
+        x: x,
+        offset: offset
       };
-      _f.asString = "function onStart(event,ctx){const{x,offset}=jsThis._closure;{ctx.startY=x.value===0?offset.value:x.value;}}";
-      _f.__workletHash = 10748898788119;
+      _f.asString = "function _f(event,ctx){const{x,offset}=jsThis._closure;{ctx.startY=x.value===0?offset.value:x.value;}}";
+      _f.__workletHash = 6050850853551;
       _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Modal/Body/index.js (51:13)";
-
-      global.__reanimatedWorkletInit(_f);
-
       return _f;
     }(),
     onActive: function () {
-      const _f = function (event, ctx) {
+      var _f = function _f(event, ctx) {
         x.value = ctx.startY + event.translationY;
       };
 
       _f._closure = {
-        x
+        x: x
       };
-      _f.asString = "function onActive(event,ctx){const{x}=jsThis._closure;{x.value=ctx.startY+event.translationY;}}";
-      _f.__workletHash = 3182690952060;
+      _f.asString = "function _f(event,ctx){const{x}=jsThis._closure;{x.value=ctx.startY+event.translationY;}}";
+      _f.__workletHash = 15981876012680;
       _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Modal/Body/index.js (54:14)";
-
-      global.__reanimatedWorkletInit(_f);
-
       return _f;
     }(),
     onEnd: function () {
-      const _f = function (_) {
+      var _f = function _f(_) {
         if (x.value < statusBarHeight && variableHeight) {
           x.value = withSpring(statusBarHeight);
         }
@@ -9748,25 +9738,22 @@ function Body$1(_ref) {
       };
 
       _f._closure = {
-        x,
-        statusBarHeight,
-        variableHeight,
-        withSpring,
-        offsetTop,
-        runOnJS,
-        close
+        x: x,
+        statusBarHeight: statusBarHeight,
+        variableHeight: variableHeight,
+        withSpring: withSpring,
+        offsetTop: offsetTop,
+        runOnJS: runOnJS,
+        close: close
       };
-      _f.asString = "function onEnd(_){const{x,statusBarHeight,variableHeight,withSpring,offsetTop,runOnJS,close}=jsThis._closure;{if(x.value<statusBarHeight&&variableHeight){x.value=withSpring(statusBarHeight);}if(!variableHeight){x.value=withSpring(offsetTop);}if(_.translationY>300||x.value>550){runOnJS(close)();}}}";
-      _f.__workletHash = 9421720351401;
+      _f.asString = "function _f(_){const{x,statusBarHeight,variableHeight,withSpring,offsetTop,runOnJS,close}=jsThis._closure;{if(x.value<statusBarHeight&&variableHeight){x.value=withSpring(statusBarHeight);}if(!variableHeight){x.value=withSpring(offsetTop);}if(_.translationY>300||x.value>550){runOnJS(close)();}}}";
+      _f.__workletHash = 14411579282462;
       _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Modal/Body/index.js (57:11)";
-
-      global.__reanimatedWorkletInit(_f);
-
       return _f;
     }()
   });
   var animatedStylePan = useAnimatedStyle(function () {
-    const _f = function () {
+    var _f = function _f() {
       return {
         transform: [{
           translateY: x.value
@@ -9775,14 +9762,12 @@ function Body$1(_ref) {
     };
 
     _f._closure = {
-      x
+      x: x
     };
     _f.asString = "function _f(){const{x}=jsThis._closure;{return{transform:[{translateY:x.value}]};}}";
     _f.__workletHash = 15133577060486;
     _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Modal/Body/index.js (71:44)";
-
-    global.__reanimatedWorkletInit(_f);
-
+    _f.__optimalization = 3;
     return _f;
   }());
   var PlatformGracePadding = Platform.OS === "ios" ? 30 : 0;
@@ -9950,7 +9935,7 @@ function Container$1(_ref) {
 
   var opacity = useSharedValue(1);
   var animatedStyle = useAnimatedStyle(function () {
-    const _f = function () {
+    var _f = function _f() {
       return {
         opacity: withTiming(opacity.value, {
           duration: 750,
@@ -9960,8 +9945,8 @@ function Container$1(_ref) {
     };
 
     _f._closure = {
-      withTiming,
-      opacity,
+      withTiming: withTiming,
+      opacity: opacity,
       Easing: {
         bezier: Easing.bezier
       }
@@ -9969,9 +9954,7 @@ function Container$1(_ref) {
     _f.asString = "function _f(){const{withTiming,opacity,Easing}=jsThis._closure;{return{opacity:withTiming(opacity.value,{duration:750,easing:Easing.bezier(0.19,1.0,0.22,1.0)})};}}";
     _f.__workletHash = 2945649782466;
     _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Accordion/Views/Container/index.js (17:41)";
-
-    global.__reanimatedWorkletInit(_f);
-
+    _f.__optimalization = 2;
     return _f;
   }());
   useEffect(function () {
@@ -10698,7 +10681,7 @@ function HeadElement(_ref) {
   }, [isOpen]);
   var opacity = useSharedValue(1);
   var animatedStyle = useAnimatedStyle(function () {
-    const _f = function () {
+    var _f = function _f() {
       return {
         opacity: withTiming(opacity.value, {
           duration: 750,
@@ -10708,8 +10691,8 @@ function HeadElement(_ref) {
     };
 
     _f._closure = {
-      withTiming,
-      opacity,
+      withTiming: withTiming,
+      opacity: opacity,
       Easing: {
         bezier: Easing.bezier
       }
@@ -10717,9 +10700,7 @@ function HeadElement(_ref) {
     _f.asString = "function _f(){const{withTiming,opacity,Easing}=jsThis._closure;{return{opacity:withTiming(opacity.value,{duration:750,easing:Easing.bezier(0.19,1.0,0.22,1.0)})};}}";
     _f.__workletHash = 2945649782466;
     _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Accordion/Views/Head/index.js (58:41)";
-
-    global.__reanimatedWorkletInit(_f);
-
+    _f.__optimalization = 2;
     return _f;
   }());
   useEffect(function () {
@@ -10779,7 +10760,7 @@ function BodyElement(_ref) {
       isNormal = _ref$isNormal === void 0 ? false : _ref$isNormal;
   var minHeight = useSharedValue(isNormal ? 100 : Dimensions.get("screen").height - 200);
   var transition = useDerivedValue(function () {
-    const _f = function () {
+    var _f = function _f() {
       return isOpen ? withTiming(minHeight.value, {
         duration: 200,
         easing: Easing.bezier(0.19, 1.0, 0.22, 1.0)
@@ -10790,9 +10771,9 @@ function BodyElement(_ref) {
     };
 
     _f._closure = {
-      isOpen,
-      withTiming,
-      minHeight,
+      isOpen: isOpen,
+      withTiming: withTiming,
+      minHeight: minHeight,
       Easing: {
         bezier: Easing.bezier
       }
@@ -10800,27 +10781,22 @@ function BodyElement(_ref) {
     _f.asString = "function _f(){const{isOpen,withTiming,minHeight,Easing}=jsThis._closure;{return isOpen?withTiming(minHeight.value,{duration:200,easing:Easing.bezier(0.19,1.0,0.22,1.0)}):withTiming(1,{duration:200,easing:Easing.bezier(0.19,1.0,0.22,1.0)});}}";
     _f.__workletHash = 4911486046926;
     _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Accordion/Views/Body/index.js (18:37)";
-
-    global.__reanimatedWorkletInit(_f);
-
     return _f;
   }());
   var animatedStyle = useAnimatedStyle(function () {
-    const _f = function () {
+    var _f = function _f() {
       return {
         minHeight: transition.value
       };
     };
 
     _f._closure = {
-      transition
+      transition: transition
     };
     _f.asString = "function _f(){const{transition}=jsThis._closure;{return{minHeight:transition.value};}}";
     _f.__workletHash = 9675814893242;
     _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/Accordion/Views/Body/index.js (30:41)";
-
-    global.__reanimatedWorkletInit(_f);
-
+    _f.__optimalization = 3;
     return _f;
   }());
   return /*#__PURE__*/React.createElement(Animated.View, {
@@ -20538,7 +20514,7 @@ var Screen = function Screen(_ref) {
   var opacity = useSharedValue(1);
   var windowWidth = useSharedValue(Dimensions.get("window").width);
   var animatedWidth = useAnimatedStyle(function () {
-    const _f = function () {
+    var _f = function _f() {
       return {
         transform: [{
           translateX: width.value
@@ -20554,16 +20530,14 @@ var Screen = function Screen(_ref) {
     };
 
     _f._closure = {
-      width,
-      opacity,
-      windowWidth
+      width: width,
+      opacity: opacity,
+      windowWidth: windowWidth
     };
     _f.asString = "function _f(){const{width,opacity,windowWidth}=jsThis._closure;{return{transform:[{translateX:width.value}],opacity:opacity.value,width:windowWidth.value,position:\"absolute\",top:0,bottom:0,left:0,right:0};}}";
     _f.__workletHash = 9195235317471;
     _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/SlideScreen/Screen.js (15:41)";
-
-    global.__reanimatedWorkletInit(_f);
-
+    _f.__optimalization = 3;
     return _f;
   }());
   useEffect(function () {
@@ -40202,7 +40176,7 @@ var Screen$1 = function Screen(_ref) {
   var opacity = useSharedValue(1);
   var windowWidth = useSharedValue(Dimensions.get("window").width);
   var animatedWidth = useAnimatedStyle(function () {
-    const _f = function () {
+    var _f = function _f() {
       return {
         transform: [{
           translateX: width.value
@@ -40218,16 +40192,14 @@ var Screen$1 = function Screen(_ref) {
     };
 
     _f._closure = {
-      width,
-      opacity,
-      windowWidth
+      width: width,
+      opacity: opacity,
+      windowWidth: windowWidth
     };
     _f.asString = "function _f(){const{width,opacity,windowWidth}=jsThis._closure;{return{transform:[{translateX:width.value}],opacity:opacity.value,width:windowWidth.value,position:\"absolute\",top:0,bottom:0,left:0,right:0};}}";
     _f.__workletHash = 9195235317471;
     _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/GamifiedSlideScreen/SlideScreen/Screen.js (15:41)";
-
-    global.__reanimatedWorkletInit(_f);
-
+    _f.__optimalization = 3;
     return _f;
   }());
   useEffect(function () {
@@ -44998,7 +44970,7 @@ function Foreground(_ref) {
   var stepsLenght = steps - 1;
   var width = useSharedValue(0);
   var animatedWidth = useAnimatedStyle(function () {
-    const _f = function () {
+    var _f = function _f() {
       return {
         width: width.value + "%",
         top: "50%",
@@ -45008,14 +44980,12 @@ function Foreground(_ref) {
     };
 
     _f._closure = {
-      width
+      width: width
     };
     _f.asString = "function _f(){const{width}=jsThis._closure;{return{width:width.value+\"%\",top:\"50%\",position:\"absolute\",left:0};}}";
     _f.__workletHash = 12242490297983;
     _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/GamifiedSlideScreen/Header/Foreground/index.js (17:41)";
-
-    global.__reanimatedWorkletInit(_f);
-
+    _f.__optimalization = 3;
     return _f;
   }());
   useEffect(function () {
@@ -45215,7 +45185,7 @@ var Screen$2 = function Screen(_ref) {
   var opacity = useSharedValue(1);
   var windowWidth = useSharedValue(Dimensions.get("window").width);
   var animatedWidth = useAnimatedStyle(function () {
-    const _f = function () {
+    var _f = function _f() {
       return {
         transform: [{
           translateX: width.value
@@ -45231,16 +45201,14 @@ var Screen$2 = function Screen(_ref) {
     };
 
     _f._closure = {
-      width,
-      opacity,
-      windowWidth
+      width: width,
+      opacity: opacity,
+      windowWidth: windowWidth
     };
     _f.asString = "function _f(){const{width,opacity,windowWidth}=jsThis._closure;{return{transform:[{translateX:width.value}],opacity:opacity.value,width:windowWidth.value,position:\"absolute\",top:0,bottom:0,left:0,right:0};}}";
     _f.__workletHash = 9195235317471;
     _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/NewGamifiedSlideScreen/Body/Screen.js (15:41)";
-
-    global.__reanimatedWorkletInit(_f);
-
+    _f.__optimalization = 3;
     return _f;
   }());
   useEffect(function () {
@@ -45658,7 +45626,7 @@ function Foreground$1(_ref) {
   var stepsLenght = steps - 1;
   var width = useSharedValue(0);
   var animatedWidth = useAnimatedStyle(function () {
-    const _f = function () {
+    var _f = function _f() {
       return {
         width: width.value + "%",
         top: "50%",
@@ -45668,14 +45636,12 @@ function Foreground$1(_ref) {
     };
 
     _f._closure = {
-      width
+      width: width
     };
     _f.asString = "function _f(){const{width}=jsThis._closure;{return{width:width.value+\"%\",top:\"50%\",position:\"absolute\",left:0};}}";
     _f.__workletHash = 12242490297983;
     _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/NewGamifiedSlideScreen/Head/Foreground/index.js (17:41)";
-
-    global.__reanimatedWorkletInit(_f);
-
+    _f.__optimalization = 3;
     return _f;
   }());
   useEffect(function () {
@@ -45871,4 +45837,108 @@ SlideItem.Footer = function (props) {
   return /*#__PURE__*/React.createElement(BottomBar$3, props);
 };
 
-export { AccordionItem, AccordionProvider, AccordionScroll, AccordionScroller, Actions, BookingMerchant, DateRange, DurationItem as Duration, FooterActions, GamifiedSlideScreen, ImageLoader, ImageUpload, Map$1 as Map, MerchantCard, MerchantSelector, Modal, ModalContext, ModalProvider, SlideItem as NewGamifiedSlideScreen, ResourceDragAndDrop, Screen, ServiceContainer, SlideScreen, Times as TimeSelector, Weekdays$1 as WeekdaySelector, useAccordionContext, useAccordionHook, useModalContext };
+var FooterBtn = function FooterBtn(_ref) {
+  var children = _ref.children,
+      theme = _ref.theme,
+      loading = _ref.loading,
+      success = _ref.success,
+      error = _ref.error,
+      style = _ref.style;
+  var translateY = useSharedValue(200);
+  var height = useSharedValue(70);
+  var right = useSharedValue(0);
+  var left = useSharedValue(0);
+  var bottom = useSharedValue(10);
+  var animatedStyle = useAnimatedStyle(function () {
+    var _f = function _f() {
+      return {
+        transform: [{
+          translateY: translateY.value
+        }],
+        width: "100%"
+      };
+    };
+
+    _f._closure = {
+      translateY: translateY
+    };
+    _f.asString = "function _f(){const{translateY}=jsThis._closure;{return{transform:[{translateY:translateY.value}],width:\"100%\"};}}";
+    _f.__workletHash = 232655703170;
+    _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/FooterButton/index.js (18:41)";
+    _f.__optimalization = 3;
+    return _f;
+  }());
+  var animatedAbsolute = useAnimatedStyle(function () {
+    var _f = function _f() {
+      return {
+        height: height.value,
+        right: right.value,
+        left: left.value,
+        bottom: bottom.value
+      };
+    };
+
+    _f._closure = {
+      height: height,
+      right: right,
+      left: left,
+      bottom: bottom
+    };
+    _f.asString = "function _f(){const{height,right,left,bottom}=jsThis._closure;{return{height:height.value,right:right.value,left:left.value,bottom:bottom.value};}}";
+    _f.__workletHash = 12878771773755;
+    _f.__location = "/Users/tom/Desktop/GitHub/Molecules/src/FooterButton/index.js (29:44)";
+    _f.__optimalization = 3;
+    return _f;
+  }());
+  useEffect(function () {
+    translateY.value = withTiming(0, {
+      duration: 450,
+      easing: Easing.in(Easing.elastic(2))
+    });
+  }, []);
+  useEffect(function () {
+    if (loading) {
+      height.value = withTiming(Dimensions.get("window").height, {
+        duration: 250
+      });
+      right.value = withTiming(0, {
+        duration: 250,
+        easing: Easing.in(Easing.elastic(2))
+      });
+      bottom.value = withTiming(0, {
+        duration: 250,
+        easing: Easing.in(Easing.elastic(2))
+      });
+    } else {
+      setTimeout(function () {
+        height.value = withTiming(70, {
+          duration: 200
+        });
+        right.value = withTiming(0, {
+          duration: 200,
+          easing: Easing.in(Easing.elastic(2))
+        });
+        bottom.value = withTiming(10, {
+          duration: 200,
+          easing: Easing.in(Easing.elastic(2))
+        });
+      }, 600);
+    }
+  }, [loading]);
+  return /*#__PURE__*/React.createElement(Animated.View, {
+    style: [{
+      flex: 1,
+      position: "absolute",
+      height: 70,
+      width: "100%",
+      zIndex: 11,
+      backgroundColor: loading || success || error ? "rgba(255, 255, 255, 0.8)" : "rgba(255, 255, 255, 0)"
+    }, animatedAbsolute]
+  }, /*#__PURE__*/React.createElement(Center, null, /*#__PURE__*/React.createElement(Animated.View, {
+    style: [animatedStyle]
+  }, success && /*#__PURE__*/React.createElement(Center, null, /*#__PURE__*/React.createElement(Success, null)), error && /*#__PURE__*/React.createElement(Center, null, /*#__PURE__*/React.createElement(Error$1, null)), !success && !error && loading && /*#__PURE__*/React.createElement(Center, null, /*#__PURE__*/React.createElement(Loader, {
+    color: theme.color2
+  })), !success && !error && !loading && /*#__PURE__*/React.createElement(React.Fragment, null, children))));
+};
+
+export { AccordionItem, AccordionProvider, AccordionScroll, AccordionScroller, Actions, BookingMerchant, DateRange, DurationItem as Duration, FooterActions, FooterBtn, GamifiedSlideScreen, ImageLoader, ImageUpload, Map$1 as Map, MerchantCard, MerchantSelector, Modal, ModalContext, ModalProvider, SlideItem as NewGamifiedSlideScreen, ResourceDragAndDrop, Screen, ServiceContainer, SlideScreen, Times as TimeSelector, Weekdays$1 as WeekdaySelector, useAccordionContext, useAccordionHook, useModalContext };

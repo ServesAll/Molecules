@@ -26,6 +26,7 @@ import MerchantSelector from "./MerchantSelector";
 import ServiceContainer from "./ServiceContainer";
 import GamifiedSlideScreen from "./GamifiedSlideScreen";
 import NewGamifiedSlideScreen from "./NewGamifiedSlideScreen";
+import FooterBtn from "./FooterButton";
 
 export {
   Modal,
@@ -56,4 +57,5 @@ export {
   ServiceContainer,
   GamifiedSlideScreen,
   NewGamifiedSlideScreen,
+  FooterBtn,
 };
