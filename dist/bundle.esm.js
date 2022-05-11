@@ -3,7 +3,7 @@ import { Pressable, Platform, SafeAreaView, StatusBar, Dimensions, View, findNod
 import Animated, { useSharedValue, useAnimatedStyle, withTiming, Easing, useAnimatedGestureHandler, withSpring, runOnJS, useDerivedValue } from 'react-native-reanimated';
 import { GestureHandlerRootView, PanGestureHandler, FlatList, ScrollView as ScrollView$1 } from 'react-native-gesture-handler';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
-import { useThemeContext, Row, Padding, AnimatedButton, Center, Success, Error as Error$1, Loader, MarginHorizontal, H3, Icon, PaddingVertical, H2, Margin, RoundedBtn, PaddingTop, H4, PaddingHorizontal, Switch, CenterLeft, H1, TextBtn, MarginVertical, Box, FullScreen } from '@servesall/atoms';
+import { useThemeContext, Row, Padding, AnimatedButton, Center, Success, Error as Error$1, Loader, MarginHorizontal, H3, Icon, PaddingVertical, H2, Margin, RoundedBtn, PaddingTop, H4, PaddingHorizontal, Switch, CenterLeft, MarginVertical, TextBtn, Box, FullScreen } from '@servesall/atoms';
 import LottieView from 'lottie-react-native';
 import MapView from 'react-native-maps';
 import Geolocation from 'react-native-geolocation-service';
@@ -21715,12 +21715,12 @@ var MerchantSelector = React.memo(function (_ref) {
     style: {
       backgroundColor: theme.color1
     }
-  }, /*#__PURE__*/React.createElement(PaddingHorizontal, null, /*#__PURE__*/React.createElement(PaddingHorizontal, {
+  }, /*#__PURE__*/React.createElement(PaddingHorizontal, {
     style: {
-      borderBottomWidth: 1,
-      borderColor: theme.color10
+      borderBottomWidth: 2,
+      borderColor: theme.color7
     }
-  }, /*#__PURE__*/React.createElement(PaddingTop, null, /*#__PURE__*/React.createElement(View, null, /*#__PURE__*/React.createElement(AccordionItem, {
+  }, /*#__PURE__*/React.createElement(PaddingHorizontal, null, /*#__PURE__*/React.createElement(PaddingTop, null, /*#__PURE__*/React.createElement(View, null, /*#__PURE__*/React.createElement(AccordionItem, {
     key: "MerchantBookings",
     eventKey: "MerchantBookings",
     closeItem: closeItem,
@@ -21729,9 +21729,9 @@ var MerchantSelector = React.memo(function (_ref) {
     }
   }, /*#__PURE__*/React.createElement(AccordionItem.Head, {
     lightContent: false
-  }, /*#__PURE__*/React.createElement(Margin, null, /*#__PURE__*/React.createElement(H3, {
+  }, /*#__PURE__*/React.createElement(MarginVertical, null, /*#__PURE__*/React.createElement(H3, {
     color: theme.color2
-  }, selected ? (_selected$profile = selected.profile) === null || _selected$profile === void 0 ? void 0 : _selected$profile.name : ((_merchants$ = merchants[0]) === null || _merchants$ === void 0 ? void 0 : (_merchants$$merchant = _merchants$.merchant) === null || _merchants$$merchant === void 0 ? void 0 : (_merchants$$merchant$ = _merchants$$merchant.profile) === null || _merchants$$merchant$ === void 0 ? void 0 : _merchants$$merchant$.name) || null), /*#__PURE__*/React.createElement(H1, {
+  }, selected ? (_selected$profile = selected.profile) === null || _selected$profile === void 0 ? void 0 : _selected$profile.name : ((_merchants$ = merchants[0]) === null || _merchants$ === void 0 ? void 0 : (_merchants$$merchant = _merchants$.merchant) === null || _merchants$$merchant === void 0 ? void 0 : (_merchants$$merchant$ = _merchants$$merchant.profile) === null || _merchants$$merchant$ === void 0 ? void 0 : _merchants$$merchant$.name) || null), /*#__PURE__*/React.createElement(H2, {
     color: theme.color2
   }, page))), /*#__PURE__*/React.createElement(AccordionItem.Body, {
     isNormal: true
@@ -21739,7 +21739,7 @@ var MerchantSelector = React.memo(function (_ref) {
     var _merchant$profile;
 
     var merchant = _ref2.merchant;
-    return /*#__PURE__*/React.createElement(Margin, {
+    return /*#__PURE__*/React.createElement(MarginVertical, {
       key: index
     }, /*#__PURE__*/React.createElement(Row, null, /*#__PURE__*/React.createElement(TextBtn, {
       borderColorActive: theme.color9,

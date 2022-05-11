@@ -21717,12 +21717,12 @@
       style: {
         backgroundColor: theme.color1
       }
-    }, /*#__PURE__*/React__default['default'].createElement(atoms.PaddingHorizontal, null, /*#__PURE__*/React__default['default'].createElement(atoms.PaddingHorizontal, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.PaddingHorizontal, {
       style: {
-        borderBottomWidth: 1,
-        borderColor: theme.color10
+        borderBottomWidth: 2,
+        borderColor: theme.color7
       }
-    }, /*#__PURE__*/React__default['default'].createElement(atoms.PaddingTop, null, /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, null, /*#__PURE__*/React__default['default'].createElement(AccordionItem, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.PaddingHorizontal, null, /*#__PURE__*/React__default['default'].createElement(atoms.PaddingTop, null, /*#__PURE__*/React__default['default'].createElement(reactNative$1.View, null, /*#__PURE__*/React__default['default'].createElement(AccordionItem, {
       key: "MerchantBookings",
       eventKey: "MerchantBookings",
       closeItem: closeItem,
@@ -21731,9 +21731,9 @@
       }
     }, /*#__PURE__*/React__default['default'].createElement(AccordionItem.Head, {
       lightContent: false
-    }, /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.MarginVertical, null, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
       color: theme.color2
-    }, selected ? (_selected$profile = selected.profile) === null || _selected$profile === void 0 ? void 0 : _selected$profile.name : ((_merchants$ = merchants[0]) === null || _merchants$ === void 0 ? void 0 : (_merchants$$merchant = _merchants$.merchant) === null || _merchants$$merchant === void 0 ? void 0 : (_merchants$$merchant$ = _merchants$$merchant.profile) === null || _merchants$$merchant$ === void 0 ? void 0 : _merchants$$merchant$.name) || null), /*#__PURE__*/React__default['default'].createElement(atoms.H1, {
+    }, selected ? (_selected$profile = selected.profile) === null || _selected$profile === void 0 ? void 0 : _selected$profile.name : ((_merchants$ = merchants[0]) === null || _merchants$ === void 0 ? void 0 : (_merchants$$merchant = _merchants$.merchant) === null || _merchants$$merchant === void 0 ? void 0 : (_merchants$$merchant$ = _merchants$$merchant.profile) === null || _merchants$$merchant$ === void 0 ? void 0 : _merchants$$merchant$.name) || null), /*#__PURE__*/React__default['default'].createElement(atoms.H2, {
       color: theme.color2
     }, page))), /*#__PURE__*/React__default['default'].createElement(AccordionItem.Body, {
       isNormal: true
@@ -21741,7 +21741,7 @@
       var _merchant$profile;
 
       var merchant = _ref2.merchant;
-      return /*#__PURE__*/React__default['default'].createElement(atoms.Margin, {
+      return /*#__PURE__*/React__default['default'].createElement(atoms.MarginVertical, {
         key: index
       }, /*#__PURE__*/React__default['default'].createElement(atoms.Row, null, /*#__PURE__*/React__default['default'].createElement(atoms.TextBtn, {
         borderColorActive: theme.color9,

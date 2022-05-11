@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 import {
-  Margin,
   PaddingTop,
   MarginVertical,
   PaddingHorizontal,
@@ -33,10 +32,10 @@ const MerchantSelector = React.memo(
 
     return (
       <View style={{ backgroundColor: theme.color1 }}>
-        <PaddingHorizontal>
-          <PaddingHorizontal
-            style={{ borderBottomWidth: 1, borderColor: theme.color10 }}
-          >
+        <PaddingHorizontal
+          style={{ borderBottomWidth: 2, borderColor: theme.color7 }}
+        >
+          <PaddingHorizontal>
             <PaddingTop>
               <View>
                 <AccordionItem
@@ -46,19 +45,19 @@ const MerchantSelector = React.memo(
                   onChange={() => setCloseItem(false)}
                 >
                   <AccordionItem.Head lightContent={false}>
-                    <Margin>
+                    <MarginVertical>
                       <H3 color={theme.color2}>
                         {selected
                           ? selected.profile?.name
                           : merchants[0]?.merchant?.profile?.name || null}
                       </H3>
-                      <H1 color={theme.color2}>{page}</H1>
-                    </Margin>
+                      <H2 color={theme.color2}>{page}</H2>
+                    </MarginVertical>
                   </AccordionItem.Head>
                   <AccordionItem.Body isNormal={true}>
                     {merchants.map(({ merchant }, index) => {
                       return (
-                        <Margin key={index}>
+                        <MarginVertical key={index}>
                           <Row>
                             <TextBtn
                               borderColorActive={theme.color9}
@@ -79,7 +78,7 @@ const MerchantSelector = React.memo(
                               </MarginVertical>
                             </TextBtn>
                           </Row>
-                        </Margin>
+                        </MarginVertical>
                       );
                     })}
                   </AccordionItem.Body>
