@@ -20,6 +20,7 @@ export default function GamifiedHeader({
   children,
   activeScreen,
   setActiveScreen,
+  showHeader = true,
 }) {
   const navigation = useNavigation();
   const theme = useThemeContext();
@@ -77,7 +78,7 @@ export default function GamifiedHeader({
             />
           </Margin>
         </BarWrapper>
-        <Submit activeScreen={activeScreen}>{children}</Submit>
+        {showHeader && <Submit activeScreen={activeScreen}>{children}</Submit>}
       </Row>
     </MarginHorizontal>
   );

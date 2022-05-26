@@ -11,7 +11,8 @@ import {
 } from "@servesall/atoms";
 
 const Weekday = React.memo(({ dayName, isActive = false, weekdayToggle }) => {
-  const { fontFamily2 } = useThemeContext();
+  const { fontFamily2, greenDark, greenLight, color1, color2 } =
+    useThemeContext();
   const [isEnabled, setIsEnabled] = useState(isActive);
   const toggleSwitch = () => {
     setIsEnabled((previousState) => !previousState);
@@ -25,24 +26,27 @@ const Weekday = React.memo(({ dayName, isActive = false, weekdayToggle }) => {
   }, [isActive]);
 
   return (
-    <PaddingHorizontal>
-      <MarginHorizontal>
-        <PaddingVertical>
-          <Switch value={isEnabled} onValueChange={(value) => toggleSwitch()}>
-            <CenterLeft>
-              <Margin>
-                <H3
-                  fontFamily={fontFamily2}
-                  style={{ textTransform: "capitalize" }}
-                >
-                  {dayName}
-                </H3>
-              </Margin>
-            </CenterLeft>
-          </Switch>
-        </PaddingVertical>
-      </MarginHorizontal>
-    </PaddingHorizontal>
+    <MarginHorizontal>
+      <PaddingVertical>
+        <Switch
+          fat={true}
+          value={isEnabled}
+          onValueChange={(value) => toggleSwitch()}
+          style={{ backgroundColor: isEnabled ? greenLight : color1 }}
+        >
+          <CenterLeft>
+            <Margin>
+              <H3
+                color={isEnabled ? greenDark : color2}
+                style={{ textTransform: "capitalize" }}
+              >
+                {dayName}
+              </H3>
+            </Margin>
+          </CenterLeft>
+        </Switch>
+      </PaddingVertical>
+    </MarginHorizontal>
   );
 });
 

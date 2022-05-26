@@ -4,11 +4,11 @@ import {
   PaddingTop,
   MarginVertical,
   PaddingHorizontal,
-  TextBtn,
-  H1,
+  MarginBottom,
+  Switch,
   H2,
   H3,
-  Row,
+  Margin,
   useThemeContext,
 } from "@servesall/atoms";
 import { AccordionItem } from "../Accordion";
@@ -57,28 +57,33 @@ const MerchantSelector = React.memo(
                   <AccordionItem.Body isNormal={true}>
                     {merchants.map(({ merchant }, index) => {
                       return (
-                        <MarginVertical key={index}>
-                          <Row>
-                            <TextBtn
-                              borderColorActive={theme.color9}
-                              borderColorIdle={theme.color10}
-                              style={{
-                                borderWidth: 1,
-                                borderColor: theme.color10,
-                              }}
-                              onClick={() => {
-                                setSelected(merchant);
-                                setCloseItem(true);
-                              }}
-                            >
-                              <MarginVertical>
-                                <H2 color={theme.color2}>
-                                  {merchant?.profile?.name || null} {page}
-                                </H2>
-                              </MarginVertical>
-                            </TextBtn>
-                          </Row>
-                        </MarginVertical>
+                        <MarginBottom key={index}>
+                          <Switch
+                            fat={true}
+                            radio={true}
+                            style={{
+                              backgroundColor: selected
+                                ? theme.color11light
+                                : theme.color1,
+                            }}
+                            value={selected}
+                            borderColor={selected ? theme.green : theme.color7}
+                            onValueChange={(value) => {
+                              setSelected(merchant);
+                              setCloseItem(true);
+                            }}
+                          >
+                            <Margin>
+                              <H3
+                                color={
+                                  selected ? theme.greenDark : theme.color2
+                                }
+                              >
+                                {merchant?.profile?.name || null} {page}
+                              </H3>
+                            </Margin>
+                          </Switch>
+                        </MarginBottom>
                       );
                     })}
                   </AccordionItem.Body>

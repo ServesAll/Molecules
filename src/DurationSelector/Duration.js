@@ -12,7 +12,8 @@ import {
 
 const Duration = React.memo(
   ({ name, value, isActive = false, durationToggle }) => {
-    const { fontFamily2 } = useThemeContext();
+    const { fontFamily2, greenLight, greenDark, color1, color2 } =
+      useThemeContext();
     const [isEnabled, setIsEnabled] = useState(isActive);
     const toggleSwitch = () => {
       setIsEnabled((previousState) => !previousState);
@@ -28,24 +29,27 @@ const Duration = React.memo(
     }, [isEnabled]);
 
     return (
-      <PaddingHorizontal>
-        <MarginHorizontal>
-          <PaddingVertical>
-            <Switch value={isEnabled} onValueChange={(value) => toggleSwitch()}>
-              <CenterLeft>
-                <Margin>
-                  <H3
-                    fontFamily={fontFamily2}
-                    style={{ textTransform: "capitalize" }}
-                  >
-                    {name}
-                  </H3>
-                </Margin>
-              </CenterLeft>
-            </Switch>
-          </PaddingVertical>
-        </MarginHorizontal>
-      </PaddingHorizontal>
+      <MarginHorizontal>
+        <PaddingVertical>
+          <Switch
+            fat={true}
+            style={{ backgroundColor: isEnabled ? greenLight : color1 }}
+            value={isEnabled}
+            onValueChange={(value) => toggleSwitch()}
+          >
+            <CenterLeft>
+              <Margin>
+                <H3
+                  color={isEnabled ? greenDark : color2}
+                  style={{ textTransform: "capitalize" }}
+                >
+                  {name}
+                </H3>
+              </Margin>
+            </CenterLeft>
+          </Switch>
+        </PaddingVertical>
+      </MarginHorizontal>
     );
   }
 );

@@ -7,11 +7,9 @@ import Time from "./Time";
 
 const DividerElement = ({ name, color }) => {
   return (
-    <MarginHorizontal>
-      <Margin>
-        <H2 color={color}>{name}</H2>
-      </Margin>
-    </MarginHorizontal>
+    <Margin>
+      <H2 color={color}>{name}</H2>
+    </Margin>
   );
 };
 

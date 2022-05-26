@@ -3,7 +3,6 @@ import {
   H3,
   useThemeContext,
   Switch,
-  PaddingHorizontal,
   MarginHorizontal,
   Margin,
   CenterLeft,
@@ -11,7 +10,8 @@ import {
 } from "@servesall/atoms";
 
 const Time = React.memo(({ time, isActive = false, timeToggle }) => {
-  const { fontFamily2 } = useThemeContext();
+  const { fontFamily2, greenLight, greenDark, color1, color2 } =
+    useThemeContext();
   const [isEnabled, setIsEnabled] = useState(isActive);
   const toggleSwitch = () => {
     setIsEnabled((previousState) => !previousState);
@@ -19,19 +19,22 @@ const Time = React.memo(({ time, isActive = false, timeToggle }) => {
   };
 
   return (
-    <PaddingHorizontal>
-      <MarginHorizontal>
-        <PaddingVertical>
-          <Switch value={isEnabled} onValueChange={(value) => toggleSwitch()}>
-            <CenterLeft>
-              <Margin>
-                <H3 fontFamily={fontFamily2}>{time}</H3>
-              </Margin>
-            </CenterLeft>
-          </Switch>
-        </PaddingVertical>
-      </MarginHorizontal>
-    </PaddingHorizontal>
+    <MarginHorizontal>
+      <PaddingVertical>
+        <Switch
+          fat={true}
+          style={{ backgroundColor: isEnabled ? greenLight : color1 }}
+          value={isEnabled}
+          onValueChange={(value) => toggleSwitch()}
+        >
+          <CenterLeft>
+            <Margin>
+              <H3 color={isEnabled ? greenDark : color2}>{time}</H3>
+            </Margin>
+          </CenterLeft>
+        </Switch>
+      </PaddingVertical>
+    </MarginHorizontal>
   );
 });
 
