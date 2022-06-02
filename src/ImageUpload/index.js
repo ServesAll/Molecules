@@ -24,8 +24,7 @@ export default function ImageUpload({ theme, imageUri, onChange = () => {} }) {
     ImagePicker.openPicker({
       width: 400,
       height: 300,
-
-      mediaType: "any",
+      cropping: true,
     }).then((image) => {
       setImage(image.sourceURL || image.path);
     });

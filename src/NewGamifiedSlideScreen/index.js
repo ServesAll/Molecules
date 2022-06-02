@@ -5,9 +5,9 @@ import Header from "./Head";
 import Modal from "./Modal";
 import Footer from "./Footer";
 
-const SlideItem = ({ children, style, loading }) => {
+const SlideItem = ({ children, style, loading, hideHandle }) => {
   return (
-    <Modal styles={style} loading={loading}>
+    <Modal styles={style} loading={loading} hideHandle={hideHandle}>
       {children}
     </Modal>
   );

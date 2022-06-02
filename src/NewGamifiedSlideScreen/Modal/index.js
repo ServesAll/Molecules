@@ -10,7 +10,11 @@ import { StatusBar } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import BottomSheet from "@gorhom/bottom-sheet";
 
-export default function GamifiedSlideScreen({ children, loading }) {
+export default function GamifiedSlideScreen({
+  children,
+  loading,
+  hideHandle = false,
+}) {
   const theme = useThemeContext();
   const navigation = useNavigation();
   const snapPoints = useMemo(() => ["94%"], []);
@@ -33,6 +37,7 @@ export default function GamifiedSlideScreen({ children, loading }) {
         snapPoints={snapPoints}
         onChange={handleSheetChanges}
         enablePanDownToClose={true}
+        handleStyle={hideHandle ? { opacity: 0, height: 0 } : {}}
       >
         {loading && (
           <FullScreen style={{ backgroundColor: theme.color1 }}>

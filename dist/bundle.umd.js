@@ -3999,7 +3999,7 @@
       ImagePicker__default['default'].openPicker({
         width: 400,
         height: 300,
-        mediaType: "any"
+        cropping: true
       }).then(function (image) {
         setImage(image.sourceURL || image.path);
       });
@@ -12164,7 +12164,7 @@
       selected && onChange(selected);
     }, [selected]);
     React.useEffect(function () {
-      if (merchants) {
+      if (merchants && merchants.length > 0) {
         setSelected(merchants[0].merchant);
         onChange(merchants[0].merchant);
       }
@@ -12187,7 +12187,7 @@
       }
     }, /*#__PURE__*/React__default['default'].createElement(AccordionItem.Head, {
       lightContent: false
-    }, /*#__PURE__*/React__default['default'].createElement(atoms.MarginVertical, null, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.MarginVertical, null, merchants && merchants.length > 0 && /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
       color: theme.color2
     }, selected ? (_selected$profile = selected.profile) === null || _selected$profile === void 0 ? void 0 : _selected$profile.name : ((_merchants$ = merchants[0]) === null || _merchants$ === void 0 ? void 0 : (_merchants$$merchant = _merchants$.merchant) === null || _merchants$$merchant === void 0 ? void 0 : (_merchants$$merchant$ = _merchants$$merchant.profile) === null || _merchants$$merchant$ === void 0 ? void 0 : _merchants$$merchant$.name) || null), /*#__PURE__*/React__default['default'].createElement(atoms.H2, {
       color: theme.color2
@@ -36157,7 +36157,9 @@
 
   function GamifiedSlideScreen$1(_ref) {
     var children = _ref.children,
-        loading = _ref.loading;
+        loading = _ref.loading,
+        _ref$hideHandle = _ref.hideHandle,
+        hideHandle = _ref$hideHandle === void 0 ? false : _ref$hideHandle;
     var theme = atoms.useThemeContext();
     var navigation = native.useNavigation();
     var snapPoints = React.useMemo(function () {
@@ -36179,7 +36181,11 @@
       index: 0,
       snapPoints: snapPoints,
       onChange: handleSheetChanges,
-      enablePanDownToClose: true
+      enablePanDownToClose: true,
+      handleStyle: hideHandle ? {
+        opacity: 0,
+        height: 0
+      } : {}
     }, loading && /*#__PURE__*/React__default['default'].createElement(atoms.FullScreen, {
       style: {
         backgroundColor: theme.color1
@@ -36227,10 +36233,12 @@
   var SlideItem = function SlideItem(_ref) {
     var children = _ref.children,
         style = _ref.style,
-        loading = _ref.loading;
+        loading = _ref.loading,
+        hideHandle = _ref.hideHandle;
     return /*#__PURE__*/React__default['default'].createElement(GamifiedSlideScreen$1, {
       styles: style,
-      loading: loading
+      loading: loading,
+      hideHandle: hideHandle
     }, children);
   };
 

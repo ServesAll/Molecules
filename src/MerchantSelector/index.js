@@ -24,7 +24,7 @@ const MerchantSelector = React.memo(
     }, [selected]);
 
     useEffect(() => {
-      if (merchants) {
+      if (merchants && merchants.length > 0) {
         setSelected(merchants[0].merchant);
         onChange(merchants[0].merchant);
       }
@@ -46,11 +46,13 @@ const MerchantSelector = React.memo(
                 >
                   <AccordionItem.Head lightContent={false}>
                     <MarginVertical>
-                      <H3 color={theme.color2}>
-                        {selected
-                          ? selected.profile?.name
-                          : merchants[0]?.merchant?.profile?.name || null}
-                      </H3>
+                      {merchants && merchants.length > 0 && (
+                        <H3 color={theme.color2}>
+                          {selected
+                            ? selected.profile?.name
+                            : merchants[0]?.merchant?.profile?.name || null}
+                        </H3>
+                      )}
                       <H2 color={theme.color2}>{page}</H2>
                     </MarginVertical>
                   </AccordionItem.Head>
