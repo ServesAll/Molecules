@@ -2578,10 +2578,12 @@ function Map(_ref) {
 }
 
 var _templateObject$6, _templateObject2$3;
-var UploadWrapper = styled.View(_templateObject$6 || (_templateObject$6 = _taggedTemplateLiteral(["\n  aspect-ratio: 1.5;\n  overflow: hidden;\n  background-color: ", ";\n  border-radius: ", ";\n"])), function (props) {
+var UploadWrapper = styled.View(_templateObject$6 || (_templateObject$6 = _taggedTemplateLiteral(["\n  aspect-ratio: 1.5;\n  overflow: hidden;\n  background-color: ", ";\n  border-radius: ", ";\n  border-width: 2px;\n  border-style: dashed;\n  border-color: ", ";\n"])), function (props) {
   return props.theme.color7;
 }, function (props) {
   return props.theme.borderRadius;
+}, function (props) {
+  return props.theme.greyText;
 });
 var UploadIconWrapper = styled.View(_templateObject2$3 || (_templateObject2$3 = _taggedTemplateLiteral(["\n  position: absolute;\n  z-index: 9;\n  width: 100%;\n  height: 100%;\n  align-items: center;\n  justify-content: center;\n"])));
 
@@ -4012,7 +4014,9 @@ function ImageUpload(_ref) {
   }, image && /*#__PURE__*/React.createElement(ImageLoader, {
     background: theme.color7,
     imageUrl: image
-  }), !image && /*#__PURE__*/React.createElement(UploadIconWrapper, null, /*#__PURE__*/React.createElement(UploadIcon, null))));
+  }), !image && /*#__PURE__*/React.createElement(UploadIconWrapper, {
+    theme: theme
+  }, /*#__PURE__*/React.createElement(UploadIcon, null))));
 }
 
 var _templateObject$8;
@@ -11214,7 +11218,7 @@ var Weekdays = function Weekdays() {
     style: {
       backgroundColor: theme.color1
     }
-  }, /*#__PURE__*/React.createElement(MarginHorizontal, null, /*#__PURE__*/React.createElement(Padding, null, /*#__PURE__*/React.createElement(Row, {
+  }, /*#__PURE__*/React.createElement(MarginHorizontal, null, /*#__PURE__*/React.createElement(PaddingVertical, null, /*#__PURE__*/React.createElement(Row, {
     style: {
       justifyContent: "space-between"
     }

@@ -35,7 +35,7 @@ export default function ImageUpload({ theme, imageUri, onChange = () => {} }) {
       <UploadWrapper theme={theme}>
         {image && <ImageLoader background={theme.color7} imageUrl={image} />}
         {!image && (
-          <UploadIconWrapper>
+          <UploadIconWrapper theme={theme}>
             <UploadIcon />
           </UploadIconWrapper>
         )}

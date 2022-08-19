@@ -5,6 +5,9 @@ export const UploadWrapper = styled.View`
   overflow: hidden;
   background-color: ${(props) => props.theme.color7};
   border-radius: ${(props) => props.theme.borderRadius};
+  border-width: 2px;
+  border-style: dashed;
+  border-color: ${(props) => props.theme.greyText};
 `;
 
 export const UploadIconWrapper = styled.View`

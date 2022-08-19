@@ -4,7 +4,7 @@ import {
   useThemeContext,
   H3,
   MarginHorizontal,
-  Padding,
+  PaddingVertical,
   Row,
   Center,
 } from "@servesall/atoms";
@@ -94,7 +94,7 @@ const Weekdays = () => {
   return (
     <View style={{ backgroundColor: theme.color1 }}>
       <MarginHorizontal>
-        <Padding>
+        <PaddingVertical>
           <Row style={{ justifyContent: "space-between" }}>
             <Center style={{ minWidth: "14%" }}>
               <H3 fontFamily={theme.fontFamily2}>Mo</H3>
@@ -118,7 +118,7 @@ const Weekdays = () => {
               <H3 fontFamily={theme.fontFamily2}>Su</H3>
             </Center>
           </Row>
-        </Padding>
+        </PaddingVertical>
       </MarginHorizontal>
     </View>
   );
