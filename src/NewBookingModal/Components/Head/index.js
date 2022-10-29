@@ -17,10 +17,10 @@ import Foreground from "./Foreground";
 import { BarWrapper } from "./GamifiedHeader.style";
 
 export default function GamifiedHeader({
+  children,
   activeScreen,
   setActiveScreen,
   showHeader = true,
-  screenLength,
 }) {
   const navigation = useNavigation();
   const theme = useThemeContext();
@@ -67,18 +67,18 @@ export default function GamifiedHeader({
           <Margin>
             <Background
               theme={theme}
-              steps={screenLength}
+              steps={children.length}
               currentStep={activeScreen}
             />
 
             <Foreground
               theme={theme}
-              steps={screenLength}
+              steps={children.length}
               currentStep={activeScreen}
             />
           </Margin>
         </BarWrapper>
-        {showHeader && activeScreen === screenLength && <Submit />}
+        {showHeader && <Submit activeScreen={activeScreen}>{children}</Submit>}
       </Row>
     </MarginHorizontal>
   );

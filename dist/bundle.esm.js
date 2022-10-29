@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useRef, useState, useCallback, useMemo } from 'react';
-import { Pressable, Platform, SafeAreaView, StatusBar, Dimensions, View, findNodeHandle, Image } from 'react-native';
+import { Pressable, Platform, SafeAreaView, StatusBar, Dimensions, View, findNodeHandle, Image, Text, StyleSheet } from 'react-native';
 import Animated, { useSharedValue, useAnimatedStyle, withTiming, Easing, withSpring, useAnimatedGestureHandler, runOnJS, useDerivedValue } from 'react-native-reanimated';
 import { GestureHandlerRootView, PanGestureHandler, FlatList, ScrollView as ScrollView$1 } from 'react-native-gesture-handler';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
@@ -13,7 +13,7 @@ import format from 'date-fns/format';
 import startOfMonth from 'date-fns/startOfMonth';
 import { format as format$1, add } from 'date-fns';
 import { useNavigation } from '@react-navigation/native';
-import BottomSheet, { BottomSheetFooter } from '@gorhom/bottom-sheet';
+import BottomSheet, { BottomSheetFooter, BottomSheetBackdrop } from '@gorhom/bottom-sheet';
 
 function Background(_ref) {
   var children = _ref.children,
@@ -36339,4 +36339,47 @@ var FooterBtn = function FooterBtn(_ref) {
   })), !success && !error && !loading && /*#__PURE__*/React.createElement(React.Fragment, null, children))));
 };
 
-export { AccordionItem, AccordionProvider, AccordionScroll, AccordionScroller, Actions, BookingMerchant, DateRange, DurationItem as Duration, FooterActions, FooterBtn, GamifiedSlideScreen, ImageLoader, ImageUpload, Map, MerchantCard, MerchantSelector, Modal, ModalContext, ModalProvider, SlideItem as NewGamifiedSlideScreen, ResourceDragAndDrop, Screen, ServiceContainer, SlideScreen, Times as TimeSelector, Weekdays$1 as WeekdaySelector, useAccordionContext, useAccordionHook, useModalContext };
+var App = function App() {
+  // ref
+  var bottomSheetRef = useRef(null); // variables
+
+  var snapPoints = useMemo(function () {
+    return ["25%", "50%", "75%"];
+  }, []); // callbacks
+
+  var handleSheetChanges = useCallback(function (index) {
+    console.log("handleSheetChanges", index);
+  }, []); // renders
+
+  var renderBackdrop = useCallback(function (props) {
+    return /*#__PURE__*/React.createElement(BottomSheetBackdrop, _extends({}, props, {
+      disappearsOnIndex: 1,
+      appearsOnIndex: 2
+    }));
+  }, []);
+  return /*#__PURE__*/React.createElement(View, {
+    style: styles.container
+  }, /*#__PURE__*/React.createElement(BottomSheet, {
+    ref: bottomSheetRef,
+    index: 1,
+    snapPoints: snapPoints,
+    backdropComponent: renderBackdrop,
+    onChange: handleSheetChanges
+  }, /*#__PURE__*/React.createElement(View, {
+    style: styles.contentContainer
+  }, /*#__PURE__*/React.createElement(Text, null, "Awesome \uD83C\uDF89"))));
+};
+
+var styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 24,
+    backgroundColor: "grey"
+  },
+  contentContainer: {
+    flex: 1,
+    alignItems: "center"
+  }
+});
+
+export { AccordionItem, AccordionProvider, AccordionScroll, AccordionScroller, Actions, BookingMerchant, DateRange, DurationItem as Duration, FooterActions, FooterBtn, GamifiedSlideScreen, ImageLoader, ImageUpload, Map, MerchantCard, MerchantSelector, Modal, ModalContext, ModalProvider, App as NewBookingModal, SlideItem as NewGamifiedSlideScreen, ResourceDragAndDrop, Screen, ServiceContainer, SlideScreen, Times as TimeSelector, Weekdays$1 as WeekdaySelector, useAccordionContext, useAccordionHook, useModalContext };

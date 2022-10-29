@@ -1,12 +1,11 @@
 import React from "react";
+import Image from "./Image";
 import { SubmitWrapper } from "./Submit.style";
 
-export default function Submit({ children, activeScreen }) {
+export default function Submit() {
   return (
     <SubmitWrapper>
-      {React.Children.toArray(children).map(
-        (component, index) => index === activeScreen && component
-      )}
+      <Image />
     </SubmitWrapper>
   );
 }

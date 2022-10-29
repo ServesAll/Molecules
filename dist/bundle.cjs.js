@@ -36356,6 +36356,49 @@ var FooterBtn = function FooterBtn(_ref) {
   })), !success && !error && !loading && /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, children))));
 };
 
+var App = function App() {
+  // ref
+  var bottomSheetRef = React.useRef(null); // variables
+
+  var snapPoints = React.useMemo(function () {
+    return ["25%", "50%", "75%"];
+  }, []); // callbacks
+
+  var handleSheetChanges = React.useCallback(function (index) {
+    console.log("handleSheetChanges", index);
+  }, []); // renders
+
+  var renderBackdrop = React.useCallback(function (props) {
+    return /*#__PURE__*/React__default['default'].createElement(BottomSheet.BottomSheetBackdrop, _extends({}, props, {
+      disappearsOnIndex: 1,
+      appearsOnIndex: 2
+    }));
+  }, []);
+  return /*#__PURE__*/React__default['default'].createElement(reactNative.View, {
+    style: styles.container
+  }, /*#__PURE__*/React__default['default'].createElement(BottomSheet__default['default'], {
+    ref: bottomSheetRef,
+    index: 1,
+    snapPoints: snapPoints,
+    backdropComponent: renderBackdrop,
+    onChange: handleSheetChanges
+  }, /*#__PURE__*/React__default['default'].createElement(reactNative.View, {
+    style: styles.contentContainer
+  }, /*#__PURE__*/React__default['default'].createElement(reactNative.Text, null, "Awesome \uD83C\uDF89"))));
+};
+
+var styles = reactNative.StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 24,
+    backgroundColor: "grey"
+  },
+  contentContainer: {
+    flex: 1,
+    alignItems: "center"
+  }
+});
+
 exports.AccordionItem = AccordionItem;
 exports.AccordionProvider = AccordionProvider;
 exports.AccordionScroll = AccordionScroll;
@@ -36375,6 +36418,7 @@ exports.MerchantSelector = MerchantSelector;
 exports.Modal = Modal;
 exports.ModalContext = ModalContext;
 exports.ModalProvider = ModalProvider;
+exports.NewBookingModal = App;
 exports.NewGamifiedSlideScreen = SlideItem;
 exports.ResourceDragAndDrop = ResourceDragAndDrop;
 exports.Screen = Screen;

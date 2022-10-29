@@ -27,6 +27,7 @@ import ServiceContainer from "./ServiceContainer";
 import GamifiedSlideScreen from "./GamifiedSlideScreen";
 import NewGamifiedSlideScreen from "./NewGamifiedSlideScreen";
 import FooterBtn from "./FooterButton";
+import NewBookingModal from "./NewBookingModal";
 
 export {
   Modal,
@@ -58,4 +59,5 @@ export {
   GamifiedSlideScreen,
   NewGamifiedSlideScreen,
   FooterBtn,
+  NewBookingModal,
 };
