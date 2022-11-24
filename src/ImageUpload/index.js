@@ -23,7 +23,7 @@ export default function ImageUpload({ theme, imageUri, onChange = () => {} }) {
   const pickImage = () => {
     ImagePicker.openPicker({
       width: 400,
-      height: 300,
+      height: 400,
       cropping: true,
     }).then((image) => {
       setImage(image.sourceURL || image.path);

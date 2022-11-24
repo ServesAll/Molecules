@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Platform, PermissionsAndroid } from "react-native";
 import { MapWrapper, MarkerWrapper } from "./Map.style";
 import MapView, { Marker } from "react-native-maps";
 import Geolocation from "react-native-geolocation-service";
@@ -19,6 +20,25 @@ export default function Map({
 }) {
   const [location, setLocation] = useState(DEFAULT_LOCATION);
   const [isMoving, setIsMoving] = useState(false);
+  const [isPermitionGranted, setIsPermitionGranted] = useState(false);
+
+  async function requestPermissions() {
+    if (Platform.OS === "ios") {
+      const auth = await Geolocation.requestAuthorization("whenInUse");
+      if (auth === "granted") {
+        setIsPermitionGranted(true);
+      }
+    }
+
+    if (Platform.OS === "android") {
+      await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
+      );
+      if (PermissionsAndroid.RESULTS.GRANTED === "granted") {
+        setIsPermitionGranted(true);
+      }
+    }
+  }
 
   useEffect(() => {
     if (longitude && latitude) {
@@ -47,12 +67,15 @@ export default function Map({
         },
         (error) => {
           // See error code charts below.
+          if (error.code === 1) {
+            requestPermissions();
+          }
           //console.log(error.code, error.message);
         },
         { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
       );
     }
-  }, []);
+  }, [isPermitionGranted]);
 
   useEffect(() => {
     onChange(location);

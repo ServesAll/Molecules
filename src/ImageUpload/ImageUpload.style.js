@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 
 export const UploadWrapper = styled.View`
-  aspect-ratio: 1.5;
+  aspect-ratio: 1;
   overflow: hidden;
   background-color: ${(props) => props.theme.color7};
   border-radius: ${(props) => props.theme.borderRadius};

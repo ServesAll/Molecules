@@ -38,16 +38,8 @@ export default function Foreground({ steps, currentStep, theme }) {
     });
   }, [steps, currentStep]);
 
-  return (
-    <>
-      <Animated.View style={[animatedWidth]}>
-        <GreenBar
-          theme={theme}
-          width={((activeStep + 1) * 100) / (stepsLenght + 1)}
-        />
-      </Animated.View>
-
-      <PulseWrapper left={((activeStep + 1) * 100) / (stepsLenght + 1)}>
+  /*
+  <PulseWrapper left={((activeStep + 1) * 100) / (stepsLenght + 1)}>
         <LottieView
           style={{
             width: 32,
@@ -57,6 +49,16 @@ export default function Foreground({ steps, currentStep, theme }) {
           source={green_pulse}
         />
       </PulseWrapper>
+      */
+
+  return (
+    <>
+      <Animated.View style={[animatedWidth]}>
+        <GreenBar
+          theme={theme}
+          width={((activeStep + 1) * 100) / (stepsLenght + 1)}
+        />
+      </Animated.View>
     </>
   );
 }
