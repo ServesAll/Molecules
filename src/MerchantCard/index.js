@@ -1,5 +1,5 @@
 import React from "react";
-import { H2, PaddingVertical } from "@servesall/atoms";
+import { H3, PaddingVertical } from "@servesall/atoms";
 import { MerchantCardWrapper, ImageWrapper } from "./MerchantCard.style";
 import ImageLoader from "../ImageLoader";
 
@@ -10,7 +10,7 @@ function MerchantCard({ merchant, theme }) {
         <ImageLoader background={theme.color7} imageUrl={merchant.image_uri} />
       </ImageWrapper>
       <PaddingVertical>
-        <H2>{merchant.name}</H2>
+        <H3>{merchant.name}</H3>
       </PaddingVertical>
     </MerchantCardWrapper>
   );

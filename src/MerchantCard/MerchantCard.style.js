@@ -5,7 +5,7 @@ export const MerchantCardWrapper = styled.View`
 `;
 
 export const ImageWrapper = styled.View`
-  aspect-ratio: 1.7;
-  border-radius: ${(props) => props.theme.borderRadius};
+  aspect-ratio: 1;
+  border-radius: ${(props) => props.theme.borderRadiusSmall};
   overflow: hidden;
 `;
