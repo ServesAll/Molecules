@@ -17,6 +17,8 @@ export default function Map({
   latitude,
   theme,
   onChange = () => {},
+  liteMode = false,
+  editable = true,
 }) {
   const [location, setLocation] = useState(DEFAULT_LOCATION);
   const [isMoving, setIsMoving] = useState(false);
@@ -84,17 +86,18 @@ export default function Map({
   return (
     <MapWrapper theme={theme}>
       <MapView
+        liteMode={liteMode}
         loadingEnabled={true}
         region={location}
         style={{ width: "100%", height: "100%" }}
         onRegionChangeComplete={(region) => {
-          if (isMoving) {
+          if (isMoving && editable) {
             setLocation(region);
             setIsMoving(false);
           }
         }}
         onPanDrag={(e) => {
-          setIsMoving(true);
+          editable && setIsMoving(true);
         }}
       />
       <MarkerWrapper theme={theme} pointerEvents="none">

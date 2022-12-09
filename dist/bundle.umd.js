@@ -1435,12 +1435,12 @@
   }
 
   var _templateObject$5, _templateObject2$2;
-  var MapWrapper = styled__default['default'].View(_templateObject$5 || (_templateObject$5 = _taggedTemplateLiteral(["\n  align-items: center;\n  justify-content: center;\n  height: 400px;\n  overflow: hidden;\n  border-radius: ", ";\n  margin: ", " 0;\n"])), function (props) {
+  var MapWrapper = styled__default['default'].View(_templateObject$5 || (_templateObject$5 = _taggedTemplateLiteral(["\n  align-items: center;\n  justify-content: center;\n  height: 100%;\n  overflow: hidden;\n  border-radius: ", ";\n  margin: ", " 0;\n"])), function (props) {
     return props.theme.borderRadius;
   }, function (props) {
     return props.theme.padding;
   });
-  var MarkerWrapper = styled__default['default'].View(_templateObject2$2 || (_templateObject2$2 = _taggedTemplateLiteral(["\n  position: absolute;\n  z-index: 9;\n  width: 80px;\n  height: 120px;\n  align-items: center;\n    justify-content: center;\n"])));
+  var MarkerWrapper = styled__default['default'].View(_templateObject2$2 || (_templateObject2$2 = _taggedTemplateLiteral(["\n  position: absolute;\n  z-index: 9;\n  width: 80px;\n  height: 120px;\n  align-items: center;\n  justify-content: center;\n"])));
 
   var ip$1 = 0;
   var fr$1 = 60;
@@ -2547,7 +2547,11 @@
         latitude = _ref.latitude,
         theme = _ref.theme,
         _ref$onChange = _ref.onChange,
-        onChange = _ref$onChange === void 0 ? function () {} : _ref$onChange;
+        onChange = _ref$onChange === void 0 ? function () {} : _ref$onChange,
+        _ref$liteMode = _ref.liteMode,
+        liteMode = _ref$liteMode === void 0 ? false : _ref$liteMode,
+        _ref$editable = _ref.editable,
+        editable = _ref$editable === void 0 ? true : _ref$editable;
 
     var _useState = React.useState(DEFAULT_LOCATION),
         _useState2 = _slicedToArray(_useState, 2),
@@ -2651,6 +2655,7 @@
     return /*#__PURE__*/React__default['default'].createElement(MapWrapper, {
       theme: theme
     }, /*#__PURE__*/React__default['default'].createElement(MapView__default['default'], {
+      liteMode: liteMode,
       loadingEnabled: true,
       region: location,
       style: {
@@ -2658,13 +2663,13 @@
         height: "100%"
       },
       onRegionChangeComplete: function onRegionChangeComplete(region) {
-        if (isMoving) {
+        if (isMoving && editable) {
           setLocation(region);
           setIsMoving(false);
         }
       },
       onPanDrag: function onPanDrag(e) {
-        setIsMoving(true);
+        editable && setIsMoving(true);
       }
     }), /*#__PURE__*/React__default['default'].createElement(MarkerWrapper, {
       theme: theme,
