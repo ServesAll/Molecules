@@ -29,6 +29,8 @@ import NewGamifiedSlideScreen from "./NewGamifiedSlideScreen";
 import FooterBtn from "./FooterButton";
 import NewBookingModal from "./NewBookingModal";
 import HorizontalScroll from "./HorizontalScroll";
+import TimeLine from "./TimeLine";
+import BookingUser from "./BookingUser";
 
 export {
   Modal,
@@ -62,4 +64,6 @@ export {
   FooterBtn,
   NewBookingModal,
   HorizontalScroll,
+  TimeLine,
+  BookingUser,
 };

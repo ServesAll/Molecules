@@ -34,6 +34,8 @@ export default {
         "react-native-image-crop-picker": "react-native-image-crop-picker",
         "@servesall/atoms": "@servesall/atoms",
         "react-native-geolocation-service": "react-native-geolocation-service",
+        "react-native-dashed-line": "react-native-dashed-line",
+        "date-fns": "date-fns",
       },
     },
   ],
@@ -60,5 +62,7 @@ export default {
     "react-native-image-crop-picker",
     "@servesall/atoms",
     "react-native-geolocation-service",
+    "react-native-dashed-line",
+    "date-fns",
   ],
 };

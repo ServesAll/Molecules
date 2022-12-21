@@ -18,6 +18,7 @@ var startOfMonth = require('date-fns/startOfMonth');
 var dateFns = require('date-fns');
 var native = require('@react-navigation/native');
 var BottomSheet = require('@gorhom/bottom-sheet');
+var DashedLine = require('react-native-dashed-line');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -31,6 +32,7 @@ var ImagePicker__default = /*#__PURE__*/_interopDefaultLegacy(ImagePicker);
 var format__default = /*#__PURE__*/_interopDefaultLegacy(format);
 var startOfMonth__default = /*#__PURE__*/_interopDefaultLegacy(startOfMonth);
 var BottomSheet__default = /*#__PURE__*/_interopDefaultLegacy(BottomSheet);
+var DashedLine__default = /*#__PURE__*/_interopDefaultLegacy(DashedLine);
 
 function Background(_ref) {
   var children = _ref.children,
@@ -40603,12 +40605,889 @@ var HorizontalScroll = function HorizontalScroll(_ref) {
   })));
 };
 
+var Time$1 = function Time(_ref) {
+  var _section$data;
+
+  var item = _ref.item,
+      index = _ref.index,
+      section = _ref.section,
+      children = _ref.children;
+  var theme = atoms.useThemeContext();
+  return /*#__PURE__*/React__default['default'].createElement(atoms.MarginHorizontal, null, ((_section$data = section.data[index - 1]) === null || _section$data === void 0 ? void 0 : _section$data.details.booking_date_time) !== item.details.booking_date_time && /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
+    style: {
+      alignItems: "center",
+      paddingLeft: 5
+    }
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.Icon, {
+    icon: "big_time",
+    size: "medium",
+    autoplay: false,
+    loop: false,
+    color: theme.color2
+  }), /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(atoms.H4, null, dateFns.format(new Date(item.details.booking_date_time), "h:mm aaa")))), /*#__PURE__*/React__default['default'].createElement(atoms.MarginHorizontal, null, /*#__PURE__*/React__default['default'].createElement(atoms.Row, null, /*#__PURE__*/React__default['default'].createElement(DashedLine__default['default'], {
+    axis: "vertical",
+    dashLength: 10,
+    dashGap: 5,
+    dashColor: theme.color7
+  }), /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
+    style: {
+      flex: 1
+    }
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.PaddingLeft, {
+    style: {
+      flex: 1
+    }
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.MarginLeft, {
+    style: {
+      flex: 1
+    }
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.MarginTop, null, React__default['default'].cloneElement(children, {
+    item: item
+  }))))))));
+};
+
+function DateScreen(_ref) {
+  var date = _ref.date;
+  var theme = atoms.useThemeContext();
+  return /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
+    style: {
+      backgroundColor: theme.color1
+    }
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
+    style: {
+      alignItems: "center",
+      paddingLeft: 5
+    }
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.Icon, {
+    icon: "big_calendar",
+    size: "medium",
+    autoplay: false,
+    loop: false,
+    color: theme.color2
+  }), /*#__PURE__*/React__default['default'].createElement(atoms.MarginHorizontal, null, /*#__PURE__*/React__default['default'].createElement(atoms.H2, null, dateFns.format(new Date(date), "iii do LLL"))))));
+}
+
+var ip$f = 0;
+var fr$f = 60;
+var v$f = "5.1.20";
+var assets$f = [
+];
+var layers$f = [
+	{
+		ty: 4,
+		nm: "blur",
+		ip: 0,
+		st: 0,
+		ind: 1,
+		hix: 1,
+		ks: {
+			o: {
+				a: 0,
+				k: 50
+			},
+			or: {
+				a: 0,
+				k: [
+					0,
+					0,
+					0
+				]
+			},
+			a: {
+				a: 0,
+				k: [
+					190,
+					190,
+					0
+				]
+			},
+			p: {
+				s: true,
+				x: {
+					a: 1,
+					k: [
+						{
+							t: 0,
+							s: [
+								-109.43999881278992
+							],
+							e: [
+								659.44
+							],
+							i: {
+								x: [
+									0.515
+								],
+								y: [
+									0.955
+								]
+							},
+							o: {
+								x: [
+									0.455
+								],
+								y: [
+									0.03
+								]
+							}
+						},
+						{
+							t: 42
+						}
+					]
+				},
+				y: {
+					a: 1,
+					k: [
+						{
+							t: 0,
+							s: [
+								108.62700118721008
+							],
+							e: [
+								108.62700118721008
+							],
+							i: {
+								x: [
+									1
+								],
+								y: [
+									1
+								]
+							},
+							o: {
+								x: [
+									0
+								],
+								y: [
+									0
+								]
+							}
+						},
+						{
+							t: 42
+						}
+					]
+				}
+			},
+			rx: {
+				a: 0,
+				k: 0
+			},
+			ry: {
+				a: 0,
+				k: 0
+			},
+			rz: {
+				a: 0,
+				k: 0
+			},
+			s: {
+				a: 0,
+				k: [
+					57.599999999999994,
+					57.599999999999994
+				]
+			}
+		},
+		shapes: [
+			{
+				ty: "gr",
+				nm: "blur shape group",
+				it: [
+					{
+						ty: "rc",
+						s: {
+							a: 0,
+							k: [
+								380,
+								380
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						},
+						p: {
+							a: 0,
+							k: [
+								190,
+								190
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "gf",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						g: {
+							p: 3,
+							k: {
+								a: 0,
+								k: [
+									0,
+									1,
+									1,
+									1,
+									0.513619088,
+									1,
+									1,
+									1,
+									1,
+									1,
+									1,
+									1
+								]
+							}
+						},
+						t: 1,
+						s: {
+							a: 0,
+							k: [
+								0,
+								190
+							]
+						},
+						e: {
+							a: 0,
+							k: [
+								380,
+								190
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			}
+		],
+		op: 42
+	}
+];
+var op$f = 42;
+var w$f = 550;
+var h$f = 219;
+var ghostloader = {
+	ip: ip$f,
+	fr: fr$f,
+	v: v$f,
+	assets: assets$f,
+	layers: layers$f,
+	op: op$f,
+	w: w$f,
+	h: h$f
+};
+
+var ip$g = 0;
+var fr$g = 60;
+var v$g = "5.1.20";
+var assets$g = [
+];
+var layers$g = [
+	{
+		ty: 4,
+		nm: "blur",
+		ip: 0,
+		st: 0,
+		ind: 1,
+		hix: 1,
+		ks: {
+			o: {
+				a: 0,
+				k: 50
+			},
+			or: {
+				a: 0,
+				k: [
+					0,
+					0,
+					0
+				]
+			},
+			a: {
+				a: 0,
+				k: [
+					190,
+					190,
+					0
+				]
+			},
+			p: {
+				s: true,
+				x: {
+					a: 1,
+					k: [
+						{
+							t: 0,
+							s: [
+								-350.9399892904664
+							],
+							e: [
+								1051.44
+							],
+							i: {
+								x: [
+									0.515
+								],
+								y: [
+									0.955
+								]
+							},
+							o: {
+								x: [
+									0.455
+								],
+								y: [
+									0.03
+								]
+							}
+						},
+						{
+							t: 42
+						}
+					]
+				},
+				y: {
+					a: 1,
+					k: [
+						{
+							t: 0,
+							s: [
+								350.12701070953364
+							],
+							e: [
+								350.12701070953364
+							],
+							i: {
+								x: [
+									0.515
+								],
+								y: [
+									0.955
+								]
+							},
+							o: {
+								x: [
+									0.455
+								],
+								y: [
+									0.03
+								]
+							}
+						},
+						{
+							t: 42
+						}
+					]
+				}
+			},
+			rx: {
+				a: 0,
+				k: 0
+			},
+			ry: {
+				a: 0,
+				k: 0
+			},
+			rz: {
+				a: 0,
+				k: 0
+			},
+			s: {
+				a: 0,
+				k: [
+					184.7,
+					184.7
+				]
+			}
+		},
+		shapes: [
+			{
+				ty: "gr",
+				nm: "blur shape group",
+				it: [
+					{
+						ty: "rc",
+						s: {
+							a: 0,
+							k: [
+								380,
+								380
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						},
+						p: {
+							a: 0,
+							k: [
+								190,
+								190
+							]
+						}
+					},
+					{
+						ty: "st",
+						o: {
+							a: 0,
+							k: 0
+						},
+						w: {
+							a: 0,
+							k: 0
+						},
+						c: {
+							a: 0,
+							k: [
+								0,
+								0,
+								0,
+								0
+							]
+						},
+						lc: 3,
+						lj: 1,
+						ml: 1
+					},
+					{
+						ty: "gf",
+						o: {
+							a: 0,
+							k: 100
+						},
+						r: 2,
+						g: {
+							p: 3,
+							k: {
+								a: 0,
+								k: [
+									0,
+									1,
+									1,
+									1,
+									0.513619088,
+									1,
+									1,
+									1,
+									1,
+									1,
+									1,
+									1
+								]
+							}
+						},
+						t: 1,
+						s: {
+							a: 0,
+							k: [
+								0,
+								190
+							]
+						},
+						e: {
+							a: 0,
+							k: [
+								380,
+								190
+							]
+						}
+					},
+					{
+						ty: "tr",
+						o: {
+							a: 0,
+							k: 100
+						},
+						a: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						s: {
+							a: 0,
+							k: [
+								100,
+								100
+							]
+						},
+						p: {
+							a: 0,
+							k: [
+								0,
+								0
+							]
+						},
+						r: {
+							a: 0,
+							k: 0
+						}
+					}
+				]
+			}
+		],
+		op: 42
+	}
+];
+var op$g = 42;
+var w$g = 700;
+var h$g = 700;
+var ghostloaderlarge = {
+	ip: ip$g,
+	fr: fr$g,
+	v: v$g,
+	assets: assets$g,
+	layers: layers$g,
+	op: op$g,
+	w: w$g,
+	h: h$g
+};
+
+function MerchantListGhost() {
+  var theme = atoms.useThemeContext();
+  return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(reactNative.View, {
+    style: {
+      width: "100%",
+      aspectRatio: 1 / 1,
+      borderRadius: 18,
+      overflow: "hidden"
+    }
+  }, /*#__PURE__*/React__default['default'].createElement(reactNative.View, {
+    style: {
+      width: "100%",
+      aspectRatio: 1 / 1,
+      backgroundColor: theme.color7,
+      borderRadius: 18
+    }
+  }), /*#__PURE__*/React__default['default'].createElement(LottieView__default['default'], {
+    style: {
+      position: "absolute",
+      width: "100%",
+      height: "100%",
+      resizeMode: "contain"
+    },
+    autoPlay: true,
+    loop: true,
+    source: ghostloaderlarge
+  })), /*#__PURE__*/React__default['default'].createElement(atoms.MarginTop, null, /*#__PURE__*/React__default['default'].createElement(reactNative.View, {
+    style: {
+      width: 180,
+      borderRadius: 18,
+      overflow: "hidden"
+    }
+  }, /*#__PURE__*/React__default['default'].createElement(reactNative.View, {
+    style: {
+      width: 180,
+      height: 26,
+      backgroundColor: theme.color7,
+      borderRadius: 18
+    }
+  }), /*#__PURE__*/React__default['default'].createElement(LottieView__default['default'], {
+    style: {
+      position: "absolute",
+      width: "100%"
+    },
+    autoPlay: true,
+    loop: true,
+    source: ghostloader
+  })), /*#__PURE__*/React__default['default'].createElement(atoms.PaddingTop, null, /*#__PURE__*/React__default['default'].createElement(reactNative.View, {
+    style: {
+      width: 180,
+      borderRadius: 18,
+      overflow: "hidden"
+    }
+  }, /*#__PURE__*/React__default['default'].createElement(reactNative.View, {
+    style: {
+      width: 180,
+      height: 26,
+      backgroundColor: theme.color7,
+      borderRadius: 18
+    }
+  }), /*#__PURE__*/React__default['default'].createElement(LottieView__default['default'], {
+    style: {
+      position: "absolute",
+      width: "100%"
+    },
+    autoPlay: true,
+    loop: true,
+    source: ghostloader
+  }))))), /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(reactNative.View, {
+    style: {
+      width: "100%",
+      borderRadius: 18,
+      overflow: "hidden"
+    }
+  }, /*#__PURE__*/React__default['default'].createElement(reactNative.View, {
+    style: {
+      width: "100%",
+      aspectRatio: 1 / 1,
+      backgroundColor: theme.color7,
+      borderRadius: 18
+    }
+  }), /*#__PURE__*/React__default['default'].createElement(LottieView__default['default'], {
+    style: {
+      position: "absolute",
+      width: "100%",
+      height: "100%",
+      resizeMode: "contain"
+    },
+    autoPlay: true,
+    loop: true,
+    source: ghostloaderlarge
+  })), /*#__PURE__*/React__default['default'].createElement(atoms.MarginTop, null, /*#__PURE__*/React__default['default'].createElement(reactNative.View, {
+    style: {
+      width: 180,
+      borderRadius: 18,
+      overflow: "hidden"
+    }
+  }, /*#__PURE__*/React__default['default'].createElement(reactNative.View, {
+    style: {
+      width: 180,
+      height: 26,
+      backgroundColor: theme.color7,
+      borderRadius: 18
+    }
+  }), /*#__PURE__*/React__default['default'].createElement(LottieView__default['default'], {
+    style: {
+      position: "absolute",
+      width: "100%"
+    },
+    autoPlay: true,
+    loop: true,
+    source: ghostloader
+  })), /*#__PURE__*/React__default['default'].createElement(atoms.PaddingTop, null, /*#__PURE__*/React__default['default'].createElement(reactNative.View, {
+    style: {
+      width: 180,
+      borderRadius: 18,
+      overflow: "hidden"
+    }
+  }, /*#__PURE__*/React__default['default'].createElement(reactNative.View, {
+    style: {
+      width: 180,
+      height: 26,
+      backgroundColor: theme.color7,
+      borderRadius: 18
+    }
+  }), /*#__PURE__*/React__default['default'].createElement(LottieView__default['default'], {
+    style: {
+      position: "absolute",
+      width: "100%"
+    },
+    autoPlay: true,
+    loop: true,
+    source: ghostloader
+  }))))));
+}
+
+var TimeLineSection = function TimeLineSection(_ref) {
+  var children = _ref.children,
+      data = _ref.data;
+  return /*#__PURE__*/React__default['default'].createElement(reactNative.SectionList, {
+    stickySectionHeadersEnabled: true,
+    contentContainerStyle: {
+      paddingBottom: 20
+    },
+    sections: data,
+    keyExtractor: function keyExtractor(item) {
+      return item.id;
+    },
+    renderItem: function renderItem(_ref2) {
+      var item = _ref2.item,
+          index = _ref2.index,
+          section = _ref2.section;
+      return /*#__PURE__*/React__default['default'].createElement(Time$1, {
+        item: item,
+        index: index,
+        section: section,
+        children: children
+      });
+    },
+    renderSectionHeader: function renderSectionHeader(_ref3) {
+      var date = _ref3.section.date;
+      return /*#__PURE__*/React__default['default'].createElement(DateScreen, {
+        date: date
+      });
+    }
+  });
+};
+
+var massageData = function massageData(data) {
+  var result = Object.values(data.reduce(function (acc, item) {
+    if (!acc[item.details.booking_date_utc]) acc[item.details.booking_date_utc] = {
+      date: item.details.booking_date_utc,
+      data: []
+    };
+    acc[item.details.booking_date_utc].data.push(item);
+    return acc;
+  }, {}));
+  return result;
+};
+
+var TimeLine = function TimeLine(_ref4) {
+  var children = _ref4.children,
+      data = _ref4.data;
+  if (!data) return /*#__PURE__*/React__default['default'].createElement(MerchantListGhost, null);
+  var new_date = massageData(data);
+  return /*#__PURE__*/React__default['default'].createElement(reactNative.SafeAreaView, null, /*#__PURE__*/React__default['default'].createElement(TimeLineSection, {
+    data: new_date,
+    children: children
+  }));
+};
+
+var _templateObject$m, _templateObject2$e;
+var ImageWrapper$1 = styled__default['default'].View(_templateObject$m || (_templateObject$m = _taggedTemplateLiteral(["\n  aspect-ratio: 1;\n  height: 90px;\n  border-radius: ", ";\n  overflow: hidden;\n"])), function (props) {
+  return props.theme.borderRadiusSmall;
+});
+var StatusWrapper$1 = styled__default['default'].View(_templateObject2$e || (_templateObject2$e = _taggedTemplateLiteral(["\n  border-radius: 4px;\n  background-color: ", ";\n  justify-content: center;\n  padding-vertical: 6px;\n"])), function (props) {
+  return props.color;
+});
+
+function Status(_ref) {
+  var name = _ref.name;
+  var theme = atoms.useThemeContext();
+  var statusColors = {
+    Pending: {
+      color: theme.color12,
+      border: theme.color12border,
+      background: theme.color12light
+    },
+    Confirmed: {
+      color: theme.color11,
+      border: theme.color11border,
+      background: theme.color11light
+    },
+    Declined: {
+      color: theme.color6,
+      border: theme.color6light,
+      background: theme.color6light
+    },
+    Cancelled: {
+      color: theme.color11,
+      border: theme.color11border,
+      background: theme.color11light
+    },
+    Attended: {
+      color: theme.color11,
+      border: theme.color11border,
+      background: theme.color11light
+    },
+    NoShow: {
+      color: theme.color11,
+      border: theme.color11border,
+      background: theme.color11light
+    }
+  };
+  return /*#__PURE__*/React__default['default'].createElement(StatusWrapper$1, {
+    theme: theme,
+    color: statusColors[name].color
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.PaddingHorizontal, null, /*#__PURE__*/React__default['default'].createElement(atoms.H5, {
+    color: theme.color1
+  }, name)));
+}
+
+function Booking(_ref) {
+  var item = _ref.item;
+  var theme = atoms.useThemeContext();
+  return /*#__PURE__*/React__default['default'].createElement(atoms.RoundedBtn, {
+    smallBorder: true,
+    color: theme.color10,
+    style: {
+      borderColor: theme.color7,
+      borderWidth: 2
+    },
+    active: true,
+    onClick: function onClick() {}
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(atoms.Row, null, /*#__PURE__*/React__default['default'].createElement(ImageWrapper$1, null, /*#__PURE__*/React__default['default'].createElement(ImageLoader, {
+    background: theme.color7,
+    imageUrl: item.details.service.asset.cdn_uri ? item.details.service.asset.cdn_uri : item.merchant.asset.cdn_uri
+  })), /*#__PURE__*/React__default['default'].createElement(atoms.PaddingLeft, {
+    style: {
+      flex: 1
+    }
+  }, /*#__PURE__*/React__default['default'].createElement(atoms.H3, null, item.merchant.profile.name), /*#__PURE__*/React__default['default'].createElement(atoms.PaddingVertical, null, /*#__PURE__*/React__default['default'].createElement(atoms.H4, {
+    fontFamily: theme.fontFamily2,
+    numberOfLines: 1
+  }, item.details.service.name)), /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
+    style: {
+      justifyContent: "space-between",
+      alignItems: "center"
+    }
+  }, /*#__PURE__*/React__default['default'].createElement(Status, {
+    name: item.status.status.name
+  }), /*#__PURE__*/React__default['default'].createElement(atoms.Row, null, /*#__PURE__*/React__default['default'].createElement(atoms.Icon, {
+    icon: "big_pax",
+    size: "small",
+    autoplay: false,
+    loop: false,
+    color: theme.color2
+  }), /*#__PURE__*/React__default['default'].createElement(atoms.PaddingLeft, null, /*#__PURE__*/React__default['default'].createElement(atoms.H3, null, item.details.pax))))))));
+}
+
 exports.AccordionItem = AccordionItem;
 exports.AccordionProvider = AccordionProvider;
 exports.AccordionScroll = AccordionScroll;
 exports.AccordionScroller = AccordionScroller;
 exports.Actions = Actions;
 exports.BookingMerchant = BookingMerchant;
+exports.BookingUser = Booking;
 exports.DateRange = DateRange;
 exports.Duration = DurationItem;
 exports.FooterActions = FooterActions;
@@ -40629,6 +41508,7 @@ exports.ResourceDragAndDrop = ResourceDragAndDrop;
 exports.Screen = Screen;
 exports.ServiceContainer = ServiceContainer;
 exports.SlideScreen = SlideScreen;
+exports.TimeLine = TimeLine;
 exports.TimeSelector = Times;
 exports.WeekdaySelector = Weekdays$1;
 exports.useAccordionContext = useAccordionContext;
