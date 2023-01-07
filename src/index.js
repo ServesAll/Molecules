@@ -31,6 +31,7 @@ import NewBookingModal from "./NewBookingModal";
 import HorizontalScroll from "./HorizontalScroll";
 import TimeLine from "./TimeLine";
 import BookingUser from "./BookingUser";
+import BookingMerchantNew from "./BookingMerchantNew";
 
 export {
   Modal,
@@ -66,4 +67,5 @@ export {
   HorizontalScroll,
   TimeLine,
   BookingUser,
+  BookingMerchantNew,
 };

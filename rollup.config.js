@@ -36,6 +36,8 @@ export default {
         "react-native-geolocation-service": "react-native-geolocation-service",
         "react-native-dashed-line": "react-native-dashed-line",
         "date-fns": "date-fns",
+        "react-native-gradients": "react-native-gradients",
+        "react-native-svg": "react-native-svg",
       },
     },
   ],
@@ -64,5 +66,7 @@ export default {
     "react-native-geolocation-service",
     "react-native-dashed-line",
     "date-fns",
+    "react-native-gradients",
+    "react-native-svg",
   ],
 };

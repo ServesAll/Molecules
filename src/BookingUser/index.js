@@ -21,7 +21,7 @@ export default function Booking({ item }) {
     <RoundedBtn
       smallBorder={true}
       color={theme.color10}
-      style={{ borderColor: theme.color7, borderWidth: 2 }}
+      style={{ borderColor: theme.color7, borderWidth: 2, minHeight: 120 }}
       active={true}
       onClick={() => {}}
     >

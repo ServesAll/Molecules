@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('react'), require('react-native'), require('react-native-reanimated'), require('react-native-gesture-handler'), require('react-native-status-bar-height'), require('styled-components/native'), require('@servesall/atoms'), require('lottie-react-native'), require('react-native-maps'), require('react-native-geolocation-service'), require('react-native-image-crop-picker'), require('date-fns/format'), require('date-fns/startOfMonth'), require('date-fns'), require('@react-navigation/native'), require('@gorhom/bottom-sheet'), require('react-native-dashed-line')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'react', 'react-native', 'react-native-reanimated', 'react-native-gesture-handler', 'react-native-status-bar-height', 'styled-components/native', '@servesall/atoms', 'lottie-react-native', 'react-native-maps', 'react-native-geolocation-service', 'react-native-image-crop-picker', 'date-fns/format', 'date-fns/startOfMonth', 'date-fns', '@react-navigation/native', '@gorhom/bottom-sheet', 'react-native-dashed-line'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global['@servesall/molecules'] = {}, global.React, global['react-native'], global['react-native-reanimated'], global['react-native-gesture-handler'], global['react-native-status-bar-height'], global.styled, global['@servesall/atoms'], global['lottie-react-native'], global['react-native-maps'], global['react-native-geolocation-service'], global['react-native-image-crop-picker'], global.format, global.startOfMonth, global['date-fns'], global.native, global.BottomSheet, global['react-native-dashed-line']));
-}(this, (function (exports, React, reactNative, Animated, reactNativeGestureHandler, reactNativeStatusBarHeight, styled, atoms, LottieView, MapView, Geolocation, ImagePicker, format, startOfMonth, dateFns, native, BottomSheet, DashedLine) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('react'), require('react-native'), require('react-native-reanimated'), require('react-native-gesture-handler'), require('react-native-status-bar-height'), require('styled-components/native'), require('@servesall/atoms'), require('lottie-react-native'), require('react-native-maps'), require('react-native-geolocation-service'), require('react-native-image-crop-picker'), require('react-native-gradients'), require('date-fns/format'), require('date-fns/startOfMonth'), require('date-fns'), require('@react-navigation/native'), require('@gorhom/bottom-sheet'), require('react-native-dashed-line')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'react', 'react-native', 'react-native-reanimated', 'react-native-gesture-handler', 'react-native-status-bar-height', 'styled-components/native', '@servesall/atoms', 'lottie-react-native', 'react-native-maps', 'react-native-geolocation-service', 'react-native-image-crop-picker', 'react-native-gradients', 'date-fns/format', 'date-fns/startOfMonth', 'date-fns', '@react-navigation/native', '@gorhom/bottom-sheet', 'react-native-dashed-line'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global['@servesall/molecules'] = {}, global.React, global['react-native'], global['react-native-reanimated'], global['react-native-gesture-handler'], global['react-native-status-bar-height'], global.styled, global['@servesall/atoms'], global['lottie-react-native'], global['react-native-maps'], global['react-native-geolocation-service'], global['react-native-image-crop-picker'], global['react-native-gradients'], global.format, global.startOfMonth, global['date-fns'], global.native, global.BottomSheet, global['react-native-dashed-line']));
+}(this, (function (exports, React, reactNative, Animated, reactNativeGestureHandler, reactNativeStatusBarHeight, styled, atoms, LottieView, MapView, Geolocation, ImagePicker, reactNativeGradients, format, startOfMonth, dateFns, native, BottomSheet, DashedLine) { 'use strict';
 
   function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -4100,8 +4100,8 @@
 
     var pickImage = function pickImage() {
       ImagePicker__default['default'].openPicker({
-        width: 400,
-        height: 400,
+        width: 1080,
+        height: 1080,
         cropping: true
       }).then(function (image) {
         setImage(image.sourceURL || image.path);
@@ -4180,10 +4180,12 @@
   });
 
   var _templateObject$9, _templateObject2$5;
-  var MerchantCardWrapper = styled__default['default'].View(_templateObject$9 || (_templateObject$9 = _taggedTemplateLiteral(["\n  margin: ", ";\n"])), function (props) {
+  var MerchantCardWrapper = styled__default['default'].View(_templateObject$9 || (_templateObject$9 = _taggedTemplateLiteral(["\n  margin-horizontal: ", ";\n  margin-top: ", ";\n"])), function (props) {
+    return props.theme.margin;
+  }, function (props) {
     return props.theme.margin;
   });
-  var ImageWrapper = styled__default['default'].View(_templateObject2$5 || (_templateObject2$5 = _taggedTemplateLiteral(["\n  aspect-ratio: 1;\n  border-radius: ", ";\n  overflow: hidden;\n"])), function (props) {
+  var ImageWrapper = styled__default['default'].View(_templateObject2$5 || (_templateObject2$5 = _taggedTemplateLiteral(["\n  aspect-ratio: 0.9;\n  border-radius: ", ";\n  overflow: hidden;\n"])), function (props) {
     return props.theme.borderRadiusSmall;
   });
 
@@ -4197,7 +4199,38 @@
     }, /*#__PURE__*/React__default['default'].createElement(ImageLoader, {
       background: theme.color7,
       imageUrl: merchant.image_uri
-    })), /*#__PURE__*/React__default['default'].createElement(atoms.PaddingVertical, null, /*#__PURE__*/React__default['default'].createElement(atoms.H3, null, merchant.name)));
+    }), /*#__PURE__*/React__default['default'].createElement(reactNative.View, {
+      style: {
+        position: "absolute",
+        left: 0,
+        right: 0,
+        bottom: 0,
+        flex: 1,
+        height: 55
+      }
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.Row, null, /*#__PURE__*/React__default['default'].createElement(reactNative.View, {
+      style: {
+        position: "absolute",
+        left: 0,
+        right: 0,
+        flex: 1,
+        height: 55,
+        opacity: 0.8
+      }
+    }, /*#__PURE__*/React__default['default'].createElement(reactNativeGradients.LinearGradient, {
+      colorList: [{
+        offset: "0%",
+        color: merchant.primary_color,
+        opacity: "1"
+      }, {
+        offset: "50%",
+        color: merchant.secondary_color,
+        opacity: "1"
+      }],
+      angle: 0
+    })), /*#__PURE__*/React__default['default'].createElement(atoms.CenterLeft, null, /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(atoms.H3, {
+      color: theme.color1
+    }, merchant.name)))))));
   }
 
   var _templateObject$a, _templateObject2$6, _templateObject3$2;
@@ -40613,19 +40646,11 @@
       dashLength: 10,
       dashGap: 5,
       dashColor: theme.color7
-    }), /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
+    }), /*#__PURE__*/React__default['default'].createElement(reactNative.View, {
       style: {
         flex: 1
       }
-    }, /*#__PURE__*/React__default['default'].createElement(atoms.PaddingLeft, {
-      style: {
-        flex: 1
-      }
-    }, /*#__PURE__*/React__default['default'].createElement(atoms.MarginLeft, {
-      style: {
-        flex: 1
-      }
-    }, /*#__PURE__*/React__default['default'].createElement(atoms.MarginTop, null, React__default['default'].cloneElement(children, {
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.PaddingLeft, null, /*#__PURE__*/React__default['default'].createElement(atoms.MarginLeft, null, /*#__PURE__*/React__default['default'].createElement(atoms.MarginTop, null, React__default['default'].cloneElement(children, {
       item: item
     }))))))));
   };
@@ -41321,13 +41346,78 @@
     }))))));
   }
 
+  function HeaderWrapper(_ref) {
+    var children = _ref.children;
+    return /*#__PURE__*/React__default['default'].createElement(reactNative.View, {
+      style: {
+        flex: 1
+      }
+    }, children);
+  }
+
+  var AnimatedSectionList = Animated__default['default'].createAnimatedComponent(reactNative.SectionList);
+
+  var clamp = function clamp(value, lowerBound, upperBound) {
+    "worklet";
+
+    return Math.min(Math.max(lowerBound, value), upperBound);
+  };
+
   var TimeLineSection = function TimeLineSection(_ref) {
     var children = _ref.children,
-        data = _ref.data;
-    return /*#__PURE__*/React__default['default'].createElement(reactNative.SectionList, {
+        data = _ref.data,
+        header = _ref.header,
+        header_height = _ref.header_height,
+        header_height_cut = _ref.header_height_cut;
+    var scrollOffset = Animated.useSharedValue(0);
+    var scrollHandler = Animated.useAnimatedScrollHandler({
+      onScroll: function onScroll(event, ctx) {
+        var diff = event.contentOffset.y - ctx.prevY;
+        scrollOffset.value = clamp(scrollOffset.value + diff, 0, header_height);
+        ctx.prevY = event.contentOffset.y;
+      },
+      onBeginDrag: function onBeginDrag(event, ctx) {
+        ctx.prevY = event.contentOffset.y;
+      },
+      onEndDrag: function onEndDrag(event) {
+        if (event.contentOffset.y < header_height / 2) {
+          scrollOffset.value = 0;
+        } else {
+          if (scrollOffset.value > header_height / 2) {
+            scrollOffset.value = header_height;
+          } else {
+            scrollOffset.value = 0;
+          }
+        }
+      }
+    });
+    var animatedStyles = Animated.useAnimatedStyle(function () {
+      return {
+        transform: [{
+          translateY: Animated.interpolate(scrollOffset.value, [0, header_height], [0, -header_height_cut], Animated.Extrapolation.CLAMP)
+        }]
+      };
+    });
+    return /*#__PURE__*/React__default['default'].createElement(reactNative.View, {
+      style: {
+        flex: 1
+      }
+    }, header && /*#__PURE__*/React__default['default'].createElement(Animated__default['default'].View, {
+      style: [{
+        position: "absolute",
+        left: 0,
+        right: 0,
+        top: 0,
+        width: "100%",
+        zIndex: 1,
+        height: header_height
+      }, animatedStyles]
+    }, /*#__PURE__*/React__default['default'].createElement(HeaderWrapper, null, header)), /*#__PURE__*/React__default['default'].createElement(AnimatedSectionList, {
+      onScroll: header && scrollHandler,
+      scrollEventThrottle: 16,
       stickySectionHeadersEnabled: true,
       contentContainerStyle: {
-        paddingBottom: 20
+        paddingTop: header ? header_height : 0
       },
       sections: data,
       keyExtractor: function keyExtractor(item) {
@@ -41350,7 +41440,7 @@
           date: date
         });
       }
-    });
+    }));
   };
 
   var massageData = function massageData(data) {
@@ -41367,13 +41457,21 @@
 
   var TimeLine = function TimeLine(_ref4) {
     var children = _ref4.children,
-        data = _ref4.data;
+        header = _ref4.header,
+        data = _ref4.data,
+        _ref4$header_height = _ref4.header_height,
+        header_height = _ref4$header_height === void 0 ? 100 : _ref4$header_height,
+        _ref4$header_height_c = _ref4.header_height_cut,
+        header_height_cut = _ref4$header_height_c === void 0 ? 50 : _ref4$header_height_c;
     if (!data) return /*#__PURE__*/React__default['default'].createElement(MerchantListGhost, null);
     var new_date = massageData(data);
-    return /*#__PURE__*/React__default['default'].createElement(reactNative.SafeAreaView, null, /*#__PURE__*/React__default['default'].createElement(TimeLineSection, {
+    return /*#__PURE__*/React__default['default'].createElement(TimeLineSection, {
       data: new_date,
-      children: children
-    }));
+      children: children,
+      header: header,
+      header_height: header_height,
+      header_height_cut: header_height_cut
+    });
   };
 
   var _templateObject$m, _templateObject2$e;
@@ -41435,7 +41533,8 @@
       color: theme.color10,
       style: {
         borderColor: theme.color7,
-        borderWidth: 2
+        borderWidth: 2,
+        minHeight: 120
       },
       active: true,
       onClick: function onClick() {}
@@ -41465,12 +41564,105 @@
     }), /*#__PURE__*/React__default['default'].createElement(atoms.PaddingLeft, null, /*#__PURE__*/React__default['default'].createElement(atoms.H3, null, item.details.pax))))))));
   }
 
+  var _templateObject$n, _templateObject2$f;
+  var ImageWrapper$2 = styled__default['default'].View(_templateObject$n || (_templateObject$n = _taggedTemplateLiteral(["\n  aspect-ratio: 1;\n  height: 90px;\n  border-radius: ", ";\n  overflow: hidden;\n"])), function (props) {
+    return props.theme.borderRadiusSmall;
+  });
+  var StatusWrapper$2 = styled__default['default'].View(_templateObject2$f || (_templateObject2$f = _taggedTemplateLiteral(["\n  border-radius: 4px;\n  background-color: ", ";\n  justify-content: center;\n  padding-vertical: 6px;\n"])), function (props) {
+    return props.color;
+  });
+
+  function Status$1(_ref) {
+    var name = _ref.name;
+    var theme = atoms.useThemeContext();
+    var statusColors = {
+      Pending: {
+        color: theme.color12,
+        border: theme.color12border,
+        background: theme.color12light
+      },
+      Confirmed: {
+        color: theme.color11,
+        border: theme.color11border,
+        background: theme.color11light
+      },
+      Declined: {
+        color: theme.color6,
+        border: theme.color6light,
+        background: theme.color6light
+      },
+      Cancelled: {
+        color: theme.color11,
+        border: theme.color11border,
+        background: theme.color11light
+      },
+      Attended: {
+        color: theme.color11,
+        border: theme.color11border,
+        background: theme.color11light
+      },
+      NoShow: {
+        color: theme.color11,
+        border: theme.color11border,
+        background: theme.color11light
+      }
+    };
+    return /*#__PURE__*/React__default['default'].createElement(StatusWrapper$2, {
+      theme: theme,
+      color: statusColors[name].color
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.PaddingHorizontal, null, /*#__PURE__*/React__default['default'].createElement(atoms.H5, {
+      color: theme.color1
+    }, name)));
+  }
+
+  function Booking$1(_ref) {
+    var item = _ref.item;
+    var theme = atoms.useThemeContext();
+    var navigation = native.useNavigation();
+    return /*#__PURE__*/React__default['default'].createElement(atoms.RoundedBtn, {
+      smallBorder: true,
+      color: theme.color10,
+      style: {
+        borderColor: theme.color7,
+        borderWidth: 2,
+        minHeight: 120
+      },
+      active: true,
+      onClick: function onClick() {
+        return navigation.navigate("BookingDetails", {
+          booking: item
+        });
+      }
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(atoms.PaddingLeft, {
+      style: {
+        flex: 1
+      }
+    }, /*#__PURE__*/React__default['default'].createElement(atoms.H3, null, item.user.full_name), /*#__PURE__*/React__default['default'].createElement(atoms.PaddingVertical, null, /*#__PURE__*/React__default['default'].createElement(atoms.H4, {
+      fontFamily: theme.fontFamily2,
+      numberOfLines: 1
+    }, item.details.service.name)), /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
+      style: {
+        justifyContent: "space-between",
+        alignItems: "center"
+      }
+    }, /*#__PURE__*/React__default['default'].createElement(Status$1, {
+      name: item.status.status_name.name
+    }), /*#__PURE__*/React__default['default'].createElement(atoms.Row, null, /*#__PURE__*/React__default['default'].createElement(atoms.Icon, {
+      icon: "big_pax",
+      size: "small",
+      autoplay: false,
+      loop: false,
+      color: theme.color2
+    }), /*#__PURE__*/React__default['default'].createElement(atoms.PaddingLeft, null, /*#__PURE__*/React__default['default'].createElement(atoms.H3, null, item.details.pax)))))));
+  }
+
   exports.AccordionItem = AccordionItem;
   exports.AccordionProvider = AccordionProvider;
   exports.AccordionScroll = AccordionScroll;
   exports.AccordionScroller = AccordionScroller;
   exports.Actions = Actions;
   exports.BookingMerchant = BookingMerchant;
+  exports.BookingMerchantNew = Booking$1;
   exports.BookingUser = Booking;
   exports.DateRange = DateRange;
   exports.Duration = DurationItem;

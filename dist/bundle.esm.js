@@ -1,14 +1,15 @@
 import React, { useEffect, useReducer, useRef, useState, useCallback, useMemo } from 'react';
 import { Pressable, Platform, SafeAreaView, StatusBar, Dimensions, View, findNodeHandle, PermissionsAndroid, Image, Text, StyleSheet, SectionList } from 'react-native';
-import Animated, { useSharedValue, useAnimatedStyle, withTiming, Easing, withSpring, useAnimatedGestureHandler, runOnJS, useDerivedValue, interpolate, Extrapolate } from 'react-native-reanimated';
+import Animated, { useSharedValue, useAnimatedStyle, withTiming, Easing, withSpring, useAnimatedGestureHandler, runOnJS, useDerivedValue, interpolate, Extrapolate, useAnimatedScrollHandler, Extrapolation } from 'react-native-reanimated';
 import { GestureHandlerRootView, PanGestureHandler, FlatList, ScrollView as ScrollView$1 } from 'react-native-gesture-handler';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 import styled from 'styled-components/native';
-import { useThemeContext, Row, Padding, AnimatedButton, Center, Success, Error, Loader, MarginHorizontal, H3, Icon, PaddingVertical, Margin, RoundedBtn, PaddingTop, H4, PaddingHorizontal, Switch, CenterLeft, H2, MarginVertical, MarginBottom, Box, FullScreen, PaddingLeft, MarginLeft, MarginTop, H5 } from '@servesall/atoms';
+import { useThemeContext, Row, Padding, AnimatedButton, Center, Success, Error, Loader, MarginHorizontal, H3, Icon, CenterLeft, Margin, RoundedBtn, PaddingTop, H4, PaddingHorizontal, PaddingVertical, Switch, H2, MarginVertical, MarginBottom, Box, FullScreen, PaddingLeft, MarginLeft, MarginTop, H5 } from '@servesall/atoms';
 import LottieView from 'lottie-react-native';
 import MapView from 'react-native-maps';
 import Geolocation from 'react-native-geolocation-service';
 import ImagePicker from 'react-native-image-crop-picker';
+import { LinearGradient } from 'react-native-gradients';
 import format from 'date-fns/format';
 import startOfMonth from 'date-fns/startOfMonth';
 import { format as format$1, add } from 'date-fns';
@@ -4098,8 +4099,8 @@ function ImageUpload(_ref) {
 
   var pickImage = function pickImage() {
     ImagePicker.openPicker({
-      width: 400,
-      height: 400,
+      width: 1080,
+      height: 1080,
       cropping: true
     }).then(function (image) {
       setImage(image.sourceURL || image.path);
@@ -4178,10 +4179,12 @@ var FooterActions = React.memo(function (_ref) {
 });
 
 var _templateObject$9, _templateObject2$5;
-var MerchantCardWrapper = styled.View(_templateObject$9 || (_templateObject$9 = _taggedTemplateLiteral(["\n  margin: ", ";\n"])), function (props) {
+var MerchantCardWrapper = styled.View(_templateObject$9 || (_templateObject$9 = _taggedTemplateLiteral(["\n  margin-horizontal: ", ";\n  margin-top: ", ";\n"])), function (props) {
+  return props.theme.margin;
+}, function (props) {
   return props.theme.margin;
 });
-var ImageWrapper = styled.View(_templateObject2$5 || (_templateObject2$5 = _taggedTemplateLiteral(["\n  aspect-ratio: 1;\n  border-radius: ", ";\n  overflow: hidden;\n"])), function (props) {
+var ImageWrapper = styled.View(_templateObject2$5 || (_templateObject2$5 = _taggedTemplateLiteral(["\n  aspect-ratio: 0.9;\n  border-radius: ", ";\n  overflow: hidden;\n"])), function (props) {
   return props.theme.borderRadiusSmall;
 });
 
@@ -4195,7 +4198,38 @@ function MerchantCard(_ref) {
   }, /*#__PURE__*/React.createElement(ImageLoader, {
     background: theme.color7,
     imageUrl: merchant.image_uri
-  })), /*#__PURE__*/React.createElement(PaddingVertical, null, /*#__PURE__*/React.createElement(H3, null, merchant.name)));
+  }), /*#__PURE__*/React.createElement(View, {
+    style: {
+      position: "absolute",
+      left: 0,
+      right: 0,
+      bottom: 0,
+      flex: 1,
+      height: 55
+    }
+  }, /*#__PURE__*/React.createElement(Row, null, /*#__PURE__*/React.createElement(View, {
+    style: {
+      position: "absolute",
+      left: 0,
+      right: 0,
+      flex: 1,
+      height: 55,
+      opacity: 0.8
+    }
+  }, /*#__PURE__*/React.createElement(LinearGradient, {
+    colorList: [{
+      offset: "0%",
+      color: merchant.primary_color,
+      opacity: "1"
+    }, {
+      offset: "50%",
+      color: merchant.secondary_color,
+      opacity: "1"
+    }],
+    angle: 0
+  })), /*#__PURE__*/React.createElement(CenterLeft, null, /*#__PURE__*/React.createElement(Margin, null, /*#__PURE__*/React.createElement(H3, {
+    color: theme.color1
+  }, merchant.name)))))));
 }
 
 var _templateObject$a, _templateObject2$6, _templateObject3$2;
@@ -40611,19 +40645,11 @@ var Time$1 = function Time(_ref) {
     dashLength: 10,
     dashGap: 5,
     dashColor: theme.color7
-  }), /*#__PURE__*/React.createElement(Row, {
+  }), /*#__PURE__*/React.createElement(View, {
     style: {
       flex: 1
     }
-  }, /*#__PURE__*/React.createElement(PaddingLeft, {
-    style: {
-      flex: 1
-    }
-  }, /*#__PURE__*/React.createElement(MarginLeft, {
-    style: {
-      flex: 1
-    }
-  }, /*#__PURE__*/React.createElement(MarginTop, null, React.cloneElement(children, {
+  }, /*#__PURE__*/React.createElement(PaddingLeft, null, /*#__PURE__*/React.createElement(MarginLeft, null, /*#__PURE__*/React.createElement(MarginTop, null, React.cloneElement(children, {
     item: item
   }))))))));
 };
@@ -41319,13 +41345,78 @@ function MerchantListGhost() {
   }))))));
 }
 
+function HeaderWrapper(_ref) {
+  var children = _ref.children;
+  return /*#__PURE__*/React.createElement(View, {
+    style: {
+      flex: 1
+    }
+  }, children);
+}
+
+var AnimatedSectionList = Animated.createAnimatedComponent(SectionList);
+
+var clamp = function clamp(value, lowerBound, upperBound) {
+  "worklet";
+
+  return Math.min(Math.max(lowerBound, value), upperBound);
+};
+
 var TimeLineSection = function TimeLineSection(_ref) {
   var children = _ref.children,
-      data = _ref.data;
-  return /*#__PURE__*/React.createElement(SectionList, {
+      data = _ref.data,
+      header = _ref.header,
+      header_height = _ref.header_height,
+      header_height_cut = _ref.header_height_cut;
+  var scrollOffset = useSharedValue(0);
+  var scrollHandler = useAnimatedScrollHandler({
+    onScroll: function onScroll(event, ctx) {
+      var diff = event.contentOffset.y - ctx.prevY;
+      scrollOffset.value = clamp(scrollOffset.value + diff, 0, header_height);
+      ctx.prevY = event.contentOffset.y;
+    },
+    onBeginDrag: function onBeginDrag(event, ctx) {
+      ctx.prevY = event.contentOffset.y;
+    },
+    onEndDrag: function onEndDrag(event) {
+      if (event.contentOffset.y < header_height / 2) {
+        scrollOffset.value = 0;
+      } else {
+        if (scrollOffset.value > header_height / 2) {
+          scrollOffset.value = header_height;
+        } else {
+          scrollOffset.value = 0;
+        }
+      }
+    }
+  });
+  var animatedStyles = useAnimatedStyle(function () {
+    return {
+      transform: [{
+        translateY: interpolate(scrollOffset.value, [0, header_height], [0, -header_height_cut], Extrapolation.CLAMP)
+      }]
+    };
+  });
+  return /*#__PURE__*/React.createElement(View, {
+    style: {
+      flex: 1
+    }
+  }, header && /*#__PURE__*/React.createElement(Animated.View, {
+    style: [{
+      position: "absolute",
+      left: 0,
+      right: 0,
+      top: 0,
+      width: "100%",
+      zIndex: 1,
+      height: header_height
+    }, animatedStyles]
+  }, /*#__PURE__*/React.createElement(HeaderWrapper, null, header)), /*#__PURE__*/React.createElement(AnimatedSectionList, {
+    onScroll: header && scrollHandler,
+    scrollEventThrottle: 16,
     stickySectionHeadersEnabled: true,
     contentContainerStyle: {
-      paddingBottom: 20
+      paddingTop: header ? header_height : 0
     },
     sections: data,
     keyExtractor: function keyExtractor(item) {
@@ -41348,7 +41439,7 @@ var TimeLineSection = function TimeLineSection(_ref) {
         date: date
       });
     }
-  });
+  }));
 };
 
 var massageData = function massageData(data) {
@@ -41365,13 +41456,21 @@ var massageData = function massageData(data) {
 
 var TimeLine = function TimeLine(_ref4) {
   var children = _ref4.children,
-      data = _ref4.data;
+      header = _ref4.header,
+      data = _ref4.data,
+      _ref4$header_height = _ref4.header_height,
+      header_height = _ref4$header_height === void 0 ? 100 : _ref4$header_height,
+      _ref4$header_height_c = _ref4.header_height_cut,
+      header_height_cut = _ref4$header_height_c === void 0 ? 50 : _ref4$header_height_c;
   if (!data) return /*#__PURE__*/React.createElement(MerchantListGhost, null);
   var new_date = massageData(data);
-  return /*#__PURE__*/React.createElement(SafeAreaView, null, /*#__PURE__*/React.createElement(TimeLineSection, {
+  return /*#__PURE__*/React.createElement(TimeLineSection, {
     data: new_date,
-    children: children
-  }));
+    children: children,
+    header: header,
+    header_height: header_height,
+    header_height_cut: header_height_cut
+  });
 };
 
 var _templateObject$m, _templateObject2$e;
@@ -41433,7 +41532,8 @@ function Booking(_ref) {
     color: theme.color10,
     style: {
       borderColor: theme.color7,
-      borderWidth: 2
+      borderWidth: 2,
+      minHeight: 120
     },
     active: true,
     onClick: function onClick() {}
@@ -41463,4 +41563,96 @@ function Booking(_ref) {
   }), /*#__PURE__*/React.createElement(PaddingLeft, null, /*#__PURE__*/React.createElement(H3, null, item.details.pax))))))));
 }
 
-export { AccordionItem, AccordionProvider, AccordionScroll, AccordionScroller, Actions, BookingMerchant, Booking as BookingUser, DateRange, DurationItem as Duration, FooterActions, FooterBtn, GamifiedSlideScreen, HorizontalScroll, ImageLoader, ImageUpload, Map, MerchantCard, MerchantSelector, Modal, ModalContext, ModalProvider, App as NewBookingModal, SlideItem as NewGamifiedSlideScreen, ResourceDragAndDrop, Screen, ServiceContainer, SlideScreen, TimeLine, Times as TimeSelector, Weekdays$1 as WeekdaySelector, useAccordionContext, useAccordionHook, useModalContext };
+var _templateObject$n, _templateObject2$f;
+var ImageWrapper$2 = styled.View(_templateObject$n || (_templateObject$n = _taggedTemplateLiteral(["\n  aspect-ratio: 1;\n  height: 90px;\n  border-radius: ", ";\n  overflow: hidden;\n"])), function (props) {
+  return props.theme.borderRadiusSmall;
+});
+var StatusWrapper$2 = styled.View(_templateObject2$f || (_templateObject2$f = _taggedTemplateLiteral(["\n  border-radius: 4px;\n  background-color: ", ";\n  justify-content: center;\n  padding-vertical: 6px;\n"])), function (props) {
+  return props.color;
+});
+
+function Status$1(_ref) {
+  var name = _ref.name;
+  var theme = useThemeContext();
+  var statusColors = {
+    Pending: {
+      color: theme.color12,
+      border: theme.color12border,
+      background: theme.color12light
+    },
+    Confirmed: {
+      color: theme.color11,
+      border: theme.color11border,
+      background: theme.color11light
+    },
+    Declined: {
+      color: theme.color6,
+      border: theme.color6light,
+      background: theme.color6light
+    },
+    Cancelled: {
+      color: theme.color11,
+      border: theme.color11border,
+      background: theme.color11light
+    },
+    Attended: {
+      color: theme.color11,
+      border: theme.color11border,
+      background: theme.color11light
+    },
+    NoShow: {
+      color: theme.color11,
+      border: theme.color11border,
+      background: theme.color11light
+    }
+  };
+  return /*#__PURE__*/React.createElement(StatusWrapper$2, {
+    theme: theme,
+    color: statusColors[name].color
+  }, /*#__PURE__*/React.createElement(PaddingHorizontal, null, /*#__PURE__*/React.createElement(H5, {
+    color: theme.color1
+  }, name)));
+}
+
+function Booking$1(_ref) {
+  var item = _ref.item;
+  var theme = useThemeContext();
+  var navigation = useNavigation();
+  return /*#__PURE__*/React.createElement(RoundedBtn, {
+    smallBorder: true,
+    color: theme.color10,
+    style: {
+      borderColor: theme.color7,
+      borderWidth: 2,
+      minHeight: 120
+    },
+    active: true,
+    onClick: function onClick() {
+      return navigation.navigate("BookingDetails", {
+        booking: item
+      });
+    }
+  }, /*#__PURE__*/React.createElement(Margin, null, /*#__PURE__*/React.createElement(PaddingLeft, {
+    style: {
+      flex: 1
+    }
+  }, /*#__PURE__*/React.createElement(H3, null, item.user.full_name), /*#__PURE__*/React.createElement(PaddingVertical, null, /*#__PURE__*/React.createElement(H4, {
+    fontFamily: theme.fontFamily2,
+    numberOfLines: 1
+  }, item.details.service.name)), /*#__PURE__*/React.createElement(Row, {
+    style: {
+      justifyContent: "space-between",
+      alignItems: "center"
+    }
+  }, /*#__PURE__*/React.createElement(Status$1, {
+    name: item.status.status_name.name
+  }), /*#__PURE__*/React.createElement(Row, null, /*#__PURE__*/React.createElement(Icon, {
+    icon: "big_pax",
+    size: "small",
+    autoplay: false,
+    loop: false,
+    color: theme.color2
+  }), /*#__PURE__*/React.createElement(PaddingLeft, null, /*#__PURE__*/React.createElement(H3, null, item.details.pax)))))));
+}
+
+export { AccordionItem, AccordionProvider, AccordionScroll, AccordionScroller, Actions, BookingMerchant, Booking$1 as BookingMerchantNew, Booking as BookingUser, DateRange, DurationItem as Duration, FooterActions, FooterBtn, GamifiedSlideScreen, HorizontalScroll, ImageLoader, ImageUpload, Map, MerchantCard, MerchantSelector, Modal, ModalContext, ModalProvider, App as NewBookingModal, SlideItem as NewGamifiedSlideScreen, ResourceDragAndDrop, Screen, ServiceContainer, SlideScreen, TimeLine, Times as TimeSelector, Weekdays$1 as WeekdaySelector, useAccordionContext, useAccordionHook, useModalContext };

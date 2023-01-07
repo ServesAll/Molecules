@@ -1,4 +1,5 @@
 import React from "react";
+import { View } from "react-native";
 import {
   MarginHorizontal,
   MarginTop,
@@ -44,13 +45,13 @@ const Time = ({ item, index, section, children }) => {
             dashColor={theme.color7}
           />
 
-          <Row style={{ flex: 1 }}>
-            <PaddingLeft style={{ flex: 1 }}>
-              <MarginLeft style={{ flex: 1 }}>
+          <View style={{ flex: 1 }}>
+            <PaddingLeft>
+              <MarginLeft>
                 <MarginTop>{React.cloneElement(children, { item })}</MarginTop>
               </MarginLeft>
             </PaddingLeft>
-          </Row>
+          </View>
         </Row>
       </MarginHorizontal>
     </MarginHorizontal>
