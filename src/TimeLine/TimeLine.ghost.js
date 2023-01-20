@@ -4,46 +4,19 @@ import {
   useThemeContext,
   Margin,
   MarginTop,
-  PaddingTop,
+  MarginBottom,
+  Row,
 } from "@servesall/atoms";
 import LottieView from "lottie-react-native";
+import DashedLine from "react-native-dashed-line";
 import ghostloader from "./Assets/ghostloader.json";
-import ghostloaderlarge from "./Assets/ghostloaderlarge.json";
 
 export default function MerchantListGhost() {
   const theme = useThemeContext();
   return (
-    <>
+    <MarginTop>
       <Margin>
-        <View
-          style={{
-            width: "100%",
-            aspectRatio: 1 / 1,
-            borderRadius: 18,
-            overflow: "hidden",
-          }}
-        >
-          <View
-            style={{
-              width: "100%",
-              aspectRatio: 1 / 1,
-              backgroundColor: theme.color7,
-              borderRadius: 18,
-            }}
-          />
-          <LottieView
-            style={{
-              position: "absolute",
-              width: "100%",
-              height: "100%",
-              resizeMode: "contain",
-            }}
-            autoPlay={true}
-            loop={true}
-            source={ghostloaderlarge}
-          />
-        </View>
-        <MarginTop>
+        <MarginBottom>
           <View style={{ width: 180, borderRadius: 18, overflow: "hidden" }}>
             <View
               style={{
@@ -63,13 +36,29 @@ export default function MerchantListGhost() {
               source={ghostloader}
             />
           </View>
+        </MarginBottom>
+        <MarginTop>
+          <Row style={{ paddingLeft: 25 }}>
+            <DashedLine
+              axis="vertical"
+              dashLength={10}
+              dashGap={5}
+              dashColor={theme.color7}
+            />
 
-          <PaddingTop>
-            <View style={{ width: 180, borderRadius: 18, overflow: "hidden" }}>
+            <View
+              style={{
+                flex: 1,
+                aspectRatio: 3 / 1,
+                borderRadius: 18,
+                overflow: "hidden",
+                marginLeft: 25,
+              }}
+            >
               <View
                 style={{
-                  width: 180,
-                  height: 26,
+                  width: "100%",
+                  aspectRatio: 3 / 1,
                   backgroundColor: theme.color7,
                   borderRadius: 18,
                 }}
@@ -78,39 +67,96 @@ export default function MerchantListGhost() {
                 style={{
                   position: "absolute",
                   width: "100%",
+                  resizeMode: "contain",
                 }}
                 autoPlay={true}
                 loop={true}
                 source={ghostloader}
               />
             </View>
-          </PaddingTop>
+          </Row>
+        </MarginTop>
+        <MarginTop>
+          <Row style={{ paddingLeft: 25 }}>
+            <DashedLine
+              axis="vertical"
+              dashLength={10}
+              dashGap={5}
+              dashColor={theme.color7}
+            />
+
+            <View
+              style={{
+                flex: 1,
+                aspectRatio: 3 / 1,
+                borderRadius: 18,
+                overflow: "hidden",
+                marginLeft: 25,
+              }}
+            >
+              <View
+                style={{
+                  width: "100%",
+                  aspectRatio: 3 / 1,
+                  backgroundColor: theme.color7,
+                  borderRadius: 18,
+                }}
+              />
+              <LottieView
+                style={{
+                  position: "absolute",
+                  width: "100%",
+                  resizeMode: "contain",
+                }}
+                autoPlay={true}
+                loop={true}
+                source={ghostloader}
+              />
+            </View>
+          </Row>
+        </MarginTop>
+        <MarginTop>
+          <Row style={{ paddingLeft: 25 }}>
+            <DashedLine
+              axis="vertical"
+              dashLength={10}
+              dashGap={5}
+              dashColor={theme.color7}
+            />
+
+            <View
+              style={{
+                flex: 1,
+                aspectRatio: 3 / 1,
+                borderRadius: 18,
+                overflow: "hidden",
+                marginLeft: 25,
+              }}
+            >
+              <View
+                style={{
+                  width: "100%",
+                  aspectRatio: 3 / 1,
+                  backgroundColor: theme.color7,
+                  borderRadius: 18,
+                }}
+              />
+              <LottieView
+                style={{
+                  position: "absolute",
+                  width: "100%",
+                  resizeMode: "contain",
+                }}
+                autoPlay={true}
+                loop={true}
+                source={ghostloader}
+              />
+            </View>
+          </Row>
         </MarginTop>
       </Margin>
       <Margin>
-        <View style={{ width: "100%", borderRadius: 18, overflow: "hidden" }}>
-          <View
-            style={{
-              width: "100%",
-              aspectRatio: 1 / 1,
-              backgroundColor: theme.color7,
-              borderRadius: 18,
-            }}
-          />
-          <LottieView
-            style={{
-              position: "absolute",
-              width: "100%",
-              height: "100%",
-              resizeMode: "contain",
-            }}
-            autoPlay={true}
-            loop={true}
-            source={ghostloaderlarge}
-          />
-        </View>
-
-        <MarginTop>
+        <MarginBottom>
           <View style={{ width: 180, borderRadius: 18, overflow: "hidden" }}>
             <View
               style={{
@@ -130,12 +176,29 @@ export default function MerchantListGhost() {
               source={ghostloader}
             />
           </View>
-          <PaddingTop>
-            <View style={{ width: 180, borderRadius: 18, overflow: "hidden" }}>
+        </MarginBottom>
+        <MarginTop>
+          <Row style={{ paddingLeft: 25 }}>
+            <DashedLine
+              axis="vertical"
+              dashLength={10}
+              dashGap={5}
+              dashColor={theme.color7}
+            />
+
+            <View
+              style={{
+                flex: 1,
+                aspectRatio: 3 / 1,
+                borderRadius: 18,
+                overflow: "hidden",
+                marginLeft: 25,
+              }}
+            >
               <View
                 style={{
-                  width: 180,
-                  height: 26,
+                  width: "100%",
+                  aspectRatio: 3 / 1,
                   backgroundColor: theme.color7,
                   borderRadius: 18,
                 }}
@@ -144,15 +207,94 @@ export default function MerchantListGhost() {
                 style={{
                   position: "absolute",
                   width: "100%",
+                  resizeMode: "contain",
                 }}
                 autoPlay={true}
                 loop={true}
                 source={ghostloader}
               />
             </View>
-          </PaddingTop>
+          </Row>
+        </MarginTop>
+        <MarginTop>
+          <Row style={{ paddingLeft: 25 }}>
+            <DashedLine
+              axis="vertical"
+              dashLength={10}
+              dashGap={5}
+              dashColor={theme.color7}
+            />
+
+            <View
+              style={{
+                flex: 1,
+                aspectRatio: 3 / 1,
+                borderRadius: 18,
+                overflow: "hidden",
+                marginLeft: 25,
+              }}
+            >
+              <View
+                style={{
+                  width: "100%",
+                  aspectRatio: 3 / 1,
+                  backgroundColor: theme.color7,
+                  borderRadius: 18,
+                }}
+              />
+              <LottieView
+                style={{
+                  position: "absolute",
+                  width: "100%",
+                  resizeMode: "contain",
+                }}
+                autoPlay={true}
+                loop={true}
+                source={ghostloader}
+              />
+            </View>
+          </Row>
+        </MarginTop>
+        <MarginTop>
+          <Row style={{ paddingLeft: 25 }}>
+            <DashedLine
+              axis="vertical"
+              dashLength={10}
+              dashGap={5}
+              dashColor={theme.color7}
+            />
+
+            <View
+              style={{
+                flex: 1,
+                aspectRatio: 3 / 1,
+                borderRadius: 18,
+                overflow: "hidden",
+                marginLeft: 25,
+              }}
+            >
+              <View
+                style={{
+                  width: "100%",
+                  aspectRatio: 3 / 1,
+                  backgroundColor: theme.color7,
+                  borderRadius: 18,
+                }}
+              />
+              <LottieView
+                style={{
+                  position: "absolute",
+                  width: "100%",
+                  resizeMode: "contain",
+                }}
+                autoPlay={true}
+                loop={true}
+                source={ghostloader}
+              />
+            </View>
+          </Row>
         </MarginTop>
       </Margin>
-    </>
+    </MarginTop>
   );
 }

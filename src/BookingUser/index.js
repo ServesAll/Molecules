@@ -31,7 +31,7 @@ export default function Booking({ item }) {
             <ImageLoader
               background={theme.color7}
               imageUrl={
-                item.details.service.asset.cdn_uri
+                item.details.service.asset?.cdn_uri
                   ? item.details.service.asset.cdn_uri
                   : item.merchant.asset.cdn_uri
               }

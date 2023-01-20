@@ -22,19 +22,19 @@ export default function Status({ name }) {
       background: theme.color6light,
     },
     Cancelled: {
-      color: theme.color11,
-      border: theme.color11border,
-      background: theme.color11light,
+      color: theme.color6,
+      border: theme.color6light,
+      background: theme.color6light,
     },
     Attended: {
-      color: theme.color11,
-      border: theme.color11border,
-      background: theme.color11light,
+      color: theme.darkBlue,
+      border: theme.darkBlue,
+      background: theme.darkBlueLight,
     },
     NoShow: {
-      color: theme.color11,
-      border: theme.color11border,
-      background: theme.color11light,
+      color: theme.darkYellowDark,
+      border: theme.darkYellowDark,
+      background: theme.darkYellowDark,
     },
   };
 

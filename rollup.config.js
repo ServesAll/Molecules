@@ -38,6 +38,7 @@ export default {
         "date-fns": "date-fns",
         "react-native-gradients": "react-native-gradients",
         "react-native-svg": "react-native-svg",
+        "react-native-fast-image": "react-native-fast-image",
       },
     },
   ],
@@ -68,5 +69,6 @@ export default {
     "date-fns",
     "react-native-gradients",
     "react-native-svg",
+    "react-native-fast-image",
   ],
 };

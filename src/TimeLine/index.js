@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Animated, {
   useSharedValue,
   useAnimatedScrollHandler,
@@ -10,6 +10,7 @@ import { View, SectionList } from "react-native";
 import Time from "./Time";
 import Date from "./Date";
 import TimeLineGhost from "./TimeLine.ghost";
+import TimetListItemGhost from "./TimeLineItem.ghost";
 import HeaderWrapper from "./Header";
 
 const AnimatedSectionList = Animated.createAnimatedComponent(SectionList);
@@ -25,11 +26,14 @@ const TimeLineSection = ({
   header,
   header_height,
   header_height_cut,
+  onEndReachedThreshold,
+  onEndReached,
+  isFinished,
 }) => {
   const scrollOffset = useSharedValue(0);
-
   const scrollHandler = useAnimatedScrollHandler({
     onScroll: (event, ctx) => {
+      if (event.contentOffset.y < 0) return;
       const diff = event.contentOffset.y - ctx.prevY;
       scrollOffset.value = clamp(scrollOffset.value + diff, 0, header_height);
       ctx.prevY = event.contentOffset.y;
@@ -107,6 +111,16 @@ const TimeLineSection = ({
         renderSectionHeader={({ section: { date } }) => {
           return <Date date={date} />;
         }}
+        onEndReachedThreshold={onEndReachedThreshold}
+        onEndReached={() => {
+          onEndReached();
+        }}
+        ListFooterComponent={() => {
+          if (!isFinished) {
+            return <TimetListItemGhost />;
+          }
+          return null;
+        }}
       />
     </View>
   );
@@ -133,6 +147,10 @@ const TimeLine = ({
   data,
   header_height = 100,
   header_height_cut = 50,
+  onEndReachedThreshold,
+  onEndReached,
+  loading,
+  isFinished,
 }) => {
   if (!data) return <TimeLineGhost />;
 
@@ -145,6 +163,10 @@ const TimeLine = ({
       header={header}
       header_height={header_height}
       header_height_cut={header_height_cut}
+      onEndReachedThreshold={onEndReachedThreshold}
+      onEndReached={onEndReached}
+      loading={loading}
+      isFinished={isFinished}
     />
   );
 };
