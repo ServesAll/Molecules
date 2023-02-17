@@ -62,7 +62,7 @@ const DurationItem = React.memo(
     return (
       <View style={{ flex: 1 }}>
         <ScrollView>
-          <ListHeaderComponent />
+          {ListHeaderComponent && <ListHeaderComponent />}
           <Duration
             value={15}
             name={"15 minutes"}

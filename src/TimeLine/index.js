@@ -29,6 +29,7 @@ const TimeLineSection = ({
   onEndReachedThreshold,
   onEndReached,
   isFinished,
+  noBookings,
 }) => {
   const scrollOffset = useSharedValue(0);
   const scrollHandler = useAnimatedScrollHandler({
@@ -121,6 +122,7 @@ const TimeLineSection = ({
           }
           return null;
         }}
+        ListEmptyComponent={noBookings}
       />
     </View>
   );
@@ -138,7 +140,18 @@ const massageData = (data) => {
       return acc;
     }, {})
   );
-  return result;
+
+  let resultOrderedByTime = result.map((item) => {
+    return {
+      ...item,
+      data: item.data.sort((a, b) => {
+        return a.details.booking_date_time > b.details.booking_date_time
+          ? 1
+          : -1;
+      }),
+    };
+  });
+  return resultOrderedByTime;
 };
 
 const TimeLine = ({
@@ -151,6 +164,7 @@ const TimeLine = ({
   onEndReached,
   loading,
   isFinished,
+  noBookings,
 }) => {
   if (!data) return <TimeLineGhost />;
 
@@ -167,6 +181,7 @@ const TimeLine = ({
       onEndReached={onEndReached}
       loading={loading}
       isFinished={isFinished}
+      noBookings={noBookings}
     />
   );
 };
