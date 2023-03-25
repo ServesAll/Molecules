@@ -2,14 +2,14 @@ import React, { useCallback, useEffect, useState, useRef } from "react";
 import { View } from "react-native";
 import {
   useThemeContext,
-  H3,
-  MarginHorizontal,
+  H4,
+  Margin,
   PaddingVertical,
   Row,
   Center,
 } from "@servesall/atoms";
-import { FlatList } from "react-native-gesture-handler";
 import startOfMonth from "date-fns/startOfMonth";
+import { BottomSheetFlatList } from "@gorhom/bottom-sheet";
 import FlatMonth from "./FlatMonth";
 
 const year = new Date().getFullYear();
@@ -93,33 +93,33 @@ const Weekdays = () => {
   const theme = useThemeContext();
   return (
     <View style={{ backgroundColor: theme.color1 }}>
-      <MarginHorizontal>
+      <Margin>
         <PaddingVertical>
           <Row style={{ justifyContent: "space-between" }}>
             <Center style={{ minWidth: "14%" }}>
-              <H3 fontFamily={theme.fontFamily2}>Mo</H3>
+              <H4>Mo</H4>
             </Center>
             <Center style={{ minWidth: "14%" }}>
-              <H3 fontFamily={theme.fontFamily2}>Tu</H3>
+              <H4>Tu</H4>
             </Center>
             <Center style={{ minWidth: "14%" }}>
-              <H3 fontFamily={theme.fontFamily2}>We</H3>
+              <H4>We</H4>
             </Center>
             <Center style={{ minWidth: "14%" }}>
-              <H3 fontFamily={theme.fontFamily2}>Th</H3>
+              <H4>Th</H4>
             </Center>
             <Center style={{ minWidth: "14%" }}>
-              <H3 fontFamily={theme.fontFamily2}>Fr</H3>
+              <H4>Fr</H4>
             </Center>
             <Center style={{ minWidth: "14%" }}>
-              <H3 fontFamily={theme.fontFamily2}>Sa</H3>
+              <H4>Sa</H4>
             </Center>
             <Center style={{ minWidth: "14%" }}>
-              <H3 fontFamily={theme.fontFamily2}>Su</H3>
+              <H4>Su</H4>
             </Center>
           </Row>
         </PaddingVertical>
-      </MarginHorizontal>
+      </Margin>
     </View>
   );
 };
@@ -212,16 +212,18 @@ const FlatCalendar = React.memo(
 
     const keyExtractor = useCallback((item) => item.id, []);
 
+    const cal_data = renderMonth();
+
     return (
       <View style={{ flex: 1 }}>
-        <FlatList
+        <BottomSheetFlatList
           ref={scrollEl}
           getItemLayout={(data, index) => ({
             length: 370,
             offset: 370 * index,
             index,
           })}
-          data={renderMonth()}
+          data={cal_data}
           renderItem={renderItem}
           keyExtractor={keyExtractor}
           initialNumToRender={1}
@@ -230,7 +232,8 @@ const FlatCalendar = React.memo(
           extraData={{ startDate, endDate }}
           windowSize={3}
           ListHeaderComponent={ListHeaderComponent}
-          stickyHeaderIndices={[1]}
+          stickyHeaderIndices={[0]}
+          contentContainerStyle={{ paddingBottom: 100 }}
         />
       </View>
     );

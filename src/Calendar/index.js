@@ -19,7 +19,7 @@ const DateRange = React.memo(
           start={startDate}
           end={endDate}
           onSelect={onSelect}
-          ListHeaderComponent={<ListHeaderComponent />}
+          ListHeaderComponent={ListHeaderComponent && <ListHeaderComponent />}
         />
       </>
     );

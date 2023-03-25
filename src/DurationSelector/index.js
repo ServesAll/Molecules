@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
+import { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 import { Margin } from "@servesall/atoms";
 import Duration from "./Duration";
 
@@ -61,7 +61,7 @@ const DurationItem = React.memo(
 
     return (
       <View style={{ flex: 1 }}>
-        <ScrollView>
+        <BottomSheetScrollView contentContainerStyle={{ paddingBottom: 100 }}>
           {ListHeaderComponent && <ListHeaderComponent />}
           <Duration
             value={15}
@@ -180,7 +180,7 @@ const DurationItem = React.memo(
             durationToggle={({ value }) => durationToggle({ value })}
           />
           {durationHour === 12 && <MinuteValues selectedHour={12} />}
-        </ScrollView>
+        </BottomSheetScrollView>
       </View>
     );
   }

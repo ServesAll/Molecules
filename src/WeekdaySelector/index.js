@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
+import { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 import Weekday from "./Weekday";
 
 const Weekdays = React.memo(
@@ -29,8 +29,8 @@ const Weekdays = React.memo(
 
     return (
       <View style={{ flex: 1 }}>
-        <ScrollView>
-          <ListHeaderComponent />
+        <BottomSheetScrollView contentContainerStyle={{ paddingBottom: 100 }}>
+          {ListHeaderComponent && <ListHeaderComponent />}
           <Weekday
             dayName={"monday"}
             isActive={weekdays.monday}
@@ -66,7 +66,7 @@ const Weekdays = React.memo(
             isActive={weekdays.sunday}
             weekdayToggle={({ day }) => weekdayToggle({ day })}
           />
-        </ScrollView>
+        </BottomSheetScrollView>
       </View>
     );
   }

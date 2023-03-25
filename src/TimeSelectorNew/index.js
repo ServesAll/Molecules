@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { View } from "react-native";
-import { BottomSheetScrollView } from "@gorhom/bottom-sheet";
+import { BottomSheetFlatList } from "@gorhom/bottom-sheet";
 import {
   H2,
   Margin,
@@ -9,20 +9,16 @@ import {
   Switch,
   CenterLeft,
   MarginRight,
+  MarginHorizontal,
+  useThemeContext,
+  MarginTop,
 } from "@servesall/atoms";
 import { add, format } from "date-fns";
 import Time from "./Time";
 
-const DividerElement = ({ name, color }) => {
-  return (
-    <Margin>
-      <H2 color={color}>{name}</H2>
-    </Margin>
-  );
-};
-
 const Times = React.memo(
   ({ timesSelected = [], onSelect, ListHeaderComponent = null }) => {
+    const theme = useThemeContext();
     const [interval, setInterval] = useState(30);
     const [times, setTimes] = useState([]);
     const [toggledTimes, setToggledTimes] = useState(timesSelected);
@@ -61,8 +57,9 @@ const Times = React.memo(
             add(new Date("2021-01-01T00:00:00.000+01:00"), {
               minutes: item,
             }),
-            "hh:mm bbbb"
+            "HH:mm"
           ),
+          active: toggledTimes.includes(item),
           minuteValue: item,
         });
       });
@@ -76,25 +73,47 @@ const Times = React.memo(
           return item !== minuteValue;
         });
         setToggledTimes(newArrOfTimes);
-        onSelect({ key: "times", value: newArrOfTimes });
       } else {
-        const newArrOfTimes = toggledTimes.filter((item) => {
-          return item !== minuteValue;
-        });
-        setToggledTimes([...newArrOfTimes, minuteValue]);
-        onSelect({
-          key: "times",
-          value: [...newArrOfTimes, minuteValue],
-        });
+        setToggledTimes((prevValue) => [...prevValue, minuteValue]);
       }
+    };
+
+    useEffect(() => {
+      onSelect({
+        value: toggledTimes,
+      });
+    }, [toggledTimes]);
+
+    const renderItem = ({ item }) => {
+      return (
+        <Time
+          isActive={item.active}
+          time={item.time}
+          timeToggle={(value) => {
+            filterTimes({ minuteValue: item.minuteValue, value });
+          }}
+        />
+      );
+    };
+
+    const ITEM_HEIGHT = 65; // fixed height of item component
+    const getItemLayout = (data, index) => {
+      return {
+        length: ITEM_HEIGHT,
+        offset: ITEM_HEIGHT * index,
+        index,
+      };
     };
 
     return (
       <View style={{ flex: 1 }}>
-        <BottomSheetScrollView contentContainerStyle={{ paddingBottom: 100 }}>
-          {ListHeaderComponent && <ListHeaderComponent />}
-          <Row>
+        <MarginHorizontal>
+          <MarginTop>
             <H4>Every</H4>
+          </MarginTop>
+        </MarginHorizontal>
+        <Margin>
+          <Row>
             <Switch
               fat={true}
               style={{
@@ -111,36 +130,40 @@ const Times = React.memo(
                       <H4
                         color={interval == 15 ? theme.greenDark : theme.color2}
                       >
-                        15min
+                        15m
                       </H4>
                     </MarginRight>
                   </MarginRight>
                 </Margin>
               </CenterLeft>
             </Switch>
-            <Switch
-              fat={true}
-              style={{
-                backgroundColor:
-                  interval == 30 ? theme.greenLight : theme.color1,
-              }}
-              value={interval == 30}
-              onValueChange={(value) => setInterval(value ? 30 : false)}
-            >
-              <CenterLeft>
-                <Margin>
-                  <MarginRight>
+            <MarginHorizontal>
+              <Switch
+                fat={true}
+                style={{
+                  backgroundColor:
+                    interval == 30 ? theme.greenLight : theme.color1,
+                }}
+                value={interval == 30}
+                onValueChange={(value) => setInterval(value ? 30 : false)}
+              >
+                <CenterLeft>
+                  <Margin>
                     <MarginRight>
-                      <H4
-                        color={interval == 30 ? theme.greenDark : theme.color2}
-                      >
-                        30min
-                      </H4>
+                      <MarginRight>
+                        <H4
+                          color={
+                            interval == 30 ? theme.greenDark : theme.color2
+                          }
+                        >
+                          30m
+                        </H4>
+                      </MarginRight>
                     </MarginRight>
-                  </MarginRight>
-                </Margin>
-              </CenterLeft>
-            </Switch>
+                  </Margin>
+                </CenterLeft>
+              </Switch>
+            </MarginHorizontal>
             <Switch
               fat={true}
               style={{
@@ -165,30 +188,21 @@ const Times = React.memo(
               </CenterLeft>
             </Switch>
           </Row>
-          {times.map(({ time, minuteValue }) => {
-            return (
-              <View key={minuteValue}>
-                {minuteValue >= 240 && minuteValue < 270 && (
-                  <DividerElement name="Morning" />
-                )}
-                {minuteValue >= 720 && minuteValue < 750 && (
-                  <DividerElement name="Afternoon" />
-                )}
-                {minuteValue >= 1020 && minuteValue < 1050 && (
-                  <DividerElement name="Evening" />
-                )}
-                {minuteValue >= 1440 && <DividerElement name="Night" />}
-                <Time
-                  isActive={toggledTimes.includes(minuteValue)}
-                  time={time}
-                  timeToggle={(value) => {
-                    filterTimes({ minuteValue, value });
-                  }}
-                />
-              </View>
-            );
-          })}
-        </BottomSheetScrollView>
+        </Margin>
+        <Margin>
+          <H4>Time slots</H4>
+        </Margin>
+        <BottomSheetFlatList
+          contentContainerStyle={{ paddingBottom: 100 }}
+          data={times}
+          keyExtractor={(item) => item.minuteValue}
+          renderItem={renderItem}
+          getItemLayout={getItemLayout}
+          initialNumToRender={7}
+          maxToRenderPerBatch={7}
+          removeClippedSubviews={true}
+          windowSize={3}
+        />
       </View>
     );
   }

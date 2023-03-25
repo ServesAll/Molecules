@@ -19,9 +19,9 @@ import SlideScreen from "./SlideScreen";
 import Screen from "./SlideScreen/Screen";
 import DateRange from "./Calendar";
 import WeekdaySelector from "./WeekdaySelector";
-import TimeSelector from "./TimeSelector";
+import TimeSelector from "./TimeSelectorNew";
 import ResourceDragAndDrop from "./ResourceDragAndDrop";
-import Duration from "./DurationSelector";
+import Duration from "./DurationSelectorNew";
 import MerchantSelector from "./MerchantSelector";
 import ServiceContainer from "./ServiceContainer";
 import GamifiedSlideScreen from "./GamifiedSlideScreen";
@@ -32,6 +32,7 @@ import HorizontalScroll from "./HorizontalScroll";
 import TimeLine from "./TimeLine";
 import BookingUser from "./BookingUser";
 import BookingMerchantNew from "./BookingMerchantNew";
+import { ModalHandler, ModalFullScreen, ModalSlider } from "./ModalHandler";
 
 export {
   Modal,
@@ -68,4 +69,7 @@ export {
   TimeLine,
   BookingUser,
   BookingMerchantNew,
+  ModalHandler,
+  ModalFullScreen,
+  ModalSlider,
 };
