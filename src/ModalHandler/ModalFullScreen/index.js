@@ -109,4 +109,27 @@ ModalFullScreen.Footer = (props) => {
   );
 };
 
+ModalFullScreen.SubModal = (props) => {
+  if (props.children) {
+    return (
+      <View
+        style={{
+          flex: 1,
+          bottom: 0,
+          left: 0,
+          right: 0,
+          top: 0,
+          backgroundColor: "rgba(0,0,0,0.5)",
+          zIndex: 100,
+          position: "absolute",
+        }}
+      >
+        {React.cloneElement(props.children, {
+          ...props,
+        })}
+      </View>
+    );
+  }
+};
+
 export default ModalFullScreen;

@@ -11,6 +11,10 @@ export default function useAccordionHook() {
     setEventKeyState(eventKey);
   };
 
+  const closeAll = () => {
+    dispatch && dispatch({ type: "isActive", data: false });
+  };
+
   useEffect(() => {
     if (isOpen) {
       dispatch && dispatch({ type: "isActive", data: eventKeyState });
@@ -27,5 +31,6 @@ export default function useAccordionHook() {
     eventKeyState,
     isOpen,
     toggleAccordionItem,
+    closeAll,
   };
 }

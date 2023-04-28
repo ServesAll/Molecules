@@ -8,9 +8,13 @@ const ModalHandler = ({ data }) => {
   const [modalIndex, setModalIndex] = useState(0);
   const [modalData, setModalData] = useState(false);
 
-  const goToNextModal = (data) => {
+  const goToNextModal = (data, callback) => {
     data && setModalData(data);
-    setModalIndex((prev) => prev + 1);
+    if (modalIndex === screen_composition.length - 1) {
+      callback && callback();
+    } else {
+      setModalIndex((prev) => prev + 1);
+    }
   };
 
   if (!screen_composition) return null;

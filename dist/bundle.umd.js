@@ -1322,6 +1322,13 @@
       setEventKeyState(eventKey);
     };
 
+    var closeAll = function closeAll() {
+      dispatch && dispatch({
+        type: "isActive",
+        data: false
+      });
+    };
+
     React.useEffect(function () {
       if (isOpen) {
         dispatch && dispatch({
@@ -1338,7 +1345,8 @@
     return {
       eventKeyState: eventKeyState,
       isOpen: isOpen,
-      toggleAccordionItem: toggleAccordionItem
+      toggleAccordionItem: toggleAccordionItem,
+      closeAll: closeAll
     };
   }
 
@@ -12109,7 +12117,6 @@
 
     var renderItem = function renderItem(_ref3) {
       var item = _ref3.item;
-      console.log(toggledTimes);
       return /*#__PURE__*/React__default['default'].createElement(Duration, {
         value: item.minuteValue,
         name: item.time,
@@ -12186,7 +12193,8 @@
     }, [merchants]);
     return /*#__PURE__*/React__default['default'].createElement(reactNative.View, {
       style: {
-        backgroundColor: theme.color1
+        backgroundColor: theme.color1,
+        minHeight: 90
       }
     }, /*#__PURE__*/React__default['default'].createElement(atoms.PaddingHorizontal, {
       style: {
@@ -41763,6 +41771,23 @@
     })));
   };
 
+  ModalFullScreen.SubModal = function (props) {
+    if (props.children) {
+      return /*#__PURE__*/React__default['default'].createElement(reactNative.View, {
+        style: {
+          flex: 1,
+          bottom: 0,
+          left: 0,
+          right: 0,
+          top: 0,
+          backgroundColor: "rgba(0,0,0,0.5)",
+          zIndex: 100,
+          position: "absolute"
+        }
+      }, React__default['default'].cloneElement(props.children, _objectSpread2({}, props)));
+    }
+  };
+
   var Slider = function Slider(_ref) {
     var children = _ref.children,
         index = _ref.index,
@@ -41852,11 +41877,16 @@
         modalData = _useState4[0],
         setModalData = _useState4[1];
 
-    var goToNextModal = function goToNextModal(data) {
+    var goToNextModal = function goToNextModal(data, callback) {
       data && setModalData(data);
-      setModalIndex(function (prev) {
-        return prev + 1;
-      });
+
+      if (modalIndex === screen_composition.length - 1) {
+        callback && callback();
+      } else {
+        setModalIndex(function (prev) {
+          return prev + 1;
+        });
+      }
     };
 
     if (!screen_composition) return null;

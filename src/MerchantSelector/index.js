@@ -31,7 +31,7 @@ const MerchantSelector = React.memo(
     }, [merchants]);
 
     return (
-      <View style={{ backgroundColor: theme.color1 }}>
+      <View style={{ backgroundColor: theme.color1, minHeight: 90 }}>
         <PaddingHorizontal
           style={{ borderBottomWidth: 2, borderColor: theme.color7 }}
         >
