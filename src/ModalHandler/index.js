@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ModalFullScreen from "./ModalFullScreen";
 import ModalSlider from "./ModalSlider";
+import ModalView from "./ModalView";
 import { Box } from "@servesall/atoms";
 
 const ModalHandler = ({ data }) => {
@@ -39,4 +40,4 @@ const ModalHandler = ({ data }) => {
   );
 };
 
-export { ModalHandler, ModalFullScreen, ModalSlider };
+export { ModalHandler, ModalFullScreen, ModalSlider, ModalView };

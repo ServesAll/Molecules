@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import { useNavigation } from "@react-navigation/native";
 import ProgressBar from "./ProgressBar";
 
-const Progress = ({ back, screenIndex, screenLength }) => {
+const Progress = ({ back, showBar = true, screenIndex, screenLength }) => {
   const navigation = useNavigation();
 
   const closeWindow = useCallback(() => {
@@ -15,6 +15,7 @@ const Progress = ({ back, screenIndex, screenLength }) => {
       screenLength={screenLength}
       closeWindow={closeWindow}
       back={back}
+      showBar={showBar}
     />
   );
 };

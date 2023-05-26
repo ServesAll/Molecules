@@ -11457,8 +11457,22 @@ var FlatCalendar = React.memo(function (_ref2) {
 
   var setRange = function setRange(date) {
     if (startDate && endDate) {
-      setStartDate(date);
-      setEndDate(false);
+      if (isOnedayRange) {
+        if (date > startDate) {
+          if (startDate !== endDate) {
+            setStartDate(date);
+            setEndDate(date);
+          } else {
+            setEndDate(date);
+          }
+        } else {
+          setStartDate(date);
+          setEndDate(date);
+        }
+      } else {
+        setStartDate(date);
+        setEndDate(false);
+      }
     }
 
     if (startDate && !endDate) {
@@ -11472,6 +11486,7 @@ var FlatCalendar = React.memo(function (_ref2) {
 
     if (!startDate && !endDate) {
       setStartDate(date);
+      isOnedayRange && setEndDate(date);
     }
   };
 
@@ -41588,7 +41603,8 @@ function GamifiedHeader$2(_ref) {
   var activeScreen = _ref.activeScreen,
       back = _ref.back,
       screenLength = _ref.screenLength,
-      closeWindow = _ref.closeWindow;
+      closeWindow = _ref.closeWindow,
+      showBar = _ref.showBar;
   var theme = useThemeContext();
   var canGoBack = activeScreen > 0;
   return /*#__PURE__*/React.createElement(Row, {
@@ -41611,7 +41627,7 @@ function GamifiedHeader$2(_ref) {
     autoplay: false,
     loop: false,
     color: theme.color2
-  })))), /*#__PURE__*/React.createElement(BarWrapper$2, null, /*#__PURE__*/React.createElement(Margin, null, /*#__PURE__*/React.createElement(Background$3, {
+  })))), /*#__PURE__*/React.createElement(BarWrapper$2, null, showBar && /*#__PURE__*/React.createElement(Margin, null, /*#__PURE__*/React.createElement(Background$3, {
     theme: theme,
     steps: screenLength,
     currentStep: activeScreen
@@ -41639,6 +41655,8 @@ function GamifiedHeader$2(_ref) {
 
 var Progress = function Progress(_ref) {
   var back = _ref.back,
+      _ref$showBar = _ref.showBar,
+      showBar = _ref$showBar === void 0 ? true : _ref$showBar,
       screenIndex = _ref.screenIndex,
       screenLength = _ref.screenLength;
   var navigation = useNavigation();
@@ -41649,7 +41667,8 @@ var Progress = function Progress(_ref) {
     activeScreen: screenIndex,
     screenLength: screenLength,
     closeWindow: closeWindow,
-    back: back
+    back: back,
+    showBar: showBar
   });
 };
 
@@ -41763,7 +41782,9 @@ ModalFullScreen.Footer = function (props) {
     style: {
       height: isSubmitting ? "100%" : 90,
       position: "absolute",
-      bottom: 0
+      bottom: 0,
+      left: 0,
+      right: 0
     }
   }, React.cloneElement(props.children, _objectSpread2(_objectSpread2({}, props), {}, {
     setIsSubmitting: setIsSubmitting
@@ -41853,8 +41874,23 @@ var App$1 = function App(props) {
   var screens = props.screens,
       component = props.component,
       screenIndex = props.screenIndex;
+  if (!screens) return null;
   return /*#__PURE__*/React.createElement(Box, null, screens.map(function (screen, index) {
     return /*#__PURE__*/React.createElement(Slider, {
+      key: screen.id,
+      index: index,
+      active_screen_index: screenIndex
+    }, React.isValidElement(screen[component]) && React.cloneElement(screen[component], _objectSpread2({}, props)), !React.isValidElement(screen[component]) && screen[component]);
+  }));
+};
+
+var App$2 = function App(props) {
+  var screens = props.screens,
+      component = props.component,
+      screenIndex = props.screenIndex;
+  if (!screens) return null;
+  return /*#__PURE__*/React.createElement(Box, null, screens.map(function (screen, index) {
+    return /*#__PURE__*/React.createElement(Box, {
       key: screen.id,
       index: index,
       active_screen_index: screenIndex
@@ -41904,4 +41940,4 @@ var ModalHandler = function ModalHandler(_ref) {
   }));
 };
 
-export { AccordionItem, AccordionProvider, AccordionScroll, AccordionScroller, Actions, BookingMerchant, Booking$1 as BookingMerchantNew, Booking as BookingUser, DateRange, DurationItem as Duration, FooterActions, FooterBtn, GamifiedSlideScreen, HorizontalScroll, ImageLoader, ImageUpload, Map, MerchantCard, MerchantSelector, Modal, ModalContext, ModalFullScreen, ModalHandler, ModalProvider, App$1 as ModalSlider, App as NewBookingModal, SlideItem as NewGamifiedSlideScreen, ResourceDragAndDrop, Screen, ServiceContainer, SlideScreen, TimeLine, Times as TimeSelector, Weekdays$1 as WeekdaySelector, useAccordionContext, useAccordionHook, useModalContext };
+export { AccordionItem, AccordionProvider, AccordionScroll, AccordionScroller, Actions, BookingMerchant, Booking$1 as BookingMerchantNew, Booking as BookingUser, DateRange, DurationItem as Duration, FooterActions, FooterBtn, GamifiedSlideScreen, HorizontalScroll, ImageLoader, ImageUpload, Map, MerchantCard, MerchantSelector, Modal, ModalContext, ModalFullScreen, ModalHandler, ModalProvider, App$1 as ModalSlider, App$2 as ModalView, App as NewBookingModal, SlideItem as NewGamifiedSlideScreen, ResourceDragAndDrop, Screen, ServiceContainer, SlideScreen, TimeLine, Times as TimeSelector, Weekdays$1 as WeekdaySelector, useAccordionContext, useAccordionHook, useModalContext };

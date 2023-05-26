@@ -18,6 +18,7 @@ export default function GamifiedHeader({
   back,
   screenLength,
   closeWindow,
+  showBar,
 }) {
   const theme = useThemeContext();
   const canGoBack = activeScreen > 0;
@@ -47,19 +48,21 @@ export default function GamifiedHeader({
         </View>
       )}
       <BarWrapper>
-        <Margin>
-          <Background
-            theme={theme}
-            steps={screenLength}
-            currentStep={activeScreen}
-          />
+        {showBar && (
+          <Margin>
+            <Background
+              theme={theme}
+              steps={screenLength}
+              currentStep={activeScreen}
+            />
 
-          <Foreground
-            theme={theme}
-            steps={screenLength}
-            currentStep={activeScreen}
-          />
-        </Margin>
+            <Foreground
+              theme={theme}
+              steps={screenLength}
+              currentStep={activeScreen}
+            />
+          </Margin>
+        )}
       </BarWrapper>
       <RoundedBtn
         style={{ width: 40 }}

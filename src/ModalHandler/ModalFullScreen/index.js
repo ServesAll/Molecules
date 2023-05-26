@@ -99,6 +99,8 @@ ModalFullScreen.Footer = (props) => {
         height: isSubmitting ? "100%" : 90,
         position: "absolute",
         bottom: 0,
+        left: 0,
+        right: 0,
       }}
     >
       {React.cloneElement(props.children, {

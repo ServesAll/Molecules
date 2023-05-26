@@ -11476,8 +11476,22 @@ var FlatCalendar = React__default['default'].memo(function (_ref2) {
 
   var setRange = function setRange(date) {
     if (startDate && endDate) {
-      setStartDate(date);
-      setEndDate(false);
+      if (isOnedayRange) {
+        if (date > startDate) {
+          if (startDate !== endDate) {
+            setStartDate(date);
+            setEndDate(date);
+          } else {
+            setEndDate(date);
+          }
+        } else {
+          setStartDate(date);
+          setEndDate(date);
+        }
+      } else {
+        setStartDate(date);
+        setEndDate(false);
+      }
     }
 
     if (startDate && !endDate) {
@@ -11491,6 +11505,7 @@ var FlatCalendar = React__default['default'].memo(function (_ref2) {
 
     if (!startDate && !endDate) {
       setStartDate(date);
+      isOnedayRange && setEndDate(date);
     }
   };
 
@@ -41607,7 +41622,8 @@ function GamifiedHeader$2(_ref) {
   var activeScreen = _ref.activeScreen,
       back = _ref.back,
       screenLength = _ref.screenLength,
-      closeWindow = _ref.closeWindow;
+      closeWindow = _ref.closeWindow,
+      showBar = _ref.showBar;
   var theme = atoms.useThemeContext();
   var canGoBack = activeScreen > 0;
   return /*#__PURE__*/React__default['default'].createElement(atoms.Row, {
@@ -41630,7 +41646,7 @@ function GamifiedHeader$2(_ref) {
     autoplay: false,
     loop: false,
     color: theme.color2
-  })))), /*#__PURE__*/React__default['default'].createElement(BarWrapper$2, null, /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(Background$3, {
+  })))), /*#__PURE__*/React__default['default'].createElement(BarWrapper$2, null, showBar && /*#__PURE__*/React__default['default'].createElement(atoms.Margin, null, /*#__PURE__*/React__default['default'].createElement(Background$3, {
     theme: theme,
     steps: screenLength,
     currentStep: activeScreen
@@ -41658,6 +41674,8 @@ function GamifiedHeader$2(_ref) {
 
 var Progress = function Progress(_ref) {
   var back = _ref.back,
+      _ref$showBar = _ref.showBar,
+      showBar = _ref$showBar === void 0 ? true : _ref$showBar,
       screenIndex = _ref.screenIndex,
       screenLength = _ref.screenLength;
   var navigation = native.useNavigation();
@@ -41668,7 +41686,8 @@ var Progress = function Progress(_ref) {
     activeScreen: screenIndex,
     screenLength: screenLength,
     closeWindow: closeWindow,
-    back: back
+    back: back,
+    showBar: showBar
   });
 };
 
@@ -41782,7 +41801,9 @@ ModalFullScreen.Footer = function (props) {
     style: {
       height: isSubmitting ? "100%" : 90,
       position: "absolute",
-      bottom: 0
+      bottom: 0,
+      left: 0,
+      right: 0
     }
   }, React__default['default'].cloneElement(props.children, _objectSpread2(_objectSpread2({}, props), {}, {
     setIsSubmitting: setIsSubmitting
@@ -41872,8 +41893,23 @@ var App$1 = function App(props) {
   var screens = props.screens,
       component = props.component,
       screenIndex = props.screenIndex;
+  if (!screens) return null;
   return /*#__PURE__*/React__default['default'].createElement(atoms.Box, null, screens.map(function (screen, index) {
     return /*#__PURE__*/React__default['default'].createElement(Slider, {
+      key: screen.id,
+      index: index,
+      active_screen_index: screenIndex
+    }, React__default['default'].isValidElement(screen[component]) && React__default['default'].cloneElement(screen[component], _objectSpread2({}, props)), !React__default['default'].isValidElement(screen[component]) && screen[component]);
+  }));
+};
+
+var App$2 = function App(props) {
+  var screens = props.screens,
+      component = props.component,
+      screenIndex = props.screenIndex;
+  if (!screens) return null;
+  return /*#__PURE__*/React__default['default'].createElement(atoms.Box, null, screens.map(function (screen, index) {
+    return /*#__PURE__*/React__default['default'].createElement(atoms.Box, {
       key: screen.id,
       index: index,
       active_screen_index: screenIndex
@@ -41948,6 +41984,7 @@ exports.ModalFullScreen = ModalFullScreen;
 exports.ModalHandler = ModalHandler;
 exports.ModalProvider = ModalProvider;
 exports.ModalSlider = App$1;
+exports.ModalView = App$2;
 exports.NewBookingModal = App;
 exports.NewGamifiedSlideScreen = SlideItem;
 exports.ResourceDragAndDrop = ResourceDragAndDrop;

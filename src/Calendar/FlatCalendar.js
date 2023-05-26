@@ -162,8 +162,22 @@ const FlatCalendar = React.memo(
 
     const setRange = (date) => {
       if (startDate && endDate) {
-        setStartDate(date);
-        setEndDate(false);
+        if (isOnedayRange) {
+          if (date > startDate) {
+            if (startDate !== endDate) {
+              setStartDate(date);
+              setEndDate(date);
+            } else {
+              setEndDate(date);
+            }
+          } else {
+            setStartDate(date);
+            setEndDate(date);
+          }
+        } else {
+          setStartDate(date);
+          setEndDate(false);
+        }
       }
       if (startDate && !endDate) {
         if (date < startDate) {
@@ -176,6 +190,7 @@ const FlatCalendar = React.memo(
 
       if (!startDate && !endDate) {
         setStartDate(date);
+        isOnedayRange && setEndDate(date);
       }
     };
 

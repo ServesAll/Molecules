@@ -32,7 +32,12 @@ import HorizontalScroll from "./HorizontalScroll";
 import TimeLine from "./TimeLine";
 import BookingUser from "./BookingUser";
 import BookingMerchantNew from "./BookingMerchantNew";
-import { ModalHandler, ModalFullScreen, ModalSlider } from "./ModalHandler";
+import {
+  ModalHandler,
+  ModalFullScreen,
+  ModalSlider,
+  ModalView,
+} from "./ModalHandler";
 
 export {
   Modal,
@@ -72,4 +77,5 @@ export {
   ModalHandler,
   ModalFullScreen,
   ModalSlider,
+  ModalView,
 };
