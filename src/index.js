@@ -1,5 +1,5 @@
 import Modal from "./Modal";
-import { ModalContext, ModalProvider, useModalContext } from "./Modal/context";
+import { ModalContext, ModalProvider, useModalContext } from "./Modal/Context";
 import {
   AccordionItem,
   AccordionScroller,
@@ -38,6 +38,10 @@ import {
   ModalSlider,
   ModalView,
 } from "./ModalHandler";
+import Categories from "./Categories";
+import SubCategories from "./SubCategories";
+import PageProgressIndicator from "./PageProgressBar";
+import ProgressIndicator from "./ProgressBar";
 
 export {
   Modal,
@@ -78,4 +82,8 @@ export {
   ModalFullScreen,
   ModalSlider,
   ModalView,
+  Categories,
+  SubCategories,
+  PageProgressIndicator,
+  ProgressIndicator,
 };

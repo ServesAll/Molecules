@@ -5,11 +5,17 @@ import { UploadWrapper, UploadIconWrapper } from "./ImageUpload.style";
 import UploadIcon from "./UploadIcon";
 import ImageLoader from "../ImageLoader";
 
-export default function ImageUpload({ theme, imageUri, onChange = () => {} }) {
+export default function ImageUpload({
+  theme,
+  square = false,
+  imageUri,
+  resetImage = false,
+  onChange = () => {},
+}) {
   const [image, setImage] = useState(false);
 
   useEffect(() => {
-    if (imageUri) {
+    if (imageUri || resetImage) {
       setImage(imageUri);
     }
   }, [imageUri]);
@@ -23,7 +29,7 @@ export default function ImageUpload({ theme, imageUri, onChange = () => {} }) {
   const pickImage = () => {
     ImagePicker.openPicker({
       width: 1080,
-      height: 720,
+      height: square ? 1080 : 720,
       cropping: true,
     }).then((image) => {
       setImage(image.sourceURL || image.path);
@@ -32,7 +38,7 @@ export default function ImageUpload({ theme, imageUri, onChange = () => {} }) {
 
   return (
     <Pressable onPress={() => pickImage()}>
-      <UploadWrapper theme={theme}>
+      <UploadWrapper square={square} theme={theme}>
         {image && <ImageLoader background={theme.color7} imageUrl={image} />}
         {!image && (
           <UploadIconWrapper theme={theme}>

@@ -18,4 +18,5 @@ export const ImageComponent = styled(FastImage)`
   flex: 1;
   justify-content: center;
   opacity: ${(props) => (props.showImage ? 1 : 0)};
+  ${(props) => props.styles};
 `;

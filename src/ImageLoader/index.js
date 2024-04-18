@@ -3,7 +3,7 @@ import LottieView from "lottie-react-native";
 import { ImageLoaderWrapper, ImageComponent } from "./ImageLoader.style";
 import loader from "./assets/loader.json";
 
-const ImageLoader = ({ background, imageUrl }) => {
+const ImageLoader = ({ background, imageUrl, styles }) => {
   const [showImage, setShowImage] = useState(false);
   return (
     <ImageLoaderWrapper background={background}>
@@ -13,6 +13,7 @@ const ImageLoader = ({ background, imageUrl }) => {
         showImage={showImage}
         onLoad={() => setShowImage(true)}
         resizeMode="cover"
+        styles={styles}
       />
     </ImageLoaderWrapper>
   );
