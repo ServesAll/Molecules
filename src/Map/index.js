@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Platform, PermissionsAndroid } from "react-native";
 import { MapWrapper, MarkerWrapper } from "./Map.style";
-import MapView, { Marker } from "react-native-maps";
+import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import Geolocation from "react-native-geolocation-service";
 import MapMarker from "./Marker";
 
@@ -86,6 +86,7 @@ export default function Map({
   return (
     <MapWrapper theme={theme}>
       <MapView
+        provider={PROVIDER_GOOGLE}
         liteMode={liteMode}
         loadingEnabled={true}
         region={location}

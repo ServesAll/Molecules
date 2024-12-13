@@ -1,6 +1,6 @@
 {
   "name": "@servesall/molecules",
-  "version": "1.0.45",
+  "version": "1.0.46",
   "description": "Molecules for react-native",
   "main": "dist/bundle.cjs.js",
   "module": "dist/bundle.esm.js",

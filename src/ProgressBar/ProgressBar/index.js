@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Margin, useThemeContext } from "@servesall/atoms";
+import { Row, H4, Padding, useThemeContext } from "@servesall/atoms";
 import Background from "./Background";
 import Foreground from "./Foreground";
 import { BarWrapper } from "./GamifiedHeader.style";
@@ -22,6 +22,8 @@ export default function GamifiedHeader({ activeScreen, screenLength }) {
           currentStep={activeScreen}
         />
       </BarWrapper>
+      <Padding />
+      <H4>{(activeScreen / screenLength) * 100}%</H4>
     </Row>
   );
 }
