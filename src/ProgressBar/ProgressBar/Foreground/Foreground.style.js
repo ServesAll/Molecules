@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 export const GreenBar = styled.View`
   width: 100%;
   height: 16px;
-  background-color: ${(props) => props.theme.green};
+  background-color: ${(props) => props.color};
   border-radius: 8px;
   margin-top: -8px;
 `;

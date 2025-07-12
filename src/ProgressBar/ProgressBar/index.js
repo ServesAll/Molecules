@@ -4,7 +4,11 @@ import Background from "./Background";
 import Foreground from "./Foreground";
 import { BarWrapper } from "./GamifiedHeader.style";
 
-export default function GamifiedHeader({ activeScreen, screenLength }) {
+export default function GamifiedHeader({
+  activeScreen,
+  screenLength,
+  colorCoded = false,
+}) {
   const theme = useThemeContext();
 
   return (
@@ -20,6 +24,7 @@ export default function GamifiedHeader({ activeScreen, screenLength }) {
           theme={theme}
           steps={screenLength}
           currentStep={activeScreen}
+          colorCoded={colorCoded}
         />
       </BarWrapper>
       <Padding />

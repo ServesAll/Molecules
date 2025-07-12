@@ -1,6 +1,7 @@
 import sports from "./assets/sports.json";
 import fitness from "./assets/fitness.json";
 import restaurant from "./assets/restaurant.json";
+import lido from "./assets/lidoResources.json";
 import spa from "./assets/spa.json";
 import pet from "./assets/pet.json";
 import water_sports from "./assets/waterSports.json";
@@ -8,15 +9,15 @@ import water_sports from "./assets/waterSports.json";
 export const available_categories = [
   {
     category_id: 1,
-    id: "restaurants",
-    name: "Restaurant",
-    image: restaurant,
+    id: "Water",
+    name: "Water",
+    image: water_sports,
   },
   {
     category_id: 2,
-    id: "fitness",
-    name: "Fitness",
-    image: fitness,
+    id: "land",
+    name: "Land",
+    image: sports,
   },
   {
     category_id: 3,
@@ -38,15 +39,15 @@ export const available_categories = [
   },
   {
     category_id: 6,
-    id: "hair",
-    name: "Hair",
-    image: spa,
+    id: "pool",
+    name: "Lido & Pool",
+    image: lido,
   },
   {
     category_id: 7,
-    id: "beauty",
-    name: "Beauty",
-    image: spa,
+    id: "Adventure",
+    name: "Adventure",
+    image: sports,
   },
 
   {

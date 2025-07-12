@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { View } from "react-native";
-import { BottomSheetFlatList } from "@gorhom/bottom-sheet";
+import { View, FlatList } from "react-native";
 import Duration from "./Duration";
 
+const DURATION_SUBSET_IDS = [2, 3, 4, 5, 7, 9, 13, 17, 25, 33];
+
 const DurationItem = React.memo(
-  ({
-    duration = [],
-    onSelect,
-    isRadio = false,
-    ListHeaderComponent = null,
-  }) => {
+  ({ duration = [], onSelect, isRadio = false, dafault_times = [] }) => {
     const [times, setTimes] = useState([]);
     const [toggledTimes, setToggledTimes] = useState(duration || []);
 
@@ -20,53 +16,39 @@ const DurationItem = React.memo(
     }
 
     useEffect(() => {
-      const hoursArray = [
-        15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225,
-        240, 255, 270, 285, 300, 315, 330, 345, 360, 375, 390, 405, 420, 435,
-        450, 465, 480,
-      ];
-
-      const hourArr = [];
-      hoursArray.map((item) => {
-        hourArr.push({
-          time: toHoursAndMinutes(item),
-          minuteValue: item,
-        });
+      const filteredTimes = dafault_times.filter((item) => {
+        return DURATION_SUBSET_IDS.includes(item.id);
       });
 
-      setTimes(hourArr);
+      setTimes(filteredTimes);
     }, []);
 
-    const filterTimes = ({ minuteValue, value }) => {
+    const filterTimes = ({ time, value }) => {
       if (!value) {
         const newArrOfTimes = toggledTimes.filter((item) => {
-          return item !== minuteValue;
+          return item.id !== time.id;
         });
         setToggledTimes(newArrOfTimes);
       } else {
         if (isRadio) {
-          setToggledTimes([minuteValue]);
+          setToggledTimes([time]);
         } else {
-          setToggledTimes((prevValue) => [...prevValue, minuteValue]);
+          setToggledTimes((prevValue) => [...prevValue, time]);
         }
       }
     };
 
     useEffect(() => {
-      onSelect({
-        value: toggledTimes,
-      });
+      onSelect(toggledTimes);
     }, [toggledTimes]);
 
     const renderItem = ({ item }) => {
       return (
         <Duration
-          value={item.minuteValue}
-          name={item.time}
-          isActive={toggledTimes.includes(item.minuteValue)}
-          durationToggle={({ value }) =>
-            filterTimes({ minuteValue: item.minuteValue, value })
-          }
+          value={item.id}
+          time={item.time}
+          isActive={toggledTimes.some((time) => time.id === item.id)}
+          durationToggle={({ value }) => filterTimes({ time: item, value })}
         />
       );
     };
@@ -82,10 +64,10 @@ const DurationItem = React.memo(
 
     return (
       <View style={{ flex: 1 }}>
-        <BottomSheetFlatList
+        <FlatList
           contentContainerStyle={{ paddingBottom: 100 }}
           data={times}
-          keyExtractor={(item) => item.minuteValue}
+          keyExtractor={(item) => item.id}
           renderItem={renderItem}
           getItemLayout={getItemLayout}
           initialNumToRender={7}

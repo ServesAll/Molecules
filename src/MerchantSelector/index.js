@@ -53,7 +53,6 @@ const MerchantSelector = React.memo(
                             : merchants[0]?.merchant?.profile?.name || null}
                         </H3>
                       )}
-                      <H2 color={theme.color2}>{page}</H2>
                     </MarginVertical>
                   </AccordionItem.Head>
                   <AccordionItem.Body isNormal={true}>

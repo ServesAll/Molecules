@@ -9,6 +9,7 @@ export default function ImageUpload({
   theme,
   square = false,
   imageUri,
+  imageName,
   resetImage = false,
   onChange = () => {},
 }) {
@@ -16,9 +17,9 @@ export default function ImageUpload({
 
   useEffect(() => {
     if (imageUri || resetImage) {
-      setImage(imageUri);
+      setImage({ source: imageUri, filename: imageName || "" });
     }
-  }, [imageUri]);
+  }, [imageUri, imageName]);
 
   useEffect(() => {
     if (image) {
@@ -32,14 +33,19 @@ export default function ImageUpload({
       height: square ? 1080 : 720,
       cropping: true,
     }).then((image) => {
-      setImage(image.sourceURL || image.path);
+      setImage({
+        source: image.sourceURL || image.path,
+        filename: image.filename,
+      });
     });
   };
 
   return (
     <Pressable onPress={() => pickImage()}>
       <UploadWrapper square={square} theme={theme}>
-        {image && <ImageLoader background={theme.color7} imageUrl={image} />}
+        {image && (
+          <ImageLoader background={theme.color7} imageUrl={image.source} />
+        )}
         {!image && (
           <UploadIconWrapper theme={theme}>
             <UploadIcon />

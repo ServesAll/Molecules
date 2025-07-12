@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { View } from "react-native";
-import { BottomSheetFlatList } from "@gorhom/bottom-sheet";
+import { FlashList } from "@shopify/flash-list";
 import {
-  H2,
   Margin,
   Row,
   H4,
@@ -12,200 +11,335 @@ import {
   MarginHorizontal,
   useThemeContext,
   MarginTop,
+  PaddingTop,
+  BorderBottom,
 } from "@servesall/atoms";
-import { add, format } from "date-fns";
 import Time from "./Time";
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  interpolate,
+  Extrapolate,
+  withSpring,
+} from "react-native-reanimated";
 
-const Times = React.memo(
-  ({ timesSelected = [], onSelect, ListHeaderComponent = null }) => {
-    const theme = useThemeContext();
-    const [interval, setInterval] = useState(30);
-    const [times, setTimes] = useState([]);
-    const [toggledTimes, setToggledTimes] = useState(timesSelected);
+function Custom({ interval, setInterval, theme }) {
+  return (
+    <View>
+      <MarginHorizontal>
+        <MarginTop>
+          <H4>Every</H4>
+        </MarginTop>
+      </MarginHorizontal>
+      <Margin>
+        <Row style={{ justifyContent: "space-between" }}>
+          <Switch
+            fat={true}
+            style={{
+              backgroundColor:
+                interval == 900000 ? theme.greenLight : theme.color1,
+            }}
+            value={interval == 900000}
+            onValueChange={(value) => setInterval(value ? 900000 : false)}
+          >
+            <CenterLeft>
+              <Margin>
+                <MarginRight>
+                  <MarginRight>
+                    <H4
+                      color={
+                        interval == 900000 ? theme.greenDark : theme.color2
+                      }
+                    >
+                      15m
+                    </H4>
+                  </MarginRight>
+                </MarginRight>
+              </Margin>
+            </CenterLeft>
+          </Switch>
+          <MarginHorizontal>
+            <Switch
+              fat={true}
+              style={{
+                backgroundColor:
+                  interval == 1800000 ? theme.greenLight : theme.color1,
+              }}
+              value={interval == 1800000}
+              onValueChange={(value) => setInterval(value ? 1800000 : false)}
+            >
+              <CenterLeft>
+                <Margin>
+                  <MarginRight>
+                    <MarginRight>
+                      <H4
+                        color={
+                          interval == 1800000 ? theme.greenDark : theme.color2
+                        }
+                      >
+                        30m
+                      </H4>
+                    </MarginRight>
+                  </MarginRight>
+                </Margin>
+              </CenterLeft>
+            </Switch>
+          </MarginHorizontal>
+          <Switch
+            fat={true}
+            style={{
+              backgroundColor:
+                interval == 3600000 ? theme.greenLight : theme.color1,
+            }}
+            value={interval == 3600000}
+            onValueChange={(value) => setInterval(value ? 3600000 : false)}
+          >
+            <CenterLeft>
+              <Margin>
+                <MarginRight>
+                  <MarginRight>
+                    <H4
+                      color={
+                        interval == 3600000 ? theme.greenDark : theme.color2
+                      }
+                    >
+                      60m
+                    </H4>
+                  </MarginRight>
+                </MarginRight>
+              </Margin>
+            </CenterLeft>
+          </Switch>
+        </Row>
+      </Margin>
+    </View>
+  );
+}
 
-    useEffect(() => {
-      let hoursArray = [];
+export default function Times({
+  header = false,
+  timesSelected = [],
+  onSelect,
+  default_times,
+  bookingTimesInterval,
+  changeBookingTimesInterval,
+}) {
+  const theme = useThemeContext();
+  const [interval, setInterval] = useState(bookingTimesInterval);
+  const [times, setTimes] = useState([]);
+  const [toggledTimes, setToggledTimes] = useState(timesSelected);
+  const scrollY = useSharedValue(0);
+  const lastScrollY = useSharedValue(0);
+  const isScrollingUp = useSharedValue(false);
 
-      if (interval === 15) {
-        hoursArray = [
-          225, 240, 255, 270, 285, 300, 315, 330, 345, 360, 375, 390, 405, 420,
-          435, 450, 465, 480, 495, 510, 525, 540, 555, 570, 585, 600, 615, 630,
-          645, 660, 675, 690, 705, 720, 735, 750, 765, 780, 795, 810, 825, 840,
-          855, 870, 885, 900, 915, 930, 945, 960, 975, 990, 1005, 1020, 1035,
-          1050, 1065, 1080, 1095, 1110, 1125, 1140, 1155, 1170, 1185, 1200,
-          1215, 1230, 1245, 1260, 1275, 1290, 1305, 1320, 1335, 1350, 1365,
-          1380, 1395, 1410, 1425, 1440, 15, 30, 45, 60, 75, 90, 105, 120, 135,
-          150, 165, 180, 195, 210,
-        ];
-      } else if (interval === 30) {
-        hoursArray = [
-          240, 270, 300, 330, 360, 390, 420, 450, 480, 510, 540, 570, 600, 630,
-          660, 690, 720, 750, 780, 810, 840, 870, 900, 930, 960, 990, 1020,
-          1050, 1080, 1110, 1140, 1170, 1200, 1230, 1260, 1290, 1320, 1350,
-          1380, 1410, 1440, 30, 60, 90, 120, 150, 180, 210,
-        ];
-      } else {
-        hoursArray = [
-          240, 300, 360, 420, 480, 540, 600, 660, 720, 780, 840, 900, 960, 1020,
-          1080, 1140, 1200, 1260, 1320, 1380, 1440, 60, 120, 180,
-        ];
-      }
-      const hourArr = [];
-      hoursArray.map((item) => {
-        hourArr.push({
-          time: format(
-            add(new Date("2021-01-01T00:00:00.000+01:00"), {
-              minutes: item,
-            }),
-            "HH:mm"
-          ),
-          active: toggledTimes.includes(item),
-          minuteValue: item,
-        });
+  useEffect(() => {
+    if (!interval) return;
+
+    if (toggledTimes.length > 0) {
+      const selectedTimes = toggledTimes.filter((time) => {
+        const minutes = time.time;
+        return minutes % interval === 0;
       });
+      setToggledTimes(selectedTimes);
+    }
 
-      setTimes(hourArr);
-    }, [interval]);
+    const filteredTimes = default_times.filter((time) => {
+      const minutes = time.time;
+      return minutes % interval === 0;
+    });
 
-    const filterTimes = ({ minuteValue, value }) => {
-      if (!value) {
-        const newArrOfTimes = toggledTimes.filter((item) => {
-          return item !== minuteValue;
-        });
-        setToggledTimes(newArrOfTimes);
-      } else {
-        setToggledTimes((prevValue) => [...prevValue, minuteValue]);
-      }
-    };
+    const sortedTimes = [...filteredTimes].sort(
+      (a, b) => new Date(a.time).getTime() - new Date(b.time).getTime()
+    );
 
-    useEffect(() => {
-      onSelect({
-        value: toggledTimes,
-      });
-    }, [toggledTimes]);
+    const timeLabels = [
+      { type: "label", label: "Early Morning", range: [0, 6], id: "EM" },
+      { type: "label", label: "Morning", range: [6, 12], id: "M" },
+      { type: "label", label: "Afternoon", range: [12, 17], id: "A" },
+      { type: "label", label: "Evening", range: [17, 21], id: "E" },
+      { type: "label", label: "Night", range: [21, 24], id: "N" },
+    ];
 
-    const renderItem = ({ item }) => {
-      return (
-        <Time
-          isActive={item.active}
-          time={item.time}
-          timeToggle={(value) => {
-            filterTimes({ minuteValue: item.minuteValue, value });
-          }}
-        />
+    function getTimeLabel(hour) {
+      return timeLabels.find(
+        ({ range }) => hour >= range[0] && hour < range[1]
       );
-    };
+    }
 
-    const ITEM_HEIGHT = 65; // fixed height of item component
-    const getItemLayout = (data, index) => {
-      return {
-        length: ITEM_HEIGHT,
-        offset: ITEM_HEIGHT * index,
-        index,
-      };
-    };
+    function insertTimeLabels(array) {
+      const result = [];
+      const addedLabels = new Set();
 
-    return (
+      for (const item of array) {
+        const hour = new Date(item.time).getUTCHours();
+        const label = getTimeLabel(hour);
+        if (label && !addedLabels.has(label.label)) {
+          result.push(label);
+          addedLabels.add(label.label);
+        }
+        result.push(item);
+      }
+
+      return result;
+    }
+
+    setTimes(insertTimeLabels(sortedTimes));
+
+    changeBookingTimesInterval(interval);
+  }, [interval, default_times]);
+
+  /*
+    useEffect(() => {
+      const sortedTimes = [...default_times].sort(
+        (a, b) => new Date(a.time).getTime() - new Date(b.time).getTime()
+      );
+
+      const timeLabels = [
+        { type: "label", label: "Early Morning", range: [0, 6] },
+        { type: "label", label: "Morning", range: [6, 12] },
+        { type: "label", label: "Afternoon", range: [12, 17] },
+        { type: "label", label: "Evening", range: [17, 21] },
+        { type: "label", label: "Night", range: [21, 24] },
+      ];
+      function getTimeLabel(hour) {
+        return timeLabels.find(
+          ({ range }) => hour >= range[0] && hour < range[1]
+        );
+      }
+
+      function insertTimeLabels(array) {
+        const result = [];
+        const addedLabels = new Set();
+
+        for (const item of array) {
+          const hour = item.time / (1000 * 60 * 60); // convert ms to hours
+          const label = getTimeLabel(hour);
+          if (label && !addedLabels.has(label)) {
+            result.push(label);
+            addedLabels.add(label);
+          }
+          result.push(item);
+        }
+
+        return result;
+      }
+
+      setTimes(insertTimeLabels(sortedTimes));
+    }, [default_times]);
+    */
+
+  const removeItem = (id) => {
+    setRemovedItems((prev) => ({ ...prev, [id]: true }));
+  };
+
+  const filterTimes = useCallback(({ item, value }) => {
+    if (!value) {
+      setToggledTimes((prevValue) => {
+        return prevValue.filter((time) => {
+          return time.id !== item.id;
+        });
+      });
+    } else {
+      setToggledTimes((prevValue) => [...prevValue, item]);
+    }
+  }, []);
+
+  useEffect(() => {
+    onSelect(toggledTimes);
+  }, [toggledTimes]);
+
+  const ITEM_HEIGHT = 65; // fixed height of item component
+  const getItemLayout = (data, index) => {
+    return {
+      length: ITEM_HEIGHT,
+      offset: ITEM_HEIGHT * index,
+      index,
+    };
+  };
+
+  const handleScroll = (event) => {
+    const currentScrollY = event.nativeEvent.contentOffset.y;
+    isScrollingUp.value = currentScrollY < lastScrollY.value;
+    lastScrollY.value = currentScrollY;
+    scrollY.value = withSpring(currentScrollY, {
+      damping: 20,
+      stiffness: 90,
+      mass: 0.5,
+    });
+  };
+
+  const customHeaderStyle = useAnimatedStyle(() => {
+    const translateY = interpolate(
+      scrollY.value,
+      [0, 135],
+      [0, -135],
+      Extrapolate.CLAMP
+    );
+
+    return {
+      position: "absolute",
+      left: 0,
+      right: 0,
+      zIndex: 2,
+      transform: [
+        {
+          translateY: translateY,
+        },
+      ],
+    };
+  });
+
+  return (
+    <View style={{ flex: 1 }}>
+      <Animated.View
+        style={[customHeaderStyle, { backgroundColor: theme.color1 }]}
+      >
+        <BorderBottom>
+          <View style={{ height: 100 }}>
+            <Margin>{header}</Margin>
+          </View>
+          <Custom interval={interval} setInterval={setInterval} theme={theme} />
+        </BorderBottom>
+      </Animated.View>
       <View style={{ flex: 1 }}>
-        <MarginHorizontal>
-          <MarginTop>
-            <H4>Every</H4>
-          </MarginTop>
-        </MarginHorizontal>
-        <Margin>
-          <Row>
-            <Switch
-              fat={true}
-              style={{
-                backgroundColor:
-                  interval == 15 ? theme.greenLight : theme.color1,
-              }}
-              value={interval == 15}
-              onValueChange={(value) => setInterval(value ? 15 : false)}
-            >
-              <CenterLeft>
-                <Margin>
-                  <MarginRight>
-                    <MarginRight>
-                      <H4
-                        color={interval == 15 ? theme.greenDark : theme.color2}
-                      >
-                        15m
-                      </H4>
-                    </MarginRight>
-                  </MarginRight>
-                </Margin>
-              </CenterLeft>
-            </Switch>
-            <MarginHorizontal>
-              <Switch
-                fat={true}
-                style={{
-                  backgroundColor:
-                    interval == 30 ? theme.greenLight : theme.color1,
-                }}
-                value={interval == 30}
-                onValueChange={(value) => setInterval(value ? 30 : false)}
-              >
-                <CenterLeft>
-                  <Margin>
-                    <MarginRight>
-                      <MarginRight>
-                        <H4
-                          color={
-                            interval == 30 ? theme.greenDark : theme.color2
-                          }
-                        >
-                          30m
-                        </H4>
-                      </MarginRight>
-                    </MarginRight>
-                  </Margin>
-                </CenterLeft>
-              </Switch>
-            </MarginHorizontal>
-            <Switch
-              fat={true}
-              style={{
-                backgroundColor:
-                  interval == 60 ? theme.greenLight : theme.color1,
-              }}
-              value={interval == 60}
-              onValueChange={(value) => setInterval(value ? 60 : false)}
-            >
-              <CenterLeft>
-                <Margin>
-                  <MarginRight>
-                    <MarginRight>
-                      <H4
-                        color={interval == 60 ? theme.greenDark : theme.color2}
-                      >
-                        1h
-                      </H4>
-                    </MarginRight>
-                  </MarginRight>
-                </Margin>
-              </CenterLeft>
-            </Switch>
-          </Row>
-        </Margin>
-        <Margin>
-          <H4>Time slots</H4>
-        </Margin>
-        <BottomSheetFlatList
-          contentContainerStyle={{ paddingBottom: 100 }}
+        <FlashList
+          keyExtractor={(item) => item.id.toString()}
+          contentContainerStyle={{ paddingBottom: 30 }}
+          onScroll={handleScroll}
+          scrollEventThrottle={1}
+          ListHeaderComponent={
+            <View>
+              <View style={{ height: 230 }} />
+            </View>
+          }
           data={times}
-          keyExtractor={(item) => item.minuteValue}
-          renderItem={renderItem}
-          getItemLayout={getItemLayout}
-          initialNumToRender={7}
-          maxToRenderPerBatch={7}
-          removeClippedSubviews={true}
-          windowSize={3}
+          renderItem={({ item }) => {
+            if (item.type === "label") {
+              return (
+                <MarginTop>
+                  <PaddingTop>
+                    <MarginHorizontal>
+                      <H4>{item.label}</H4>
+                    </MarginHorizontal>
+                  </PaddingTop>
+                </MarginTop>
+              );
+            } else {
+              return (
+                <Time
+                  toggledTimes={toggledTimes}
+                  time={item}
+                  timeToggle={(value) => {
+                    filterTimes({ item, value });
+                  }}
+                />
+              );
+            }
+          }}
+          estimatedItemSize={40}
+          extraData={toggledTimes}
         />
       </View>
-    );
-  }
-);
-
-export default Times;
+    </View>
+  );
+}

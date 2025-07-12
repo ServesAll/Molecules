@@ -1,72 +1,79 @@
 import React, { useState, useEffect } from "react";
-import { View } from "react-native";
-import { BottomSheetScrollView } from "@gorhom/bottom-sheet";
+import { View, ScrollView } from "react-native";
 import Weekday from "./Weekday";
 
 const Weekdays = React.memo(
   ({ days, onSelect, ListHeaderComponent = null }) => {
-    const [weekdays, setWeekdays] = useState({
-      monday: false,
-      tuesday: false,
-      wednesday: false,
-      thursday: false,
-      friday: false,
-      saturday: false,
-      sunday: false,
-    });
+    const [weekdays, setWeekdays] = useState([]);
 
     useEffect(() => {
-      if (days) {
-        setWeekdays({ ...weekdays, ...days });
+      if (days && weekdays.length === 0) {
+        setWeekdays([...weekdays, ...days]);
       }
     }, [days]);
 
-    const weekdayToggle = ({ day }) => {
-      const newWeekdays = { ...weekdays, ...day };
-      setWeekdays(newWeekdays);
-      onSelect({ value: newWeekdays });
+    const weekdayToggle = (value, day) => {
+      if (day.length) {
+        setWeekdays([...weekdays, ...day]);
+
+        onSelect({ value: [...weekdays, ...day] });
+      } else {
+        const index = weekdays.indexOf(value);
+        weekdays.splice(index, 1);
+
+        setWeekdays(weekdays);
+
+        onSelect({ value: weekdays });
+      }
     };
 
     return (
       <View style={{ flex: 1 }}>
-        <BottomSheetScrollView contentContainerStyle={{ paddingBottom: 100 }}>
+        <ScrollView contentContainerStyle={{ paddingBottom: 100 }}>
           {ListHeaderComponent && <ListHeaderComponent />}
           <Weekday
-            dayName={"monday"}
-            isActive={weekdays.monday}
-            weekdayToggle={({ day }) => weekdayToggle({ day })}
+            dayName={"Monday"}
+            dayValue={1}
+            isActive={weekdays.includes(1)}
+            weekdayToggle={(day) => weekdayToggle(1, day)}
           />
           <Weekday
-            dayName={"tuesday"}
-            isActive={weekdays.tuesday}
-            weekdayToggle={({ day }) => weekdayToggle({ day })}
+            dayName={"Tuesday"}
+            dayValue={2}
+            isActive={weekdays.includes(2)}
+            weekdayToggle={(day) => weekdayToggle(2, day)}
           />
           <Weekday
-            dayName={"wednesday"}
-            isActive={weekdays.wednesday}
-            weekdayToggle={({ day }) => weekdayToggle({ day })}
+            dayName={"Wednesday"}
+            dayValue={3}
+            isActive={weekdays.includes(3)}
+            weekdayToggle={(day) => weekdayToggle(3, day)}
           />
           <Weekday
-            dayName={"thursday"}
-            isActive={weekdays.thursday}
-            weekdayToggle={({ day }) => weekdayToggle({ day })}
+            dayName={"Thursday"}
+            dayValue={4}
+            isActive={weekdays.includes(4)}
+            weekdayToggle={(day) => weekdayToggle(4, day)}
           />
           <Weekday
-            dayName={"friday"}
-            isActive={weekdays.friday}
-            weekdayToggle={({ day }) => weekdayToggle({ day })}
+            dayName={"Friday"}
+            dayValue={5}
+            isActive={weekdays.includes(5)}
+            weekdayToggle={(day) => weekdayToggle(5, day)}
           />
           <Weekday
-            dayName={"saturday"}
-            isActive={weekdays.saturday}
-            weekdayToggle={({ day }) => weekdayToggle({ day })}
+            dayName={"Saturday"}
+            dayValue={6}
+            isActive={weekdays.includes(6)}
+            weekdayToggle={(day) => weekdayToggle(6, day)}
           />
           <Weekday
-            dayName={"sunday"}
-            isActive={weekdays.sunday}
-            weekdayToggle={({ day }) => weekdayToggle({ day })}
+            dayName={"Sunday"}
+            dayValue={7}
+            isActive={weekdays.includes(7)}
+            weekdayToggle={(day) => weekdayToggle(7, day)}
           />
-        </BottomSheetScrollView>
+        </ScrollView>
       </View>
     );
   }

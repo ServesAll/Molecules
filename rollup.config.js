@@ -39,6 +39,7 @@ export default {
         "react-native-gradients": "react-native-gradients",
         "react-native-svg": "react-native-svg",
         "react-native-fast-image": "react-native-fast-image",
+        "@shopify/flash-list": "@shopify/flash-list",
       },
     },
   ],
@@ -70,5 +71,6 @@ export default {
     "react-native-gradients",
     "react-native-svg",
     "react-native-fast-image",
+    "@shopify/flash-list",
   ],
 };

@@ -6,12 +6,11 @@ import {
   Margin,
   MarginHorizontal,
   CenterLeft,
-  PaddingVertical,
-  PaddingHorizontal,
+  PaddingTop,
 } from "@servesall/atoms";
 
 const Duration = React.memo(
-  ({ name, value, isActive = false, durationToggle }) => {
+  ({ time, value, isActive = false, durationToggle }) => {
     const { fontFamily2, greenLight, greenDark, color1, color2 } =
       useThemeContext();
     const [isEnabled, setIsEnabled] = useState(isActive);
@@ -30,7 +29,7 @@ const Duration = React.memo(
 
     return (
       <MarginHorizontal>
-        <PaddingVertical>
+        <PaddingTop>
           <Switch
             fat={true}
             style={{ backgroundColor: isEnabled ? greenLight : color1 }}
@@ -40,16 +39,20 @@ const Duration = React.memo(
           >
             <CenterLeft>
               <Margin>
-                <H3
-                  color={isEnabled ? greenDark : color2}
-                  style={{ textTransform: "capitalize" }}
-                >
-                  {name}
+                <H3 color={isEnabled ? greenDark : color2}>
+                  {`${time / 60000} minutes`}
+                  {time >= 3600000
+                    ? ` (${
+                        Math.floor(time / 3600000) === time / 3600000
+                          ? Math.floor(time / 3600000)
+                          : (time / 3600000).toFixed(1)
+                      }h)`
+                    : ""}
                 </H3>
               </Margin>
             </CenterLeft>
           </Switch>
-        </PaddingVertical>
+        </PaddingTop>
       </MarginHorizontal>
     );
   }
