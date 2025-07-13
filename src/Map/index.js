@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Platform, PermissionsAndroid } from "react-native";
 import { MapWrapper, MarkerWrapper } from "./Map.style";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
-import Geolocation from "react-native-geolocation-service";
+import * as Location from "expo-location";
 import MapMarker from "./Marker";
 
 const DEFAULT_LOCATION = {
@@ -26,17 +26,17 @@ export default function Map({
 
   async function requestPermissions() {
     if (Platform.OS === "ios") {
-      const auth = await Geolocation.requestAuthorization("whenInUse");
-      if (auth === "granted") {
+      const { status } = await Location.requestForegroundPermissionsAsync();
+      if (status === "granted") {
         setIsPermitionGranted(true);
       }
     }
 
     if (Platform.OS === "android") {
-      await PermissionsAndroid.request(
+      const granted = await PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
       );
-      if (PermissionsAndroid.RESULTS.GRANTED === "granted") {
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
         setIsPermitionGranted(true);
       }
     }
@@ -58,24 +58,25 @@ export default function Map({
 
   useEffect(() => {
     if (!longitude) {
-      Geolocation.getCurrentPosition(
-        (position) => {
+      Location.getCurrentPositionAsync({
+        accuracy: Location.Accuracy.High,
+        timeInterval: 15000,
+      })
+        .then((location) => {
           setLocation(
-            Object.assign(position.coords, {
+            Object.assign(location.coords, {
               latitudeDelta: 0.005,
               longitudeDelta: 0.01,
             })
           );
-        },
-        (error) => {
-          // See error code charts below.
-          if (error.code === 1) {
+        })
+        .catch((error) => {
+          // Handle permission errors
+          if (error.code === "ERR_LOCATION_UNAUTHORIZED") {
             requestPermissions();
           }
           //console.log(error.code, error.message);
-        },
-        { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
-      );
+        });
     }
   }, [isPermitionGranted]);
 

@@ -30,6 +30,18 @@ const MerchantSelector = React.memo(
       }
     }, [merchants]);
 
+    if (merchants && merchants.length === 0) {
+      return null;
+    }
+
+    if (
+      merchants &&
+      merchants.length === 1 &&
+      !merchants[0].merchant?.profile?.name
+    ) {
+      return null;
+    }
+
     return (
       <View style={{ backgroundColor: theme.color1, minHeight: 90 }}>
         <PaddingHorizontal
